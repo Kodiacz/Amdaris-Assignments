@@ -55,18 +55,24 @@ namespace AppTagInterpreter
                 
             for (int i = 0; i < input.Length; i++)
             {
+                // Slice method starts from i until the length of the open tag (<app>) which is 5
                 var chunk = inputAsSpan.Slice(i, 5);
 
+                // check if chunk is different from open tag (<app>). Because they are two situations: either </app or <app>
                 if (chunk.ToString() != "<app>")
                 {
-
+                    // Here we asign new value to the chunk which will be closing tag (</app>)
                     chunk = inputAsSpan.Slice(i, 6);
+
+                    // and we skip the letters < / a p p > from input when we assign i 
                     i += 5;
 
+                    // check if they are any open tags. If collection contais we should close the open tag by removing it
                     if (openTags.Count > 0)
                     {
                         openTags.RemoveAt(0);
                     }
+                    // but if openTags collection is empty this means that we have a closing tag without open tag
                     else
                     {
                         closeTags.Add(chunk.ToString());
