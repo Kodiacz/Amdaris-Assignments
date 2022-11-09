@@ -58,7 +58,8 @@ namespace AppTagInterpreter
                 // Slice method starts from i until the length of the open tag (<app>) which is 5
                 var chunk = inputAsSpan.Slice(i, 5);
 
-                // check if chunk is different from open tag (<app>). Because they are two situations: either </app or <app>
+                // check if chunk is different from open tag (<app>). Because they are two situations: either
+                // </app or <app>
                 if (chunk.ToString() != "<app>")
                 {
                     // Here we asign new value to the chunk which will be closing tag (</app>)
@@ -81,10 +82,14 @@ namespace AppTagInterpreter
                     continue;
                 }
 
+                // if the above if statement is false that means we don't have a closing tag so we
+                // add the open tag (<app>) here
                 openTags.Add(chunk.ToString());
 
                 i += 4;
             }
+
+            // now we have the count from the left open tags and the left closing tags
 
             return openTags.Count + closeTags.Count;
         }
