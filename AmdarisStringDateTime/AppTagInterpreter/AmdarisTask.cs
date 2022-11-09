@@ -48,10 +48,6 @@ namespace AppTagInterpreter
 
         public static int TaskWithUsingSpan(string input)
         {
-            //“<app><app><app></app></app>” -> 1 // only one ‘<app>’ tag is not closed.
-            //“<app></app></app><app><app>” -> 3 // one closing tag is not opened, two opening tags are not closed.
-            //“</app><app><app></app></app>” -> 1 // one closing tag is not opened.
-
             List<string> openTags = new List<string>(); 
             List<string> closeTags = new List<string>(); 
 
@@ -86,19 +82,5 @@ namespace AppTagInterpreter
 
             return openTags.Count + closeTags.Count;
         }
-
-        private static void StoreUnclosedTags(List<string> openTags, List<string> closedTags, string tag)
-        {
-            if (tag == "<app>")
-            {
-                openTags.Add(tag);
-            }
-            else
-            {
-                closedTags.Add(tag);
-            }
-
-        }
-        
     }
 }
