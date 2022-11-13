@@ -4,6 +4,11 @@
     {
         private string name;
 
+        public Assignment(string name)
+        {
+            this.Name = name;
+        }
+
         public string Name
         {
             get

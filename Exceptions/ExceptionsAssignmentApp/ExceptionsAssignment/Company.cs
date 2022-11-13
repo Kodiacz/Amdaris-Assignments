@@ -1,8 +1,8 @@
-﻿using ExceptionsAssignment.Contracts;
-
-namespace ExceptionsAssignment
+﻿namespace ExceptionsAssignment
 {
-    //Exception idea for => No employe availbe for this task
+    using ExceptionsAssignment.Contracts;
+    using ExceptionsAssignment.Exceptions;
+
     public class Company
     {
         public Company()
@@ -10,12 +10,14 @@ namespace ExceptionsAssignment
             this.Employees = new List<IEmployee>();
         }
 
-        public void AddAssignment(string firstName, string lastName)
+        public void AddAssignment(TeamLead teamLead, CompanyEmployee companyEmployee, Assignment assignment)
         {
-            var employee = this.Employees
-                .FirstOrDefault((fn) => (fn.FirstName == firstName) && (fn.LastName == lastName));
+            if (CheckIfEmployeeIsAvailable(companyEmployee))
+            {
+                throw new TooManyAssignmentsException($"{companyEmployee.FirstName} can't take more assignments");
+            }
 
-            if ()
+            this.DistributeAsignments(teamLead, companyEmployee, assignment);
         }
 
         public List<IEmployee> Employees { get; set; }
@@ -23,6 +25,11 @@ namespace ExceptionsAssignment
         private void DistributeAsignments(IGiveAssignment teamLead, IGetAssignment employee, Assignment assignment)
         {
             teamLead.GiveAssignment(assignment, employee);
+        }
+
+        private bool CheckIfEmployeeIsAvailable(IAbleForMore employe)
+        {
+            return employe.IsAbleForMoreAssignments;
         }
     }
 }

@@ -67,7 +67,7 @@
                     throw new ArgumentNullException($"{nameof(this.Phonenumber)} cannot be null");
                 }
 
-                if (!value.Any(c => char.IsDigit(c)))
+                if (!value.All(c => char.IsDigit(c)))
                 {
                     throw new WrongPhonenumberException($"{nameof(this.Phonenumber)} should contain only digits");
                 }
