@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.IO.Compression;
+using System.Security.Cryptography;
 
 namespace StreamsAssignment
 {
@@ -65,6 +66,44 @@ namespace StreamsAssignment
             //gZipStream.Close();
         }
 
+        public static void Encrpyt()
+        {
+            //byte[] encrypted;
+
+            //string text = "Some random text for encrypting";
+
+            //using Stream encryptFile = File.Create($@"C:\Simeon\Programming\Amdaris\Amdaris-Assignemnts-Git-Repo\Streams\encryptedFile.txt");
+
+            //byte[] key;
+            //byte[] iv;
+
+            //using (Aes aes = Aes.Create())
+            //{
+            //    key = aes.Key;
+            //    iv = aes.IV;
+
+            //    ICryptoTransform encryptor = aes.CreateEncryptor(key, iv);
+
+            //    using (MemoryStream memoryStream = new MemoryStream())
+            //    {
+            //        using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+            //        {
+            //            using (StreamWriter writer = new StreamWriter(cryptoStream))
+            //            {
+            //                writer.Write(text);
+            //            }
+
+            //            encrypted = memoryStream.ToArray();
+            //        }
+            //    }
+
+
+
+            //}
+
+            File.Encrypt(@"C:\Simeon\Programming\Amdaris\Amdaris-Assignemnts-Git-Repo\Streams\TestToEncrypt.xml");
+
+        }
 
     }
 }
