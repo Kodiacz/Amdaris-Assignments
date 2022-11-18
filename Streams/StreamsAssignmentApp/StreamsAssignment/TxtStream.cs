@@ -68,41 +68,33 @@ namespace StreamsAssignment
 
         public static void Encrpyt()
         {
-            //byte[] encrypted;
+            byte[] encrypted;
 
-            //string text = "Some random text for encrypting";
+            string text = "Some random text for encrypting";
 
-            //using Stream encryptFile = File.Create($@"C:\Simeon\Programming\Amdaris\Amdaris-Assignemnts-Git-Repo\Streams\encryptedFile.txt");
+            byte[] key;
+            byte[] iv;
 
-            //byte[] key;
-            //byte[] iv;
+            using (Aes aes = Aes.Create())
+            {
+                key = aes.Key;
+                iv = aes.IV;
 
-            //using (Aes aes = Aes.Create())
-            //{
-            //    key = aes.Key;
-            //    iv = aes.IV;
+                ICryptoTransform encryptor = aes.CreateEncryptor(key, iv);
 
-            //    ICryptoTransform encryptor = aes.CreateEncryptor(key, iv);
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter writer = new StreamWriter(cryptoStream))
+                        {
+                            writer.Write(text);
+                        }
 
-            //    using (MemoryStream memoryStream = new MemoryStream())
-            //    {
-            //        using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-            //        {
-            //            using (StreamWriter writer = new StreamWriter(cryptoStream))
-            //            {
-            //                writer.Write(text);
-            //            }
-
-            //            encrypted = memoryStream.ToArray();
-            //        }
-            //    }
-
-
-
-            //}
-
-            File.Encrypt(@"C:\Simeon\Programming\Amdaris\Amdaris-Assignemnts-Git-Repo\Streams\TestToEncrypt.xml");
-
+                        encrypted = memoryStream.ToArray();
+                    }
+                }
+            }
         }
 
     }
