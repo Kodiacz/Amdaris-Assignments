@@ -3,7 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetClinic", "PetClinic\PetClinic.csproj", "{DF679E51-F18D-4AEB-8EE7-09C41CDFA917}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{FE9D6564-4EBB-4AC6-A1C2-1B523A4D3E92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A6BC7EAC-A9D4-408B-8FC4-B8FD1C9D2C4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D35688CB-0C10-4F74-9768-AEB31928004C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8ADE0C9D-ECA3-4EA5-B590-3C2E97865199}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetClinic.Application", "PetClinic.Application\PetClinic.Application.csproj", "{C801FB5B-DD14-44D8-82FF-E024B3D94C6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetClinic.Domain", "PetClinic.Domain\PetClinic.Domain.csproj", "{23EDE1DA-972A-4DD6-8954-5AF982074471}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetClinic.Infrastructure", "PetClinic.Infrastructure\PetClinic.Infrastructure.csproj", "{946F4F40-CC29-4B98-ADD5-3C1171707768}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetClinic.ConsolePresentation", "PetClinic.ConsolePresentation\PetClinic.ConsolePresentation.csproj", "{7E4A9961-5C65-4E20-8381-100770B502D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +25,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DF679E51-F18D-4AEB-8EE7-09C41CDFA917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF679E51-F18D-4AEB-8EE7-09C41CDFA917}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF679E51-F18D-4AEB-8EE7-09C41CDFA917}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF679E51-F18D-4AEB-8EE7-09C41CDFA917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C801FB5B-DD14-44D8-82FF-E024B3D94C6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C801FB5B-DD14-44D8-82FF-E024B3D94C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C801FB5B-DD14-44D8-82FF-E024B3D94C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C801FB5B-DD14-44D8-82FF-E024B3D94C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23EDE1DA-972A-4DD6-8954-5AF982074471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23EDE1DA-972A-4DD6-8954-5AF982074471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23EDE1DA-972A-4DD6-8954-5AF982074471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23EDE1DA-972A-4DD6-8954-5AF982074471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946F4F40-CC29-4B98-ADD5-3C1171707768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946F4F40-CC29-4B98-ADD5-3C1171707768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946F4F40-CC29-4B98-ADD5-3C1171707768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946F4F40-CC29-4B98-ADD5-3C1171707768}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E4A9961-5C65-4E20-8381-100770B502D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E4A9961-5C65-4E20-8381-100770B502D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E4A9961-5C65-4E20-8381-100770B502D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E4A9961-5C65-4E20-8381-100770B502D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C801FB5B-DD14-44D8-82FF-E024B3D94C6C} = {FE9D6564-4EBB-4AC6-A1C2-1B523A4D3E92}
+		{23EDE1DA-972A-4DD6-8954-5AF982074471} = {A6BC7EAC-A9D4-408B-8FC4-B8FD1C9D2C4B}
+		{946F4F40-CC29-4B98-ADD5-3C1171707768} = {8ADE0C9D-ECA3-4EA5-B590-3C2E97865199}
+		{7E4A9961-5C65-4E20-8381-100770B502D4} = {D35688CB-0C10-4F74-9768-AEB31928004C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65C3AB5C-04CC-4A13-86F6-6335D339CF71}
