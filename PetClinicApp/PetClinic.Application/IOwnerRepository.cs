@@ -5,7 +5,5 @@
     public interface IOwnerRepository
     {
         void CreateOwner(Owner owner);
-
-        void TakePetToVet(Pet pet);
     }
 }

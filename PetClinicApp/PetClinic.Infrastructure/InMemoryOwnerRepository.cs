@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetClinic.Infrastructure
+﻿namespace PetClinic.Infrastructure
 {
-    internal class InMemoryOwnerRepository
+    using PetClinic.Application;
+    using PetClinic.Domain.Entities;
+
+    public class InMemoryOwnerRepository : IOwnerRepository
     {
+        private readonly ICollection<Owner> _owners = new HashSet<Owner>();
+
+        public void CreateOwner(Owner owner)
+        {
+
+        }
     }
 }
