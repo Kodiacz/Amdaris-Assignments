@@ -12,6 +12,13 @@ string[] items = new string[]
 
 ArrayList<string> arrayList = new ArrayList<string>(items);
 
+ArrayList<int> secondArrayList = new ArrayList<int>()
+{
+    1,
+    2,
+    3,
+};
+
 arrayList.SetItemAtIndex("2", 1);
 
 Console.WriteLine(string.Join(" ", arrayList.Array));

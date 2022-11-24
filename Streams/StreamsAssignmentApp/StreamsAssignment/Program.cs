@@ -1,13 +1,12 @@
 ﻿using static StreamsAssignment.TxtStream;
 using static System.Console;
-using Aes_Example;
 
 
-//WriteLine("Type the name of the file:");
-//WriteOnTxtFile();
+WriteLine("Type the name of the file:");
+WriteOnTxtFile();
 
-//WriteLine("Pres enter to print the text from the file");
-//ReadLine();
-//ReadFromTxtFile();
-//Compress();
+WriteLine("Pres enter to print the text from the file");
+ReadLine();
+ReadFromTxtFile();
+Compress();
 Encrpyt();

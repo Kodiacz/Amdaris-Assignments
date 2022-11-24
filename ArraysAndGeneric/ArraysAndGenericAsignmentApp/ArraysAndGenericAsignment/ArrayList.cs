@@ -1,6 +1,8 @@
-﻿namespace ArraysAndGenericAsignment
+﻿using System.Collections;
+
+namespace ArraysAndGenericAsignment
 {
-    public class ArrayList<T>
+    public class ArrayList<T> : IEnumerable<T>
     {
         T[] array;
 
@@ -8,7 +10,6 @@
         {
             array = new T[4];
         }
-
 
         public ArrayList(params T[] values)
         {
@@ -22,6 +23,11 @@
         public T[] Array => this.array;
 
         public int Length => this.array.Length;
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return (IEnumerator<T>)array.GetEnumerator();
+        }
 
         public T GetItemAtIndex(int index) 
         {
@@ -75,6 +81,11 @@
             T tempItem = this.array[indexOfFirstItem];
             this.array[indexOfFirstItem] = this.array[indexOfSecondItem];
             this.array[indexOfSecondItem] = tempItem;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
