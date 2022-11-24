@@ -1,6 +1,18 @@
 ﻿namespace PetClinic.Domain.Entities
 {
-    public class Pet : PeriodicTimer=
+    using PetClinic.Domain.AbstracClasses;
+
+    public class Pet : Animal
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public bool IsSick { get; set; }
+
+        public int OwnerId { get; set; }
+        public Owner Owner { get; set; }
     }
 }

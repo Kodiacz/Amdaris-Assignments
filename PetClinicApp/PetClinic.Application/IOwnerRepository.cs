@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetClinic.Application
+﻿namespace PetClinic.Application
 {
-    internal class IOwnerRepository
+    using PetClinic.Domain.Entities;
+
+    public interface IOwnerRepository
     {
+        void CreateOwner(Owner owner);
+
+        void TakePetToVet(Pet pet);
     }
 }
