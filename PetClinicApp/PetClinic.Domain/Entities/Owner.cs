@@ -12,7 +12,5 @@
         public int Id { get; set; }
 
         public ICollection<Pet> Pets { get; set; }
-
-
     }
 }

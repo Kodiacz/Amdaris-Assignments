@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application
+﻿namespace PetClinic.Application.Contracts
 {
     using PetClinic.Domain.Entities;
 

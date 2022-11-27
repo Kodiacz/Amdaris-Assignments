@@ -1,6 +1,6 @@
 ﻿namespace PetClinic.Infrastructure
 {
-    using PetClinic.Application;
+    using PetClinic.Application.Contracts;
     using PetClinic.Domain.Entities;
 
     public class InMemoryOwnerRepository : IOwnerRepository

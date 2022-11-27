@@ -10,8 +10,6 @@
 
         public int Age { get; set; }
 
-        public bool IsSick { get; set; }
-
         public int OwnerId { get; set; }
         public Owner Owner { get; set; }
     }
