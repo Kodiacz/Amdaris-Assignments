@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Owners.Commands
+﻿namespace PetClinic.Application.Owners.Commands.CreateOwner
 {
     using MediatR;
     using PetClinic.Domain.Entities;

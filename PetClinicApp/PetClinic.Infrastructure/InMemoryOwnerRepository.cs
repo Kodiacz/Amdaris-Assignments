@@ -9,7 +9,8 @@
 
         public void CreateOwner(Owner owner)
         {
-
+            this._owners.Add(owner);
+            owner.Id = this._owners.Count;
         }
     }
 }

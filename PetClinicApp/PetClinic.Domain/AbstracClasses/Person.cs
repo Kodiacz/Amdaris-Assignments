@@ -8,6 +8,6 @@
 
         public int Age { get; set; }
 
-        public int Phonenumber { get; set; }
+        public string Phonenumber { get; set; }
     }
 }

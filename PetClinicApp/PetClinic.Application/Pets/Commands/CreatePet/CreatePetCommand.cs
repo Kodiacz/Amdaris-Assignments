@@ -1,8 +1,9 @@
-﻿namespace PetClinic.Application.Pets.Commands
+﻿namespace PetClinic.Application.Pets.Commands.CreatePet
 {
+    using MediatR;
     using PetClinic.Domain.Entities;
 
-    public class CreatePetCommand
+    public class CreatePetCommand : IRequest<int>
     {
         public string Name { get; set; }
 

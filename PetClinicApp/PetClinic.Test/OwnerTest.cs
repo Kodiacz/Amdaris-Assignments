@@ -1,16 +1,29 @@
+using PetClinic.Application.Contracts;
+using PetClinic.Domain.Entities;
+using PetClinic.Infrastructure;
+
 namespace PetClinic.Test
 {
-    public class Tests
+    [TestFixture]
+    public class OwnerTest
     {
+        IOwnerRepository ownerRepo;
+
         [SetUp]
         public void Setup()
         {
+            ownerRepo = new InMemoryOwnerRepository();
         }
 
         [Test]
-        public void Test1()
+        public void CreateOwnerTest()
         {
-            Assert.Pass();
+            //Arrange
+
+            //Act
+
+
+            //Assert
         }
     }
 }

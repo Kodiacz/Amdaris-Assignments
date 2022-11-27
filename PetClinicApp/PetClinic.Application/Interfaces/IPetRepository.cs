@@ -2,7 +2,7 @@
 {
     using PetClinic.Domain.Entities;
 
-    public interface IPetRpository
+    public interface IPetRepository
     {
         void CreatePet(Pet pet);
     }

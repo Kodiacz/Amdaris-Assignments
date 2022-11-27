@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Owners.Commands
+﻿namespace PetClinic.Application.Owners.Commands.CreateOwner
 {
     using MediatR;
     using PetClinic.Application.Contracts;
@@ -21,8 +21,12 @@
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Age = request.Age
-            }  
+                Age = request.Age,
+                Phonenumber = request.Phonenumber,
+            };
+
+            this._ownerRepository.CreateOwner(owner);
+            return Task.FromResult(owner.Id);
         }
     }
 }

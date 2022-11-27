@@ -3,14 +3,9 @@
     using PetClinic.Application.Contracts;
     using PetClinic.Domain.Entities;
 
-    public class InMemoryPetRepository : IPetRpository
+    public class InMemoryPetRepository : IPetRepository
     {
-        private readonly ICollection<Pet> _pets;
-
-        public InMemoryPetRepository(ICollection<Pet> pets)
-        {
-            _pets = pets;
-        }
+        private readonly ICollection<Pet> _pets = new HashSet<Pet>();
 
         public void CreatePet(Pet pet)
         {
