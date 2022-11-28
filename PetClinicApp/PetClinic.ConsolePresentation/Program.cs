@@ -16,8 +16,8 @@ var mediator = diContainer.GetRequiredService<IMediator>();
 
 var userId = await mediator.Send(new CreateOwnerCommand()
 {
-    FirstName = "Pencho",
-    LastName = "Mencho",
+    FirstName = "Stefan",
+    LastName = "Petrov",
     Phonenumber = "0899443323",
     Age = 33,
 });
