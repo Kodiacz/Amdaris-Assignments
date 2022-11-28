@@ -11,9 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Employees\" />
+    <Folder Include="Doctors\Queries\" />
     <Folder Include="Owners\Queries\" />
     <Folder Include="Pets\Querires\" />
+    <Folder Include="Receptionists\Queries\" />
+    <Folder Include="Receptionists\Commands\" />
   </ItemGroup>
 
   <ItemGroup>

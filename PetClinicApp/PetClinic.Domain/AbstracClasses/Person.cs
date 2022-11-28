@@ -2,12 +2,12 @@
 {
     public abstract class Person
     {
-        public string FirstName { get; set; }
+        public string FirstName { get; init; }
 
-        public string LastName { get; set; }
+        public string LastName { get; init; }
 
-        public int Age { get; set; }
+        public int Age { get; init; }
 
-        public string Phonenumber { get; set; }
+        public string Phonenumber { get; init; }
     }
 }

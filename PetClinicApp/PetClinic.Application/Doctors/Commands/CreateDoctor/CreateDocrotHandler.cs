@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace PetClinic.Application.Doctors.Commands.CreateDoctor
 {
-    internal class CreateDocrotHandler
+    public class CreateDocrotHandler : IRequestHandler<CreateDoctorCommand, int>
     {
+        public Task<int> Handle(CreateDoctorCommand request, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

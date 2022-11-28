@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetClinic.Application.Interfaces
+﻿namespace PetClinic.Application.Interfaces
 {
-    internal interface IDoctorRepository
+    using PetClinic.Domain.Entities;
+
+    public interface IDoctorRepository
     {
+        void CreateDoctor(Doctor doctor);
     }
 }
