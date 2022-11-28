@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Interfaces\znba0vmg.5ur~" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PetClinic.Domain\PetClinic.Domain.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Interfaces
+﻿namespace PetClinic.Interfaces
 {
     using PetClinic.Domain.Entities;
 

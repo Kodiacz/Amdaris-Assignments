@@ -5,8 +5,6 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{D35688CB-0C10-4F74-9768-AEB31928004C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{8ADE0C9D-ECA3-4EA5-B590-3C2E97865199}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetClinic.Application", "PetClinic.Application\PetClinic.Application.csproj", "{C801FB5B-DD14-44D8-82FF-E024B3D94C6C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetClinic.Domain", "PetClinic.Domain\PetClinic.Domain.csproj", "{23EDE1DA-972A-4DD6-8954-5AF982074471}"
@@ -14,8 +12,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetClinic.Infrastructure", "PetClinic.Infrastructure\PetClinic.Infrastructure.csproj", "{946F4F40-CC29-4B98-ADD5-3C1171707768}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetClinic.ConsolePresentation", "PetClinic.ConsolePresentation\PetClinic.ConsolePresentation.csproj", "{7E4A9961-5C65-4E20-8381-100770B502D4}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{D30EBC8E-EDA7-4F83-9DD0-E4C1CABD6B77}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetClinic.Test", "PetClinic.Test\PetClinic.Test.csproj", "{5F25AB5B-8FF1-42F5-91B3-A8DD9AB8AA94}"
 EndProject
@@ -56,9 +52,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{946F4F40-CC29-4B98-ADD5-3C1171707768} = {8ADE0C9D-ECA3-4EA5-B590-3C2E97865199}
 		{7E4A9961-5C65-4E20-8381-100770B502D4} = {D35688CB-0C10-4F74-9768-AEB31928004C}
-		{5F25AB5B-8FF1-42F5-91B3-A8DD9AB8AA94} = {D30EBC8E-EDA7-4F83-9DD0-E4C1CABD6B77}
 		{5A297249-49C3-43CA-8BBF-BCA3BEDD414E} = {D35688CB-0C10-4F74-9768-AEB31928004C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

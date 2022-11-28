@@ -1,15 +1,13 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using PetClinic.Infrastructure;
-using PetClinic.Application.Contracts;
-using PetClinic.Application.Pets.Commands.CreatePet;
-using PetClinic.Application.Owners.Commands.CreateOwner;
+using PetClinic.Interfaces;
+using PetClinic.Pets.Commands.CreatePet;
+using PetClinic.Owners.Commands.CreateOwner;
 
 var diContainer = new ServiceCollection()
     .AddMediatR(typeof(IOwnerRepository))
-    .AddScoped<IOwnerRepository, InMemoryOwnerRepository>()
     .AddMediatR(typeof(IPetRepository))
-    .AddScoped<IPetRepository, InMemoryPetRepository>()
     .BuildServiceProvider();
 
 var mediator = diContainer.GetRequiredService<IMediator>();

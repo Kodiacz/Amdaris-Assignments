@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace PetClinic.Application.Doctors.Commands.CreateDoctor
+namespace PetClinic.Doctors.Commands.CreateDoctor
 {
     public class CreateDoctorCommand : IRequest<int>
     {

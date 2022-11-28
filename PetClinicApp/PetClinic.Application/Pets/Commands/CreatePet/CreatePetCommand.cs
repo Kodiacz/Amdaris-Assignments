@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Pets.Commands.CreatePet
+﻿namespace PetClinic.Pets.Commands.CreatePet
 {
     using MediatR;
     using PetClinic.Domain.Entities;

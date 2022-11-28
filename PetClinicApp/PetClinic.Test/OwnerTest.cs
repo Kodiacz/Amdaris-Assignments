@@ -1,4 +1,4 @@
-using PetClinic.Application.Contracts;
+using PetClinic.Interfaces;
 using PetClinic.Domain.Entities;
 using PetClinic.Infrastructure;
 
@@ -12,7 +12,7 @@ namespace PetClinic.Test
         [SetUp]
         public void Setup()
         {
-            ownerRepo = new InMemoryOwnerRepository();
+
         }
 
         [Test]

@@ -1,7 +1,7 @@
 ﻿using MediatR;
-namespace PetClinic.Application.Pets.Commands.CreatePet
+namespace PetClinic.Pets.Commands.CreatePet
 {
-    using PetClinic.Application.Contracts;
+    using PetClinic.Interfaces;
     using PetClinic.Domain.Entities;
 
     public class CreatePetHandler : IRequestHandler<CreatePetCommand, int>
