@@ -19,7 +19,11 @@
 
         public async Task DeleteSoftAsync(Doctor doctor)
         {
-            throw new NotImplementedException();
+            if (!doctor.IsDeleted)
+            {
+                doctor.IsDeleted = true;
+                await this.SaveAsync();
+            }
         }
 
         public async Task<ICollection<Doctor>> GetAllAsync()

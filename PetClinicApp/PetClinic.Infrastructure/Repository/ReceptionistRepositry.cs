@@ -19,7 +19,11 @@
 
         public async Task DeleteSoftAsync(Receptionist receptionist)
         {
-            throw new NotImplementedException();
+            if (!receptionist.IsDeleted)
+            {
+                receptionist.IsDeleted = true;
+                await this.SaveAsync();
+            }
         }
 
         public async Task<ICollection<Receptionist>> GetAllAsync()

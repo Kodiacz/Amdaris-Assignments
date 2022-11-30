@@ -22,7 +22,11 @@
 
         public async Task DeleteSoftAsync(Owner owner)
         {
-            throw new NotImplementedException();
+            if (!owner.IsDeleted)
+            {
+                owner.IsDeleted = true;
+                await this.SaveAsync();
+            }
         }
 
         public async Task<ICollection<Owner>> GetAllAsync()

@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using PetClinic.Domain.Entities;
+using System.Numerics;
 
     public class PetRepository
     {
@@ -18,8 +19,12 @@
         }
 
         public async Task DeleteSoftAsync(Pet pet)
-        {
-            throw new NotImplementedException();
+{
+            if (!pet.IsDeleted)
+{
+                pet.IsDeleted = true;
+                await this.SaveAsync();
+            }
         }
 
         public async Task<ICollection<Pet>> GetAllAsync()
