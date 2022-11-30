@@ -12,5 +12,11 @@
         public int Id { get; set; }
 
         public ICollection<Pet> Pets { get; set; }
+
+        public int? DoctorId { get; set; }
+        public Doctor? Doctor { get; set; }
+
+        public int? ReceptionistId { get; set; }
+        public Receptionist? Receptionist { get; set; }
     }
 }

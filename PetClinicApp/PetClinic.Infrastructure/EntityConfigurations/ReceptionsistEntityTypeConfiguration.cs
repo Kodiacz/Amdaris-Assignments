@@ -32,13 +32,26 @@
                 .IsRequired();
 
             receptionistConfiguration
-                .Property(receptionist => receptionist.StartedJobDate)
+                .Property(receptionist => receptionist.StartedJobDate) 
                 .IsRequired();
 
             receptionistConfiguration
                 .Property(receptionist => receptionist.JobDescription)
                 .IsRequired()
                 .HasMaxLength(JobDescriptionMaxLength);
+
+            receptionistConfiguration
+                .HasMany(receptionist => receptionist.Patients)
+                .WithOne(pet => pet.Receptionist)
+                .HasForeignKey(pet => pet.ReceptionistId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+
+            receptionistConfiguration
+                .HasMany(receptionist => receptionist.OwnersOfPatients)
+                .WithOne(owner => owner.Receptionist)
+                .HasForeignKey(owner => owner.ReceptionistId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

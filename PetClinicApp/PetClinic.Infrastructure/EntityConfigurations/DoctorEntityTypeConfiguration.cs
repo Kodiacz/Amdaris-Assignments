@@ -39,6 +39,19 @@
                 .Property(doctor => doctor.JobDescription)
                 .IsRequired()
                 .HasMaxLength(JobDescriptionMaxLength);
+
+            doctorConfiguration
+                .HasMany(doctor => doctor.Patients)
+                .WithOne(pet => pet.Doctor)
+                .HasForeignKey(pet => pet.DoctorId)
+                .OnDelete(DeleteBehavior.SetNull);
+            
+
+            doctorConfiguration
+                .HasMany(doctor => doctor.OwnersOfPatients)
+                .WithOne(owner => owner.Doctor)
+                .HasForeignKey(owner => owner.DoctorId)
+                .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

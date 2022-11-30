@@ -10,17 +10,19 @@
     {
         public void Configure(EntityTypeBuilder<Owner> ownerConfiguration)
         {
-            ownerConfiguration
-                .HasMany(owner => owner.Pets)
-                .WithOne(pet => pet.Owner)
-                .HasForeignKey(pet => pet.OwnerId)
-                .OnDelete(DeleteBehavior.SetNull);
+            //ownerConfiguration
+            //    .Property(owner => owner.Doctor)
+            //    .IsRequired(false);
+
+            //ownerConfiguration
+            //    .Property(owner => owner.Receptionist)
+            //    .IsRequired(false);
 
             ownerConfiguration
                 .Property(owner => owner.FirstName)
                 .IsRequired()
                 .HasMaxLength(FirstNameMaxLength);
-            
+
             ownerConfiguration
                 .Property(owner => owner.LastName)
                 .IsRequired()
@@ -34,6 +36,24 @@
             ownerConfiguration
                 .Property(owner => owner.Age)
                 .IsRequired();
+
+            ownerConfiguration
+                .HasMany(owner => owner.Pets)
+                .WithOne(owner => owner.Owner)
+                .HasForeignKey(owner => owner.OwnerId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            //ownerConfiguration
+            //   .HasOne(owner => owner.Doctor)
+            //   .WithMany(doctor => doctor.OwnersOfPatients)
+            //   .HasForeignKey(owner => owner.DoctorId)
+            //   .OnDelete(DeleteBehavior.SetNull);
+
+            //ownerConfiguration
+            //    .HasOne(owner => owner.Receptionist)
+            //    .WithMany(receptionist => receptionist.OwnersOfPatients)
+            //    .HasForeignKey(owner => owner.ReceptionistId)
+            //    .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
