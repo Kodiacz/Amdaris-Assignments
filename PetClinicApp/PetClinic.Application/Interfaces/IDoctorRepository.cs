@@ -4,6 +4,14 @@
 
     public interface IDoctorRepository
     {
-        void CreateDoctor(Doctor doctor);
+        Task AddAsync(Doctor doctor);
+
+        Task UpdateAsync(Doctor doctor);
+
+        Task GetByIdAsync(int id);
+
+        Task<ICollection<Doctor>> GetAllAsync();
+
+        Task DeleteSoftAsync(Doctor doctor);
     }
 }

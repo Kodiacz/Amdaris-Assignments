@@ -4,6 +4,14 @@
 
     public interface IPetRepository
     {
-        void CreatePet(Pet pet);
+        Task AddAsync(Pet pet);
+
+        Task UpdateAsync(Pet pet);
+
+        Task GetByIdAsync(int id);
+
+        Task<ICollection<Pet>> GetAllAsync();
+
+        Task DeleteSoftAsync(Pet pet);
     }
 }

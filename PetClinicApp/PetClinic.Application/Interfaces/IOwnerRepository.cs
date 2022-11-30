@@ -4,6 +4,14 @@
 
     public interface IOwnerRepository
     {
-        void CreateOwner(Owner owner);
+        Task AddAsync(Owner owner);
+
+        Task UpdateAsync(Owner owner);
+
+        Task GetByIdAsync(int id);
+
+        Task<ICollection<Owner>> GetAllAsync();
+
+        Task DeleteSoftAsync(Owner owner);
     }
 }
