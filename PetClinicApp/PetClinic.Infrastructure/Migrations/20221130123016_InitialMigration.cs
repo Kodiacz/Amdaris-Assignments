@@ -3,14 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-/*
-Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: 
-PetClinic.Infrastructure.PetClinicDbContext Lifetime: Scoped ImplementationType: 
-PetClinic.Infrastructure.PetClinicDbContext': A suitable constructor for type 
-'PetClinic.Infrastructure.PetClinicDbContext' could not be located. Ensure the type is concrete and 
-services are registered for all parameters of a public constructor.)
- */
-
 namespace PetClinic.Infrastructure.Migrations
 {
     public partial class InitialMigration : Migration
@@ -37,22 +29,6 @@ namespace PetClinic.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Owners",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false),
-                    Phonenumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Owners", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Receptionists",
                 columns: table => new
                 {
@@ -71,6 +47,36 @@ namespace PetClinic.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Owners",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DoctorId = table.Column<int>(type: "int", nullable: true),
+                    ReceptionistId = table.Column<int>(type: "int", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    Phonenumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owners", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Owners_Doctors_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_Owners_Receptionists_ReceptionistId",
+                        column: x => x.ReceptionistId,
+                        principalTable: "Receptionists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pets",
                 columns: table => new
                 {
@@ -79,6 +85,8 @@ namespace PetClinic.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
                     OwnerId = table.Column<int>(type: "int", nullable: false),
+                    DoctorId = table.Column<int>(type: "int", nullable: true),
+                    ReceptionistId = table.Column<int>(type: "int", nullable: true),
                     Breed = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false),
                     Type = table.Column<string>(type: "nvarchar(35)", maxLength: 35, nullable: false)
                 },
@@ -86,32 +94,64 @@ namespace PetClinic.Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Pets", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Pets_Doctors_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
                         name: "FK_Pets_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Pets_Receptionists_ReceptionistId",
+                        column: x => x.ReceptionistId,
+                        principalTable: "Receptionists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Owners_DoctorId",
+                table: "Owners",
+                column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Owners_ReceptionistId",
+                table: "Owners",
+                column: "ReceptionistId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pets_DoctorId",
+                table: "Pets",
+                column: "DoctorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Pets_OwnerId",
                 table: "Pets",
                 column: "OwnerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pets_ReceptionistId",
+                table: "Pets",
+                column: "ReceptionistId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Doctors");
-
-            migrationBuilder.DropTable(
                 name: "Pets");
 
             migrationBuilder.DropTable(
-                name: "Receptionists");
+                name: "Owners");
 
             migrationBuilder.DropTable(
-                name: "Owners");
+                name: "Doctors");
+
+            migrationBuilder.DropTable(
+                name: "Receptionists");
         }
     }
 }

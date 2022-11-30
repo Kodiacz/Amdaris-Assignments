@@ -12,7 +12,7 @@ using PetClinic.Infrastructure;
 namespace PetClinic.Infrastructure.Migrations
 {
     [DbContext(typeof(PetClinicDbContext))]
-    [Migration("20221130100921_InitialMigration")]
+    [Migration("20221130123016_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,6 +77,9 @@ namespace PetClinic.Infrastructure.Migrations
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DoctorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(35)
@@ -92,7 +95,14 @@ namespace PetClinic.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int?>("ReceptionistId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("ReceptionistId");
 
                     b.ToTable("Owners");
                 });
@@ -113,12 +123,18 @@ namespace PetClinic.Infrastructure.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
+                    b.Property<int?>("DoctorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
                     b.Property<int>("OwnerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ReceptionistId")
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
@@ -128,7 +144,11 @@ namespace PetClinic.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DoctorId");
+
                     b.HasIndex("OwnerId");
+
+                    b.HasIndex("ReceptionistId");
 
                     b.ToTable("Pets");
                 });
@@ -172,20 +192,65 @@ namespace PetClinic.Infrastructure.Migrations
                     b.ToTable("Receptionists");
                 });
 
+            modelBuilder.Entity("PetClinic.Domain.Entities.Owner", b =>
+                {
+                    b.HasOne("PetClinic.Domain.Entities.Doctor", "Doctor")
+                        .WithMany("OwnersOfPatients")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("PetClinic.Domain.Entities.Receptionist", "Receptionist")
+                        .WithMany("OwnersOfPatients")
+                        .HasForeignKey("ReceptionistId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Receptionist");
+                });
+
             modelBuilder.Entity("PetClinic.Domain.Entities.Pet", b =>
                 {
+                    b.HasOne("PetClinic.Domain.Entities.Doctor", "Doctor")
+                        .WithMany("Patients")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
                     b.HasOne("PetClinic.Domain.Entities.Owner", "Owner")
                         .WithMany("Pets")
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PetClinic.Domain.Entities.Receptionist", "Receptionist")
+                        .WithMany("Patients")
+                        .HasForeignKey("ReceptionistId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Doctor");
+
                     b.Navigation("Owner");
+
+                    b.Navigation("Receptionist");
+                });
+
+            modelBuilder.Entity("PetClinic.Domain.Entities.Doctor", b =>
+                {
+                    b.Navigation("OwnersOfPatients");
+
+                    b.Navigation("Patients");
                 });
 
             modelBuilder.Entity("PetClinic.Domain.Entities.Owner", b =>
                 {
                     b.Navigation("Pets");
+                });
+
+            modelBuilder.Entity("PetClinic.Domain.Entities.Receptionist", b =>
+                {
+                    b.Navigation("OwnersOfPatients");
+
+                    b.Navigation("Patients");
                 });
 #pragma warning restore 612, 618
         }
