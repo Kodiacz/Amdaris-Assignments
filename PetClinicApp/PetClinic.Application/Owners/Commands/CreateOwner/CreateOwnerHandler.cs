@@ -25,7 +25,7 @@
                 Phonenumber = request.Phonenumber,
             };
 
-            this._ownerRepository.CreateOwner(owner);
+
             return Task.FromResult(owner.Id);
         }
     }

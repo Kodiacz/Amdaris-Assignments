@@ -23,7 +23,7 @@ namespace PetClinic.Pets.Commands.CreatePet
                 OwnerId = request.OwnerId,
             };
 
-            this._petRepository.CreatePet(pet);
+
             return Task.FromResult(pet.Id);
         }
     }
