@@ -4,11 +4,13 @@ namespace PetClinic.Application.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        public IDoctorRepository DoctorRepository { get; set; }
+        public IDoctorRepository DoctorRepository { get; }
 
-        public IOwnerRepository OwnerRepository { get; set; }
+        public IOwnerRepository OwnerRepository { get; }
 
-        public IPetRepository PetRepository { get; set; }
+        public IPetRepository PetRepository { get; }
+
+        public IReceptionistRepository ReceptionistRepository { get; }
 
         Task Save();
     }

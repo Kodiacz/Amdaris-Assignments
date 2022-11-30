@@ -13,5 +13,7 @@ namespace PetClinic.Application.Interfaces
         Task<ICollection<Receptionist>> GetAllAsync();
 
         Task DeleteSoftAsync(Receptionist receptionist);
+
+        Task SaveAsync();
     }
 }

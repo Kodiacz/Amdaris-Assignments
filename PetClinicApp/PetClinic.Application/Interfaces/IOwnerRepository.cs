@@ -13,5 +13,7 @@
         Task<ICollection<Owner>> GetAllAsync();
 
         Task DeleteSoftAsync(Owner owner);
+
+        Task SaveAsync();
     }
 }

@@ -13,5 +13,6 @@
         Task<ICollection<Pet>> GetAllAsync();
 
         Task DeleteSoftAsync(Pet pet);
+        Task SaveAsync();
     }
 }

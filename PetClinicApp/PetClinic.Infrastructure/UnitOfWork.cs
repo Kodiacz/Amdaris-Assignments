@@ -6,18 +6,22 @@
 
     public class UnitOfWork : IUnitOfWork
     {
-        public IDoctorRepository DoctorRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IOwnerRepository OwnerRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public IPetRepository PetRepository { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IDoctorRepository DoctorRepository { get; private set; }
+
+        public IOwnerRepository OwnerRepository { get; private set; }
+
+        public IPetRepository PetRepository { get; private set; }
+
+        public IReceptionistRepository ReceptionistRepository { get; private set; }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            ;
         }
 
         public Task Save()
         {
-            throw new NotImplementedException();
+            ;
         }
     }
 }

@@ -13,5 +13,7 @@
         Task<ICollection<Doctor>> GetAllAsync();
 
         Task DeleteSoftAsync(Doctor doctor);
+
+        Task SaveAsync();
     }
 }
