@@ -18,5 +18,7 @@
 
         public int? ReceptionistId { get; set; }
         public Receptionist? Receptionist { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }
