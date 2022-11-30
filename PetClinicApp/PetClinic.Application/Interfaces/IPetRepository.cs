@@ -8,7 +8,7 @@
 
         Task UpdateAsync(Pet pet);
 
-        Task GetByIdAsync(int id);
+        Task<Pet> GetByIdAsync(int id);
 
         Task<ICollection<Pet>> GetAllAsync();
 

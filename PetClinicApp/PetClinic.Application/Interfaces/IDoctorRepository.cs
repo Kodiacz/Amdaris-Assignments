@@ -8,7 +8,7 @@
 
         Task UpdateAsync(Doctor doctor);
 
-        Task GetByIdAsync(int id);
+        Task<Doctor> GetByIdAsync(int id);
 
         Task<ICollection<Doctor>> GetAllAsync();
 

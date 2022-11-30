@@ -8,7 +8,7 @@ namespace PetClinic.Application.Interfaces
 
         Task UpdateAsync(Receptionist receptionist);
 
-        Task GetByIdAsync(int id);
+        Task<Receptionist> GetByIdAsync(int id);
 
         Task<ICollection<Receptionist>> GetAllAsync();
 

@@ -8,7 +8,7 @@
 
         Task UpdateAsync(Owner owner);
 
-        Task GetByIdAsync(int id);
+        Task<Owner> GetByIdAsync(int id);
 
         Task<ICollection<Owner>> GetAllAsync();
 
