@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetClinic.Infrastructure;
 
@@ -11,9 +12,10 @@ using PetClinic.Infrastructure;
 namespace PetClinic.Infrastructure.Migrations
 {
     [DbContext(typeof(PetClinicDbContext))]
-    partial class PetClinicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221130134102_AddIsDeletedPropertyToAllEntities")]
+    partial class AddIsDeletedPropertyToAllEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
