@@ -7,6 +7,12 @@
         private static int LandLinePhoneLength = 7;
         private static int MobilePhoneLength = 10;
 
+        /// <summary>
+        /// Generates a Landline phone number, specifically for Bulgaria,
+        /// which stasrts with 02 and is 7 digit long. 
+        /// It is using the Random method and StrinBuilder
+        /// </summary>
+        /// <returns>string that contains the generated Landline phonenumber</returns>
         public static string GenerateLandlinePhone()
         {
             Random random = new Random();
@@ -21,6 +27,12 @@
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Generates a Mobile phone number, specifically for Bulgaria,
+        /// which stasrts with 087, 088 or 089 and is 10 digit long. 
+        /// It is using the Random method and StrinBuilder
+        /// </summary>
+        /// <returns>string that contains the generated Mobil ephonenumber</returns>
         public static string GenerateMobilePhone()
         {
             Random random = new Random();
