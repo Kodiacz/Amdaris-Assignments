@@ -35,7 +35,7 @@
             this.context.Dispose();
         }
 
-        public async Task Save()
+        public async Task SaveAsync()
         {
             await this.context.SaveChangesAsync();
         }

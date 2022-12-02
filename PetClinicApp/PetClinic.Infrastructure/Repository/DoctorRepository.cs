@@ -41,7 +41,7 @@
         /// Gets a collection of Doctor type entites
         /// </summary>
         /// <returns></returns>
-        public async Task<ICollection<Doctor>> GetAllAsync()
+        public async Task<List<Doctor>> GetAllAsync()
         {
             return await this.context
                 .Doctors
