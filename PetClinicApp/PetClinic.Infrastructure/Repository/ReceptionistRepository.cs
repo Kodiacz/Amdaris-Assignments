@@ -4,11 +4,11 @@
     using PetClinic.Application.Interfaces;
     using PetClinic.Domain.Entities;
 
-    public class ReceptionistRepositry : IReceptionistRepository
+    public class ReceptionistRepository : IReceptionistRepository
     {
         private readonly PetClinicDbContext context;
 
-        public ReceptionistRepositry(PetClinicDbContext context)
+        public ReceptionistRepository(PetClinicDbContext context)
         {
             this.context = context;
         }

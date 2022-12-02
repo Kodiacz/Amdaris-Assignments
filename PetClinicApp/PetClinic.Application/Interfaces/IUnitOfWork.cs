@@ -1,7 +1,7 @@
-﻿using PetClinic.Interfaces;
-
-namespace PetClinic.Application.Interfaces
+﻿namespace PetClinic.Application.Interfaces
 {
+    using PetClinic.Interfaces;
+
     public interface IUnitOfWork : IDisposable
     {
         public IDoctorRepository DoctorRepository { get; }
