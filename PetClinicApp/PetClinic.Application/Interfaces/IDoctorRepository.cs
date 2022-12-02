@@ -29,7 +29,7 @@
         /// Gets a collection of Doctor type entites
         /// </summary>
         /// <returns></returns>
-        Task<ICollection<Doctor>> GetAllAsync();
+        Task<List<Doctor>> GetAllAsync();
 
         /// <summary>
         /// Deletes the entity by changing its IsDeleted property to true

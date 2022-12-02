@@ -12,6 +12,6 @@ namespace PetClinic.Application.Interfaces
 
         public IReceptionistRepository ReceptionistRepository { get; }
 
-        Task Save();
+        Task SaveAsync();
     }
 }
