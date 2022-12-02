@@ -10,7 +10,7 @@
 
         public const int PhonenumberMaxLength = 20;
 
-        public const int JobDescriptionMaxLength = 30;
+        public const int JobDescriptionMaxLength = 400;
         public const int JobDescriptionMinLength = 5;
     }
 }
