@@ -29,8 +29,14 @@ builder.Services.AddDbContext<PetClinicDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
-builder.Services.AddMediatR(typeof(Program));
+
+builder.Services.AddMediatR(typeof(IDoctorRepository));
+builder.Services.AddMediatR(typeof(IReceptionistRepository));
+builder.Services.AddMediatR(typeof(IOwnerRepository));
+builder.Services.AddMediatR(typeof(IPetRepository));
+
 builder.Services.AddAutoMapper(typeof(Program));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
