@@ -3,12 +3,17 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using PetClinic.Domain.Entities;
+    using System;
+    using System.Globalization;
     using static PetClinic.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
 
     public class ReceptionsistEntityTypeConfiguration : IEntityTypeConfiguration<Receptionist>
     {
         public void Configure(EntityTypeBuilder<Receptionist> receptionistConfiguration)
         {
+            receptionistConfiguration
+                .HasData(CreateReceptionists());
+
             receptionistConfiguration
                 .HasKey(receptionist => receptionist.Id);
 
@@ -52,6 +57,51 @@
                 .WithOne(owner => owner.Receptionist)
                 .HasForeignKey(owner => owner.ReceptionistId)
                 .OnDelete(DeleteBehavior.SetNull);
+        }
+
+        /// <summary>
+        /// Creates a List of receptionists to seed the database with Receptionist entities
+        /// </summary>
+        /// <returns>List of type Receptionist</returns>
+        private List<Receptionist> CreateReceptionists()
+        {
+            string receptionDeskPhonumber = "0239949";
+
+            List<Receptionist> receptionists = new List<Receptionist>()
+            {
+                new Receptionist
+                {
+                    Id = 1,
+                    FirstName = "Katya",
+                    LastName = "Manolova",
+                    Age = 24,
+                    Phonenumber = receptionDeskPhonumber,
+                    JobDescription = "Receptionist",
+                    StartedJobDate = DateTime.ParseExact("12/08/2018", "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("bg-BG")),
+                },
+                new Receptionist
+                {
+                    Id = 2,
+                    FirstName = "Tanyq",
+                    LastName = "Gramatikova",
+                    Age = 35,
+                    Phonenumber = receptionDeskPhonumber,
+                    JobDescription = "Receptionist",
+                    StartedJobDate = DateTime.ParseExact("14/09/2018", "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("bg-BG")),
+                },
+                new Receptionist
+                {
+                    Id = 3,
+                    FirstName = "Vesela",
+                    LastName = "Cvetkova",
+                    Age = 24,
+                    Phonenumber = receptionDeskPhonumber,
+                    JobDescription = "Receptionist",
+                    StartedJobDate = DateTime.ParseExact("13/05/2018", "dd/MM/yyyy", CultureInfo.CreateSpecificCulture("bg-BG")),
+                },
+            };
+
+            return receptionists;
         }
     }
 }
