@@ -1,6 +1,7 @@
 ﻿namespace PetClinic.Application.Doctors.Commands.Update
 {
     using MediatR;
+
     using PetClinic.Domain.Entities;
 
     public class UpdateDoctor : IRequest<Doctor>

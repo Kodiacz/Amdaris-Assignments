@@ -1,6 +1,7 @@
 ﻿namespace PetClinic.Doctors.Commands.Create
 {
     using MediatR;
+
     using PetClinic.Application.Interfaces;
     using PetClinic.Domain.Entities;
 

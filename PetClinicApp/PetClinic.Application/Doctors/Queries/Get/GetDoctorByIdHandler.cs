@@ -1,6 +1,7 @@
 ﻿namespace PetClinic.Application.Doctors.Queries.Get
 {
     using MediatR;
+
     using PetClinic.Application.Interfaces;
     using PetClinic.Domain.Entities;
 

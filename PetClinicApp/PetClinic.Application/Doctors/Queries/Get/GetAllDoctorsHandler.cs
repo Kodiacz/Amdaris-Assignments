@@ -1,9 +1,10 @@
-﻿using MediatR;
-using PetClinic.Application.Interfaces;
-using PetClinic.Domain.Entities;
-
-namespace PetClinic.Application.Doctors.Queries.Get
+﻿namespace PetClinic.Application.Doctors.Queries.Get
 {
+    using MediatR;
+
+    using PetClinic.Application.Interfaces;
+    using PetClinic.Domain.Entities;
+
     public class GetAllDoctorsHandler : IRequestHandler<GetAllDoctors, List<Doctor>>
     {
         private readonly IUnitOfWork unitOfWorkRepo;
