@@ -1,12 +1,13 @@
-using MediatR;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
-using PetClinic.Application.Interfaces;
-using PetClinic.Infrastructure;
-using PetClinic.Infrastructure.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+
+using MediatR;
+
 using PetClinic.Interfaces;
+using PetClinic.Infrastructure;
+using PetClinic.Application.Interfaces;
+using PetClinic.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
