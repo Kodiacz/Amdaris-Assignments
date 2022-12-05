@@ -23,7 +23,7 @@
 
             if (!doctor.IsDeleted)
             {
-                doctor.IsDeleted = false;
+                doctor.IsDeleted = true;
             }
             else
             {
