@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     using PetClinic.Api.Dtos;
+    using PetClinic.Domain.Entities;
     using PetClinic.Application.Doctors.Queries.Get;
 
     [Route("api/doctor")]
@@ -16,9 +17,9 @@
         [HttpGet]
         public async Task<IActionResult> GetDoctors()
         {
-            var query = new GetAllDoctors();
-            var result = await Madiator.Send(query);
-            var mappedResult = Mapper.Map<List<GetDoctorDto>>(result);
+            GetAllDoctors query = new GetAllDoctors();
+            List<Doctor> result = await Madiator.Send(query);
+            List<GetDoctorDto> mappedResult = Mapper.Map<List<GetDoctorDto>>(result);
             return Ok(mappedResult);
         }
     }
