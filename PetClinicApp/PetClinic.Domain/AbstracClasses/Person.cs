@@ -9,5 +9,7 @@
         public int Age { get; init; }
 
         public string Phonenumber { get; init; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }

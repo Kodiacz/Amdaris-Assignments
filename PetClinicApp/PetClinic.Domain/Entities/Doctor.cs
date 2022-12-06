@@ -8,11 +8,7 @@
             this.OwnersOfPatients = new HashSet<Owner>();
         }
 
-        public int Id { get; set; }
-
         public bool IsAvailable { get; set; } = true;
-
-        public bool IsDeleted { get; set; } = false;
 
         public ICollection<Pet> Patients { get; set; }
 

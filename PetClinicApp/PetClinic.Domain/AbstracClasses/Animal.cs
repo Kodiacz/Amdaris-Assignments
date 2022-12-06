@@ -5,5 +5,7 @@
         public string Breed { get; set; }
 
         public string Type { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
     }
 }
