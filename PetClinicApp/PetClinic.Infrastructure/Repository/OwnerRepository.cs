@@ -44,7 +44,7 @@
         /// Gets a collection of Owner type entites
         /// </summary>
         /// <returns></returns>
-        public async Task<ICollection<Owner>> GetAllAsync()
+        public async Task<List<Owner>> GetAllAsync()
         {
             return await this.context
                 .Owners

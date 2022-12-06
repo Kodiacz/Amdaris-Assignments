@@ -29,7 +29,7 @@
         /// Gets a collection of Pet type entites
         /// </summary>
         /// <returns></returns>
-        Task<ICollection<Pet>> GetAllAsync();
+        Task<List<Pet>> GetAllAsync();
 
         /// <summary>
         /// Deletes the entity by changing its IsDeleted property to true

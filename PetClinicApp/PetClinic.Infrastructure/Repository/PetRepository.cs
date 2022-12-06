@@ -42,7 +42,7 @@
         /// Gets a collection of Pet type entites
         /// </summary>
         /// <returns></returns>
-        public async Task<ICollection<Pet>> GetAllAsync()
+        public async Task<List<Pet>> GetAllAsync()
         {
             return await this.context
                 .Pets

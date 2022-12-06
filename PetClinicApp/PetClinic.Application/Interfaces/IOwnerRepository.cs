@@ -29,7 +29,7 @@
         /// Gets a collection of Owner type entites
         /// </summary>
         /// <returns></returns>
-        Task<ICollection<Owner>> GetAllAsync();
+        Task<List<Owner>> GetAllAsync();
 
 
         /// <summary>
