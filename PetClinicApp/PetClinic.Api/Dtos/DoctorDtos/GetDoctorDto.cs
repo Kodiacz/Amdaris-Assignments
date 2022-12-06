@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Api.Dtos
+﻿namespace PetClinic.Api.Dtos.DoctorDtos
 {
     using PetClinic.Domain.Entities;
 

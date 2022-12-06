@@ -15,7 +15,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> GetDoctors()
+        public async Task<IActionResult> Get()
         {
             GetAllDoctors query = new GetAllDoctors();
             List<Doctor> result = await Madiator.Send(query);
@@ -23,14 +23,14 @@
             return Ok(mappedResult);
         }
 
-        public async Task<IActionResult> CreateDoctor()
+        public async Task<IActionResult> Create()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-
+            CreateDoctor command
         }
     }
 }
