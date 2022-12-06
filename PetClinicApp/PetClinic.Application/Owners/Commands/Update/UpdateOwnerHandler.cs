@@ -20,6 +20,7 @@
             };         
 
             await this.unitOfWorkRepo.OwnerRepository.UpdateAsync(owner);
+            await this.unitOfWorkRepo.SaveAsync();
 
             return owner;
         }

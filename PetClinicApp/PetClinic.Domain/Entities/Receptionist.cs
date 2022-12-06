@@ -10,8 +10,6 @@
             this.OwnersOfPatients = new HashSet<Owner>();
         }
 
-        public int Id { get; set; }
-
         public ICollection<Pet> Patients { get; set; }
 
         public ICollection<Owner> OwnersOfPatients { get; set; }

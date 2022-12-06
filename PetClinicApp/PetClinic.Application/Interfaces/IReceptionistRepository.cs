@@ -1,6 +1,4 @@
-﻿using PetClinic.Domain.Entities;
-
-namespace PetClinic.Application.Interfaces
+﻿namespace PetClinic.Application.Interfaces
 {
     public interface IReceptionistRepository
     {
