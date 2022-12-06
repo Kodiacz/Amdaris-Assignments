@@ -1,10 +1,5 @@
 ﻿namespace PetClinic.Doctors.Commands.Create
 {
-    using MediatR;
-
-    using PetClinic.Application.Interfaces;
-    using PetClinic.Domain.Entities;
-
     public class CreateDoctorHandler : IRequestHandler<CreateDoctor, Doctor>
     {
         private readonly IUnitOfWork unitOfWorkRepo;

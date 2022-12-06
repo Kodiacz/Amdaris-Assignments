@@ -1,14 +1,5 @@
 ﻿namespace PetClinic.Application.Doctors.Commands.Delete
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    using MediatR;
-
-    using PetClinic.Application.Exceptions;
-    using PetClinic.Application.Interfaces;
-    using PetClinic.Domain.Entities;
-
     public class DeleteSoftHandler : IRequestHandler<DeleteSoft, Doctor>
     {
         private readonly IUnitOfWork uniteOfWorkRepo;

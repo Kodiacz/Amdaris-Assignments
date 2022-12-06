@@ -1,12 +1,5 @@
 ﻿namespace PetClinic.Application.Doctors.Commands.Update
 {
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    using MediatR;
-    using PetClinic.Application.Interfaces;
-    using PetClinic.Domain.Entities;
-
     public class UpdateDoctorHandler : IRequestHandler<UpdateDoctor, Doctor>
     {
         private readonly IUnitOfWork uniteOfWorkRepo;

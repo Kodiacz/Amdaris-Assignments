@@ -1,9 +1,5 @@
 ﻿namespace PetClinic.Doctors.Commands.Create
 {
-    using MediatR;
-
-    using PetClinic.Domain.Entities;
-
     public class CreateDoctor : IRequest<Doctor>
     {
         public string FirstName { get; set; } = null!; 
