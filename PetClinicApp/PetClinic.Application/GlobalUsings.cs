@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetClinic.Application
-{
-    internal class GlobalUsings
-    {
-    }
-}
+﻿global using MediatR;
+global using PetClinic.Application.Interfaces;
+global using PetClinic.Domain.Entities;
+global using PetClinic.Application.Exceptions;

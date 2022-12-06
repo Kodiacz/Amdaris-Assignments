@@ -3,7 +3,6 @@
     using Microsoft.EntityFrameworkCore;
     using PetClinic.Domain.Entities;
     using PetClinic.Interfaces;
-    using System.Numerics;
 
     public class PetRepository : IPetRepository
     {

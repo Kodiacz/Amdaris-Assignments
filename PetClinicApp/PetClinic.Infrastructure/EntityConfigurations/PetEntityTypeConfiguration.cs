@@ -4,7 +4,6 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using PetClinic.Domain.Entities;
-    using System;
 
     public class PetEntityTypeConfiguration : IEntityTypeConfiguration<Pet>
     {

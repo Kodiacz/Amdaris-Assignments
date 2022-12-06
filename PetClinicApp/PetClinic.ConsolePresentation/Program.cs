@@ -1,9 +1,7 @@
 ﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using PetClinic.Infrastructure;
 using PetClinic.Interfaces;
 using PetClinic.Pets.Commands.CreatePet;
-using PetClinic.Owners.Commands.CreateOwner;
 
 var diContainer = new ServiceCollection()
     .AddMediatR(typeof(IOwnerRepository))

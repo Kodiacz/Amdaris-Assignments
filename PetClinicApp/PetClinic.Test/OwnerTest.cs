@@ -1,6 +1,4 @@
 using PetClinic.Interfaces;
-using PetClinic.Domain.Entities;
-using PetClinic.Infrastructure;
 
 namespace PetClinic.Test
 {

@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Owners\Queries\" />
     <Folder Include="Pets\Querires\" />
     <Folder Include="Receptionists\Queries\" />
     <Folder Include="Receptionists\Commands\" />
