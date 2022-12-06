@@ -10,7 +10,7 @@
 
         public int Id { get; set; }
 
-        public bool IsAvailable { get; set; }
+        public bool IsAvailable { get; set; } = true;
 
         public bool IsDeleted { get; set; } = false;
 
