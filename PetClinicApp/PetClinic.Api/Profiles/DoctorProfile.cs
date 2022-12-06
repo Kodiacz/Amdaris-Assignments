@@ -2,9 +2,10 @@
 {
     using AutoMapper;
 
+    using PetClinic.Domain.Entities;
     using PetClinic.Api.Dtos.DoctorDtos;
     using PetClinic.Doctors.Commands.Create;
-    using PetClinic.Domain.Entities;
+    using PetClinic.Application.Doctors.Commands.Update;
 
     public class DoctorProfile : Profile
     {
@@ -12,6 +13,7 @@
         {
             CreateMap<Doctor, GetDoctorDto>();
             CreateMap<CreateDoctorDto, CreateDoctor>();
+            CreateMap<UpdateDoctorDto, UpdateDoctor>();
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿namespace PetClinic.Api.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+
     using PetClinic.Domain.Entities;
-    using PetClinic.Application.Doctors.Queries.Get;
-    using PetClinic.Doctors.Commands.Create;
     using PetClinic.Api.Dtos.DoctorDtos;
+    using PetClinic.Doctors.Commands.Create;
+    using PetClinic.Application.Doctors.Queries.Get;
+    using PetClinic.Application.Doctors.Commands.Update;
 
     [Route("api/doctor")]
     [ApiController]
@@ -15,6 +17,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Route("/getAll")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -24,7 +27,7 @@
         }
 
         [HttpGet]
-        [Route("{doctorId}")]
+        [Route("/getById/{doctorId}")]
         public async Task<IActionResult> GetById(int doctorId)
         {
             GetDoctorById query = new GetDoctorById()
@@ -44,6 +47,7 @@
         }
 
         [HttpPost]
+        [Route("/create")]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto createDoctorDto)
         {
             if (!ModelState.IsValid)
@@ -57,9 +61,21 @@
             return CreatedAtAction(nameof(GetById), new { doctorId = result.Id }, getDoctorDto);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Update([FromBody] CreateDoctorDto updateDoctorDto)
+        [HttpPost]
+        [Route("/update/{doctorId}")]
+        public async Task<IActionResult> Update([FromBody] UpdateDoctorDto updateDoctorDto, int doctorId)
         {
+            UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto);
+
+            command.Id = doctorId;
+
+            Doctor result = await base.Madiator.Send(command);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
             return NoContent();
         }
     }
