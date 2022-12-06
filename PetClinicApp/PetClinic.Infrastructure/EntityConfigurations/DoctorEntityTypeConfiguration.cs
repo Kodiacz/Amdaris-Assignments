@@ -6,8 +6,6 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using PetClinic.Domain.Entities;
-    using static PetClinic.Infrastructure.Common.DatabaseConstants.DoctorConstants;
-    using static PetClinic.Infrastructure.Common.HelperMethods.PhoneGenerator;
 
     public class DoctorEntityTypeConfiguration : IEntityTypeConfiguration<Doctor>
     {
@@ -22,17 +20,17 @@
             doctorConfiguration
                 .Property(doctor => doctor.FirstName)
                 .IsRequired()
-                .HasMaxLength(FirstNameMaxLength);
+                .HasMaxLength(FirstNameMaxLengthForDoctor);
 
             doctorConfiguration
                 .Property(doctor => doctor.LastName)
                 .IsRequired()
-                .HasMaxLength(LastNameMaxLength);
+                .HasMaxLength(LastNameMaxLengthForDoctor);
 
             doctorConfiguration
                 .Property(doctor => doctor.Phonenumber)
                 .IsRequired()
-                .HasMaxLength(PhonenumberMaxLength);
+                .HasMaxLength(PhonenumberMaxLengthForDoctor);
 
             doctorConfiguration
                 .Property(doctor => doctor.Age)
@@ -45,7 +43,7 @@
             doctorConfiguration
                 .Property(doctor => doctor.JobDescription)
                 .IsRequired()
-                .HasMaxLength(JobDescriptionMaxLength);
+                .HasMaxLength(JobDescriptionMaxLengthForDoctor);
 
             doctorConfiguration
                 .HasMany(doctor => doctor.Patients)

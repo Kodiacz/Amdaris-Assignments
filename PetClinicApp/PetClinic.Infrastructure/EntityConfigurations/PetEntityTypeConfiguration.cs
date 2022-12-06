@@ -5,7 +5,6 @@
 
     using PetClinic.Domain.Entities;
     using System;
-    using static PetClinic.Infrastructure.Common.DatabaseConstants.PetConstnats;
 
     public class PetEntityTypeConfiguration : IEntityTypeConfiguration<Pet>
     {
@@ -29,17 +28,17 @@
             petConfiguration
                 .Property(pet => pet.Name)
                 .IsRequired()
-                .HasMaxLength(NameMaxLength);
+                .HasMaxLength(NameMaxLengthForPet);
 
             petConfiguration
                 .Property(pet => pet.Breed)
                 .IsRequired()
-                .HasMaxLength(NameMaxLength);
+                .HasMaxLength(NameMaxLengthForPet);
 
             petConfiguration
                 .Property(pet => pet.Type)
                 .IsRequired()
-                .HasMaxLength(NameMaxLength);
+                .HasMaxLength(NameMaxLengthForPet);
 
             petConfiguration
                 .Property(pet => pet.Age)

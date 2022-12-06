@@ -4,8 +4,6 @@
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
     using PetClinic.Domain.Entities;
-    using static PetClinic.Infrastructure.Common.DatabaseConstants.OwnerConstants;
-    using static PetClinic.Infrastructure.Common.HelperMethods.PhoneGenerator;
 
     public class OwnerEntityTypeConfiguration : IEntityTypeConfiguration<Owner>
     {
@@ -25,17 +23,17 @@
             ownerConfiguration
                 .Property(owner => owner.FirstName)
                 .IsRequired()
-                .HasMaxLength(FirstNameMaxLength);
+                .HasMaxLength(FirstNameMaxLengthForOwner);
 
             ownerConfiguration
                 .Property(owner => owner.LastName)
                 .IsRequired()
-                .HasMaxLength(LastNameMaxLength);
+                .HasMaxLength(LastNameMaxLengthForOwner);
 
             ownerConfiguration
                 .Property(owner => owner.Phonenumber)
                 .IsRequired()
-                .HasMaxLength(PhonenumberMaxLength);
+                .HasMaxLength(PhonenumberMaxLengthForOwner);
 
             ownerConfiguration
                 .Property(owner => owner.Age)

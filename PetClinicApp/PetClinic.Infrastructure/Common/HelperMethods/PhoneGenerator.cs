@@ -1,4 +1,6 @@
-﻿namespace PetClinic.Infrastructure.Common.HelperMethods
+﻿global using static PetClinic.Infrastructure.Common.HelperMethods.PhoneGenerator;
+
+namespace PetClinic.Infrastructure.Common.HelperMethods
 {
     using System.Text;
 

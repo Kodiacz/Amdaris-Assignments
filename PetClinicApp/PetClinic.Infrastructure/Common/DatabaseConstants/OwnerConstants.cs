@@ -1,4 +1,7 @@
-﻿namespace PetClinic.Infrastructure.Common.DatabaseConstants
+﻿global using static PetClinic.Infrastructure.Common.DatabaseConstants.OwnerConstants;
+global using static PetClinic.Infrastructure.Common.HelperMethods.PhoneGenerator;
+
+namespace PetClinic.Infrastructure.Common.DatabaseConstants
 {
     public static class OwnerConstants
     {

@@ -1,11 +1,12 @@
 ﻿namespace PetClinic.Infrastructure.EntityConfigurations
 {
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
-    using PetClinic.Domain.Entities;
     using System;
     using System.Globalization;
-    using static PetClinic.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
+
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    using PetClinic.Domain.Entities;
 
     public class ReceptionsistEntityTypeConfiguration : IEntityTypeConfiguration<Receptionist>
     {
@@ -20,17 +21,17 @@
             receptionistConfiguration
                 .Property(receptionist => receptionist.FirstName)
                 .IsRequired()
-                .HasMaxLength(FirstNameMaxLength);
+                .HasMaxLength(FirstNameMaxLengthForReceptionist);
 
             receptionistConfiguration
                 .Property(receptionist => receptionist.LastName)
                 .IsRequired()
-                .HasMaxLength(LastNameMaxLength);
+                .HasMaxLength(LastNameMaxLengthForReceptionist);
 
             receptionistConfiguration
                 .Property(receptionist => receptionist.Phonenumber)
                 .IsRequired()
-                .HasMaxLength(PhonenumberMaxLength);
+                .HasMaxLength(PhonenumberMaxLengthForReceptionist);
 
             receptionistConfiguration
                 .Property(receptionist => receptionist.Age)
@@ -43,7 +44,7 @@
             receptionistConfiguration
                 .Property(receptionist => receptionist.JobDescription)
                 .IsRequired()
-                .HasMaxLength(JobDescriptionMaxLength);
+                .HasMaxLength(JobDescriptionMaxLengthForReceptionist);
 
             receptionistConfiguration
                 .HasMany(receptionist => receptionist.Patients)

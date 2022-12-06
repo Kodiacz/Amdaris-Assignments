@@ -1,4 +1,6 @@
-﻿namespace PetClinic.Infrastructure.Common.DatabaseConstants
+﻿global using static PetClinic.Infrastructure.Common.DatabaseConstants.PetConstnats;
+
+namespace PetClinic.Infrastructure.Common.DatabaseConstants
 {
     public static class PetConstnats
     {
