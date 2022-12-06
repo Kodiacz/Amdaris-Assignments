@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
 
     using MediatR;
+
     using PetClinic.Application.Exceptions;
     using PetClinic.Application.Interfaces;
     using PetClinic.Domain.Entities;

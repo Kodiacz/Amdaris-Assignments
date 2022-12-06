@@ -22,5 +22,15 @@
             List<GetDoctorDto> mappedResult = Mapper.Map<List<GetDoctorDto>>(result);
             return Ok(mappedResult);
         }
+
+        public async Task<IActionResult> CreateDoctor()
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+
+        }
     }
 }
