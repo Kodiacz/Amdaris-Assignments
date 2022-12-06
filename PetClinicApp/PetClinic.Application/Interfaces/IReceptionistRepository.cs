@@ -29,7 +29,7 @@ namespace PetClinic.Application.Interfaces
         /// Gets a collection of Receptionist type entites
         /// </summary>
         /// <returns></returns>
-        Task<ICollection<Receptionist>> GetAllAsync();
+        Task<List<Receptionist>> GetAllAsync();
 
         /// <summary>
         /// Deletes the entity by changing its IsDeleted property to true

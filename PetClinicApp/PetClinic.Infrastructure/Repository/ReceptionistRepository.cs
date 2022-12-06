@@ -42,7 +42,7 @@
         /// Gets a collection of Receptionist type entites
         /// </summary>
         /// <returns></returns>
-        public async Task<ICollection<Receptionist>> GetAllAsync()
+        public async Task<List<Receptionist>> GetAllAsync()
         {
             return await this.context
                 .Receptionists
