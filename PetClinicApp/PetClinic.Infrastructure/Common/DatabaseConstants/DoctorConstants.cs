@@ -2,15 +2,15 @@
 {
     public static class DoctorConstants
     {
-        public const int FirstNameMaxLength = 35;
-        public const int FirstNameMinLength = 2;
+        public const int FirstNameMaxLengthForDoctor = 35;
+        public const int FirstNameMinLengthForDoctor = 2;
 
-        public const int LastNameMaxLength = 35;
-        public const int LastNameMinLength = 2;
+        public const int LastNameMaxLengthForDoctor = 35;
+        public const int LastNameMinLengthForDoctor = 2;
 
-        public const int PhonenumberMaxLength = 20;
+        public const int PhonenumberMaxLengthForDoctor = 20;
 
-        public const int JobDescriptionMaxLength = 400;
-        public const int JobDescriptionMinLength = 5;
+        public const int JobDescriptionMaxLengthForDoctor = 400;
+        public const int JobDescriptionMinLengthForDoctor = 5;
     }
 }

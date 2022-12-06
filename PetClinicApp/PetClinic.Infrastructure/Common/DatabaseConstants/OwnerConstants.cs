@@ -2,12 +2,12 @@
 {
     public static class OwnerConstants
     {
-        public const int FirstNameMaxLength = 35;
-        public const int FirstNameMinLength = 2;
+        public const int FirstNameMaxLengthForOwner = 35;
+        public const int FirstNameMinLengthForOwner = 2;
 
-        public const int LastNameMaxLength = 35;
-        public const int LastNameMinLength = 2;
+        public const int LastNameMaxLengthForOwner = 35;
+        public const int LastNameMinLengthForOwner = 2;
 
-        public const int PhonenumberMaxLength = 20;
+        public const int PhonenumberMaxLengthForOwner = 20;
     }
 }
