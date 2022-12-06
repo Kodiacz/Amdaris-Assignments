@@ -34,4 +34,10 @@
     <ProjectReference Include="..\PetClinic.Infrastructure\PetClinic.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Dtos\RecceptionistDtos\" />
+    <Folder Include="Dtos\OwnerDtos\" />
+    <Folder Include="Dtos\PetDtos\" />
+  </ItemGroup>
+
 </Project>

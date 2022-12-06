@@ -1,6 +1,6 @@
 ﻿namespace PetClinic.Application.Receptionists.Queries
 {
-    public class GetAllReceptionists
+    public class GetAllReceptionists : IRequest<List<Receptionist>>
     {
     }
 }
