@@ -4,7 +4,7 @@
 
     using PetClinic.Domain.Entities;
     using PetClinic.Api.Dtos.DoctorDtos;
-    using PetClinic.Doctors.Commands.Create;
+    using PetClinic.Application.Doctors.Commands.Create;
     using PetClinic.Application.Doctors.Commands.Update;
 
     public class DoctorProfile : Profile

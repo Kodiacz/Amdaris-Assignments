@@ -1,13 +1,5 @@
 ﻿namespace PetClinic.Api.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-
-    using PetClinic.Domain.Entities;
-    using PetClinic.Api.Dtos.DoctorDtos;
-    using PetClinic.Doctors.Commands.Create;
-    using PetClinic.Application.Doctors.Queries.Get;
-    using PetClinic.Application.Doctors.Commands.Update;
-
     [Route("api/doctor")]
     [ApiController]
     public class DoctorController : BaseController<DoctorController>
