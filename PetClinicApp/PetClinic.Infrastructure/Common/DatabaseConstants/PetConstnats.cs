@@ -10,6 +10,8 @@ namespace PetClinic.Infrastructure.Common.DatabaseConstants
         public const int BreedMaxLengthForPet = 20;
         public const int BreedMinLengthForPet = 1;
 
+        public const int AgeMinLengthForPet = 1;
+
         public const int TypeMaxLengthForPet = 20;
         public const int TypeMinLengthForPet = 1;
     }

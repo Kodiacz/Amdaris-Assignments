@@ -12,6 +12,8 @@ namespace PetClinic.Infrastructure.Common.DatabaseConstants
 
         public const int PhonenumberMaxLengthForReceptionist = 20;
 
+        public const int AgeMinLengthForReceptionist = 1;
+
         public const int JobDescriptionMaxLengthForReceptionist = 30;
         public const int JobDescriptionMinLengthForReceptionist = 5;
     }

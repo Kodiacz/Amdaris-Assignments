@@ -10,6 +10,8 @@ namespace PetClinic.Infrastructure.Common.DatabaseConstants
         public const int LastNameMaxLengthForDoctor = 35;
         public const int LastNameMinLengthForDoctor = 2;
 
+        public const int AgeMinLengthForDoctor = 1;
+
         public const int PhonenumberMaxLengthForDoctor = 20;
 
         public const int JobDescriptionMaxLengthForDoctor = 400;
