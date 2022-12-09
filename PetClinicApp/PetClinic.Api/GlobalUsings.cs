@@ -7,17 +7,19 @@ global using PetClinic.Domain.Entities;
 
 // For DoctorController
 global using PetClinic.Api.Dtos.DoctorDtos;
-global using PetClinic.Application.Doctors.Queries.Get;
-global using PetClinic.Application.Doctors.Commands.Create;
-global using PetClinic.Application.Doctors.Commands.Update;
+global using GetDoctor = PetClinic.Application.Doctors.Queries.Get;
+global using CreateDoctor = PetClinic.Application.Doctors.Commands.Create;
+global using UpdateDoctor = PetClinic.Application.Doctors.Commands.Update;
+global using DeleteDoctor = PetClinic.Application.Doctors.Commands.Delete;
 global using static PetClinic.Infrastructure.Common.DatabaseConstants.DoctorConstants;
 
 //For OwnerController
 global using PetClinic.Api.Dtos.OwnerDtos;
-global using PetClinic.Application.Owners.Queries;
-global using PetClinic.Application.Owners.Commands.Create;
-global using PetClinic.Application.Owners.Commands.Delete;
-global using PetClinic.Application.Owners.Commands.Update;
+global using GetOwner = PetClinic.Application.Owners.Queries.Get;
+global using CreateOwner = PetClinic.Application.Owners.Commands.Create;
+global using UpdateOwner = PetClinic.Application.Owners.Commands.Update;
+global using DeleteOwner = PetClinic.Application.Owners.Commands.Delete;
+global using static PetClinic.Infrastructure.Common.DatabaseConstants.OwnerConstants;
 
 //For PetController
 
