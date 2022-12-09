@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Owners.Commands.Create
+﻿namespace PetClinic.Application.Owners.Commands.Create
 {
     public class CreateOwner : IRequest<Owner>
     {
