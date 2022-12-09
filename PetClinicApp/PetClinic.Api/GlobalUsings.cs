@@ -1,7 +1,10 @@
-﻿global using Microsoft.AspNetCore.Mvc;
+﻿global using System.ComponentModel.DataAnnotations;
+
+global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
 
 global using AutoMapper;
+global using MediatR;
 
 global using PetClinic.Domain.Entities;
 global using PetClinic.Application.Exceptions;
