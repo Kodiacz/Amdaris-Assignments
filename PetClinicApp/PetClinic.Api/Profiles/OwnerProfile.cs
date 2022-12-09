@@ -1,12 +1,10 @@
 ﻿namespace PetClinic.Api.Profiles
 {
-    
-
     public class OwnerProfile : Profile
     {
         public OwnerProfile()
         {
-            CreateMap<Owner>
+            CreateMap<Owner, GetOwnerDto>(); 
         }
     }
 }
