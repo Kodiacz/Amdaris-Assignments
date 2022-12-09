@@ -4,6 +4,7 @@ global using Microsoft.AspNetCore.Http;
 global using AutoMapper;
 
 global using PetClinic.Domain.Entities;
+global using PetClinic.Application.Exceptions;
 
 // For DoctorController
 global using PetClinic.Api.Dtos.DoctorDtos;
