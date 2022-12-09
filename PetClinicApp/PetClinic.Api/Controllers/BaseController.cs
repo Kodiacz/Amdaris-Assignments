@@ -1,10 +1,5 @@
 ﻿namespace PetClinic.Api.Controllers
 {
-    using Microsoft.AspNetCore.Mvc;
-
-    using AutoMapper;
-    using MediatR;
-
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T> : ControllerBase where T : BaseController<T>
