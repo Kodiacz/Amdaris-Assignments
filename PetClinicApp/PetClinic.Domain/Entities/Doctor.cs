@@ -9,6 +9,8 @@
         }
 
         public bool IsAvailable { get; set; } = true;
+        
+        public bool IsDeleted { get; set; } = false;
 
         public ICollection<Pet> Patients { get; set; }
 

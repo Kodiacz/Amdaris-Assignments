@@ -11,12 +11,14 @@
 
         public int Id { get; set; }
 
-        public ICollection<Pet> Pets { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
         public int? DoctorId { get; set; }
         public Doctor? Doctor { get; set; }
 
         public int? ReceptionistId { get; set; }
         public Receptionist? Receptionist { get; set; }
+
+        public ICollection<Pet> Pets { get; set; }
     }
 }

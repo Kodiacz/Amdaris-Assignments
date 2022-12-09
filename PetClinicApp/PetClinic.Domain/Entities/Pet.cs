@@ -10,6 +10,8 @@
 
         public int Age { get; set; }
 
+        public bool IsDeleted { get; set; } = false;
+
         public int OwnerId { get; set; }
         public Owner Owner { get; set; } = null!;
 

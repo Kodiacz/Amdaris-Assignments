@@ -10,7 +10,5 @@
         public string JobDescription { get; set; }
 
         public DateTime StartedJobDate { get; set; }
-
-        public bool IsDeleted { get; set; } = false;
     }
 }
