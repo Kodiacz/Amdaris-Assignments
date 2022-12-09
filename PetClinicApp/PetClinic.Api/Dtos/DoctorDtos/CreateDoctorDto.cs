@@ -1,7 +1,5 @@
 ﻿namespace PetClinic.Api.Dtos.DoctorDtos
 {
-    using System.ComponentModel.DataAnnotations;
-
     public class CreateDoctorDto
     {
         [Required]
