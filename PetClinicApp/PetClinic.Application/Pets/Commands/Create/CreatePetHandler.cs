@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Pets.Commands.Create
+﻿namespace PetClinic.Application.Pets.Commands.Create
 {
     public class CreatePetHandler : IRequestHandler<CreatePet, Pet>
     {

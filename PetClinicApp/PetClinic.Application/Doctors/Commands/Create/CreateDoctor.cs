@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Doctors.Commands.Create
+﻿namespace PetClinic.Application.Doctors.Commands.Create
 {
     public class CreateDoctor : IRequest<Doctor>
     {
