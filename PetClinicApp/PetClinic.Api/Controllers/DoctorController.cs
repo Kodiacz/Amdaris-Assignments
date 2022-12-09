@@ -1,6 +1,6 @@
 ﻿namespace PetClinic.Api.Controllers
 {
-    [Route("api/doctor")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class DoctorController : BaseController<DoctorController>
     {
@@ -9,7 +9,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("/getAll")]
+        //[ActionName("GetAllDoctors")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -18,8 +18,14 @@
             return Ok(mappedResult);
         }
 
+        /// <summary>
+        /// Gets a spasific doctor with his ID
+        /// </summary>
+        /// <param name="doctorId"></param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("/getById/{doctorId}")]
+        [ActionName("GetById")]
+        [Route("{doctorId}")]
         public async Task<IActionResult> GetById(int doctorId)
         {
             GetDoctorById query = new GetDoctorById()
@@ -38,8 +44,13 @@
             return Ok(getDoctorDto);
         }
 
+        /// <summary>
+        /// Creates a doctor and adds it in the database
+        /// </summary>
+        /// <param name="createDoctorDto"></param>
+        /// <returns></returns>
         [HttpPost]
-        [Route("/create")]
+        [ActionName("Create")]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto createDoctorDto)
         {
             if (!ModelState.IsValid)
@@ -53,8 +64,15 @@
             return CreatedAtAction(nameof(GetById), new { doctorId = result.Id }, getDoctorDto);
         }
 
+        /// <summary>
+        /// Updates the doctor and applies the changes in the database 
+        /// </summary>
+        /// <param name="updateDoctorDto"></param>
+        /// <param name="doctorId"></param>
+        /// <returns></returns>
         [HttpPost]
-        [Route("/update/{doctorId}")]
+        [ActionName("Update")]
+        [Route("{doctorId}")]
         public async Task<IActionResult> Update([FromBody] UpdateDoctorDto updateDoctorDto, int doctorId)
         {
             UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto);
@@ -70,5 +88,13 @@
 
             return NoContent();
         }
+
+        //[HttpPost]
+        //[ActionName("Delete")]
+        //[Route("doctorId")]
+        //public async Task<IActionResult> Delete(int doctorId)
+        //{
+
+        //}
     }
 }
