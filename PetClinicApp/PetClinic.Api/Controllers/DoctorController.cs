@@ -1,5 +1,10 @@
 ﻿namespace PetClinic.Api.Controllers
 {
+    using GetDoctor;
+    using CreateDoctor;
+    using UpdateDoctor;
+    using DeleteDoctor;
+
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class DoctorController : BaseController<DoctorController>
@@ -9,7 +14,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        //[ActionName("GetAllDoctors")]
+        [ActionName("GetAllDoctors")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -70,7 +75,7 @@
         /// <param name="updateDoctorDto"></param>
         /// <param name="doctorId"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPut]
         [ActionName("Update")]
         [Route("{doctorId}")]
         public async Task<IActionResult> Update([FromBody] UpdateDoctorDto updateDoctorDto, int doctorId)
@@ -89,12 +94,41 @@
             return NoContent();
         }
 
-        //[HttpPost]
-        //[ActionName("Delete")]
-        //[Route("doctorId")]
-        //public async Task<IActionResult> Delete(int doctorId)
-        //{
+        /// <summary>
+        /// Marks the entity as deleted but it doesn't really 
+        /// removes it from the database 
+        /// </summary>
+        /// <param name="doctorId"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        [ActionName("DeleteDoctor")]
+        [Route("doctorId")]
+        public async Task<IActionResult> Delete(int doctorId)
+        {
+            DeleteSoft command = new DeleteSoft()
+            {
+                Id = doctorId
+            };
 
-        //}
+            try
+            {
+                Doctor result = await base.Madiator.Send(command);
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                return NoContent();
+            }
+            catch (AlreadyDeletedException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
     }
 }
