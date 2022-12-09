@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Pets.Querires
+﻿namespace PetClinic.Application.Pets.Querires.Get
 {
     public class GetAllPetsHandler : IRequestHandler<GetAllPets, List<Pet>>
     {
@@ -11,7 +11,7 @@
 
         public async Task<List<Pet>> Handle(GetAllPets request, CancellationToken cancellationToken)
         {
-            return await this.unitOfWorkRepo.PetRepository.GetAllAsync();
+            return await unitOfWorkRepo.PetRepository.GetAllAsync();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Receptionists.Queries
+﻿namespace PetClinic.Application.Receptionists.Queries.Get
 {
     public class GetByIdReceptionistHandler : IRequestHandler<GetByIdReceptionist, Receptionist>
     {
@@ -11,7 +11,7 @@
 
         public async Task<Receptionist> Handle(GetByIdReceptionist request, CancellationToken cancellationToken)
         {
-            return await this.unitOfWorkRepo.ReceptionistRepository.GetByIdAsync(request.Id);
+            return await unitOfWorkRepo.ReceptionistRepository.GetByIdAsync(request.Id);
         }
     }
 }

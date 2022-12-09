@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Owners.Queries
+﻿namespace PetClinic.Application.Owners.Queries.Get
 {
     public class GetOwnerById : IRequest<Owner>
     {

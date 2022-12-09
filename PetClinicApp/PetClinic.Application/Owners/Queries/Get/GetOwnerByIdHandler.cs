@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Owners.Queries
+﻿namespace PetClinic.Application.Owners.Queries.Get
 {
     public class GetOwnerByIdHandler : IRequestHandler<GetOwnerById, Owner>
     {
@@ -11,7 +11,7 @@
 
         public async Task<Owner> Handle(GetOwnerById request, CancellationToken cancellationToken)
         {
-            return await this.unitOfWorkRepo.OwnerRepository.GetByIdAsync(request.Id);
+            return await unitOfWorkRepo.OwnerRepository.GetByIdAsync(request.Id);
         }
     }
 }

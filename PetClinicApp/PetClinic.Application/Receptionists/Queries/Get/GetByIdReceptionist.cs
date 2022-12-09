@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Receptionists.Queries
+﻿namespace PetClinic.Application.Receptionists.Queries.Get
 {
     public class GetByIdReceptionist : IRequest<Receptionist>
     {

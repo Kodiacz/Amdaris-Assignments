@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Pets.Querires
+﻿namespace PetClinic.Application.Pets.Querires.Get
 {
     public class GetPetById : IRequest<Pet>
     {
