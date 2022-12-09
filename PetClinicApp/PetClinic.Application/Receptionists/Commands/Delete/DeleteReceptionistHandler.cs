@@ -22,6 +22,8 @@
                 throw new AlreadyDeletedException("This Receptionist is already deleted");
             }
 
+            await this.unitOfWorkRepo.SaveAsync();
+
             return receptionist;
         }
     }

@@ -22,6 +22,8 @@
                 throw new AlreadyDeletedException("This Pet is already deleted");
             }
 
+            await this.unitOfWorkRepo.SaveAsync();
+
             return pet;
         }
     }

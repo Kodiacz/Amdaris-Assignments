@@ -2,16 +2,16 @@
 {
     public class DeleteSoftHandler : IRequestHandler<DeleteSoft, Doctor>
     {
-        private readonly IUnitOfWork uniteOfWorkRepo;
+        private readonly IUnitOfWork unitOfWorkRepo;
 
         public DeleteSoftHandler(IUnitOfWork uniteOfWorkRepo)
         {
-            this.uniteOfWorkRepo = uniteOfWorkRepo;
+            this.unitOfWorkRepo = uniteOfWorkRepo;
         }
 
         public async Task<Doctor> Handle(DeleteSoft request, CancellationToken cancellationToken)
         {
-            var doctor = await this.uniteOfWorkRepo.DoctorRepository.GetByIdAsync(request.Id);
+            var doctor = await this.unitOfWorkRepo.DoctorRepository.GetByIdAsync(request.Id);
 
             if (!doctor.IsDeleted)
             {
@@ -21,6 +21,8 @@
             {
                 throw new AlreadyDeletedException("This entity is already deleted");
             }
+
+            await this.unitOfWorkRepo.SaveAsync();
 
             return doctor;
         }

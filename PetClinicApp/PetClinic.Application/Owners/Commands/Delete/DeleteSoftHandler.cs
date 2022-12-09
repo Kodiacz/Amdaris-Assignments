@@ -22,6 +22,8 @@
                 throw new AlreadyDeletedException("This Owner is already deleted");
             }
 
+            await this.unitOfWorkRepo.SaveAsync();
+
             return owner;
         }
     }

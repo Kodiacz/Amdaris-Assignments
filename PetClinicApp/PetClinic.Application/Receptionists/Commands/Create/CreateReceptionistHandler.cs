@@ -22,6 +22,7 @@
             };
 
             await this.unitOfWorkRepo.ReceptionistRepository.AddAsync(receptionist);
+            await this.unitOfWorkRepo.SaveAsync();
 
             return receptionist;
         }

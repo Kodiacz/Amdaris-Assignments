@@ -21,6 +21,7 @@
             };
 
             await this.unitOfWorkRepo.PetRepository.AddAsync(pet);
+            await this.unitOfWorkRepo.SaveAsync();
 
             return pet;
         }
