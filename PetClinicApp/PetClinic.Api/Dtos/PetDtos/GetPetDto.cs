@@ -6,7 +6,9 @@
 
         public int Age { get; set; }
 
-        public Owner Owner { get; set; }
+        public int OwnerId { get; set; }
+
+        public string OwnerFullName { get; set; }
 
         public string Breed { get; set; }
 

@@ -18,7 +18,7 @@
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
-            List<Doctor> result = await base.Madiator.Send(query);
+            List<Doctor> result = await base.Mediator.Send(query);
             List<GetDoctorDto> mappedResult = base.Mapper.Map<List<GetDoctorDto>>(result);
             return Ok(mappedResult);
         }
@@ -38,7 +38,7 @@
                 Id = doctorId,
             };
 
-            Doctor result = await base.Madiator.Send(query);
+            Doctor result = await base.Mediator.Send(query);
 
             if (result == null)
             {
@@ -64,7 +64,7 @@
             }
 
             CreateDoctor command = base.Mapper.Map<CreateDoctor>(createDoctorDto);
-            Doctor result = await base.Madiator.Send(command);
+            Doctor result = await base.Mediator.Send(command);
             GetDoctorDto getDoctorDto = base.Mapper.Map<GetDoctorDto>(result);
             return CreatedAtAction(nameof(GetById), new { doctorId = result.Id }, getDoctorDto);
         }
@@ -84,7 +84,7 @@
 
             command.Id = doctorId;
 
-            Doctor result = await base.Madiator.Send(command);
+            Doctor result = await base.Mediator.Send(command);
 
             if (result == null)
             {
@@ -112,7 +112,7 @@
 
             try
             {
-                Doctor result = await base.Madiator.Send(command);
+                Doctor result = await base.Mediator.Send(command);
 
                 if (result == null)
                 {

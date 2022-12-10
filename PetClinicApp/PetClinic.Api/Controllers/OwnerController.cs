@@ -17,7 +17,7 @@
         public async Task<IActionResult> GetAll()
         {
             GetAllOwners command = new GetAllOwners();
-            List<Owner> owners = await base.Madiator.Send(command);
+            List<Owner> owners = await base.Mediator.Send(command);
             List<GetOwnerDto> ownersDto = base.Mapper.Map<List<GetOwnerDto>>(owners);
             return Ok(ownersDto);
         }
@@ -37,7 +37,7 @@
                 Id = ownerId,
             };
 
-            Owner owner = await base.Madiator.Send(command);
+            Owner owner = await base.Mediator.Send(command);
 
             if (owner == null)
             {
@@ -65,7 +65,7 @@
 
             CreateOwner command = base.Mapper.Map<CreateOwner>(createOwnerDto);
 
-            Owner owner = await base.Madiator.Send(command);
+            Owner owner = await base.Mediator.Send(command);
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
             return CreatedAtAction(nameof(GetById), new { ownerId = owner.Id }, getOwnerDto);
         }
@@ -89,7 +89,7 @@
             UpdateOwner command = this.Mapper.Map<UpdateOwner>(updateOwnerDto);
             command.Id = ownerId;
 
-            Owner owner = await base.Madiator.Send(command);
+            Owner owner = await base.Mediator.Send(command);
 
             if (owner == null)
             {
@@ -114,7 +114,7 @@
 
             try
             {
-                Owner owner = await base.Madiator.Send(command);
+                Owner owner = await base.Mediator.Send(command);
 
                 if (owner == null)
                 {

@@ -9,7 +9,11 @@
     {
         public PetProfile()
         {
-            CreateMap<Pet, GetPetDto>();
+            CreateMap<Pet, GetPetDto>()
+                .ForMember(
+                    gpt => gpt.OwnerFullName, 
+                    opt => opt
+                            .MapFrom(src => src.Owner.FirstName + " " + src.Owner.LastName));
         }
     }
 }

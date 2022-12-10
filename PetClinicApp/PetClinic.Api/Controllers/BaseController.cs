@@ -12,6 +12,6 @@
 
         protected IMapper Mapper => mapper ??= HttpContext.RequestServices.GetRequiredService<IMapper>();
 
-        protected IMediator Madiator => mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
+        protected IMediator Mediator => mediator ??= HttpContext.RequestServices.GetRequiredService<IMediator>();
     }
 }
