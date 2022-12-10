@@ -123,7 +123,7 @@
 
                 return NoContent();
             }
-            catch (AlreadyDeletedException ex)
+            catch (AlreadyDeletedException)
             {
                 return BadRequest($"The Owner with ID {ownerId} is Already Deleted");
             }
