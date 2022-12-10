@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <Folder Include="Dtos\RecceptionistDtos\" />
-    <Folder Include="Dtos\OwnerDtos\" />
     <Folder Include="Dtos\PetDtos\" />
   </ItemGroup>
 
