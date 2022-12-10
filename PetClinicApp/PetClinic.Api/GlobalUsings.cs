@@ -26,5 +26,17 @@ global using DeleteOwner = PetClinic.Application.Owners.Commands.Delete;
 global using static PetClinic.Infrastructure.Common.DatabaseConstants.OwnerConstants;
 
 //For PetController
+global using PetClinic.Api.Dtos;
+global using GetPet = PetClinic.Application.Pets.Queries.Get;
+global using CreatePet = PetClinic.Application.Pets.Commands.Create;
+global using UpdatePet = PetClinic.Application.Pets.Commands.Update;
+global using DeletePet = PetClinic.Application.Pets.Commands.Delete;
+global using static PetClinic.Infrastructure.Common.DatabaseConstants.PetConstnats;
 
 //For ReceptionistController
+global using PetClinic.Api.Dtos;
+global using GetReceptionist = PetClinic.Application.Receptionists.Queries.Get;
+global using CreateReceptionist = PetClinic.Application.Receptionists.Commands.Create;
+global using UpdateReceptionist = PetClinic.Application.Receptionists.Commands.Update;
+global using DeleteReceptionist = PetClinic.Application.Receptionists.Commands.Delete;
+global using static PetClinic.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
