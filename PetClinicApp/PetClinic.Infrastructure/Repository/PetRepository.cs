@@ -46,6 +46,9 @@
         {
             return await this.context
                 .Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
                 .Where(pet => !pet.IsDeleted)
                 .ToListAsync();
         }
@@ -57,7 +60,12 @@
         /// <returns>Return the Pet entity</returns>
         public async Task<Pet> GetByIdAsync(int id)
         {
-            return (await this.context.Pets.FirstOrDefaultAsync(pet => pet.Id == id))!;
+            return (await this.context
+                .Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
+                .FirstOrDefaultAsync(pet => pet.Id == id))!;
         }
 
         /// <summary>
