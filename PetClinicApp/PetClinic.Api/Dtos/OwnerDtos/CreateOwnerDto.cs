@@ -4,11 +4,11 @@
     {
         [Required]
         [StringLength(FirstNameMaxLengthForOwner, MinimumLength = FirstNameMinLengthForOwner)]
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
         [Required]
         [StringLength(LastNameMaxLengthForOwner, MinimumLength = LastNameMinLengthForOwner)]
-        public string LastName { get; set; }
+        public string LastName { get; set; } = null!;
 
         [Required]
         [Range(AgeMinLengthForOwner, int.MaxValue)]
@@ -17,6 +17,6 @@
         [Phone]
         [Required]
         [StringLength(PhonenumberMaxLengthForOwner)]
-        public string Phonenumber { get; set; }
+        public string Phonenumber { get; set; } = null!;
     }
 }
