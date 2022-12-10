@@ -4,6 +4,7 @@
     using CreateDoctor;
     using UpdateDoctor;
     using DeleteDoctor;
+using PetClinic.Domain.Entities;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -121,13 +122,13 @@
 
                 return NoContent();
             }
-            catch (AlreadyDeletedException ex)
+            catch (AlreadyDeletedException)
+{
+                return BadRequest($"The Doctor with ID {doctorId} is Already Deleted");
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
-            }
-            catch (Exception)
-            {
-                return BadRequest();
             }
         }
     }
