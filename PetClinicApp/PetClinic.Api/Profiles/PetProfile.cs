@@ -5,7 +5,11 @@
     using UpdatePet;
     using DeletePet;
 
-    public class PetProfile
+    public class PetProfile : Profile
     {
+        public PetProfile()
+        {
+            CreateMap<Pet, GetPetDto>();
+        }
     }
 }
