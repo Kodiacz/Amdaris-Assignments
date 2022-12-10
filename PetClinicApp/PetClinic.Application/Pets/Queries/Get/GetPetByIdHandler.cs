@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Pets.Querires.Get
+﻿namespace PetClinic.Application.Pets.Queries.Get
 {
     public class GetPetByIdHandler : IRequestHandler<GetPetById, Pet>
     {

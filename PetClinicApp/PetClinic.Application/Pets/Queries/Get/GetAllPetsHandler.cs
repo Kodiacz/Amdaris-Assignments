@@ -1,4 +1,4 @@
-﻿namespace PetClinic.Application.Pets.Querires.Get
+﻿namespace PetClinic.Application.Pets.Queries.Get
 {
     public class GetAllPetsHandler : IRequestHandler<GetAllPets, List<Pet>>
     {
