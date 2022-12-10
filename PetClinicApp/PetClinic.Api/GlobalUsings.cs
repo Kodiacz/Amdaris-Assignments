@@ -3,8 +3,9 @@
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
 
-global using AutoMapper;
 global using MediatR;
+global using AutoMapper;
+global using Newtonsoft.Json;
 
 global using PetClinic.Domain.Entities;
 global using PetClinic.Application.Exceptions;
@@ -26,7 +27,7 @@ global using DeleteOwner = PetClinic.Application.Owners.Commands.Delete;
 global using static PetClinic.Infrastructure.Common.DatabaseConstants.OwnerConstants;
 
 //For PetController
-global using PetClinic.Api.Dtos;
+global using PetClinic.Api.Dtos.PetDtos;
 global using GetPet = PetClinic.Application.Pets.Queries.Get;
 global using CreatePet = PetClinic.Application.Pets.Commands.Create;
 global using UpdatePet = PetClinic.Application.Pets.Commands.Update;
@@ -34,7 +35,7 @@ global using DeletePet = PetClinic.Application.Pets.Commands.Delete;
 global using static PetClinic.Infrastructure.Common.DatabaseConstants.PetConstnats;
 
 //For ReceptionistController
-global using PetClinic.Api.Dtos;
+global using PetClinic.Api.Dtos.RecceptionistDtos;
 global using GetReceptionist = PetClinic.Application.Receptionists.Queries.Get;
 global using CreateReceptionist = PetClinic.Application.Receptionists.Commands.Create;
 global using UpdateReceptionist = PetClinic.Application.Receptionists.Commands.Update;
