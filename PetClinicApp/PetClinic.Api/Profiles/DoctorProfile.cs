@@ -1,11 +1,9 @@
 ﻿namespace PetClinic.Api.Profiles
 {
-    using AutoMapper;
-
-    using PetClinic.Domain.Entities;
-    using PetClinic.Api.Dtos.DoctorDtos;
-    using PetClinic.Application.Doctors.Commands.Create;
-    using PetClinic.Application.Doctors.Commands.Update;
+    using GetDoctor;
+    using CreateDoctor;
+    using UpdateDoctor;
+    using DeleteDoctor;
 
     public class DoctorProfile : Profile
     {
