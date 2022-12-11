@@ -5,7 +5,13 @@
     using UpdateReceptionist;
     using DeleteReceptionist;
 
-    public class ReceptionistProfile
+    public class ReceptionistProfile : Profile
     {
+        public ReceptionistProfile()
+        {
+            CreateMap<UpdateReceptionistDto, UpdateReceptionist>();
+            CreateMap<CreateReceptionistDto, CreateReceptionist>();
+            CreateMap<Receptionist, GetReceptionistDto>();
+        }
     }
 }
