@@ -1,15 +1,15 @@
 ﻿namespace PetClinic.Application.Pets.Commands.Delete
 {
-    public class DeletePetHandler : IRequestHandler<DeletePet, Pet>
+    public class DeleteSoftHandler : IRequestHandler<DeleteSoft, Pet>
     {
         private readonly IUnitOfWork unitOfWorkRepo;
 
-        public DeletePetHandler(IUnitOfWork unitOfWorkRepo)
+        public DeleteSoftHandler(IUnitOfWork unitOfWorkRepo)
         {
             this.unitOfWorkRepo = unitOfWorkRepo;
         }
 
-        public async Task<Pet> Handle(DeletePet request, CancellationToken cancellationToken)
+        public async Task<Pet> Handle(DeleteSoft request, CancellationToken cancellationToken)
         {
             Pet pet = await this.unitOfWorkRepo.PetRepository.GetByIdAsync(request.Id);
 

@@ -1,15 +1,15 @@
 ﻿namespace PetClinic.Application.Receptionists.Commands.Delete
 {
-    public class DeleteReceptionistHandler : IRequestHandler<DeleteReceptionist, Receptionist>
+    public class DeleteSoftHandler : IRequestHandler<DeleteSoft, Receptionist>
     {
         private readonly IUnitOfWork unitOfWorkRepo;
 
-        public DeleteReceptionistHandler(IUnitOfWork unitOfWorkRepo)
+        public DeleteSoftHandler(IUnitOfWork unitOfWorkRepo)
         {
             this.unitOfWorkRepo = unitOfWorkRepo;
         }
 
-        public async Task<Receptionist> Handle(DeleteReceptionist request, CancellationToken cancellationToken)
+        public async Task<Receptionist> Handle(DeleteSoft request, CancellationToken cancellationToken)
         {
             Receptionist receptionist = await this.unitOfWorkRepo.ReceptionistRepository.GetByIdAsync(request.Id);
 
