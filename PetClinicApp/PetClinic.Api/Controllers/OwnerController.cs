@@ -5,7 +5,7 @@
     using UpdateOwner;
     using DeleteOwner;
 
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class OwnerController : BaseController<OwnerController>
     {
@@ -32,10 +32,7 @@
         [ActionName("GetOwnerById")]
         public async Task<IActionResult> GetById(int ownerId)
         {
-            GetOwnerById command = new GetOwnerById()
-            {
-                Id = ownerId,
-            };
+            GetOwnerById command = new GetOwnerById() { Id = ownerId, };
 
             Owner owner = await base.Mediator.Send(command);
 
@@ -55,16 +52,15 @@
         /// <param name="createOwnerDto"></param>
         /// <returns>returns a dto created from the owner</returns>
         [HttpPost]
-        [ActionName("CreateOwner")]
+        [ActionName("Create")]
         public async Task<IActionResult> Create([FromBody] CreateOwnerDto createOwnerDto)
         {
-            if (ModelState.IsValid!)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
             CreateOwner command = base.Mapper.Map<CreateOwner>(createOwnerDto);
-
             Owner owner = await base.Mediator.Send(command);
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
             return CreatedAtAction(nameof(GetById), new { ownerId = owner.Id }, getOwnerDto);
@@ -77,7 +73,7 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpPut]
-        [ActionName("UpdateOwner")]
+        [ActionName("Update")]
         [Route("{ownerId}")]
         public async Task<IActionResult> Update([FromBody] UpdateOwnerDto updateOwnerDto, int ownerId)
         {
@@ -106,7 +102,7 @@
         /// <param name="ownerId"></param>
         /// <returns></returns>
         [HttpDelete]
-        [ActionName("DeleteOwner")]
+        [ActionName("Delete")]
         [Route("{ownerId}")]
         public async Task<IActionResult> Delete(int ownerId)
         {
