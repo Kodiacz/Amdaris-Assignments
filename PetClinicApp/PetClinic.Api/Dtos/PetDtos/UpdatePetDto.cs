@@ -1,6 +1,6 @@
 ﻿namespace PetClinic.Api.Dtos.PetDtos
 {
-    public class CreatePetDto
+    public class UpdatePetDto
     {
         [Required]
         [StringLength(NameMaxLengthForPet, MinimumLength = NameMinLengthForPet)]
