@@ -14,7 +14,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [ActionName("GetAllDoctors")]
+        [ActionName(nameof(GetAll))]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -29,7 +29,7 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpGet]
-        [ActionName("GetById")]
+        [ActionName(nameof(GetById))]
         [Route("{doctorId}")]
         public async Task<IActionResult> GetById(int doctorId)
         {
@@ -55,7 +55,7 @@
         /// <param name="createDoctorDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [ActionName("Create")]
+        [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto createDoctorDto)
         {
             if (!ModelState.IsValid)
@@ -76,7 +76,7 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpPut]
-        [ActionName("Update")]
+        [ActionName(nameof(Update))]
         [Route("{doctorId}")]
         public async Task<IActionResult> Update([FromBody] UpdateDoctorDto updateDoctorDto, int doctorId)
         {
@@ -101,7 +101,7 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpDelete]
-        [ActionName("DeleteDoctor")]
+        [ActionName(nameof(Delete))]
         [Route("doctorId")]
         public async Task<IActionResult> Delete(int doctorId)
         {

@@ -11,7 +11,7 @@
     public class PetController : BaseController<PetController>
     {
         [HttpGet]
-        [ActionName("GetAll")]
+        [ActionName(nameof(GetAll))]
         public async Task<IActionResult> GetAll()
         {
             GetAllPets query = new();
@@ -21,7 +21,7 @@
         }
 
         [HttpGet]
-        [ActionName("GetById")]
+        [ActionName(nameof(GetById))]
         [Route("{petId}")]
         public async Task<IActionResult> GetById(int petId)
         {
@@ -39,7 +39,7 @@
         }
 
         [HttpPost]
-        [ActionName("Create")]
+        [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreatePetDto createPetDto)
         {
             if (!ModelState.IsValid)
@@ -57,7 +57,7 @@
             }
             catch (NotExistException)
             {
-                return BadRequest($"the Owner with this Id {createPetDto.OwnerId} of this pet does not exist in the database");
+                return BadRequest($"the Owner with Id {createPetDto.OwnerId} of this pet does not exist in the database");
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@
         }
 
         [HttpPut]
-        [ActionName("Update")]
+        [ActionName(nameof(Update))]
         [Route("{petId}")]
         public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto, int petId)
         {
@@ -89,7 +89,7 @@
         }
 
         [HttpDelete]
-        [ActionName("Delete")]
+        [ActionName(nameof(Delete))]
         [Route("petId")]
         public async Task<IActionResult> Delete(int petId)
         {
@@ -103,7 +103,7 @@
             }
             catch (AlreadyDeletedException)
             {
-                return BadRequest($"Pet with this Id {petId} is already deleted");
+                return BadRequest($"Pet with Id {petId} is already deleted");
             }
             catch(Exception ex)
             {

@@ -14,6 +14,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [ActionName(nameof(GetAll))]
         public async Task<IActionResult> GetAll()
         {
             GetAllOwners command = new GetAllOwners();
@@ -29,7 +30,7 @@
         /// <returns></returns>
         [HttpGet]
         [Route("{ownerId}")]
-        [ActionName("GetOwnerById")]
+        [ActionName(nameof(GetById))]
         public async Task<IActionResult> GetById(int ownerId)
         {
             GetOwnerById command = new GetOwnerById() { Id = ownerId, };
@@ -52,7 +53,7 @@
         /// <param name="createOwnerDto"></param>
         /// <returns>returns a dto created from the owner</returns>
         [HttpPost]
-        [ActionName("Create")]
+        [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreateOwnerDto createOwnerDto)
         {
             if (!ModelState.IsValid)
@@ -73,7 +74,7 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpPut]
-        [ActionName("Update")]
+        [ActionName(nameof(Update))]
         [Route("{ownerId}")]
         public async Task<IActionResult> Update([FromBody] UpdateOwnerDto updateOwnerDto, int ownerId)
         {
@@ -102,7 +103,7 @@
         /// <param name="ownerId"></param>
         /// <returns></returns>
         [HttpDelete]
-        [ActionName("Delete")]
+        [ActionName(nameof(Delete))]
         [Route("{ownerId}")]
         public async Task<IActionResult> Delete(int ownerId)
         {
