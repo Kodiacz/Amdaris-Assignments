@@ -12,8 +12,8 @@
     {
         public void Configure(EntityTypeBuilder<Receptionist> receptionistConfiguration)
         {
-            receptionistConfiguration
-                .HasData(CreateReceptionists());
+            //receptionistConfiguration
+            //    .HasData(CreateReceptionists());
 
             receptionistConfiguration
                 .HasKey(receptionist => receptionist.Id);
