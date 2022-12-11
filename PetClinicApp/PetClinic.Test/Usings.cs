@@ -2,3 +2,8 @@ global using NUnit.Framework;
 global using Microsoft.EntityFrameworkCore;
 global using PetClinic.Infrastructure;
 global using PetClinic.Interfaces;
+global using PetClinic.Infrastructure.Repository;
+global using Moq;
+global using PetClinic.Application.Owners.Commands.Create;
+global using PetClinic.Application.Interfaces;
+global using PetClinic.Domain.Entities;

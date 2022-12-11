@@ -8,6 +8,8 @@
     {
         private readonly PetClinicDbContext context;
 
+        public UnitOfWork() { }
+
         public UnitOfWork(
             PetClinicDbContext context, 
             IDoctorRepository doctorRepository, 
