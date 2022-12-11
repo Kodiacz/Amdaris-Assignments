@@ -11,6 +11,11 @@
 
         public async Task<Pet> Handle(CreatePet request, CancellationToken cancellationToken)
         {
+            if (await this.unitOfWorkRepo.OwnerRepository.GetByIdAsync(request.OwnerId) == null)
+            {
+                throw new NotExistException("Owner with this ID doest not exist in the database");
+            }
+
             Pet pet = new()
             {
                 Name = request.Name,
