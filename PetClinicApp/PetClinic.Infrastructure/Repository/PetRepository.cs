@@ -34,7 +34,6 @@
             if (!pet.IsDeleted)
 {
                 pet.IsDeleted = true;
-                await this.SaveAsync();
             }
         }
 
