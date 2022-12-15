@@ -1,15 +1,3 @@
-using Microsoft.Identity.Web;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-using MediatR;
-
-using PetClinic.Interfaces;
-using PetClinic.Infrastructure;
-using PetClinic.Application.Interfaces;
-using PetClinic.Infrastructure.Repository;
-using System.Text.Json.Serialization;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

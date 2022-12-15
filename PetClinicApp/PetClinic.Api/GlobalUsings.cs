@@ -1,14 +1,23 @@
-﻿global using System.ComponentModel.DataAnnotations;
+﻿global using System.Text.Json.Serialization;
+global using System.ComponentModel.DataAnnotations;
 
+global using Microsoft.Identity.Web;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+
 
 global using MediatR;
 global using AutoMapper;
 global using Newtonsoft.Json;
 
+global using PetClinic.Interfaces;
+global using PetClinic.Infrastructure;
 global using PetClinic.Domain.Entities;
+global using PetClinic.Application.Interfaces;
 global using PetClinic.Application.Exceptions;
+global using PetClinic.Infrastructure.Repository;
 
 // For DoctorController
 global using PetClinic.Api.Dtos.DoctorDtos;
@@ -41,3 +50,4 @@ global using CreateReceptionist = PetClinic.Application.Receptionists.Commands.C
 global using UpdateReceptionist = PetClinic.Application.Receptionists.Commands.Update;
 global using DeleteReceptionist = PetClinic.Application.Receptionists.Commands.Delete;
 global using static PetClinic.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
+
