@@ -19,7 +19,7 @@
             }
             else
             {
-                throw new AlreadyDeletedException("This entity is already deleted");
+                throw new AlreadyDeletedException($"The ${nameof(Doctor)} with Id ${request.Id} is already deleted");
             }
 
             await this.unitOfWorkRepo.SaveAsync();

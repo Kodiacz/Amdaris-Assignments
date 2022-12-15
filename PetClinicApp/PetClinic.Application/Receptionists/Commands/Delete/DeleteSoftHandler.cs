@@ -19,7 +19,7 @@
             }
             else
             {
-                throw new AlreadyDeletedException("This Receptionist is already deleted");
+                throw new AlreadyDeletedException($"The ${nameof(Receptionist)} with Id ${request.Id} is already deleted");
             }
 
             await this.unitOfWorkRepo.SaveAsync();

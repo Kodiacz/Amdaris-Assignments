@@ -19,7 +19,7 @@
             }
             else
             {
-                throw new AlreadyDeletedException("This Pet is already deleted");
+                throw new AlreadyDeletedException($"The ${nameof(Pet)} with Id ${request.Id} is already deleted");
             }
 
             await this.unitOfWorkRepo.SaveAsync();

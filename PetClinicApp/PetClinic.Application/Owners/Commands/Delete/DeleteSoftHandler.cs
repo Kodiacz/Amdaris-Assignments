@@ -19,7 +19,7 @@
             }
             else
             {
-                throw new AlreadyDeletedException("This Owner is already deleted");
+                throw new AlreadyDeletedException($"The ${nameof(Owner)} with Id ${request.Id} is already deleted");
             }
 
             await this.unitOfWorkRepo.SaveAsync();
