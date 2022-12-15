@@ -11,24 +11,13 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-builder.Services.AddScoped<IReceptionistRepository, ReceptionistRepository>();
-builder.Services.AddScoped<IOwnerRepository, OwnerRepository>();
-builder.Services.AddScoped<IPetRepository, PetRepository>();
-
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<PetClinicDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });
 
-builder.Services.AddMediatR(typeof(IDoctorRepository));
-builder.Services.AddMediatR(typeof(IReceptionistRepository));
-builder.Services.AddMediatR(typeof(IOwnerRepository));
-builder.Services.AddMediatR(typeof(IPetRepository));
-
-builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddApplicationService();
 
 var app = builder.Build();
 
