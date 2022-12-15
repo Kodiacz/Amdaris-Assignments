@@ -56,13 +56,9 @@
         /// <returns></returns>
         [HttpPost]
         [ActionName(nameof(Create))]
+        [ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto createDoctorDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             CreateDoctor command = base.Mapper.Map<CreateDoctor>(createDoctorDto);
             Doctor result = await base.Mediator.Send(command);
             GetDoctorDto getDoctorDto = base.Mapper.Map<GetDoctorDto>(result);
@@ -78,6 +74,7 @@
         [HttpPut]
         [ActionName(nameof(Update))]
         [Route("{doctorId}")]
+        [ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdateDoctorDto updateDoctorDto, int doctorId)
         {
             UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto);

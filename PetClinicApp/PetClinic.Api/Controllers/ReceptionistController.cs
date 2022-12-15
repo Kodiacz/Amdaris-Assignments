@@ -46,13 +46,9 @@
 
         [HttpPost]
         [ActionName(nameof(Create))]
+        [ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreateReceptionistDto createReceptionistDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             CreateReceptionist command = base.Mapper.Map<CreateReceptionist>(createReceptionistDto);
 
             Receptionist createdReceptionistEntity = await base.Mediator.Send(command);
@@ -63,13 +59,9 @@
         [HttpPut]
         [Route("{receptionistId}")]
         [ActionName(nameof(Update))]
+        [ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdateReceptionistDto updateReceptionistDto, int receptionistId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             UpdateReceptionist command = base.Mapper.Map<UpdateReceptionist>(updateReceptionistDto);
             command.Id = receptionistId;
 

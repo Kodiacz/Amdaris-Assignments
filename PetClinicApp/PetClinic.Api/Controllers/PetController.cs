@@ -40,13 +40,9 @@
 
         [HttpPost]
         [ActionName(nameof(Create))]
+        [ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreatePetDto createPetDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             CreatePet command = base.Mapper.Map<CreatePet>(createPetDto);
 
             try
@@ -68,13 +64,9 @@
         [HttpPut]
         [ActionName(nameof(Update))]
         [Route("{petId}")]
+        [ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto, int petId)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             UpdatePet command = base.Mapper.Map<UpdatePet>(updatePetDto);
             command.Id = petId;
 

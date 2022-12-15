@@ -54,13 +54,9 @@
         /// <returns>returns a dto created from the owner</returns>
         [HttpPost]
         [ActionName(nameof(Create))]
+        [ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreateOwnerDto createOwnerDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             CreateOwner command = base.Mapper.Map<CreateOwner>(createOwnerDto);
             Owner owner = await base.Mediator.Send(command);
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
@@ -76,13 +72,9 @@
         [HttpPut]
         [ActionName(nameof(Update))]
         [Route("{ownerId}")]
+        [ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdateOwnerDto updateOwnerDto, int ownerId)
         {
-            if (ModelState.IsValid!)
-            {
-                return BadRequest(ModelState);
-            }
-
             UpdateOwner command = this.Mapper.Map<UpdateOwner>(updateOwnerDto);
             command.Id = ownerId;
 
