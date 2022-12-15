@@ -23,7 +23,7 @@ namespace PetClinic.Test
         }
 
         [Test]
-        public async Task CreateOwnerHandlerTest()
+        public async Task CreateOwnerSuccessfullyHandlerTest()
         {
             //Arrange
             var ownerRepo = new OwnerRepository(contextInMemmory);
@@ -34,9 +34,9 @@ namespace PetClinic.Test
             var command = new CreateOwner()
             {
                 Age = 1,
-                FirstName = "test",
-                LastName = "testov",
-                Phonenumber = "123123",
+                FirstName = "FirstName",
+                LastName = "LastName",
+                Phonenumber = "0899535011",
             };
 
             var handler = new CreateOwnerHandler(unitOfWork);
@@ -49,7 +49,10 @@ namespace PetClinic.Test
 
 
             //Assert
-            Assert.That(test.FirstName, Is.EqualTo("test"));
+            Assert.That(test.FirstName, Is.EqualTo("FirstName"));
+            Assert.That(test.LastName, Is.EqualTo("LastName"));
+            Assert.That(test.Phonenumber, Is.EqualTo("0899535011"));
+            Assert.That(test.Age, Is.EqualTo(1));
         }
 
         [TearDown]
