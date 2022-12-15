@@ -13,6 +13,7 @@ global using MediatR;
 global using Newtonsoft.Json;
 
 global using PetClinic.Api.Filters;
+global using PetClinic.Api.Extensions;
 global using PetClinic.Application.Interfaces;
 global using PetClinic.Application.Exceptions;
 global using PetClinic.Domain.Entities;
