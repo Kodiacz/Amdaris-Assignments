@@ -87,17 +87,17 @@
         {
             DeleteSoft command = new() { Id = petId };
 
+            Pet deletedPetEntity = await base.Mediator.Send(command);
+
+            return NoContent();
             try
             {
-                Pet deletedPetEntity = await base.Mediator.Send(command);
-
-                return NoContent();
             }
             catch (AlreadyDeletedException)
             {
                 return BadRequest($"Pet with Id {petId} is already deleted");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }

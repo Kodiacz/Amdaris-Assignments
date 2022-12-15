@@ -84,7 +84,7 @@
             {
                 return NoContent();
             }
-            
+
             return NoContent();
         }
 
@@ -101,25 +101,14 @@
         {
             DeleteSoft command = new() { Id = ownerId };
 
-            try
+            Owner owner = await base.Mediator.Send(command);
+
+            if (owner == null)
             {
-                Owner owner = await base.Mediator.Send(command);
-
-                if (owner == null)
-                {
-                    return NoContent();
-                }
-
                 return NoContent();
             }
-            catch (AlreadyDeletedException)
-            {
-                return BadRequest($"The Owner with ID {ownerId} is Already Deleted");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+
+            return NoContent();
         }
     }
 }

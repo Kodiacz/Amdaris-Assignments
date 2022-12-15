@@ -107,8 +107,6 @@
                 Id = doctorId
             };
 
-            try
-            {
                 Doctor result = await base.Mediator.Send(command);
 
                 if (result == null)
@@ -117,15 +115,6 @@
                 }
 
                 return NoContent();
-            }
-            catch (AlreadyDeletedException)
-            {
-                return BadRequest($"The Doctor with ID {doctorId} is Already Deleted");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
     }
 }
