@@ -6,7 +6,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services
     .AddControllers(configuration =>
     {
-        configuration.Filters.Add(typeof(ExceptionHandler));
+        configuration.Filters.AddApplicationFilters();
     })
     .AddJsonOptions(x =>
     {
