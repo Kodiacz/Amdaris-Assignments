@@ -45,20 +45,9 @@
         {
             CreatePet command = base.Mapper.Map<CreatePet>(createPetDto);
 
-            try
-            {
-                Pet newPetEntity = await base.Mediator.Send(command);
-                GetPetDto getPetDto = base.Mapper.Map<GetPetDto>(newPetEntity);
-                return CreatedAtAction(nameof(GetById), new { petId = newPetEntity.Id }, getPetDto);
-            }
-            catch (NotExistException)
-            {
-                return BadRequest($"the Owner with Id {createPetDto.OwnerId} of this pet does not exist in the database");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            Pet newPetEntity = await base.Mediator.Send(command);
+            GetPetDto getPetDto = base.Mapper.Map<GetPetDto>(newPetEntity);
+            return CreatedAtAction(nameof(GetById), new { petId = newPetEntity.Id }, getPetDto);
         }
 
         [HttpPut]
@@ -90,17 +79,6 @@
             Pet deletedPetEntity = await base.Mediator.Send(command);
 
             return NoContent();
-            try
-            {
-            }
-            catch (AlreadyDeletedException)
-            {
-                return BadRequest($"Pet with Id {petId} is already deleted");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
         }
     }
 }

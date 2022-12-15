@@ -13,7 +13,7 @@
         [HttpGet]
         [ActionName(nameof(GetAll))]
         public async Task<IActionResult> GetAll()
-{
+        {
             GetAllReceptionists query = new();
             List<Receptionist> receptionist = await base.Mediator.Send(query);
 
@@ -82,21 +82,9 @@
         {
             DeleteSoft command = new() { Id = receptionistId };
 
-            try
-            {
-                Receptionist deletedReceptionistEntity = await base.Mediator.Send(command);
+            Receptionist deletedReceptionistEntity = await base.Mediator.Send(command);
 
-                return NoContent();
-            }
-            catch (AlreadyDeletedException)
-            {
-
-                return BadRequest($"the Receptionist with ID {receptionistId} is already deleted");
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return NoContent();
         }
     }
 }
