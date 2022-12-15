@@ -36,7 +36,6 @@
             if (!owner.IsDeleted)
             {
                 owner.IsDeleted = true;
-                await this.SaveAsync();
             }
         }
 

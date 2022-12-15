@@ -33,7 +33,6 @@
             if (!doctor.IsDeleted)
             {
                 doctor.IsDeleted = true;
-                await this.SaveAsync();
             }
         }
 

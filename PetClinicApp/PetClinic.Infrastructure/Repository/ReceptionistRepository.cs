@@ -34,7 +34,6 @@
             if (!receptionist.IsDeleted)
             {
                 receptionist.IsDeleted = true;
-                await this.SaveAsync();
             }
         }
 
