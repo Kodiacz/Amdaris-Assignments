@@ -1,22 +1,23 @@
 ﻿global using System.Text.Json.Serialization;
 global using System.ComponentModel.DataAnnotations;
 
-global using Microsoft.Identity.Web;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
-global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Identity.Web;
 
-
-global using MediatR;
 global using AutoMapper;
+global using MediatR;
 global using Newtonsoft.Json;
 
-global using PetClinic.Interfaces;
-global using PetClinic.Infrastructure;
-global using PetClinic.Domain.Entities;
+global using PetClinic.Api.Filters;
 global using PetClinic.Application.Interfaces;
 global using PetClinic.Application.Exceptions;
+global using PetClinic.Domain.Entities;
+global using PetClinic.Interfaces;
+global using PetClinic.Infrastructure;
 global using PetClinic.Infrastructure.Repository;
 
 // For DoctorController
