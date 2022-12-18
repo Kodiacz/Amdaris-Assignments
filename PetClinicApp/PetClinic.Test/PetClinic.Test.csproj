@@ -20,7 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PetClinic.Api\PetClinic.Api.csproj" />
     <ProjectReference Include="..\PetClinic.Application\PetClinic.Application.csproj" />
+    <ProjectReference Include="..\PetClinic.ConsolePresentation\PetClinic.ConsolePresentation.csproj" />
     <ProjectReference Include="..\PetClinic.Infrastructure\PetClinic.Infrastructure.csproj" />
   </ItemGroup>
 
