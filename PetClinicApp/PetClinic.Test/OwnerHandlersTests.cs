@@ -11,7 +11,6 @@
         {
             mockUnitOfWork = new();
             mockOwnerRepository = new();
-
         }
 
         [Test]

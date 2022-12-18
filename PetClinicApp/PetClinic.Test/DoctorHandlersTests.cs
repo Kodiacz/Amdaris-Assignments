@@ -15,7 +15,6 @@
         {
             mockUnitOfWork = new();
             mockDoctorRepository = new();
-
         }
 
         [Test]
