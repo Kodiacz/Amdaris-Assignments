@@ -22,7 +22,6 @@
             await this.unitOfWorkRepo.OwnerRepository.AddAsync(owner);
             await this.unitOfWorkRepo.SaveAsync();
 
-
             return owner;
         }
     }
