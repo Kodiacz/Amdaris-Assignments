@@ -37,10 +37,10 @@
 
             Owner owner = await base.Mediator.Send(command);
 
-            if (owner == null)
-            {
-                return NotFound();
-            }
+            //if (owner == null)
+            //{
+            //    return NotFound();
+            //}
 
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
 
