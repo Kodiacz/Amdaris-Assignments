@@ -11,7 +11,6 @@ builder.Services
     .AddJsonOptions(x =>
     {
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-
     });
 
 builder.Services.AddEndpointsApiExplorer();

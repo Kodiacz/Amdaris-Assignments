@@ -1,4 +1,5 @@
-﻿global using System.Text.Json.Serialization;
+﻿global using SystemJson = System.Text.Json;
+global using System.Text.Json.Serialization;
 global using System.ComponentModel.DataAnnotations;
 
 global using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ global using Microsoft.Identity.Web;
 
 global using AutoMapper;
 global using MediatR;
-global using Newtonsoft.Json;
+global using NewtonJson = Newtonsoft.Json;
 
 global using PetClinic.Api.Filters;
 global using PetClinic.Api.Extensions;
