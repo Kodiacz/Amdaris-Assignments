@@ -37,7 +37,7 @@
         /// </summary>
         /// <param name="owner">Owner entity</param>
         /// <returns></returns>
-        Task DeleteSoftAsync(Owner owner);
+        void DeleteSoftAsync(Owner owner);
 
         /// <summary>
         /// Saves all changes that are done

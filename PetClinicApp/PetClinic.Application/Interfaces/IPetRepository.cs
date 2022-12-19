@@ -1,6 +1,7 @@
 ﻿namespace PetClinic.Interfaces
 {
     using PetClinic.Domain.Entities;
+using System.Linq.Expressions;
 
     public interface IPetRepository
     {
@@ -32,11 +33,18 @@
         Task<List<Pet>> GetAllAsync();
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        Task<List<Pet>> GetAllAsync(Expression<Func<Pet, bool>> search);
+
+        /// <summary>
         /// Deletes the entity by changing its IsDeleted property to true
         /// </summary>
         /// <param name="пет">Pet entity</param>
         /// <returns></returns>
-        Task DeleteSoftAsync(Pet pet);
+        void DeleteSoftAsync(Pet pet);
 
         /// <summary>
         /// Saves all changes that are done

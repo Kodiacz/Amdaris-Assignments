@@ -30,7 +30,7 @@ using System.Linq.Expressions;
         /// </summary>
         /// <param name="receptionist">Receptionist entity</param>
         /// <returns></returns>
-        public async Task DeleteSoftAsync(Receptionist receptionist)
+        public void DeleteSoftAsync(Receptionist receptionist)
         {
             if (!receptionist.IsDeleted)
             {

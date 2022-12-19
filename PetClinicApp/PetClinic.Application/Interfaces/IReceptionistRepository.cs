@@ -34,7 +34,7 @@
         /// </summary>
         /// <param name="receptionist">Receptionist entity</param>
         /// <returns></returns>
-        Task DeleteSoftAsync(Receptionist receptionist);
+        void DeleteSoftAsync(Receptionist receptionist);
 
         /// <summary>
         /// Saves all changes that are done

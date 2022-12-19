@@ -13,13 +13,13 @@
         {
             Owner owner = await this.unitOfWorkRepo.OwnerRepository.GetByIdAsync(request.Id);
 
-            if (!owner.IsDeleted)
+            if (owner?.IsDeleted ?? false)
             {
                 owner.IsDeleted = true;
             }
             else
             {
-                throw new AlreadyDeletedException($"The ${nameof(Owner)} with Id ${request.Id} is already deleted");
+                throw new AlreadyDeletedException($"The {nameof(Owner)} with Id {request.Id} is already deleted");
             }
 
             await this.unitOfWorkRepo.SaveAsync();

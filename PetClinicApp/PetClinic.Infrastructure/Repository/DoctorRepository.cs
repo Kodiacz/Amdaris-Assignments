@@ -29,7 +29,7 @@ using System.Linq.Expressions;
         /// </summary>
         /// <param name="doctor">Doctor entity</param>
         /// <returns></returns>
-        public async Task DeleteSoftAsync(Doctor doctor)
+        public void DeleteSoftAsync(Doctor doctor)
         {
             if (!doctor.IsDeleted)
             {

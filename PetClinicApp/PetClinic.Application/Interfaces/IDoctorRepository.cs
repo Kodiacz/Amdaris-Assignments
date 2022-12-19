@@ -36,7 +36,7 @@
         /// </summary>
         /// <param name="doctor">Doctor entity</param>
         /// <returns></returns>
-        Task DeleteSoftAsync(Doctor doctor);
+        void DeleteSoftAsync(Doctor doctor);
 
         /// <summary>
         /// Saves all changes that are done

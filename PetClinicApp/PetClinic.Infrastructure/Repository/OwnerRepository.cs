@@ -32,7 +32,7 @@
         /// </summary>
         /// <param name="owner">Owner entity</param>
         /// <returns></returns>
-        public async Task DeleteSoftAsync(Owner owner)
+        public void DeleteSoftAsync(Owner owner)
         {
             if (!owner.IsDeleted)
             {
