@@ -1,5 +1,10 @@
 ﻿namespace PetClinic.Test
 {
+    using GetOwners;
+    using CreateOwners;
+    using DeleteOwners;
+    using UpdateOwners;
+
     [TestFixture]
     public class OwnerHandlersTests
     {
