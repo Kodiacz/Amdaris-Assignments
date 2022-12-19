@@ -1,5 +1,10 @@
 namespace PetClinic.Test
 {
+    using GetOwners;
+    using CreateOwners;
+    using DeleteOwners;
+    using UpdateOwners;
+
     [TestFixture]
     public class OwnerTest
     {
@@ -55,54 +60,54 @@ namespace PetClinic.Test
             Assert.That(test.Age, Is.EqualTo(1));
         }
 
-        //[Test]
-        //public async Task GetAllOwnersTest()
-        //{
-        //    var ownerRepo = new OwnerRepository(contextInMemmory);
+        [Test]
+        public async Task GetAllOwnersTest()
+        {
+            var ownerRepo = new OwnerRepository(contextInMemmory);
 
-        //    unitOfWorkMock.Setup(x => x.OwnerRepository).Returns(ownerRepo);
-        //    var unitOfWork = unitOfWorkMock.Object;
+            unitOfWorkMock.Setup(x => x.OwnerRepository).Returns(ownerRepo);
+            var unitOfWork = unitOfWorkMock.Object;
 
-        //    var command = new GetAllOwners();
+            var command = new GetAllOwners();
 
-        //    List<Owner> owners = new()
-        //    {
-        //       new Owner()
-        //        {
-        //            Id = 1,
-        //            Age = 1,
-        //            FirstName = "pesho",
-        //            LastName = "mesho",
-        //            Phonenumber = "0899535231",
-        //        },
-        //       new Owner()
-        //        {
-        //            Id = 2,
-        //            Age = 2,
-        //            FirstName = "gosho",
-        //            LastName = "mosho",
-        //            Phonenumber = "0899235011",
-        //        },
-        //       new Owner()
-        //        {
-        //            Id = 3,
-        //            Age = 3,
-        //            FirstName = "dimo",
-        //            LastName = "mimo",
-        //            Phonenumber = "0899535561",
-        //        },
-        //    };
+            List<Owner> owners = new()
+            {
+               new Owner()
+                {
+                    Id = 1,
+                    Age = 1,
+                    FirstName = "pesho",
+                    LastName = "mesho",
+                    Phonenumber = "0899535231",
+                },
+               new Owner()
+                {
+                    Id = 2,
+                    Age = 2,
+                    FirstName = "gosho",
+                    LastName = "mosho",
+                    Phonenumber = "0899235011",
+                },
+               new Owner()
+                {
+                    Id = 3,
+                    Age = 3,
+                    FirstName = "dimo",
+                    LastName = "mimo",
+                    Phonenumber = "0899535561",
+                },
+            };
 
-        //    await unitOfWork.OwnerRepository.AddAsync(owners[0]);
-        //    await unitOfWork.OwnerRepository.AddAsync(owners[1]);
-        //    await unitOfWork.OwnerRepository.AddAsync(owners[2]);
+            await unitOfWork.OwnerRepository.AddAsync(owners[0]);
+            await unitOfWork.OwnerRepository.AddAsync(owners[1]);
+            await unitOfWork.OwnerRepository.AddAsync(owners[2]);
 
-        //    GetAllOwnersHandler handler = new(unitOfWork);
-        //    var ownersEntities = await contextInMemmory.Owners.ToListAsync();
-        //    //var ownersEntities = await handler.Handle(command, default);
+            GetAllOwnersHandler handler = new(unitOfWork);
+            var ownersEntities = await contextInMemmory.Owners.ToListAsync();
+            //var ownersEntities = await handler.Handle(command, default);
 
-        //    Assert.That(ownersEntities.Count, Is.EqualTo(3));
-        //}
+            Assert.That(ownersEntities.Count, Is.EqualTo(3));
+        }
 
         [TearDown]
         public void TearDown()
