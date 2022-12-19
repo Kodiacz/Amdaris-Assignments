@@ -46,7 +46,7 @@
 
         [HttpPost]
         [ActionName(nameof(Create))]
-        [ModelValidationFilter]
+        //[ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreateReceptionistDto createReceptionistDto)
         {
             CreateReceptionist command = base.Mapper.Map<CreateReceptionist>(createReceptionistDto);
@@ -59,7 +59,7 @@
         [HttpPut]
         [Route("{receptionistId}")]
         [ActionName(nameof(Update))]
-        [ModelValidationFilter]
+        //[ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdateReceptionistDto updateReceptionistDto, int receptionistId)
         {
             UpdateReceptionist command = base.Mapper.Map<UpdateReceptionist>(updateReceptionistDto);

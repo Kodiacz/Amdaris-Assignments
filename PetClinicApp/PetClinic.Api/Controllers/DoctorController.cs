@@ -15,6 +15,7 @@
         /// <returns></returns>
         [HttpGet]
         [ActionName(nameof(GetAll))]
+        [ModelValidationFilter]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -33,18 +34,8 @@
         [Route("{doctorId}")]
         public async Task<IActionResult> GetById(int doctorId)
         {
-            GetDoctorById query = new GetDoctorById()
-            {
-                Id = doctorId,
-            };
-
+            GetDoctorById query = new GetDoctorById() { Id = doctorId, };
             Doctor result = await base.Mediator.Send(query);
-
-            if (result == null)
-            {
-                return NotFound();
-            }
-
             GetDoctorDto getDoctorDto = base.Mapper.Map<GetDoctorDto>(result);
             return Ok(getDoctorDto);
         }
@@ -72,22 +63,12 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpPut]
-        [ActionName(nameof(Update))]
         [Route("{doctorId}")]
-        [ModelValidationFilter]
-        public async Task<IActionResult> Update([FromBody] UpdateDoctorDto updateDoctorDto, int doctorId)
+        public async Task<IActionResult> Update(UpdateDoctorDto updateDoctorDto, int doctorId)
         {
-            UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto);
-
+            UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto); 
             command.Id = doctorId;
-
             Doctor result = await base.Mediator.Send(command);
-
-            if (result == null)
-            {
-                return NotFound();
-            }
-
             return NoContent();
         }
 

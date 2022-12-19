@@ -40,7 +40,7 @@
 
         [HttpPost]
         [ActionName(nameof(Create))]
-        [ModelValidationFilter]
+        //[ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreatePetDto createPetDto)
         {
             CreatePet command = base.Mapper.Map<CreatePet>(createPetDto);
@@ -53,7 +53,7 @@
         [HttpPut]
         [ActionName(nameof(Update))]
         [Route("{petId}")]
-        [ModelValidationFilter]
+        //[ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto, int petId)
         {
             UpdatePet command = base.Mapper.Map<UpdatePet>(updatePetDto);
