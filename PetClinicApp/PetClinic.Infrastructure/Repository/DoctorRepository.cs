@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using PetClinic.Domain.Entities;
     using PetClinic.Interfaces;
+using System.Linq.Expressions;
 
     public class DoctorRepository : IDoctorRepository
     {
@@ -49,13 +50,40 @@
         }
 
         /// <summary>
+        /// Gets all the Doctors and accepts a predicate for sarch term
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Doctor>> GetAllAsync(Expression<Func<Doctor, bool>> search)
+        {
+            return await this.context
+                .Doctors
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
+                .Where(search)
+                .ToListAsync();
+        }
+
+        /// <summary>
         /// Gets the entity from the database by its Id
         /// </summary>
         /// <param name="id">The id of the Doctor entity</param>
         /// <returns>Return the Doctor entity</returns>
         public async Task<Doctor> GetByIdAsync(int id)
         {
-            return (await this.context.Doctors.FirstOrDefaultAsync(doctor => doctor.Id == id))!;
+            return (await this.context.Doctors
+                .FirstOrDefaultAsync(doctor => doctor.Id == id))!;
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and accepts a predicate for search term
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Doctor> GetByIdAsync(int id, Expression<Func<Doctor, bool>> search)
+        {
+            return (await this.context.Doctors
+                .Where(search)
+                .FirstOrDefaultAsync(doctor => doctor.Id == id && !doctor.IsDeleted))!;
         }
 
         /// <summary>

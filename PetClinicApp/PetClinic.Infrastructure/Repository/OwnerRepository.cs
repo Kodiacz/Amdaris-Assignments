@@ -4,6 +4,7 @@
     using PetClinic.Domain.Entities;
     using PetClinic.Interfaces;
     using System.Collections.Generic;
+    using System.Linq.Expressions;
     using System.Threading.Tasks;
 
     public class OwnerRepository : IOwnerRepository
@@ -52,13 +53,40 @@
         }
 
         /// <summary>
+        /// Gets all the owners and accepts a predicate for sarch term
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Owner>> GetAllAsync(Expression<Func<Owner, bool>> search)
+        {
+            return await this.context
+                .Owners
+                .Include(owner => owner.Pets)
+                .Where(search)
+                .ToListAsync();
+        }
+
+        /// <summary>
         /// Gets the entity from the database by its Id
         /// </summary>
         /// <param name="id">The id of the Owner entity</param>
         /// <returns>Return the Owner entity</returns>
         public async Task<Owner> GetByIdAsync(int id)
         {
-            return (await this.context.Owners.FirstOrDefaultAsync(owner => owner.Id == id))!;
+            return (await this.context.Owners
+                .FirstOrDefaultAsync(owner => owner.Id == id && !owner.IsDeleted))!;
+        }
+        
+        /// <summary>
+        /// Gets the entity from the database by its Id and accepts a predicate for search term
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+
+        public async Task<Owner> GetByIdAsync(int id, Expression<Func<Owner, bool>> search)
+        {
+            return (await this.context.Owners
+                .Where(search)
+                .FirstOrDefaultAsync(owner => owner.Id == id && !owner.IsDeleted))!;
         }
 
         /// <summary>

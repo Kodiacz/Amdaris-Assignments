@@ -3,7 +3,11 @@
     using Microsoft.EntityFrameworkCore;
     using PetClinic.Domain.Entities;
     using PetClinic.Interfaces;
+    using System.Linq.Expressions;
 
+    /// <summary>
+    /// This class handles Getting and Adding entities in table Pets in the database
+    /// </summary>
     public class PetRepository : IPetRepository
     {
         private readonly PetClinicDbContext context;
@@ -29,7 +33,7 @@
         /// </summary>
         /// <param name="пет">Pet entity</param>
         /// <returns></returns>
-        public async Task DeleteSoftAsync(Pet pet)
+        public void DeleteSoftAsync(Pet pet)
 {
             if (!pet.IsDeleted)
 {
@@ -51,6 +55,23 @@
                 .Where(pet => !pet.IsDeleted)
                 .ToListAsync();
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="search"></param>
+        /// <returns></returns>
+        public async Task<List<Pet>> GetAllAsync(Expression<Func<Pet, bool>> search)
+        {
+            //TODO: Ask if it is practical to use two Where clauses
+            return await this.context
+                .Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
+                .Where(search)
+                .ToListAsync();
+        }
 
         /// <summary>
         /// Gets the entity from the database by its Id
@@ -64,6 +85,24 @@
                 .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
+                .Where(pet => pet.Id == id && !pet.IsDeleted)
+                .FirstOrDefaultAsync())!;
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and accepte predicate 
+        /// for search term
+        /// </summary>
+        /// <param name="id">The id of the Pet entity</param>
+        /// <returns>Return the Pet entity</returns>
+        public async Task<Pet> GetByIdAsync(int id, Expression<Func<Pet, bool>> search)
+        {
+            return (await this.context
+                .Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
+                .Where(search)
                 .FirstOrDefaultAsync(pet => pet.Id == id))!;
         }
 

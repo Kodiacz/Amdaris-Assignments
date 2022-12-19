@@ -3,6 +3,7 @@
     using Microsoft.EntityFrameworkCore;
     using PetClinic.Application.Interfaces;
     using PetClinic.Domain.Entities;
+using System.Linq.Expressions;
 
     public class ReceptionistRepository : IReceptionistRepository
     {
@@ -50,15 +51,41 @@
         }
 
         /// <summary>
+        /// Gets all the Receptionists and accepts a predicate for sarch term
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Receptionist>> GetAllAsync(Expression<Func<Receptionist, bool>> search)
+        {
+            return await this.context
+                .Receptionists
+                .Include(receptionist => receptionist.Patients)
+                .Include(receptionist => receptionist.OwnersOfPatients)
+                .Where(search)
+                .ToListAsync();
+        }
+
+        /// <summary>
         /// Gets the entity from the database by its Id
         /// </summary>
         /// <param name="id">The id of the Receptionist entity</param>
         /// <returns>Return the Receptionist entity</returns>
         public async Task<Receptionist> GetByIdAsync(int id)
         {
-            return (await this.context.Receptionists.FirstOrDefaultAsync(receptionist => receptionist.Id == id))!;
+            return (await this.context.Receptionists
+                .FirstOrDefaultAsync(receptionist => receptionist.Id == id))!;
         }
 
+        /// <summary>
+        /// Gets the entity from the database by its Id and accepts a predicate for search term
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Receptionist> GetByIdAsync(int id, Expression<Func<Receptionist, bool>> search)
+        {
+            return (await this.context.Receptionists
+                .Where(search)
+                .FirstOrDefaultAsync(receptionist => receptionist.Id == id && !receptionist.IsDeleted))!;
+        }
 
         /// <summary>
         /// Saves all changes that are done
