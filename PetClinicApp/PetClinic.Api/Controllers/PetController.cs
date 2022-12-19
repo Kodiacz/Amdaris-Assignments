@@ -5,7 +5,6 @@
     using UpdatePet;
     using DeletePet;
 
-
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class PetController : BaseController<PetController>

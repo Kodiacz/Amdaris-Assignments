@@ -5,7 +5,6 @@
     using UpdateReceptionist;
     using DeleteReceptionist;
 
-
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class ReceptionistController : BaseController<ReceptionistController>
