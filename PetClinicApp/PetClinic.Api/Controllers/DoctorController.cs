@@ -61,7 +61,7 @@
         /// <param name="updateDoctorDto"></param>
         /// <param name="doctorId"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPatch]
         [Route("{doctorId}")]
         [ModelValidationFilter]
         public async Task<IActionResult> Update(UpdateDoctorDto updateDoctorDto, int doctorId)
