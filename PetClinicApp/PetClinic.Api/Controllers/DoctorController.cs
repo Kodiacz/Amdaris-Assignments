@@ -15,7 +15,6 @@
         /// <returns></returns>
         [HttpGet]
         [ActionName(nameof(GetAll))]
-        [ModelValidationFilter]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -64,6 +63,7 @@
         /// <returns></returns>
         [HttpPut]
         [Route("{doctorId}")]
+        [ModelValidationFilter]
         public async Task<IActionResult> Update(UpdateDoctorDto updateDoctorDto, int doctorId)
         {
             UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto); 

@@ -61,7 +61,7 @@
         /// <returns>returns a dto created from the owner</returns>
         [HttpPost]
         [ActionName(nameof(Create))]
-        //[ModelValidationFilter]
+        [ModelValidationFilter]
         public async Task<IActionResult> Create([FromBody] CreateOwnerDto createOwnerDto)
         {
             CreateOwner command = base.Mapper.Map<CreateOwner>(createOwnerDto);
@@ -79,7 +79,7 @@
         [HttpPut]
         [ActionName(nameof(Update))]
         [Route("{ownerId}")]
-        //[ModelValidationFilter]
+        [ModelValidationFilter]
         public async Task<IActionResult> Update([FromBody] UpdateOwnerDto updateOwnerDto, int ownerId)
         {
             UpdateOwner command = this.Mapper.Map<UpdateOwner>(updateOwnerDto);
