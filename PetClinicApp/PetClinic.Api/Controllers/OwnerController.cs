@@ -23,12 +23,16 @@
             return Ok(ownersDto);
         }
 
-        //[HttpGet]
-        //[ActionName(nameof(GetAllOwnerPets))]
-        //public async Task<IActionResult> GetAllOwnerPets()
-        //{
-
-        //}
+        [HttpGet]
+        [Route("{ownerId}")]
+        [ActionName(nameof(GetAllOwnerPets))]
+        public async Task<IActionResult> GetAllOwnerPets(int ownerId)
+        {
+            GetAllOwnerPets command = new() { OwnerId = ownerId };
+            List<Pet> petEntities = await base.Mediator.Send(command);
+            List<GetPetDto> getPetDtos = base.Mapper.Map<List<GetPetDto>>(petEntities);
+            return Ok(getPetDtos);
+        }
 
         /// <summary>
         /// Gets a spasific owner with his ID
