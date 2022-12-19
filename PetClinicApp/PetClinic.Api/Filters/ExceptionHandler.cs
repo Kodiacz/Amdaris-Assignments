@@ -1,4 +1,6 @@
-﻿namespace PetClinic.Api.Filters
+﻿using System.Net;
+
+namespace PetClinic.Api.Filters
 {
     public class ExceptionHandler : IExceptionFilter
     {
@@ -11,8 +13,19 @@
 
         public void OnException(ExceptionContext context)
         {
+            var exception = context.Exception;
+
             logger.LogError(context.Exception.Message);
-            context.Result = new StatusCodeResult(500);
+            
+            ProblemDetails problemDeitals = new()
+            {
+                Title = exception.Message,
+                Status = (int)HttpStatusCode.InternalServerError,
+            };
+
+            context.Result = new ObjectResult(problemDeitals);
+
+            context.ExceptionHandled = true;
         }
     }
 }
