@@ -21,63 +21,46 @@
         }
 
         [HttpGet]
-        [ActionName(nameof(GetById))]
         [Route("{petId}")]
+        [ActionName(nameof(GetById))]
         public async Task<IActionResult> GetById(int petId)
         {
             GetPetById query = new() { Id = petId };
             Pet petEntity = await base.Mediator.Send(query);
-
-            if (petEntity == null)
-            {
-                return NotFound();
-            }
-
             GetPetDto getPetDto = base.Mapper.Map<GetPetDto>(petEntity);
-
             return Ok(getPetDto);
         }
 
         [HttpPost]
-        [ActionName(nameof(Create))]
         [ModelValidationFilter]
+        [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreatePetDto createPetDto)
         {
             CreatePet command = base.Mapper.Map<CreatePet>(createPetDto);
-
             Pet newPetEntity = await base.Mediator.Send(command);
             GetPetDto getPetDto = base.Mapper.Map<GetPetDto>(newPetEntity);
             return CreatedAtAction(nameof(GetById), new { petId = newPetEntity.Id }, getPetDto);
         }
 
         [HttpPut]
-        [ActionName(nameof(Update))]
         [Route("{petId}")]
         [ModelValidationFilter]
+        [ActionName(nameof(Update))]
         public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto, int petId)
         {
             UpdatePet command = base.Mapper.Map<UpdatePet>(updatePetDto);
             command.Id = petId;
-
             Pet updatedPetEntity = await base.Mediator.Send(command);
-
-            if (updatedPetEntity == null)
-            {
-                return NotFound();
-            }
-
             return NoContent();
         }
 
         [HttpDelete]
-        [ActionName(nameof(Delete))]
         [Route("petId")]
+        [ActionName(nameof(Delete))]
         public async Task<IActionResult> Delete(int petId)
         {
             DeleteSoft command = new() { Id = petId };
-
             Pet deletedPetEntity = await base.Mediator.Send(command);
-
             return NoContent();
         }
     }

@@ -16,12 +16,6 @@
         {
             GetAllReceptionists query = new();
             List<Receptionist> receptionist = await base.Mediator.Send(query);
-
-            if (receptionist == null)
-            {
-                return NotFound();
-            }
-
             List<GetReceptionistDto> getReceptionistDto = base.Mapper.Map<List<GetReceptionistDto>>(receptionist);
             return Ok(receptionist);
         }
@@ -34,19 +28,13 @@
         {
             GetByIdReceptionist query = new() { Id = receptionistId };
             Receptionist receptionist = await base.Mediator.Send(query);
-
-            if (receptionist == null)
-            {
-                return NotFound();
-            }
-
             GetReceptionistDto getReceptionistDto = base.Mapper.Map<GetReceptionistDto>(receptionist);
             return Ok(receptionist);
         }
 
         [HttpPost]
-        [ActionName(nameof(Create))]
         [ModelValidationFilter]
+        [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreateReceptionistDto createReceptionistDto)
         {
             CreateReceptionist command = base.Mapper.Map<CreateReceptionist>(createReceptionistDto);
@@ -64,14 +52,7 @@
         {
             UpdateReceptionist command = base.Mapper.Map<UpdateReceptionist>(updateReceptionistDto);
             command.Id = receptionistId;
-
             Receptionist updatedReceptionistEntity = await base.Mediator.Send(command);
-
-            if (updatedReceptionistEntity == null)
-            {
-                return NotFound();
-            }
-
             return NoContent();
         }
 
@@ -81,9 +62,7 @@
         public async Task<IActionResult> Delete(int receptionistId)
         {
             DeleteSoft command = new() { Id = receptionistId };
-
             Receptionist deletedReceptionistEntity = await base.Mediator.Send(command);
-
             return NoContent();
         }
     }

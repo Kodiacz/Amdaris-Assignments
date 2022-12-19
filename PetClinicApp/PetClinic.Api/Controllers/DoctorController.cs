@@ -66,7 +66,7 @@
         [ModelValidationFilter]
         public async Task<IActionResult> Update(UpdateDoctorDto updateDoctorDto, int doctorId)
         {
-            UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto); 
+            UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto);
             command.Id = doctorId;
             Doctor result = await base.Mediator.Send(command);
             return NoContent();
@@ -79,23 +79,13 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpDelete]
-        [ActionName(nameof(Delete))]
         [Route("doctorId")]
+        [ActionName(nameof(Delete))]
         public async Task<IActionResult> Delete(int doctorId)
         {
-            DeleteSoft command = new DeleteSoft()
-            {
-                Id = doctorId
-            };
-
-                Doctor result = await base.Mediator.Send(command);
-
-                if (result == null)
-                {
-                    return NotFound();
-                }
-
-                return NoContent();
+            DeleteSoft command = new DeleteSoft() { Id = doctorId };
+            Doctor doctor = await base.Mediator.Send(command);
+            return NoContent();
         }
     }
 }

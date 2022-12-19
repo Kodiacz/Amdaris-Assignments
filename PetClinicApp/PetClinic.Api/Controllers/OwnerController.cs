@@ -41,16 +41,8 @@
         public async Task<IActionResult> GetById(int ownerId)
         {
             GetOwnerById command = new GetOwnerById() { Id = ownerId, };
-
             Owner owner = await base.Mediator.Send(command);
-
-            //if (owner == null)
-            //{
-            //    return NotFound();
-            //}
-
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
-
             return Ok(getOwnerDto);
         }
 
@@ -60,8 +52,8 @@
         /// <param name="createOwnerDto"></param>
         /// <returns>returns a dto created from the owner</returns>
         [HttpPost]
-        [ActionName(nameof(Create))]
         [ModelValidationFilter]
+        [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreateOwnerDto createOwnerDto)
         {
             CreateOwner command = base.Mapper.Map<CreateOwner>(createOwnerDto);
@@ -77,21 +69,14 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpPut]
-        [ActionName(nameof(Update))]
         [Route("{ownerId}")]
         [ModelValidationFilter]
+        [ActionName(nameof(Update))]
         public async Task<IActionResult> Update([FromBody] UpdateOwnerDto updateOwnerDto, int ownerId)
         {
             UpdateOwner command = this.Mapper.Map<UpdateOwner>(updateOwnerDto);
             command.Id = ownerId;
-
             Owner owner = await base.Mediator.Send(command);
-
-            if (owner == null)
-            {
-                return NoContent();
-            }
-
             return NoContent();
         }
 
@@ -102,19 +87,12 @@
         /// <param name="ownerId"></param>
         /// <returns></returns>
         [HttpDelete]
-        [ActionName(nameof(Delete))]
         [Route("{ownerId}")]
+        [ActionName(nameof(Delete))]
         public async Task<IActionResult> Delete(int ownerId)
         {
             DeleteSoft command = new() { Id = ownerId };
-
             Owner owner = await base.Mediator.Send(command);
-
-            if (owner == null)
-            {
-                return NoContent();
-            }
-
             return NoContent();
         }
     }
