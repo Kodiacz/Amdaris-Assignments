@@ -1,0 +1,4 @@
+﻿global using MediatR;
+global using PetCare.Application.Interfaces;
+global using PetCare.Domain.Entities;
+global using PetCare.Application.Exceptions;
