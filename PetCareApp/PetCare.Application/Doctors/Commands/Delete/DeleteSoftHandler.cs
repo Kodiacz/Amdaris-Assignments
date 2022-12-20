@@ -13,9 +13,9 @@
         {
             var doctor = await this.unitOfWorkRepo.DoctorRepository.GetByIdAsync(request.Id);
 
-            if (!doctor.IsDeleted)
+            if (!doctor?.IsDeleted ?? false)
             {
-                doctor.IsDeleted = true;
+                doctor!.IsDeleted = true;
             }
             else
             {

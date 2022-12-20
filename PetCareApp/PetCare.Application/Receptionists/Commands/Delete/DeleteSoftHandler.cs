@@ -13,9 +13,9 @@
         {
             Receptionist receptionist = await this.unitOfWorkRepo.ReceptionistRepository.GetByIdAsync(request.Id);
 
-            if (!receptionist.IsDeleted)
+            if (!receptionist?.IsDeleted ?? false)
             {
-                receptionist.IsDeleted = true;
+                receptionist!.IsDeleted = true;
             }
             else
             {

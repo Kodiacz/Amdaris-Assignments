@@ -13,9 +13,9 @@
         {
             Owner owner = await this.unitOfWorkRepo.OwnerRepository.GetByIdAsync(request.Id);
 
-            if (owner?.IsDeleted ?? false)
+            if (!owner?.IsDeleted ?? false)
             {
-                owner.IsDeleted = true;
+                owner!.IsDeleted = true;
             }
             else
             {

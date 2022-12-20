@@ -13,9 +13,9 @@
         {
             Pet pet = await this.unitOfWorkRepo.PetRepository.GetByIdAsync(request.Id);
 
-            if (!pet.IsDeleted)
+            if (!pet?.IsDeleted ?? false)
             {
-                pet.IsDeleted = true;
+                pet!.IsDeleted = true;
             }
             else
             {
