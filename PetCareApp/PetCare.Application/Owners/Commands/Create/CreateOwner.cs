@@ -2,12 +2,12 @@
 {
     public class CreateOwner : IRequest<Owner>
     {
-        public string FirstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
-        public string LastName { get; set; }
+        public string LastName { get; set; } = null!;
 
         public int Age { get; set; }
 
-        public string Phonenumber { get; set; }
+        public string Phonenumber { get; set; } = null!;
     }
 }
