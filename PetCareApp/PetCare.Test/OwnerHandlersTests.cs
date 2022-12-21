@@ -4,18 +4,23 @@
     using CreateOwners;
     using DeleteOwners;
     using UpdateOwners;
+    using System.Linq.Expressions;
+using System.Linq;
+using Azure.Core;
 
     [TestFixture]
     public class OwnerHandlersTests
     {
         private Mock<IUnitOfWork> mockUnitOfWork;
         private Mock<IOwnerRepository> mockOwnerRepository;
+        private Mock<IPetRepository> mockPetRepository;
 
         [SetUp]
         public void Setup()
         {
             mockUnitOfWork = new();
             mockOwnerRepository = new();
+            mockPetRepository = new();
         }
 
         [Test]
@@ -233,6 +238,18 @@
             var handler = new GetOwnerByIdHandler(mockUnitOfWork.Object);
 
             Assert.ThrowsAsync<ArgumentNullException>(() => handler.Handle(command, default));
+        }
+
+        [Test]
+        public async Task GetOwnerPets_Handler_Should_Throw_ArgumrntNullException()
+        {
+            mockPetRepository.Setup(x => x.GetAllAsync(x => x.OwnerId == 1 && !x.IsDeleted)).ReturnsAsync((List<Pet>)null);
+            mockUnitOfWork.Setup(x => x.PetRepository).Returns(mockPetRepository.Object);
+
+            GetAllOwnerPets query = new() { OwnerId = 1 };
+            GetAllOwnerPetsHandler handler = new(mockUnitOfWork.Object);
+
+            Assert.ThrowsAsync<ArgumentNullException>(() => handler.Handle(query, default));
         }
     }
 }
