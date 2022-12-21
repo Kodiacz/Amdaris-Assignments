@@ -161,7 +161,7 @@ using Azure.Core;
                     LastName = "Mesho",
                     Age = 45,
                     Phonenumber = "0893399284",
-                    IsDeleted = true,
+                    IsDeleted = false,
                 },
                 new Owner()
                 {
