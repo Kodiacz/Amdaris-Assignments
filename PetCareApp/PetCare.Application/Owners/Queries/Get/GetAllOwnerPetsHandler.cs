@@ -11,10 +11,12 @@
 
         public async Task<List<Pet>> Handle(GetAllOwnerPets request, CancellationToken cancellationToken)
         {
-            return await this.unitOfWork
+            var testc =  await this.unitOfWork
                              .PetRepository
-                             .GetAllAsync(p => !p.IsDeleted && p.OwnerId == request.OwnerId);
+                             .GetAllAsync(p => !p.IsDeleted && p.OwnerId == request.OwnerId) 
+                             ?? throw new ArgumentNullException($"The {nameof(Owner)} with {request.OwnerId} Id does not exist");
 
+            return testc;
         }
     }
 }
