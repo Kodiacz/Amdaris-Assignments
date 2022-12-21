@@ -1,6 +1,4 @@
-﻿using System.Net;
-
-namespace PetCare.Api.Filters
+﻿namespace PetCare.Api.Filters
 {
     public class ExceptionHandler : IExceptionFilter
     {
@@ -13,19 +11,30 @@ namespace PetCare.Api.Filters
 
         public void OnException(ExceptionContext context)
         {
-            var exception = context.Exception;
-
             logger.LogError(context.Exception.Message);
-            
+
             ProblemDetails problemDeitals = new()
             {
-                Title = exception.Message,
-                Status = (int)HttpStatusCode.InternalServerError,
+                Title = context.Exception.Message,
+                Status = GetStatusCode(context),
             };
 
             context.Result = new ObjectResult(problemDeitals);
 
             context.ExceptionHandled = true;
+        }
+
+        private int GetStatusCode(ExceptionContext context)
+        {
+            switch (context.Exception)
+            {
+                case AlreadyDeletedException:
+                    return (int)HttpStatusCode.MethodNotAllowed; break;
+                case ArgumentNullException:
+                    return (int)HttpStatusCode.NotFound; break;
+                default:
+                    return (int)HttpStatusCode.InternalServerError; break;
+            }
         }
     }
 }
