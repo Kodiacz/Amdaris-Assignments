@@ -2,15 +2,15 @@
 {
     public class CreateReceptionist : IRequest<Receptionist>
     {
-        public string FirstName { get; init; }
+        public string FirstName { get; init; } = null!;
 
-        public string LastName { get; init; }
+        public string LastName { get; init; } = null!;
 
         public int Age { get; init; }
 
-        public string Phonenumber { get; init; }
+        public string Phonenumber { get; init; } = null!;
 
-        public string JobDescription { get; set; }
+        public string JobDescription { get; set; } = null!;
 
         public DateTime StartedJobDate { get; set; }
     }

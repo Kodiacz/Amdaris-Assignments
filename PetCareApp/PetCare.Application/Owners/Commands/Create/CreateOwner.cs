@@ -7,7 +7,7 @@
         public string LastName { get; set; } = null!;
 
         public int Age { get; set; }
-
+        
         public string Phonenumber { get; set; } = null!;
     }
 }
