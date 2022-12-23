@@ -1,11 +1,9 @@
 ﻿namespace PetCare.Interfaces
 {
-    using PetCare.Domain.Entities;
-
     public interface IDoctorRepository
     {
         /// <summary>
-        /// Adding a Doctor type entity in the database
+        /// Adds a Doctor type entity in the database
         /// </summary>
         /// <param name="doctor">Doctor type variable</param>
         /// <returns></returns>
@@ -22,8 +20,39 @@
         /// Gets the entity from the database by its Id
         /// </summary>
         /// <param name="id">The id of the Doctor entity</param>
+        /// <param name="detach">bolean that has default value false and desides if the 
+        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
         /// <returns>Return the Doctor entity</returns>
-        Task<Doctor> GetByIdAsync(int id);
+        Task<Doctor> GetByIdAsync(int id, bool detach = false);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause
+        /// </summary>
+        /// <param name="id">The id of the Doctor entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <param name="detach">bolean that has default value false and desides if the 
+        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
+        /// <returns>Return the Doctor entity</returns>
+        Task<Doctor> GetByIdAsync(int id, Expression<Func<Doctor, bool>> search, bool detach = false);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Doctor entity</param>
+        /// <returns>Return the Doctor entity</returns>
+        Task<Doctor> GetByIdAsReadonlyAsync(int id);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Doctor entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <param name="detach">bolean that has default value false and desides if the 
+        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
+        /// <returns>Return the Doctor entity</returns>
+        Task<Doctor> GetByIdAsReadonlyAsync(int id, Expression<Func<Doctor, bool>> search);
 
         /// <summary>
         /// Gets a collection of Doctor type entites
