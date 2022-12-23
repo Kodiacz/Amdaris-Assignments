@@ -55,7 +55,7 @@
                 StartedJobDate = DateTime.Now, 
             };
 
-            mockDoctorRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(ownerEntity);
+            mockDoctorRepository.Setup(or => or.GetByIdAsync(1, false)).ReturnsAsync(ownerEntity);
             mockUnitOfWork.Setup(x => x.DoctorRepository).Returns(mockDoctorRepository.Object);
 
             DeleteSoft command = new DeleteSoft() { Id = ownerEntity.Id };
@@ -81,7 +81,7 @@
                 IsDeleted = true,
             };
 
-            mockDoctorRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(ownerEntity);
+            mockDoctorRepository.Setup(or => or.GetByIdAsync(1, false)).ReturnsAsync(ownerEntity);
             mockUnitOfWork.Setup(x => x.DoctorRepository).Returns(mockDoctorRepository.Object);
 
             DeleteSoft command = new DeleteSoft() { Id = ownerEntity.Id };
@@ -105,7 +105,7 @@
                 IsDeleted = true,
             };
 
-            mockDoctorRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(ownerEntity);
+            mockDoctorRepository.Setup(or => or.GetByIdAsync(1, false)).ReturnsAsync(ownerEntity);
             mockUnitOfWork.Setup(x => x.DoctorRepository).Returns(mockDoctorRepository.Object);
 
             DeleteSoft command = new DeleteSoft() { Id = ownerEntity.Id };
@@ -212,7 +212,7 @@
                 IsDeleted = false,
             };
 
-            mockDoctorRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(owner);
+            mockDoctorRepository.Setup(or => or.GetByIdAsync(1, false)).ReturnsAsync(owner);
             mockUnitOfWork.Setup(x => x.DoctorRepository).Returns(mockDoctorRepository.Object);
 
             GetDoctorById command = new() { Id = 1 };
@@ -240,7 +240,7 @@
                 IsDeleted = false,
             };
 
-            mockDoctorRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(owner);
+            mockDoctorRepository.Setup(or => or.GetByIdAsync(1, false)).ReturnsAsync(owner);
             mockUnitOfWork.Setup(x => x.DoctorRepository).Returns(mockDoctorRepository.Object);
 
             GetDoctorById command = new() { Id = 5 };
