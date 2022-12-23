@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore.ChangeTracking;
     using PetCare.Domain.Entities;
     using PetCare.Interfaces;
-using System.Linq.Expressions;
+    using System.Linq.Expressions;
 
     public class DoctorRepository : IDoctorRepository
     {
@@ -76,14 +76,65 @@ using System.Linq.Expressions;
         }
 
         /// <summary>
+        /// Gets the entity from the database by its Id and its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Doctor entity</param>
+        /// <returns>Return the Doctor entity</returns>
+        public async Task<Doctor> GetByIdAsReadonlyAsync(int id)
+        {
+            var doctor = await this.context
+                .Doctors
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
+                .AsNoTracking()
+                .Where(d => d.Id == id && !d.IsDeleted)
+                .FirstOrDefaultAsync();
+                
+            return doctor!;
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Doctor entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <param name="detach">bolean that has default value false and desides if the 
+        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
+        /// <returns>Return the Doctor entity</returns>
+        public async Task<Doctor> GetByIdAsReadonlyAsync(int id, Expression<Func<Doctor, bool>> search)
+        {
+            var doctor = await this.context
+                .Doctors
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
+                .AsNoTracking()
+                .Where(search)
+                .FirstOrDefaultAsync(doctor => doctor.Id == id)!;
+
+            return doctor!;
+        }
+
+        /// <summary>
         /// Gets the entity from the database by its Id
         /// </summary>
         /// <param name="id">The id of the Doctor entity</param>
         /// <returns>Return the Doctor entity</returns>
-        public async Task<Doctor> GetByIdAsync(int id)
+        public async Task<Doctor> GetByIdAsync(int id, bool detach = false)
         {
-            return (await this.context.Doctors
+            var doctor = (await this.context
+                .Doctors
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
+                .Where(d => !d.IsDeleted && d.Id == id)
                 .FirstOrDefaultAsync(doctor => doctor.Id == id))!;
+            
+            if (detach)
+            {
+                this.Detach(doctor);
+            }
+
+            return doctor;
         }
 
         /// <summary>
@@ -91,12 +142,22 @@ using System.Linq.Expressions;
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Doctor> GetByIdAsync(int id, Expression<Func<Doctor, bool>> search)
+        public async Task<Doctor> GetByIdAsync(int id, Expression<Func<Doctor, bool>> search, bool detach = false)
         {
-            return (await this.context.Doctors
+            var doctor = await this.context
+                .Doctors
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
                 .Where(search)
-                .FirstOrDefaultAsync(doctor => doctor.Id == id && !doctor.IsDeleted))!;
-        }
+                .FirstOrDefaultAsync(doctor => doctor.Id == id && !doctor.IsDeleted)!;
+
+            if (detach)
+            {
+                this.Detach(doctor!);
+            }
+
+            return doctor!;
+         }
 
         /// <summary>
         /// Saves all changes that are done
