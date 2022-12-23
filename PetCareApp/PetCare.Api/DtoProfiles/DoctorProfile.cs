@@ -10,6 +10,7 @@
         public DoctorProfile()
         {
             CreateMap<Doctor, GetDoctorDto>();
+            CreateMap<Doctor, UpdateDoctorDto>();
             CreateMap<CreateDoctorDto, CreateDoctor>();
             CreateMap<UpdateDoctorDto, UpdateDoctor>();
         }
