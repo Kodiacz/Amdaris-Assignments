@@ -4,8 +4,7 @@
     using CreateOwner;
     using UpdateOwner;
     using DeleteOwner;
-using PetCare.Application.Owners.Commands.PartialUpdate;
-using PetCare.Application.Owners.Queries.Get;
+    using PartialUpdateOwner;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -89,6 +88,7 @@ using PetCare.Application.Owners.Queries.Get;
         [HttpPatch]
         [Route("{ownerId}")]
         [ModelValidationFilter]
+        [ActionName(nameof(PartialUpdate))]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateOwnerDto> jsonPatchDocument, int ownerId)
         {
             GetOwnerByIdAsReadonly query = new() { Id = ownerId };
