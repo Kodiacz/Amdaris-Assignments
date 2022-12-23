@@ -215,9 +215,9 @@
             mockReceptionistRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(owner);
             mockUnitOfWork.Setup(x => x.ReceptionistRepository).Returns(mockReceptionistRepository.Object);
 
-            GetByIdReceptionist command = new() { Id = 1 };
+            GetReceptionistById command = new() { Id = 1 };
 
-            var handler = new GetByIdReceptionistHandler(mockUnitOfWork.Object);
+            var handler = new GetReceptionistByIdHandler(mockUnitOfWork.Object);
 
             var result = await handler.Handle(command, default);
 
@@ -243,9 +243,9 @@
             mockReceptionistRepository.Setup(or => or.GetByIdAsync(1)).ReturnsAsync(owner);
             mockUnitOfWork.Setup(x => x.ReceptionistRepository).Returns(mockReceptionistRepository.Object);
 
-            GetByIdReceptionist command = new() { Id = 5 };
+            GetReceptionistById command = new() { Id = 5 };
 
-            var handler = new GetByIdReceptionistHandler(mockUnitOfWork.Object);
+            var handler = new GetReceptionistByIdHandler(mockUnitOfWork.Object);
 
             Assert.ThrowsAsync<ArgumentNullException>(() => handler.Handle(command, default));
         }
