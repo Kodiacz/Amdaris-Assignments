@@ -22,8 +22,6 @@
                 StartedJobDate = request.StartedJobDate,    
             };
 
-            this.unitOfWork.DoctorRepository.Detach(doctor);
-
             await this.unitOfWork.DoctorRepository.UpdateAsync(doctor);
             await this.unitOfWork.SaveAsync();
 

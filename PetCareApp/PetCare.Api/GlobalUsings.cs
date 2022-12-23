@@ -40,6 +40,7 @@ global using GetOwner = PetCare.Application.Owners.Queries.Get;
 global using CreateOwner = PetCare.Application.Owners.Commands.Create;
 global using UpdateOwner = PetCare.Application.Owners.Commands.Update;
 global using DeleteOwner = PetCare.Application.Owners.Commands.Delete;
+global using PartialUpdateOwner = PetCare.Application.Owners.Commands.PartialUpdate;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.OwnerConstants;
 
 //For PetController
