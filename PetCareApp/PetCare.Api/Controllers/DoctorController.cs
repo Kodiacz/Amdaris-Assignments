@@ -4,6 +4,7 @@
     using CreateDoctor;
     using UpdateDoctor;
     using DeleteDoctor;
+    using UpdatePartialDoctor;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -61,7 +62,7 @@
         /// <param name="updateDoctorDto"></param>
         /// <param name="doctorId"></param>
         /// <returns></returns>
-        [HttpPatch]
+        [HttpPut]
         [Route("{doctorId}")]
         [ModelValidationFilter]
         public async Task<IActionResult> Update(UpdateDoctorDto updateDoctorDto, int doctorId)
@@ -71,6 +72,26 @@
             Doctor result = await base.Mediator.Send(command);
             return NoContent();
         }
+
+        [HttpPatch]
+        [Route("{doctorId}")]
+        [ModelValidationFilter]
+        public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateDoctorDto> jsonPatchDocument, int doctorId)
+        {
+            GetDoctorById query = new() { Id = doctorId };
+            Doctor doctorForUpdate = await base.Mediator.Send(query);
+
+            UpdateDoctorDto updateDoctorDto = base.Mapper.Map<UpdateDoctorDto>(doctorForUpdate);
+
+            jsonPatchDocument.ApplyTo(updateDoctorDto, ModelState);
+
+            PartialUpdateDoctor command = base.Mapper.Map<PartialUpdateDoctor>(updateDoctorDto);
+            command.Id = doctorId;
+
+            doctorForUpdate = await base.Mediator.Send(command);
+
+            return NoContent();
+        } 
 
         /// <summary>
         /// Marks the entity as deleted but it doesn't really 
