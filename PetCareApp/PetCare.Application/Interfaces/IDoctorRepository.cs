@@ -42,6 +42,13 @@
         /// Saves all changes that are done
         /// </summary>
         /// <returns></returns>
+
+        /// <summary>
+        /// Detaches given entity from the context
+        /// </summary>
+        /// <param name="entity">Entity to be detached</param>
+        public void Detach(Doctor entity);
+
         Task SaveAsync();
     }
 }
