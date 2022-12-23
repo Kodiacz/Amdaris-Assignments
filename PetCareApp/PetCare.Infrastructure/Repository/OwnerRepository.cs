@@ -66,6 +66,71 @@
         }
 
         /// <summary>
+        /// Gets all the Owners and uses AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Owner>> GetAllAsReadOnlyAsync()
+        {
+            return await this.context
+                .Owners
+                .AsNoTracking()
+                .Include(Owner => Owner.Pets)
+                .Where(d => !d.IsDeleted)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all the Owners and accepts a predicate for sarch term also uses
+        /// AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Owner>> GetAllAsReadOnlyAsync(Expression<Func<Owner, bool>> search)
+        {
+            return await this.context
+                .Owners
+                .AsNoTracking()
+                .Include(Owner => Owner.Pets)
+                .Where(search)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Owner entity</param>
+        /// <returns>Return the Owner entity</returns>
+        public async Task<Owner> GetByIdAsReadonlyAsync(int id)
+        {
+            var owner = await this.context
+                .Owners
+                .Include(Owner => Owner.Pets)
+                .AsNoTracking()
+                .Where(d => d.Id == id && !d.IsDeleted)
+                .FirstOrDefaultAsync();
+
+            return owner!;
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Owner entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <returns>Return the Owner entity</returns>
+        public async Task<Owner> GetByIdAsReadonlyAsync(int id, Expression<Func<Owner, bool>> search)
+        {
+            var owner = await this.context
+                .Owners
+                .Include(Owner => Owner.Pets)
+                .AsNoTracking()
+                .Where(search)
+                .FirstOrDefaultAsync(owner => owner.Id == id)!;
+
+            return owner!;
+        }
+
+        /// <summary>
         /// Gets the entity from the database by its Id
         /// </summary>
         /// <param name="id">The id of the Owner entity</param>

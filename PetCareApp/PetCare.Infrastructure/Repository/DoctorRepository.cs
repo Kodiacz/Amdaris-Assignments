@@ -76,6 +76,37 @@
         }
 
         /// <summary>
+        /// Gets all the Doctors and uses AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Doctor>> GetAllAsReadOnlyAsync()
+        {
+            return await this.context
+                .Doctors
+                .AsNoTracking()
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
+                .Where(d => !d.IsDeleted)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all the Doctors and accepts a predicate for sarch term also uses
+        /// AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Doctor>> GetAllAsReadOnlyAsync(Expression<Func<Doctor, bool>> search)
+        {
+            return await this.context
+                .Doctors
+                .AsNoTracking()
+                .Include(Doctor => Doctor.Patients)
+                .Include(Doctor => Doctor.OwnersOfPatients)
+                .Where(search)
+                .ToListAsync();
+        }
+
+        /// <summary>
         /// Gets the entity from the database by its Id and its using AsNoTracking method
         /// </summary>
         /// <param name="id">The id of the Doctor entity</param>

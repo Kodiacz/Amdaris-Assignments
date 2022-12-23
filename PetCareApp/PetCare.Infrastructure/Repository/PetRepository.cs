@@ -49,7 +49,6 @@
         {
             return await this.context
                 .Pets
-                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(pet => !pet.IsDeleted)
@@ -66,11 +65,75 @@
             //TODO: Ask if it is practical to use two Where clauses
             return await this.context
                 .Pets
-                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(search)
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all the Pets and uses AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Pet>> GetAllAsReadOnlyAsync()
+        {
+            return await this.context
+                .Pets
+                .AsNoTracking()
+                .Where(p => !p.IsDeleted)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all the Doctors and accepts a predicate for sarch term also uses
+        /// AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<Doctor>> GetAllAsReadOnlyAsync(Expression<Func<Doctor, bool>> search)
+        {
+            return await this.context
+                .Doctors
+                .AsNoTracking()
+                .Where(search)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Pet entity</param>
+        /// <returns>Return the Pet entity</returns>
+        public async Task<Pet> GetByIdAsReadonlyAsync(int id)
+        {
+            var owner = await this.context
+                .Pets
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
+                .AsNoTracking()
+                .Where(d => d.Id == id && !d.IsDeleted)
+                .FirstOrDefaultAsync();
+
+            return owner!;
+        }
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Pet entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <returns>Return the Pet entity</returns>
+        public async Task<Pet> GetByIdAsReadonlyAsync(int id, Expression<Func<Pet, bool>> search)
+        {
+            var owner = await this.context
+                .Pets
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
+                .AsNoTracking()
+                .Where(search)
+                .FirstOrDefaultAsync(owner => owner.Id == id)!;
+
+            return owner!;
         }
 
         /// <summary>
@@ -83,7 +146,6 @@
             return (await this.context
                 .Pets
                 .Include(p => p.Owner)
-                .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(pet => pet.Id == id && !pet.IsDeleted)
                 .FirstOrDefaultAsync())!;
@@ -99,7 +161,6 @@
         {
             return (await this.context
                 .Pets
-                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(search)
