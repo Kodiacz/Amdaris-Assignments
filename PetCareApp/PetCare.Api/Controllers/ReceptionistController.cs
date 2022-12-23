@@ -25,7 +25,7 @@
         [ActionName(nameof(GetById))]
         public async Task<IActionResult> GetById(int receptionistId)
         {
-            GetByIdReceptionist query = new() { Id = receptionistId };
+            GetReceptionistById query = new() { Id = receptionistId };
             Receptionist receptionist = await base.Mediator.Send(query);
             GetReceptionistDto getReceptionistDto = base.Mapper.Map<GetReceptionistDto>(receptionist);
             return Ok(receptionist);
