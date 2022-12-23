@@ -35,7 +35,7 @@
         /// Gets all the owners and accepts a predicate for sarch term
         /// </summary>
         /// <returns></returns>
-        Task<List<Owner>> GetAllAsync(Expression<Func<Owner, bool>> search)
+        Task<List<Owner>> GetAllAsync(Expression<Func<Owner, bool>> search);
 
         /// <summary>
         /// Gets all the Owners and uses AsNoTracking method
