@@ -1,6 +1,6 @@
 ﻿namespace PetCare.Application.Receptionists.Queries.Get
 {
-    public class GetByIdReceptionist : IRequest<Receptionist>
+    public class GetReceptionistByIdAsReadonly : IRequest<Receptionist>
     {
         public int Id { get; set; }
     }
