@@ -5,6 +5,7 @@ global using System.ComponentModel.DataAnnotations;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
+global using Microsoft.AspNetCore.JsonPatch;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 
@@ -29,6 +30,7 @@ global using PetCare.Api.Dtos.DoctorDtos;
 global using GetDoctor = PetCare.Application.Doctors.Queries.Get;
 global using CreateDoctor = PetCare.Application.Doctors.Commands.Create;
 global using UpdateDoctor = PetCare.Application.Doctors.Commands.Update;
+global using UpdatePartialDoctor = PetCare.Application.Doctors.Commands.PartialUpdate;
 global using DeleteDoctor = PetCare.Application.Doctors.Commands.Delete;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.DoctorConstants;
 
@@ -55,4 +57,5 @@ global using CreateReceptionist = PetCare.Application.Receptionists.Commands.Cre
 global using UpdateReceptionist = PetCare.Application.Receptionists.Commands.Update;
 global using DeleteReceptionist = PetCare.Application.Receptionists.Commands.Delete;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
+
 
