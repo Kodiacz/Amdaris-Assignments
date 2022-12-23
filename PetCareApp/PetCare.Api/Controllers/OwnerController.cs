@@ -4,6 +4,8 @@
     using CreateOwner;
     using UpdateOwner;
     using DeleteOwner;
+using PetCare.Application.Owners.Commands.PartialUpdate;
+using PetCare.Application.Owners.Queries.Get;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -69,8 +71,8 @@
         /// <summary>
         /// Updates the doctor and applies the changes in the database 
         /// </summary>
-        /// <param name="updateDoctorDto"></param>
-        /// <param name="doctorId"></param>
+        /// <param name="updateOwnerDto"></param>
+        /// <param name="ownerId"></param>
         /// <returns></returns>
         [HttpPut]
         [Route("{ownerId}")]
@@ -81,6 +83,26 @@
             UpdateOwner command = this.Mapper.Map<UpdateOwner>(updateOwnerDto);
             command.Id = ownerId;
             Owner owner = await base.Mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("{ownerId}")]
+        [ModelValidationFilter]
+        public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateOwnerDto> jsonPatchDocument, int ownerId)
+        {
+            GetOwnerByIdAsReadonly query = new() { Id = ownerId };
+            Owner doctorForUpdate = await base.Mediator.Send(query);
+
+            UpdateOwnerDto updateOwnerDto = base.Mapper.Map<UpdateOwnerDto>(doctorForUpdate);
+
+            jsonPatchDocument.ApplyTo(updateOwnerDto, ModelState);
+
+            PartialUpdateOwner command = base.Mapper.Map<PartialUpdateOwner>(updateOwnerDto);
+            command.Id = ownerId;
+
+            doctorForUpdate = await base.Mediator.Send(command);
+
             return NoContent();
         }
 
