@@ -31,6 +31,17 @@
         /// <returns></returns>
         Task<List<Owner>> GetAllAsync();
 
+        /// <summary>
+        /// Gets all the owners and accepts a predicate for sarch term
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Owner>> GetAllAsync(Expression<Func<Owner, bool>> search)
+
+        /// <summary>
+        /// Gets all the Owners and uses AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Owner>> GetAllAsReadOnlyAsync();
 
         /// <summary>
         /// Deletes the entity by changing its IsDeleted property to true
@@ -44,5 +55,30 @@
         /// </summary>
         /// <returns></returns>
         Task SaveAsync();
+
+        /// <summary>
+        /// Gets all the Owners and accepts a predicate for sarch term also uses
+        /// AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Owner>> GetAllAsReadOnlyAsync(Expression<Func<Owner, bool>> search);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Owner entity</param>
+        /// <returns>Return the Owner entity</returns>
+        Task<Owner> GetByIdAsReadonlyAsync(int id);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Owner entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <param name="detach">bolean that has default value false and desides if the 
+        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
+        /// <returns>Return the Owner entity</returns>
+        Task<Owner> GetByIdAsReadonlyAsync(int id, Expression<Func<Owner, bool>> search);
     }
 }

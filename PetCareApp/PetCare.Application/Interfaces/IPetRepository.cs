@@ -51,5 +51,36 @@ using System.Linq.Expressions;
         /// </summary>
         /// <returns></returns>
         Task SaveAsync();
+
+        /// <summary>
+        /// Gets all the Pets and uses AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Pet>> GetAllAsReadOnlyAsync();
+
+        /// <summary>
+        /// Gets all the Doctors and accepts a predicate for sarch term also uses
+        /// AsNoTracking method
+        /// </summary>
+        /// <returns></returns>
+        Task<List<Doctor>> GetAllAsReadOnlyAsync(Expression<Func<Doctor, bool>> search);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Pet entity</param>
+        /// <returns>Return the Pet entity</returns>
+        Task<Pet> GetByIdAsReadonlyAsync(int id);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="id">The id of the Pet entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <param name="detach">bolean that has default value false and desides if the 
+        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
+        /// <returns>Return the Pet entity</returns>
+        Task<Pet> GetByIdAsReadonlyAsync(int id, Expression<Func<Pet, bool>> search);
     }
 }
