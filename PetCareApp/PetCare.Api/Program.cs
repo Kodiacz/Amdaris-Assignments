@@ -8,6 +8,7 @@ builder.Services
     {
         configuration.Filters.AddApplicationFilters();
     })
+    .AddNewtonsoftJson()
     .AddJsonOptions(x =>
     {
         x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
