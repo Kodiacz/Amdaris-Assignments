@@ -78,7 +78,7 @@
         [ModelValidationFilter]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateDoctorDto> jsonPatchDocument, int doctorId)
         {
-            GetDoctorById query = new() { Id = doctorId };
+            GetDoctorByIdAsReadonly query = new() { Id = doctorId };
             Doctor doctorForUpdate = await base.Mediator.Send(query);
 
             UpdateDoctorDto updateDoctorDto = base.Mapper.Map<UpdateDoctorDto>(doctorForUpdate);
