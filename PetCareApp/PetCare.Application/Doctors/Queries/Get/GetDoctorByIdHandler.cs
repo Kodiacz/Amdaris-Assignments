@@ -12,7 +12,7 @@
         public async Task<Doctor> Handle(GetDoctorById request, CancellationToken cancellationToken)
         {
             return await this.unitOfWorkRepo.DoctorRepository.GetByIdAsync(request.Id)
-                ?? throw new ArgumentNullException($"The {nameof(Doctor)} with Id {request.Id} does not exist"); ;
+                ?? throw new ArgumentNullException($"The {nameof(Doctor)} with Id {request.Id} does not exist"); 
         }
     }
 }
