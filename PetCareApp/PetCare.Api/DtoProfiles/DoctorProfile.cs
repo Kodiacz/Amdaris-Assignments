@@ -4,6 +4,7 @@
     using CreateDoctor;
     using UpdateDoctor;
     using DeleteDoctor;
+using PetCare.Application.Doctors.Commands.PartialUpdate;
 
     public class DoctorProfile : Profile
     {
@@ -13,6 +14,7 @@
             CreateMap<Doctor, UpdateDoctorDto>();
             CreateMap<CreateDoctorDto, CreateDoctor>();
             CreateMap<UpdateDoctorDto, UpdateDoctor>();
+            CreateMap<UpdateDoctorDto, PartialUpdateDoctor>();
         }
     }
 }
