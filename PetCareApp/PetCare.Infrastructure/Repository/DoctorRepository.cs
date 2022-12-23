@@ -1,6 +1,7 @@
 ﻿namespace PetCare.Infrastructure.Repository
 {
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
     using PetCare.Domain.Entities;
     using PetCare.Interfaces;
 using System.Linq.Expressions;
@@ -35,6 +36,17 @@ using System.Linq.Expressions;
             {
                 doctor.IsDeleted = true;
             }
+        }
+
+        /// <summary>
+        /// Detaches given entity from the context
+        /// </summary>
+        /// <param name="entity">Entity to be detached</param>
+        public void Detach(Doctor entity)
+        {
+            EntityEntry entry = this.context.Entry(entity);
+
+            entry.State = EntityState.Detached;
         }
 
         /// <summary>
