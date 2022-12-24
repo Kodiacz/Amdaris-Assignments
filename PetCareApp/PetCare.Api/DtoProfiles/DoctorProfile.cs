@@ -4,7 +4,7 @@
     using CreateDoctor;
     using UpdateDoctor;
     using DeleteDoctor;
-using PetCare.Application.Doctors.Commands.PartialUpdate;
+    using UpdatePartialDoctor;
 
     public class DoctorProfile : Profile
     {

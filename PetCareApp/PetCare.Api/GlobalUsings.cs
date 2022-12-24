@@ -25,7 +25,7 @@ global using PetCare.Interfaces;
 global using PetCare.Infrastructure;
 global using PetCare.Infrastructure.Repository;
 
-// For DoctorController
+//For DoctorController
 global using PetCare.Api.Dtos.DoctorDtos;
 global using GetDoctor = PetCare.Application.Doctors.Queries.Get;
 global using CreateDoctor = PetCare.Application.Doctors.Commands.Create;
