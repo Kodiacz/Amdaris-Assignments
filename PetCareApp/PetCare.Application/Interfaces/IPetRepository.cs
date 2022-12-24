@@ -1,8 +1,5 @@
 ﻿namespace PetCare.Interfaces
 {
-    using PetCare.Domain.Entities;
-using System.Linq.Expressions;
-
     public interface IPetRepository
     {
         /// <summary>
@@ -63,7 +60,7 @@ using System.Linq.Expressions;
         /// AsNoTracking method
         /// </summary>
         /// <returns></returns>
-        Task<List<Doctor>> GetAllAsReadOnlyAsync(Expression<Func<Doctor, bool>> search);
+        Task<List<Pet>> GetAllAsReadOnlyAsync(Expression<Func<Pet, bool>> search);
 
         /// <summary>
         /// Gets the entity from the database by its Id and its using AsNoTracking method
