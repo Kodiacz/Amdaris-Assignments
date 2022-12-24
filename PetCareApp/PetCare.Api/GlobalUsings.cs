@@ -49,6 +49,7 @@ global using GetPet = PetCare.Application.Pets.Queries.Get;
 global using CreatePet = PetCare.Application.Pets.Commands.Create;
 global using UpdatePet = PetCare.Application.Pets.Commands.Update;
 global using DeletePet = PetCare.Application.Pets.Commands.Delete;
+global using UpdatePartialPet = PetCare.Application.Pets.Commands.PartialUpdate;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.PetConstnats;
 
 //For ReceptionistController
@@ -57,6 +58,7 @@ global using GetReceptionist = PetCare.Application.Receptionists.Queries.Get;
 global using CreateReceptionist = PetCare.Application.Receptionists.Commands.Create;
 global using UpdateReceptionist = PetCare.Application.Receptionists.Commands.Update;
 global using DeleteReceptionist = PetCare.Application.Receptionists.Commands.Delete;
+global using UpdatePartialReceptionist = PetCare.Application.Receptionists.Commands.PartialUpdate;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
 
 
