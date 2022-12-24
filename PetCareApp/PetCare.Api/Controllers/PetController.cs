@@ -4,6 +4,7 @@
     using CreatePet;
     using UpdatePet;
     using DeletePet;
+    using UpdatePartialPet;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -50,6 +51,32 @@
             UpdatePet command = base.Mapper.Map<UpdatePet>(updatePetDto);
             command.Id = petId;
             Pet updatedPetEntity = await base.Mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("{petId}")]
+        [ModelValidationFilter]
+        [ActionName(nameof(PartialUpdate))]
+        public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdatePetDto> jsonPatchDocument, int petId)
+        {
+            GetPetByIdAsReadonly query = new() { Id = petId };
+            Pet doctorForUpdate = await base.Mediator.Send(query);
+
+            UpdatePetDto updatePetDto = base.Mapper.Map<UpdatePetDto>(doctorForUpdate);
+
+            jsonPatchDocument.ApplyTo(updatePetDto, ModelState);
+
+            if (!TryValidateModel(updatePetDto))
+            {
+                return BadRequest();
+            }
+
+            PartialUpdatePet command = base.Mapper.Map<PartialUpdatePet>(updatePetDto);
+            command.Id = petId;
+
+            doctorForUpdate = await base.Mediator.Send(command);
+
             return NoContent();
         }
 
