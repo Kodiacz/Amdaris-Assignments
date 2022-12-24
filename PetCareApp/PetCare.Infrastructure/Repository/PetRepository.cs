@@ -49,6 +49,7 @@
         {
             return await this.context
                 .Pets
+                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(pet => !pet.IsDeleted)
@@ -65,6 +66,7 @@
             //TODO: Ask if it is practical to use two Where clauses
             return await this.context
                 .Pets
+                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(search)
@@ -79,6 +81,9 @@
         {
             return await this.context
                 .Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
                 .AsNoTracking()
                 .Where(p => !p.IsDeleted)
                 .ToListAsync();
@@ -89,10 +94,13 @@
         /// AsNoTracking method
         /// </summary>
         /// <returns></returns>
-        public async Task<List<Doctor>> GetAllAsReadOnlyAsync(Expression<Func<Doctor, bool>> search)
+        public async Task<List<Pet>> GetAllAsReadOnlyAsync(Expression<Func<Pet, bool>> search)
         {
             return await this.context
-                .Doctors
+                .Pets
+                .Include(p => p.Owner)
+                .Include(p => p.Doctor)
+                .Include(p => p.Receptionist)
                 .AsNoTracking()
                 .Where(search)
                 .ToListAsync();
@@ -107,6 +115,7 @@
         {
             var owner = await this.context
                 .Pets
+                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .AsNoTracking()
@@ -127,6 +136,7 @@
         {
             var owner = await this.context
                 .Pets
+                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .AsNoTracking()
@@ -146,6 +156,7 @@
             return (await this.context
                 .Pets
                 .Include(p => p.Owner)
+                .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(pet => pet.Id == id && !pet.IsDeleted)
                 .FirstOrDefaultAsync())!;
@@ -161,6 +172,7 @@
         {
             return (await this.context
                 .Pets
+                .Include(p => p.Owner)
                 .Include(p => p.Doctor)
                 .Include(p => p.Receptionist)
                 .Where(search)
