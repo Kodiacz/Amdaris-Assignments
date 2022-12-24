@@ -4,6 +4,7 @@
     using CreateReceptionist;
     using UpdateReceptionist;
     using DeleteReceptionist;
+    using UpdatePartialReceptionist;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -52,6 +53,27 @@
             UpdateReceptionist command = base.Mapper.Map<UpdateReceptionist>(updateReceptionistDto);
             command.Id = receptionistId;
             Receptionist updatedReceptionistEntity = await base.Mediator.Send(command);
+            return NoContent();
+        }
+
+        [HttpPatch]
+        [Route("{receptionistId}")]
+        [ModelValidationFilter]
+        [ActionName(nameof(PartialUpdate))]
+        public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateReceptionistDto> jsonPatchDocument, int receptionistId)
+        {
+            GetReceptionistByIdAsReadonly query = new() { Id = receptionistId };
+            Receptionist doctorForUpdate = await base.Mediator.Send(query);
+
+            UpdateReceptionistDto updateReceptionistDto = base.Mapper.Map<UpdateReceptionistDto>(doctorForUpdate);
+
+            jsonPatchDocument.ApplyTo(updateReceptionistDto, ModelState);
+
+            PartialUpdateReceptionist command = base.Mapper.Map<PartialUpdateReceptionist>(updateReceptionistDto);
+            command.Id = receptionistId;
+
+            doctorForUpdate = await base.Mediator.Send(command);
+
             return NoContent();
         }
 
