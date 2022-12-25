@@ -5,6 +5,7 @@
     using UpdateReceptionist;
     using DeleteReceptionist;
     using UpdatePartialReceptionist;
+    using PetCare.Api.Dtos.PetDtos;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -71,6 +72,11 @@
 
             PartialUpdateReceptionist command = base.Mapper.Map<PartialUpdateReceptionist>(updateReceptionistDto);
             command.Id = receptionistId;
+
+            if (!TryValidateModel(updateReceptionistDto))
+            {
+                return BadRequest();
+            }
 
             doctorForUpdate = await base.Mediator.Send(command);
 

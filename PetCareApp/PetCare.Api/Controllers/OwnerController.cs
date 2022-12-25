@@ -5,6 +5,7 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
+    using PetCare.Api.Dtos.PetDtos;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -100,6 +101,11 @@
 
             PartialUpdateOwner command = base.Mapper.Map<PartialUpdateOwner>(updateOwnerDto);
             command.Id = ownerId;
+
+            if (!TryValidateModel(updateOwnerDto))
+            {
+                return BadRequest();
+            }
 
             doctorForUpdate = await base.Mediator.Send(command);
 

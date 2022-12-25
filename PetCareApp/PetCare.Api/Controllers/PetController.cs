@@ -61,9 +61,9 @@
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdatePetDto> jsonPatchDocument, int petId)
         {
             GetPetByIdAsReadonly query = new() { Id = petId };
-            Pet doctorForUpdate = await base.Mediator.Send(query);
+            Pet petForUpdate = await base.Mediator.Send(query);
 
-            UpdatePetDto updatePetDto = base.Mapper.Map<UpdatePetDto>(doctorForUpdate);
+            UpdatePetDto updatePetDto = base.Mapper.Map<UpdatePetDto>(petForUpdate);
 
             jsonPatchDocument.ApplyTo(updatePetDto, ModelState);
 
@@ -75,7 +75,7 @@
             PartialUpdatePet command = base.Mapper.Map<PartialUpdatePet>(updatePetDto);
             command.Id = petId;
 
-            doctorForUpdate = await base.Mediator.Send(command);
+            petForUpdate = await base.Mediator.Send(command);
 
             return NoContent();
         }

@@ -5,6 +5,7 @@
     using UpdateDoctor;
     using DeleteDoctor;
     using UpdatePartialDoctor;
+    using PetCare.Api.Dtos.PetDtos;
 
     [Route("api/[controller]/[action]")]
     [ApiController]
@@ -88,10 +89,15 @@
             PartialUpdateDoctor command = base.Mapper.Map<PartialUpdateDoctor>(updateDoctorDto);
             command.Id = doctorId;
 
+            if (!TryValidateModel(updateDoctorDto))
+            {
+                return BadRequest();
+            }
+
             doctorForUpdate = await base.Mediator.Send(command);
 
             return NoContent();
-        } 
+        }
 
         /// <summary>
         /// Marks the entity as deleted but it doesn't really 
