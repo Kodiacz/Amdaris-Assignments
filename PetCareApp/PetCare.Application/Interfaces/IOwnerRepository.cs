@@ -76,8 +76,6 @@
         /// </summary>
         /// <param name="id">The id of the Owner entity</param>
         /// <param name="search">Expression that is aplpied for the where clause</param>
-        /// <param name="detach">bolean that has default value false and desides if the 
-        /// entity should be detached or not. True if it should be detached and false to not be detached</param>
         /// <returns>Return the Owner entity</returns>
         Task<Owner> GetByIdAsReadonlyAsync(int id, Expression<Func<Owner, bool>> search);
     }
