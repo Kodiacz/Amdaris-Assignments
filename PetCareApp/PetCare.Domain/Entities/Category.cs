@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetCare.Domain.Entities
+﻿namespace PetCare.Domain.Entities
 {
-    internal class Category
+    public class Category
     {
+        public Category()
+        {
+            this.Products = new HashSet<Product>();
+        }
+
+        public int Id { get; set; }
+
+        public string Name { get; set; } = null!;
+
+        public ICollection<Product> Products { get; set; }
     }
 }

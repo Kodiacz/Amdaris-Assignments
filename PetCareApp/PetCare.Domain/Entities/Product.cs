@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PetCare.Domain.Entities
+﻿namespace PetCare.Domain.Entities
 {
-    internal class Product
+    public class Product
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; } = null!;
+
+        public Category Category { get; set; } = null!;
     }
 }
