@@ -7,7 +7,7 @@ function DoctorsList() {
     async function handleSubmit() {
         const resp = await fetch(`https://localhost:7038/api/Doctor/GetAll`);
         const data = await resp.json();
-
+        console.log(data);
         setDoctors(data);
     }
 
