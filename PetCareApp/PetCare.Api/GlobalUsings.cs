@@ -1,4 +1,5 @@
 ﻿global using System.Net;
+global using Microsoft.AspNetCore.Cors;
 global using SystemJson = System.Text.Json;
 global using System.Text.Json.Serialization;
 global using System.ComponentModel.DataAnnotations;
