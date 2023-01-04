@@ -39,7 +39,7 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
-app.UseCors("PetCare-FE");
+app.UseCors();
 
 app.UseAuthentication();
 app.UseAuthorization();
