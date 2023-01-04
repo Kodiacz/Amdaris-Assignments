@@ -6,8 +6,9 @@
     using DeletePet;
     using UpdatePartialPet;
 
-    [Route("api/[controller]/[action]")]
     [ApiController]
+    [EnableCors("PetCare-FE")]
+    [Route("api/[controller]/[action]")]
     public class PetController : BaseController<PetController>
     {
         [HttpGet]

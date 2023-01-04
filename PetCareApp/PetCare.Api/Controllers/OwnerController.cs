@@ -5,10 +5,10 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
-    using PetCare.Api.Dtos.PetDtos;
 
-    [Route("api/[controller]/[action]")]
     [ApiController]
+    [EnableCors("PetCare-FE")]
+    [Route("api/[controller]/[action]")]
     public class OwnerController : BaseController<OwnerController>
     {
         /// <summary>
