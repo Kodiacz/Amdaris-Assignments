@@ -18,6 +18,17 @@
 
             serviceCollection.AddAutoMapper(typeof(Program));
 
+            serviceCollection.AddCors(options =>
+            {
+                options.AddPolicy(name: "PetCare-FE", option =>
+                {
+                    option
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("http://localhost:3000");
+                });
+            });
+
             return serviceCollection;
         }
     }
