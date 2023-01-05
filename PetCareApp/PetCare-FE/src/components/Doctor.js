@@ -1,8 +1,16 @@
-function Doctor(props) {
+function Doctor({
+    doctor
+}) {
     return (
-        <div className="container">
-            <h1>{props.name}</h1>
-        </div>
+        <>
+            <tr>
+                <td>{doctor.firstName} {doctor.lastName}</td>
+                <td>{doctor.age}</td>
+                <td>{doctor.phonenumber}</td>
+                <td>{doctor.jobDescription}</td>
+                <td>{doctor.isAvailable ? 'Yes' : 'No'} </td>
+            </tr>
+        </>
     )
 }
 

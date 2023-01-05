@@ -1,8 +1,12 @@
 import Doctor from './Doctor';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function DoctorsList() {
     const [doctors, setDoctors] = useState([]);
+
+    useEffect(() => {
+        handleSubmit()
+    }, [])
 
     async function handleSubmit() {
         const resp = await fetch(`https://localhost:7038/api/Doctor/GetAll`);
@@ -13,9 +17,18 @@ function DoctorsList() {
 
     return (
         <>
-            <button type="button" onClick={handleSubmit}>Click here</button>
+            {/* <button type="button" onClick={handleSubmit}>Click here</button> */}
             <div>
-                {doctors.map(d => <Doctor name={d.firstName} />)}
+                <table>
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Age</th>
+                        <th>Phonenumber</th>
+                        <th>Job Description</th>
+                        <th>Available</th>
+                    </tr>
+                    {doctors.map(d => <Doctor key={d.id} doctor={d} />)}
+                </table>
             </div>
         </>
     );
