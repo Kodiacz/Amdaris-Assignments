@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DoctorsList from './components/DoctorsList.js';
+import PetsList from './components/PetList.js'
+import NavBar from './components/NavBar.js';
+import HeadContactInfo from './components/HeadContactInfo.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <BrowserRouter>
+      <HeadContactInfo />
+      <NavBar />
+      <Routes>
+        {/* <Route path="/somepage" element={<SomePage />} /> */}
+        <Route path="/doctors" element={<DoctorsList />} />
+        {/* <Route path="/about" element={<About />} /> */ }
+        <Route path="/pets" element={<PetsList />} /> 
+        <Route path="/" element={<App />} />
+        {/* <Route path="*" element={<Page404 />} /> */}
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
