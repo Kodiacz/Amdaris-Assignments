@@ -1,42 +1,45 @@
 import logo from './logo.svg';
 import './App.css';
 import DoctorsList from './components/DoctorsList.js'
+import HeadContactInfo from './components/HeadContactInfo';
 
 function App() {
   return (
     <div>
-      <div className="container-fluid border-bottom d-none d-lg-block">
-        <div className="row gx-0">
-          <div className="col-lg-4 text-center py-2">
-            <div className="d-inline-flex align-items-center">
-              <i className="bi bi-geo-alt fs-1 text-primary me-3"></i>
-              <div className="text-start">
-                <h6 className="text-uppercase mb-1">Our Office</h6>
-                <span>123 Street, New York, USA</span>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 text-center border-start border-end py-2">
-            <div className="d-inline-flex align-items-center">
-              <i className="bi bi-envelope-open fs-1 text-primary me-3"></i>
-              <div className="text-start">
-                <h6 className="text-uppercase mb-1">Email Us</h6>
-                <span>info@example.com</span>
-              </div>
-            </div>
-          </div>
-          <div className="col-lg-4 text-center py-2">
-            <div className="d-inline-flex align-items-center">
-              <i className="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
-              <div className="text-start">
-                <h6 className="text-uppercase mb-1">Call Us</h6>
-                <span>+012 345 6789</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    {/* //   <div className="container-fluid border-bottom d-none d-lg-block">
+    //     <div className="row gx-0">
+    //       <div className="col-lg-4 text-center py-2">
+    //         <div className="d-inline-flex align-items-center">
+    //           <i className="bi bi-geo-alt fs-1 text-primary me-3"></i>
+    //           <div className="text-start">
+    //             <h6 className="text-uppercase mb-1">Our Office</h6>
+    //             <span>123 Street, New York, USA</span>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="col-lg-4 text-center border-start border-end py-2">
+    //         <div className="d-inline-flex align-items-center">
+    //           <i className="bi bi-envelope-open fs-1 text-primary me-3"></i>
+    //           <div className="text-start">
+    //             <h6 className="text-uppercase mb-1">Email Us</h6>
+    //             <span>info@example.com</span>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="col-lg-4 text-center py-2">
+    //         <div className="d-inline-flex align-items-center">
+    //           <i className="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
+    //           <div className="text-start">
+    //             <h6 className="text-uppercase mb-1">Call Us</h6>
+    //             <span>+012 345 6789</span>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div> */}
 
+
+      <HeadContactInfo />
       <nav className="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
         <a href="index.html" className="navbar-brand ms-lg-5">
           <h1 className="m-0 text-uppercase text-dark"><i className="bi bi-care fs-1 text-primary me-3"></i>Pet Care</h1>
