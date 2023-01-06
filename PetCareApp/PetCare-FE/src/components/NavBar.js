@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 import { Link } from 'react-router-dom'
 
 function NavBar() {
@@ -15,8 +17,7 @@ function NavBar() {
                     <Link to="doctors" className="nav-item nav-link">Doctors</Link>
                     <Link to="pets" className="nav-item nav-link">Pets</Link>
                     <Link to="service.html" className="nav-item nav-link">Service</Link>
-                    <Link to="product.html" className="nav-item nav-link">Product</Link>
-                    <Link to="product.html" className="nav-item nav-link">Product</Link>
+                    <Link to="product.html" className="nav-item nav-link">Shop</Link>
                     <div className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
