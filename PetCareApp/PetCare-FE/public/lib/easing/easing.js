@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /*
  * jQuery Easing v1.4.1 - http://gsgd.co.uk/sandbox/jquery/easing/
  * Open source under the BSD License.
@@ -7,6 +8,7 @@
 */
 
 (function (factory) {
+	// eslint-disable-next-line no-undef
 	if (typeof define === "function" && define.amd) {
 		define(['jquery'], function ($) {
 			return factory($);
