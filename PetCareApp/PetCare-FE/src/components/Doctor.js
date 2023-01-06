@@ -1,14 +1,14 @@
 function Doctor({
-    doctor
+    doctor,
+    tdStyle,
 }) {
     return (
         <>
             <tr>
-                <td>{doctor.firstName} {doctor.lastName}</td>
-                <td>{doctor.age}</td>
-                <td>{doctor.phonenumber}</td>
-                <td>{doctor.jobDescription}</td>
-                <td>{doctor.isAvailable ? 'Yes' : 'No'} </td>
+                <td className={tdStyle}>{doctor.firstName} {doctor.lastName}</td>
+                <td className={tdStyle}>{doctor.phonenumber}</td>
+                <td className={tdStyle}>{doctor.jobDescription}</td>
+                <td className={tdStyle}>{doctor.isAvailable ? 'Yes' : 'No'} </td>
             </tr>
         </>
     )

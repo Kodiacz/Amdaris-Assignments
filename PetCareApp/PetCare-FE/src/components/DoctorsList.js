@@ -1,14 +1,15 @@
 import Doctor from './Doctor';
 import { useEffect, useState } from 'react';
+import styles from './DoctorsList.module.css'
 
 function DoctorsList() {
     const [doctors, setDoctors] = useState([]);
 
     useEffect(() => {
-        handleSubmit()
+        getDoctors()
     }, [])
 
-    async function handleSubmit() {
+    async function getDoctors() {
         const resp = await fetch(`https://localhost:7038/api/Doctor/GetAll`);
         const data = await resp.json();
         console.log(data);
@@ -17,20 +18,20 @@ function DoctorsList() {
 
     return (
         <>
-            {/* <button type="button" onClick={handleSubmit}>Click here</button> */}
             <div>
-                <table>
+                <table className={styles.table}>
                     <tr>
-                        <th>Full Name</th>
-                        <th>Age</th>
+                        <th className={styles.th}>Full Name</th>
                         <th>Phonenumber</th>
                         <th>Job Description</th>
                         <th>Available</th>
                     </tr>
-                    {doctors.map(d => <Doctor key={d.id} doctor={d} />)}
+                    {doctors.map(d => <Doctor tdSyle={styles.td} key={d.id} doctor={d} />)}
                 </table>
             </div>
         </>
+
+        
     );
 }
 
