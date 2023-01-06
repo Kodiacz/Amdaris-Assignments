@@ -5,10 +5,10 @@ function PetList() {
     const [pets, setDoctors] = useState([]);
 
     useEffect(() => {
-        handleSubmit()
+        getPets()
     }, [])
 
-    async function handleSubmit() {
+    async function getPets() {
         const resp = await fetch(`https://localhost:7038/api/Pet/GetAll`);
         const data = await resp.json();
         console.log(data);
