@@ -1,42 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import logo from './logo.svg';
 import './App.css';
 import DoctorsList from './components/DoctorsList.js'
 import HeadContactInfo from './components/HeadContactInfo';
-import { Link } from 'react-router-dom';
 
 function App() {
   return (
     <div>
-      {/* <nav className="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
-        <a href="index.html" className="navbar-brand ms-lg-5">
-          <h1 className="m-0 text-uppercase text-dark"><i className="bi bi-shop fs-1 text-primary me-3"></i>Pet Care</h1>
-        </a>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
-          <div className="navbar-nav ms-auto py-0">
-            <a href="index.html" className="nav-item nav-link active">Home</a>
-            {/* <a href="about.html" className="nav-item nav-link">About</a> */}
-
-            {/* <a href="service.html" className="nav-item nav-link">Service</a>
-            <a href="product.html" className="nav-item nav-link">Product</a>
-            <div className="nav-item dropdown">
-              <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-              <div className="dropdown-menu m-0">
-                <a href="price.html" className="dropdown-item">Pricing Plan</a>
-                <a href="team.html" className="dropdown-item">The Team</a>
-                <a href="testimonial.html" className="dropdown-item">Testimonial</a>
-                <a href="blog.html" className="dropdown-item">Blog Grid</a>
-                <a href="detail.html" className="dropdown-item">Blog Detail</a>
-              </div>
-            </div>
-            <a href="contact.html" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i className="bi bi-arrow-right"></i></a>
-          </div>
-        </div>
-      </nav> */} 
-
-
       <div className="container-fluid bg-primary py-5 mb-5 hero-header">
         <div className="container py-5">
           <div className="row justify-content-start">
@@ -79,9 +49,9 @@ function App() {
       <div className="container-fluid py-5">
         <div className="container">
           <div className="row gx-5">
-            <div className="col-lg-5 mb-5 mb-lg-0" style={{minHeight: '500px'}}>
+            <div className="col-lg-5 mb-5 mb-lg-0" style={{ minHeight: '500px' }}>
               <div className="position-relative h-100">
-                <img alt='' className="position-absolute w-100 h-100 rounded" src="img/happy-pets.jpg" style={{objectFit: 'cover'}}/>
+                <img alt='' className="position-absolute w-100 h-100 rounded" src="img/happy-pets.jpg" style={{ objectFit: 'cover' }} />
               </div>
             </div>
             <div className="col-lg-7">
@@ -120,7 +90,7 @@ function App() {
 
       <div className="container-fluid py-5">
         <div className="container">
-          <div className="border-start border-5 border-primary ps-5 mb-5" style={{maxWidth: '600px'}}>
+          <div className="border-start border-5 border-primary ps-5 mb-5" style={{ maxWidth: '600px' }}>
             <h6 className="text-primary text-uppercase">Services</h6>
             <h1 className="display-5 text-uppercase mb-0">Our Excellent Pet Care Services</h1>
           </div>
@@ -192,64 +162,64 @@ function App() {
 
       <div className="container-fluid py-5">
         <div className="container">
-          <div className="border-start border-5 border-primary ps-5 mb-5" style={{maxWidth: '600px'}}>
+          <div className="border-start border-5 border-primary ps-5 mb-5" style={{ maxWidth: '600px' }}>
             <h6 className="text-primary text-uppercase">Products</h6>
             <h1 className="display-5 text-uppercase mb-0">Products For Your Best Friends</h1>
           </div>
           <div className="owl-carousel product-carousel">
             <div className="pb-5">
               <div className="product-item position-relative bg-light d-flex flex-column text-center">
-                <img alt=''className="img-fluid mb-4" src="img/product-1.png"/>
-                  <h6 className="text-uppercase">Quality Pet Foods</h6>
-                  <h5 className="text-primary mb-0">$199.00</h5>
-                  <div className="btn-action d-flex justify-content-center">
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
-                  </div>
+                <img alt='' className="img-fluid mb-4" src="img/product-1.png" />
+                <h6 className="text-uppercase">Quality Pet Foods</h6>
+                <h5 className="text-primary mb-0">$199.00</h5>
+                <div className="btn-action d-flex justify-content-center">
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
+                </div>
               </div>
             </div>
             <div className="pb-5">
               <div className="product-item position-relative bg-light d-flex flex-column text-center">
-                <img alt=''className="img-fluid mb-4" src="img/product-2.png"/>
-                  <h6 className="text-uppercase">Quality Pet Foods</h6>
-                  <h5 className="text-primary mb-0">$199.00</h5>
-                  <div className="btn-action d-flex justify-content-center">
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
-                  </div>
+                <img alt='' className="img-fluid mb-4" src="img/product-2.png" />
+                <h6 className="text-uppercase">Quality Pet Foods</h6>
+                <h5 className="text-primary mb-0">$199.00</h5>
+                <div className="btn-action d-flex justify-content-center">
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
+                </div>
               </div>
             </div>
             <div className="pb-5">
               <div className="product-item position-relative bg-light d-flex flex-column text-center">
-                <img alt=''className="img-fluid mb-4" src="img/product-3.png" />
-                  <h6 className="text-uppercase">Quality Pet Foods</h6>
-                  <h5 className="text-primary mb-0">$199.00</h5>
-                  <div className="btn-action d-flex justify-content-center">
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
-                  </div>
+                <img alt='' className="img-fluid mb-4" src="img/product-3.png" />
+                <h6 className="text-uppercase">Quality Pet Foods</h6>
+                <h5 className="text-primary mb-0">$199.00</h5>
+                <div className="btn-action d-flex justify-content-center">
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
+                </div>
               </div>
             </div>
             <div className="pb-5">
               <div className="product-item position-relative bg-light d-flex flex-column text-center">
-                <img alt=''className="img-fluid mb-4" src="img/product-4.png" />
-                  <h6 className="text-uppercase">Quality Pet Foods</h6>
-                  <h5 className="text-primary mb-0">$199.00</h5>
-                  <div className="btn-action d-flex justify-content-center">
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
-                  </div>
+                <img alt='' className="img-fluid mb-4" src="img/product-4.png" />
+                <h6 className="text-uppercase">Quality Pet Foods</h6>
+                <h5 className="text-primary mb-0">$199.00</h5>
+                <div className="btn-action d-flex justify-content-center">
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
+                </div>
               </div>
             </div>
             <div className="pb-5">
               <div className="product-item position-relative bg-light d-flex flex-column text-center">
-                <img alt=''className="img-fluid mb-4" src="img/product-2.png" />
-                  <h6 className="text-uppercase">Quality Pet Foods</h6>
-                  <h5 className="text-primary mb-0">$199.00</h5>
-                  <div className="btn-action d-flex justify-content-center">
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
-                    <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
-                  </div>
+                <img alt='' className="img-fluid mb-4" src="img/product-2.png" />
+                <h6 className="text-uppercase">Quality Pet Foods</h6>
+                <h5 className="text-primary mb-0">$199.00</h5>
+                <div className="btn-action d-flex justify-content-center">
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-cart"></i></a>
+                  <a className="btn btn-primary py-2 px-3" href=""><i className="bi bi-eye"></i></a>
+                </div>
               </div>
             </div>
           </div>
@@ -276,7 +246,7 @@ function App() {
 
       <div className="container-fluid py-5">
         <div className="container">
-          <div className="border-start border-5 border-primary ps-5 mb-5" style={{maxWidth: '600px'}}>
+          <div className="border-start border-5 border-primary ps-5 mb-5" style={{ maxWidth: '600px' }}>
             <h6 className="text-primary text-uppercase">Pricing Plan</h6>
             <h1 className="display-5 text-uppercase mb-0">Competitive Pricing For Pet Services</h1>
           </div>
@@ -288,8 +258,8 @@ function App() {
                 <div className="text-center bg-primary p-4 mb-2">
                   <h1 className="display-4 text-white mb-0">
                     <small className="align-top"
-                      style={{fontSize: '22px', lineHeight: '45px'}}>$</small>49<small
-                        className="align-bottom" style={{fontSize: '16px', lineHeight: '40px'}}>/
+                      style={{ fontSize: '22px', lineHeight: '45px' }}>$</small>49<small
+                        className="align-bottom" style={{ fontSize: '16px', lineHeight: '40px' }}>/
                       Mo</small>
                   </h1>
                 </div>
@@ -321,8 +291,8 @@ function App() {
                 <div className="text-center bg-dark p-4 mb-2">
                   <h1 className="display-4 text-white mb-0">
                     <small className="align-top"
-                      style={{fontSize: '22px', lineHeight: '45px'}}>$</small>99<small
-                        className="align-bottom" style={{fontSize: '16px', lineHeight: '40px'}}>/
+                      style={{ fontSize: '22px', lineHeight: '45px' }}>$</small>99<small
+                        className="align-bottom" style={{ fontSize: '16px', lineHeight: '40px' }}>/
                       Mo</small>
                   </h1>
                 </div>
@@ -354,8 +324,8 @@ function App() {
                 <div className="text-center bg-primary p-4 mb-2">
                   <h1 className="display-4 text-white mb-0">
                     <small className="align-top"
-                      style={{fontSize: '22px', lineHeight: '45px'}}>$</small>149<small
-                        className="align-bottom" style={{fontSize: '16px', lineHeight: '40px'}}>/
+                      style={{ fontSize: '22px', lineHeight: '45px' }}>$</small>149<small
+                        className="align-bottom" style={{ fontSize: '16px', lineHeight: '40px' }}>/
                       Mo</small>
                   </h1>
                 </div>
@@ -387,21 +357,21 @@ function App() {
 
       <div className="container-fluid py-5">
         <div className="container">
-          <div className="border-start border-5 border-primary ps-5 mb-5" style={{maxWidth: '600px'}}>
+          <div className="border-start border-5 border-primary ps-5 mb-5" style={{ maxWidth: '600px' }}>
             <h6 className="text-primary text-uppercase">Team Members</h6>
             <h1 className="display-5 text-uppercase mb-0">Qualified Pets Care Professionals</h1>
           </div>
-          <div className="owl-carousel team-carousel position-relative" style={{paddingRight: '25px'}}>
+          <div className="owl-carousel team-carousel position-relative" style={{ paddingRight: '25px' }}>
             <div className="team-item">
               <div className="position-relative overflow-hidden">
-                <img alt=''className="img-fluid w-100" src="img/team-1.jpg" />
-                  <div className="team-overlay">
-                    <div className="d-flex align-items-center justify-content-start">
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
-                    </div>
+                <img alt='' className="img-fluid w-100" src="img/team-1.jpg" />
+                <div className="team-overlay">
+                  <div className="d-flex align-items-center justify-content-start">
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
                   </div>
+                </div>
               </div>
               <div className="bg-light text-center p-4">
                 <h5 className="text-uppercase">Full Name</h5>
@@ -410,14 +380,14 @@ function App() {
             </div>
             <div className="team-item">
               <div className="position-relative overflow-hidden">
-                <img alt=''className="img-fluid w-100" src="img/team-2.jpg" />
-                  <div className="team-overlay">
-                    <div className="d-flex align-items-center justify-content-start">
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
-                    </div>
+                <img alt='' className="img-fluid w-100" src="img/team-2.jpg" />
+                <div className="team-overlay">
+                  <div className="d-flex align-items-center justify-content-start">
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
                   </div>
+                </div>
               </div>
               <div className="bg-light text-center p-4">
                 <h5 className="text-uppercase">Full Name</h5>
@@ -426,14 +396,14 @@ function App() {
             </div>
             <div className="team-item">
               <div className="position-relative overflow-hidden">
-                <img alt=''className="img-fluid w-100" src="img/team-3.jpg" />
-                  <div className="team-overlay">
-                    <div className="d-flex align-items-center justify-content-start">
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
-                    </div>
+                <img alt='' className="img-fluid w-100" src="img/team-3.jpg" />
+                <div className="team-overlay">
+                  <div className="d-flex align-items-center justify-content-start">
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
                   </div>
+                </div>
               </div>
               <div className="bg-light text-center p-4">
                 <h5 className="text-uppercase">Full Name</h5>
@@ -442,14 +412,14 @@ function App() {
             </div>
             <div className="team-item">
               <div className="position-relative overflow-hidden">
-                <img alt=''className="img-fluid w-100" src="img/team-4.jpg" />
-                  <div className="team-overlay">
-                    <div className="d-flex align-items-center justify-content-start">
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
-                    </div>
+                <img alt='' className="img-fluid w-100" src="img/team-4.jpg" />
+                <div className="team-overlay">
+                  <div className="d-flex align-items-center justify-content-start">
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
                   </div>
+                </div>
               </div>
               <div className="bg-light text-center p-4">
                 <h5 className="text-uppercase">Full Name</h5>
@@ -458,14 +428,14 @@ function App() {
             </div>
             <div className="team-item">
               <div className="position-relative overflow-hidden">
-                <img alt=''className="img-fluid w-100" src="img/team-5.jpg" />
-                  <div className="team-overlay">
-                    <div className="d-flex align-items-center justify-content-start">
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
-                      <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
-                    </div>
+                <img alt='' className="img-fluid w-100" src="img/team-5.jpg" />
+                <div className="team-overlay">
+                  <div className="d-flex align-items-center justify-content-start">
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-twitter"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-facebook"></i></a>
+                    <a className="btn btn-light btn-square mx-1" href="#"><i className="bi bi-linkedin"></i></a>
                   </div>
+                </div>
               </div>
               <div className="bg-light text-center p-4">
                 <h5 className="text-uppercase">Full Name</h5>
@@ -477,34 +447,34 @@ function App() {
       </div>
 
 
-      <div className="container-fluid bg-testimonial py-5" style={{margin: '45px 0'}}>
+      <div className="container-fluid bg-testimonial py-5" style={{ margin: '45px 0' }}>
         <div className="container py-5">
           <div className="row justify-content-end">
             <div className="col-lg-7">
               <div className="owl-carousel testimonial-carousel bg-white p-5">
                 <div className="testimonial-item text-center">
                   <div className="position-relative mb-4">
-                    <img alt=''className="img-fluid mx-auto" src="img/testimonial-1.jpg" />
-                      <div className="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style={{width: '45px', height: '45px'}}>
-                        <i className="bi bi-chat-square-quote text-primary"></i>
-                      </div>
+                    <img alt='' className="img-fluid mx-auto" src="img/testimonial-1.jpg" />
+                    <div className="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style={{ width: '45px', height: '45px' }}>
+                      <i className="bi bi-chat-square-quote text-primary"></i>
+                    </div>
                   </div>
                   <p>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
-                  <hr className="w-25 mx-auto"/>
-                    <h5 className="text-uppercase">Client Name</h5>
-                    <span>Profession</span>
+                  <hr className="w-25 mx-auto" />
+                  <h5 className="text-uppercase">Client Name</h5>
+                  <span>Profession</span>
                 </div>
                 <div className="testimonial-item text-center">
                   <div className="position-relative mb-4">
-                    <img alt=''className="img-fluid mx-auto" src="img/testimonial-2.jpg" />
-                      <div className="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style={{width: '45px', height: '45px'}}>
-                        <i className="bi bi-chat-square-quote text-primary"></i>
-                      </div>
+                    <img alt='' className="img-fluid mx-auto" src="img/testimonial-2.jpg" />
+                    <div className="position-absolute top-100 start-50 translate-middle d-flex align-items-center justify-content-center bg-white" style={{ width: '45px', height: '45px' }}>
+                      <i className="bi bi-chat-square-quote text-primary"></i>
+                    </div>
                   </div>
                   <p>Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat. Erat dolor rebum sit ipsum.</p>
-                  <hr className="w-25 mx-auto"/>
-                    <h5 className="text-uppercase">Client Name</h5>
-                    <span>Profession</span>
+                  <hr className="w-25 mx-auto" />
+                  <h5 className="text-uppercase">Client Name</h5>
+                  <span>Profession</span>
                 </div>
               </div>
             </div>
@@ -515,7 +485,7 @@ function App() {
 
       <div className="container-fluid py-5">
         <div className="container">
-          <div className="border-start border-5 border-primary ps-5 mb-5" style={{maxWidth: '600p'}}>
+          <div className="border-start border-5 border-primary ps-5 mb-5" style={{ maxWidth: '600p' }}>
             <h6 className="text-primary text-uppercase">Latest Blog</h6>
             <h1 className="display-5 text-uppercase mb-0">Latest Articles From Our Blog Post</h1>
           </div>
@@ -524,7 +494,7 @@ function App() {
               <div className="blog-item">
                 <div className="row g-0 bg-light overflow-hidden">
                   <div className="col-12 col-sm-5 h-100">
-                    <img alt=''className="img-fluid h-100" src="img/blog-1.jpg" style={{objectFit: 'cover'}}/>
+                    <img alt='' className="img-fluid h-100" src="img/blog-1.jpg" style={{ objectFit: 'cover' }} />
                   </div>
                   <div className="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
                     <div className="p-4">
@@ -544,7 +514,7 @@ function App() {
               <div className="blog-item">
                 <div className="row g-0 bg-light overflow-hidden">
                   <div className="col-12 col-sm-5 h-100">
-                    <img alt=''className="img-fluid h-100" src="img/blog-2.jpg" style={{objectFit: 'cover'}}/>
+                    <img alt='' className="img-fluid h-100" src="img/blog-2.jpg" style={{ objectFit: 'cover' }} />
                   </div>
                   <div className="col-12 col-sm-7 h-100 d-flex flex-column justify-content-center">
                     <div className="p-4">
@@ -563,92 +533,11 @@ function App() {
           </div>
         </div>
       </div>
-
-
-      <div className="container-fluid bg-light mt-5 py-5">
-        <div className="container pt-5">
-          <div className="row g-5">
-            <div className="col-lg-3 col-md-6">
-              <h5 className="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
-              <p className="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor</p>
-              <p className="mb-2"><i className="bi bi-geo-alt text-primary me-2"></i>123 Street, New York, USA</p>
-              <p className="mb-2"><i className="bi bi-envelope-open text-primary me-2"></i>info@example.com</p>
-              <p className="mb-0"><i className="bi bi-telephone text-primary me-2"></i>+012 345 67890</p>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <h5 className="text-uppercase border-start border-5 border-primary ps-3 mb-4">Quick Links</h5>
-              <div className="d-flex flex-column justify-content-start">
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                <a className="text-body" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <h5 className="text-uppercase border-start border-5 border-primary ps-3 mb-4">Popular Links</h5>
-              <div className="d-flex flex-column justify-content-start">
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Home</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>About Us</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Our Services</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Meet The Team</a>
-                <a className="text-body mb-2" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Latest Blog</a>
-                <a className="text-body" href="#"><i className="bi bi-arrow-right text-primary me-2"></i>Contact Us</a>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <h5 className="text-uppercase border-start border-5 border-primary ps-3 mb-4">Newsletter</h5>
-              <form action="">
-                <div className="input-group">
-                  <input type="text" className="form-control p-3" placeholder="Your Email"/>
-                    <button className="btn btn-primary">Sign Up</button>
-                </div>
-              </form>
-              <h6 className="text-uppercase mt-4 mb-3">Follow Us</h6>
-              <div className="d-flex">
-                <a className="btn btn-outline-primary btn-square me-2" href="#"><i className="bi bi-twitter"></i></a>
-                <a className="btn btn-outline-primary btn-square me-2" href="#"><i className="bi bi-facebook"></i></a>
-                <a className="btn btn-outline-primary btn-square me-2" href="#"><i className="bi bi-linkedin"></i></a>
-                <a className="btn btn-outline-primary btn-square" href="#"><i className="bi bi-instagram"></i></a>
-              </div>
-            </div>
-            <div className="col-12 text-center text-body">
-              <a className="text-body" href="">Terms & Conditions</a>
-              <span className="mx-1">|</span>
-              <a className="text-body" href="">Privacy Policy</a>
-              <span className="mx-1">|</span>
-              <a className="text-body" href="">Customer Support</a>
-              <span className="mx-1">|</span>
-              <a className="text-body" href="">Payments</a>
-              <span className="mx-1">|</span>
-              <a className="text-body" href="">Help</a>
-              <span className="mx-1">|</span>
-              <a className="text-body" href="">FAQs</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="container-fluid bg-dark text-white-50 py-4">
-        <div className="container">
-          <div className="row g-5">
-            <div className="col-md-6 text-center text-md-start">
-              <p className="mb-md-0">&copy; <a className="text-white" href="#">Your Site Name</a>. All Rights Reserved.</p>
-            </div>
-            <div className="col-md-6 text-center text-md-end">
-              <p className="mb-0">Designed by <a className="text-white" href="https://htmlcodex.com">HTML Codex</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <a href="#" className="btn btn-primary py-3 fs-4 back-to-top"><i className="bi bi-arrow-up"></i></a>
-      </div>
+    </div>
 
 
 
-      );
+  );
 }
 
-      export default App;
+export default App;
