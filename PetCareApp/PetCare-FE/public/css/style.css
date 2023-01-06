@@ -6,6 +6,18 @@
     --dark: #212121;
 }
 
+#root{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-body{
+    flex-grow: 1;
+}
+
+
+
 [class^=flaticon-]:before,
 [class*=" flaticon-"]:before,
 [class^=flaticon-]:after,
