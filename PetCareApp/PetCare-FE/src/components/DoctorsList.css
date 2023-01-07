@@ -1,0 +1,17 @@
+.doctor-list-container {
+    width: max-content;
+    margin-left: 380px;
+}
+
+.doctor-list-table {
+    width: max-content;
+}
+
+.doctor-list-table th {
+    padding: 10px;
+    text-align: center;
+}
+
+.doctor-list-table td {
+    padding: 4px;
+}

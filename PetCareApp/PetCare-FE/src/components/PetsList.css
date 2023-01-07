@@ -1,0 +1,17 @@
+.pet-list-container {
+    width: max-content;
+    margin-left: 590px;
+}
+
+.pet-list-container table {
+    width: max-content;
+}
+
+.pet-list-container table th {
+    padding: 10px;
+    text-align: center;
+}
+
+.pet-list-container table td {
+    padding: 4px;
+}

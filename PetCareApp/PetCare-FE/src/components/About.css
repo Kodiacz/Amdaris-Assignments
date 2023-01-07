@@ -1,0 +1,14 @@
+.our-vission-list {
+    margin-top: 10px;
+    list-style-type: circle;
+}
+
+.our-vission-list > li > p {
+    text-decoration: underline;
+}
+
+.happy-pup-image {
+    width: 630px;
+    height: 630px;
+    padding-right: 80px;
+}
