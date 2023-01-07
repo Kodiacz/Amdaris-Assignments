@@ -13,14 +13,15 @@ function NavBar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
                 <div className="navbar-nav ms-auto py-0">
-                    <Link to="/" className="nav-item nav-link active">Home</Link>
-                    <Link to="doctors" className="nav-item nav-link">Doctors</Link>
-                    <Link to="pets" className="nav-item nav-link">Pets</Link>
+                    <Link to="/" className="nav-item nav-link">Home</Link>
+                    <Link to="/about" className="nav-item nav-link">About</Link>
                     <Link to="service.html" className="nav-item nav-link">Service</Link>
                     <Link to="product.html" className="nav-item nav-link">Shop</Link>
                     <div className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
+                            <Link to="pets" className="dropdown-item">Pets</Link>
+                            <Link to="doctors" className="dropdown-item">Doctors Теам</Link>
                             <Link to="price.html" className="dropdown-item">Pricing Plan</Link>
                             <Link to="team.html" className="dropdown-item">The Team</Link>
                             <Link to="testimonial.html" className="dropdown-item">Testimonial</Link>
@@ -28,7 +29,7 @@ function NavBar() {
                             <Link to="detail.html" className="dropdown-item">Blog Detail</Link>
                         </div>
                     </div>
-                    <Link to="contact.html" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Contact <i className="bi bi-arrow-right"></i></Link>
+                    <Link to="contact.html" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Sign In <i className="bi bi-arrow-right"></i></Link>
                 </div>
             </div>
         </nav>
