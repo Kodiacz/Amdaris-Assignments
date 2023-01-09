@@ -8,6 +8,7 @@ import DoctorsList from './components/DoctorsList';
 import PetsList from './components/PetsList';
 import HeadContactInfo from './components/HeadContactInfo';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import MultiActionAreaCard from './components/CardTest';
 
 function App() {
   return (
