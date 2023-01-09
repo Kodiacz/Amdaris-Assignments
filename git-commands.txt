@@ -1,0 +1,2 @@
+1: git ls-files --deleted | xargs git add (stages only deleted files)
+2: git ls-files --modified | xargs git add (stages only modified files)
