@@ -17,6 +17,7 @@ global using AutoMapper;
 global using MediatR;
 global using NewtonJson = Newtonsoft.Json;
 
+global using static PetCare.Api.Common.Constants;
 global using PetCare.Api.Filters;
 global using PetCare.Api.Extensions;
 global using PetCare.Application.Interfaces;
