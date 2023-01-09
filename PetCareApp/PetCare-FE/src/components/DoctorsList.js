@@ -1,7 +1,6 @@
 import './DoctorsList.css'
-import Doctor from './Doctor';
+import DoctorCard from './DoctorCard';
 import { useEffect, useState } from 'react';
-import styles from './DoctorsList.module.css'
 import axios from 'axios';
 
 function DoctorsList() {
@@ -16,17 +15,10 @@ function DoctorsList() {
         setDoctors(result.data);
     }
 
+    debugger
     return (
         <div className="doctor-list-container">
-            <table className="doctor-list-table">
-                <tr>
-                    <th className={styles.th}>Full Name</th>
-                    <th>Phonenumber</th>
-                    <th>Job Description</th>
-                    <th>Available</th>
-                </tr>
-                {doctors.map(d => <Doctor tdSyle={styles.td} key={d.id} doctor={d} />)}
-            </table>
+            {doctors.map(d => <DoctorCard key={d.id} doctor={d} />)}
         </div>
     );
 }
