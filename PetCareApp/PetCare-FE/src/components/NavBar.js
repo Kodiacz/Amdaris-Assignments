@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function NavBar() {
     return (
@@ -13,10 +13,10 @@ function NavBar() {
             </button>
             <div className="collapse navbar-collapse" id="navbarCollapse">
                 <div className="navbar-nav ms-auto py-0">
-                    <Link to="/" className="nav-item nav-link">Home</Link>
-                    <Link to="/about" className="nav-item nav-link">About</Link>
-                    <Link to="service.html" className="nav-item nav-link">Service</Link>
-                    <Link to="product.html" className="nav-item nav-link">Shop</Link>
+                    <NavLink to="/about" activeClassName="active" className="nav-item nav-link">About</NavLink>
+                    <NavLink to="/" activeClassName="active" className="nav-item nav-link">Home</NavLink>
+                    <NavLink to="service.html" activeClassName="active" className="nav-item nav-link">Service</NavLink>
+                    <NavLink to="product.html" activeClassName="active" className="nav-item nav-link">Shop</NavLink>
                     <div className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
