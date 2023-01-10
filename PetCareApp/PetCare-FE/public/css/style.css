@@ -16,7 +16,9 @@
     flex-grow: 1;
 }
 
-
+.site-footer {
+    margin-top: 20px;
+}
 
 [class^=flaticon-]:before,
 [class*=" flaticon-"]:before,
