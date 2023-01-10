@@ -15,7 +15,6 @@ function DoctorsList() {
         setDoctors(result.data);
     }
 
-    debugger
     return (
         <div className="doctor-list-container">
             {doctors.map(d => <DoctorCard key={d.id} doctor={d} />)}

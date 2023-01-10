@@ -1,17 +1,56 @@
-/* .doctor-list-container {
-    width: max-content;
-    margin-left: 380px;
-}
+  /* Float four columns side by side */
+  .col-doctor-card-container {
+    float: left;
+    width: 450;
+    height: 450px;
+  }
 
-.doctor-list-table {
-    width: max-content;
-}
+  /* Remove extra left and right margins, due to padding in columns */
+  .row-doctor-card-container {
+    margin: 0 -5px;
+  }
 
-.doctor-list-table th {
-    padding: 10px;
+  /* Clear floats after the columns */
+  .row-doctor-card-container:after {
+    content: "";
+    display: inline;
+    clear: both;
+  }
+
+  /* Style the counter cards */
+  .doctor-card-container {
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    /* this adds the "card" effect */
+    padding: 16px;
     text-align: center;
-}
+    background-color: rgba(122, 183, 48, .8);
+  }
 
-.doctor-list-table td {
-    padding: 4px;
-} */
+  /* Responsive columns - one column layout (vertical) on small screens */
+  @media screen and (max-width: 600px) {
+    .col-doctor-card-container {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+
+  .doctor-more-info-btn {
+    font-style: unset;
+    padding: 14px 16px;
+    color: #000;
+    background-color: rgba(146, 224, 21, 0.87);
+    opacity: 100;
+  }
+
+  .doctor-more-info-btn:focus,
+  .doctor-more-info-btn:hover {
+    font-style: oblique;
+    background-color: #16a467;
+    color: #3e4669;
+  }
+
+  .doctos-full-name {
+    margin: 20px;
+  }
