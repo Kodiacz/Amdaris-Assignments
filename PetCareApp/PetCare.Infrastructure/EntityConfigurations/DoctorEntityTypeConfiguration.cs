@@ -11,8 +11,8 @@
     {
         public void Configure(EntityTypeBuilder<Doctor> doctorConfiguration)
         {
-            //doctorConfiguration
-            //    .HasData(CreateDoctors());
+            doctorConfiguration
+                .HasData(CreateDoctors());
 
             doctorConfiguration
                 .HasKey(doctor => doctor.Id);

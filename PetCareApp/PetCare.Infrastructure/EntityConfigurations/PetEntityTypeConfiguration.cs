@@ -9,8 +9,8 @@
     {
         public void Configure(EntityTypeBuilder<Pet> petConfiguration)
         {
-            //petConfiguration
-            //    .HasData(CreatePets());
+            petConfiguration
+                .HasData(CreatePets());
 
             petConfiguration
                 .Property(pet => pet.OwnerId)

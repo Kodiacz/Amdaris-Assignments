@@ -9,8 +9,8 @@
     {
         public void Configure(EntityTypeBuilder<Owner> ownerConfiguration)
         {
-            //ownerConfiguration
-            //    .HasData(CreateOwners());
+            ownerConfiguration
+                .HasData(CreateOwners());
 
             //ownerConfiguration
             //    .Property(owner => owner.Doctor)
