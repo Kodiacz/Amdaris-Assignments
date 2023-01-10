@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import './App.css';
-import Home from './components/Home';
-import About from './components/About';
-import NavBar from './components/NavBar';
-import DoctorsList from './components/DoctorsList';
-import PetsList from './components/PetsList';
-import HeadContactInfo from './components/HeadContactInfo';
+import Home from './components/Common/Home';
+import About from './components/Common/About';
+import NavBar from './components/Common/NavBar';
+import DoctorsList from './components/Doctors/DoctorsList';
+import PetsList from './components/Pets/PetsList';
+import HeadContactInfo from './components/Common/HeadContactInfo';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
