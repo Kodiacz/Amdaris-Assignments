@@ -1,13 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
-import ContactInfoItem from "./ContactInfoItem";
-
 function FooterContactInfo() {
     return (
         <footer className="site-footer">
                 <div className="container-fluid bg-light">
-                    <div className="container pt-5">
+                    <div className="container-fluid pt-5">
                         <div className="row g-3">
                             <div className="col-lg-3 col-md-6">
                                 <h5 className="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
