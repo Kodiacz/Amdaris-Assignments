@@ -12,6 +12,8 @@
 
         public int Age { get; init; }
 
+        public string ImageFilePath { get; set; }
+
         public string Phonenumber { get; init; } = null!;
 
         public string JobDescription { get; set; } = null!;
