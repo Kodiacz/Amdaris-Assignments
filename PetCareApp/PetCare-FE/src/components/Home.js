@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div>
             <div className="container-fluid bg-primary py-5 mb-5 hero-header">
-                <div className="container py-5">
+                <div className="container-fluid py-5">
                     <div className="row justify-content-start">
                         <div className="col-lg-8 text-center text-lg-start">
                             <h1 className="display-1 text-uppercase text-dark mb-lg-4">Pet Care</h1>
