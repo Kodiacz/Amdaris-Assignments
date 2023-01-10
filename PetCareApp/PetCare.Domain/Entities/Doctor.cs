@@ -12,6 +12,8 @@
         
         public bool IsDeleted { get; set; } = false;
 
+        public string? ImageFilePath { get; set; }
+
         public ICollection<Pet> Patients { get; set; }
 
         public ICollection<Owner> OwnersOfPatients { get; set; }
