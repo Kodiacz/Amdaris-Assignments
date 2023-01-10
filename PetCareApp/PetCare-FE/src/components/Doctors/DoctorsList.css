@@ -1,7 +1,7 @@
   /* Float four columns side by side */
   .col-doctor-card-container {
     float: left;
-    width: 450;
+    width: auto;
     height: 450px;
   }
 
