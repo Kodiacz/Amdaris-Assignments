@@ -3,14 +3,14 @@ import './About.css'
 const About = () => {
   return (
     <div className="container-fluid py-5">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row gx-5">
           <div className="col-lg-5 mb-5 mb-lg-0" style={{ minHeight: '500px' }}>
             <div className="position-relative h-100">
               <img className="happy-pup-image" alt='Happy pup' src="img/happy-pets.jpg" style={{ objectFit: 'cover' }} />
             </div>
           </div>
-          <div className="col-lg-7">
+          <div className="col-lg-5">
             <div className="border-start border-5 border-primary ps-5 mb-5">
               <h6 className="text-primary text-uppercase">About Us</h6>
               <h1 className="display-5 text-uppercase mb-0">We Keep Your Pets Happy All Time</h1>
