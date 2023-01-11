@@ -1,24 +1,23 @@
 import './DoctorsList.css'
 import DoctorCard from './DoctorCard';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { CircularProgress } from '@mui/material';
+import { GetAllDoctors } from './DoctorsServices.js';
 
 function DoctorsList() {
-    const [doctors, setDoctors] = useState([]);
+    const { state: doctors, isLoading, error } = GetAllDoctors();
 
-    useEffect(() => {
-        getDoctors()
-    }, [])
+    console.log(doctors)
+    console.log(isLoading)
+    console.log(error)
 
-    async function getDoctors() {
-        const result = await axios.get(`https://localhost:7038/api/Doctor/GetAll`)
-        setDoctors(result.data);
-    }
-    const random = Math.random()
     return (
         <div className="doctor-list-container">
-            {random > 0.5 ? doctors.map(d => <DoctorCard key={d.id} doctor={d} />) : <CircularProgress />}
+            {isLoading
+                ? <div className="doctors-load">
+                    <CircularProgress color='success' size={120} thickness={1} />
+                </div>
+                : doctors.map(d => <DoctorCard key={d.id} doctor={d} />)
+            }
         </div>
     );
 }

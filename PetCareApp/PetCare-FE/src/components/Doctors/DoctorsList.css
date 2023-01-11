@@ -54,3 +54,9 @@
   .doctos-full-name {
     margin: 20px;
   }
+
+  .doctors-load {
+    margin-top: 100px;
+    margin-left: 700px;
+    width: 100%;
+  }
