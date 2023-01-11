@@ -15,18 +15,12 @@ function NavBar() {
                 <div className="navbar-nav ms-auto py-0">
                     <NavLink to="/about" activeClassName="active" className="nav-item nav-link">About</NavLink>
                     <NavLink to="/" activeClassName="active" className="nav-item nav-link">Home</NavLink>
-                    <NavLink to="service.html" activeClassName="active" className="nav-item nav-link">Service</NavLink>
                     <NavLink to="product.html" activeClassName="active" className="nav-item nav-link">Shop</NavLink>
                     <div className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
                             <Link to="pets" className="dropdown-item">Pets</Link>
                             <Link to="doctors" className="dropdown-item">Doctors Теам</Link>
-                            <Link to="price.html" className="dropdown-item">Pricing Plan</Link>
-                            <Link to="team.html" className="dropdown-item">The Team</Link>
-                            <Link to="testimonial.html" className="dropdown-item">Testimonial</Link>
-                            <Link to="blog.html" className="dropdown-item">Blog Grid</Link>
-                            <Link to="detail.html" className="dropdown-item">Blog Detail</Link>
                         </div>
                     </div>
                     <Link to="contact.html" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Sign In <i className="bi bi-arrow-right"></i></Link>
