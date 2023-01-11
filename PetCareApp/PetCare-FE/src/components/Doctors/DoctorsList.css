@@ -37,18 +37,18 @@
   }
 
   .doctor-more-info-btn {
-    font-style: unset;
+    border-radius: 40px;
     padding: 14px 16px;
     color: #000;
     background-color: rgba(146, 224, 21, 0.87);
     opacity: 100;
   }
 
-  .doctor-more-info-btn:focus,
   .doctor-more-info-btn:hover {
-    font-style: oblique;
+    border: purple;
     background-color: #16a467;
     color: #3e4669;
+    cursor: pointer;
   }
 
   .doctos-full-name {
