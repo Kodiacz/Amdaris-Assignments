@@ -9,6 +9,9 @@ import DoctorsList from './components/Doctors/DoctorsList';
 import PetsList from './components/Pets/PetsList';
 import HeadContactInfo from './components/Common/HeadContactInfo';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Calendar from './components/Calendar';
+import DoctorDetails from './components/Doctors/DoctorDetails';
+import Doctor from './components/Doctors/Doctor';
 
 function App() {
   return (
@@ -17,10 +20,12 @@ function App() {
       <div className='main-body'>
         <NavBar />
         <Routes>
-          <Route path="/doctors" element={<DoctorsList />} />
+          <Route path="/doctors/*" element={<DoctorsList />} />
           <Route path="/about" element={<About />} />
+          <Route path="/doctors/doctor/:id" element={<Doctor />} />
           <Route path="/pets" element={<PetsList />} />
           <Route path="/" element={<Home />} />
+          <Route path="/calendar" element={<Calendar />} />
           {/* <Route path="*" element={<Page404 />} /> */}
         </Routes>
       </div>
