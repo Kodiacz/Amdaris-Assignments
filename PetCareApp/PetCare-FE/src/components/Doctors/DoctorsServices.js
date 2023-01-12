@@ -4,4 +4,8 @@ function GetAllDoctors() {
     return useFetch('https://localhost:7038/api/Doctor/GetAll')
 }
 
-export { GetAllDoctors }
+function GetDoctor(doctorId) {
+    return useFetch(`https://localhost:7038/api/Doctor/GetById/${doctorId}`)
+}
+
+export { GetAllDoctors, GetDoctor }
