@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { configureImagePath } from "../../Utils/configurePath";
+import { Link, Outlet, useParams } from "react-router-dom";
+import { configureImagePath } from "../../Utils/configureImagePath";
 
 const DoctorCard = ({
   doctor
@@ -12,7 +12,9 @@ const DoctorCard = ({
         <div className="doctor-card-container">
           <img src={imagePath} alt="Avatar" style={{ width: '280px', height: '280px' }} />
           <h4 className="doctos-full-name"><b>{doctor.firstName} {doctor.lastName}</b></h4>
-          <Link className="doctor-more-info-btn" type="button">Read more</Link>
+          <nav>
+            <Link to={`doctor\\${doctor.id}`} className="doctor-more-info-btn" type="button">Read more</Link>
+          </nav>
         </div>
       </div>
     </div>
