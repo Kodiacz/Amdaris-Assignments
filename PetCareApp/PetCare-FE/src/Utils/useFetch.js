@@ -8,15 +8,16 @@ const useFetch = (url) => {
 
     useEffect(() => {
         fetchData();
-    }, [url])
-
+    }, [])
     async function fetchData() {
-        const result = await axios.get(url)
-            .catch(error => setError(error))
-        setIsLoading(false)
-        setState(result.data);
+        setTimeout(async () => {
+            const result = await axios.get(url)
+                .catch(error => setError(error))
+            setIsLoading(false)
+            setState(result.data);
+        }, 1000);
     }
-
+    
     return {
         state,
         error,
