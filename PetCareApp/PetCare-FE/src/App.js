@@ -2,7 +2,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import './App.css';
-import "./components/Calendar/Calendar.css"
 import Home from './components/Common/Home';
 import About from './components/Common/About';
 import NavBar from './components/Common/NavBar';
