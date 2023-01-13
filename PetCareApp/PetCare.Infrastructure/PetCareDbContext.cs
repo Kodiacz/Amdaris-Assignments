@@ -27,6 +27,7 @@
             modelBuilder.ApplyConfiguration(new PetEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ReceptionsistEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new DoctorEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ScheduleEntityTypeConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

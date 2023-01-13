@@ -29,14 +29,16 @@ namespace PetCare.Infrastructure.EntityConfigurations
                 DateTime.DaysInMonth(year, month) - todaysDate.Day;
 
             Random random = new Random();
+            int itForScheduleEntity = 1;
 
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 6; i++)
             {
                 for (int k = 0; k <= numberOfDaysForCurrentMonth; k++)
                 {
                     int randomNumber = random.Next(0, 11);
 
                     Schedule scheduleEntity = new();
+                    scheduleEntity.Id = itForScheduleEntity++;
                     scheduleEntity.Date = todaysDate;
                     scheduleEntity.Date = todaysDate.Date.AddDays(k);
                     scheduleEntity.IsAvailable = randomNumber >= 5 ? true : false;
