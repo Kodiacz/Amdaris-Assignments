@@ -10,18 +10,18 @@ namespace PetCare.Test
     {
         private Mock<IOwnerRepository> ownerRepositoryMock;
         private Mock<IUnitOfWork> unitOfWorkMock;
-        private PetClinicDbContext contextInMemmory;
+        private PetCareDbContext contextInMemmory;
 
         [SetUp]
         public void Setup()
         {
             ownerRepositoryMock = new();
             unitOfWorkMock = new();
-            var contextOptions = new DbContextOptionsBuilder<PetClinicDbContext>()
+            var contextOptions = new DbContextOptionsBuilder<PetCareDbContext>()
                 .UseInMemoryDatabase("InMemmoryPetClinicDB")
                 .Options;
 
-            contextInMemmory = new PetClinicDbContext(contextOptions);
+            contextInMemmory = new PetCareDbContext(contextOptions);
 
             contextInMemmory.Database.EnsureDeleted();
             contextInMemmory.Database.EnsureCreated();
