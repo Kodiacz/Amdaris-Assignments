@@ -9,9 +9,9 @@
 
     public class OwnerRepository : IOwnerRepository
     {
-        private readonly PetClinicDbContext context;
+        private readonly PetCareDbContext context;
 
-        public OwnerRepository(PetClinicDbContext context)
+        public OwnerRepository(PetCareDbContext context)
         {
             this.context = context;
         }

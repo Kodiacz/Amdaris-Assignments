@@ -12,8 +12,8 @@ using PetCare.Infrastructure;
 namespace PetCare.Infrastructure.Migrations
 {
     [DbContext(typeof(PetCareDbContext))]
-    [Migration("20221202134553_SeedingData")]
-    partial class SeedingData
+    [Migration("20230113111342_AddedScheduleTableForDoctors")]
+    partial class AddedScheduleTableForDoctors
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,8 +40,8 @@ namespace PetCare.Infrastructure.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
+                    b.Property<string>("ImageFilePath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -74,11 +74,11 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 1,
                             Age = 33,
                             FirstName = "Gergana",
-                            IsAvailable = true,
+                            ImageFilePath = "C:\\Simeon\\Programming\\Amdaris\\Assignemnts-Git-Repo\\PetCareApp\\PetCare-FE\\public\\img\\the-team\\team-3.jpg",
                             IsDeleted = false,
                             JobDescription = "Emergency medical care, internal medicine",
                             LastName = "Nikolova",
-                            Phonenumber = "0215688",
+                            Phonenumber = "0279659",
                             StartedJobDate = new DateTime(2018, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -86,36 +86,60 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 2,
                             Age = 26,
                             FirstName = "Valentina",
-                            IsAvailable = true,
+                            ImageFilePath = "C:\\Simeon\\Programming\\Amdaris\\Assignemnts-Git-Repo\\PetCareApp\\PetCare-FE\\public\\img\\the-team\\team-4.jpg",
                             IsDeleted = false,
                             JobDescription = "Parasitology and infectious diseases",
                             LastName = "Naidenova",
-                            Phonenumber = "0233727",
+                            Phonenumber = "0269643",
                             StartedJobDate = new DateTime(2018, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             Age = 46,
-                            FirstName = "Borisalv",
-                            IsAvailable = true,
+                            FirstName = "Borislava",
+                            ImageFilePath = "C:\\Simeon\\Programming\\Amdaris\\Assignemnts-Git-Repo\\PetCareApp\\PetCare-FE\\public\\img\\the-team\\team-5.jpg",
                             IsDeleted = false,
                             JobDescription = "orthopedics and traumatology, abdominal and thoracic surgery, panelist",
-                            LastName = "Georgiev",
-                            Phonenumber = "0251473",
+                            LastName = "Georgieva",
+                            Phonenumber = "0283476",
                             StartedJobDate = new DateTime(2011, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 4,
                             Age = 35,
-                            FirstName = "Veseling",
-                            IsAvailable = true,
+                            FirstName = "Veselin",
+                            ImageFilePath = "C:\\Simeon\\Programming\\Amdaris\\Assignemnts-Git-Repo\\PetCareApp\\PetCare-FE\\public\\img\\the-team\\team-6.jpg",
                             IsDeleted = false,
                             JobDescription = "exotic animals, internal diseases",
                             LastName = "Milushev",
-                            Phonenumber = "0275727",
+                            Phonenumber = "0268716",
                             StartedJobDate = new DateTime(2010, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Age = 26,
+                            FirstName = "Petko",
+                            ImageFilePath = "C:\\Simeon\\Programming\\Amdaris\\Assignemnts-Git-Repo\\PetCareApp\\PetCare-FE\\public\\img\\the-team\\team-7.jpg",
+                            IsDeleted = false,
+                            JobDescription = "Emergency medical, internal medicine and infectious diseases.",
+                            LastName = "Stanimiraov",
+                            Phonenumber = "0241598",
+                            StartedJobDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Age = 31,
+                            FirstName = "Ivan",
+                            ImageFilePath = "C:\\Simeon\\Programming\\Amdaris\\Assignemnts-Git-Repo\\PetCareApp\\PetCare-FE\\public\\img\\the-team\\team-8.jpg",
+                            IsDeleted = false,
+                            JobDescription = "Cardiology, thoracic surgery, has interests in dentistry.",
+                            LastName = "Petrov",
+                            Phonenumber = "087458589",
+                            StartedJobDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -151,6 +175,9 @@ namespace PetCare.Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("ProfileImageFilePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("ReceptionistId")
                         .HasColumnType("int");
 
@@ -170,7 +197,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Stanimir",
                             IsDeleted = false,
                             LastName = "Petkov",
-                            Phonenumber = "0894556801"
+                            Phonenumber = "0887493476"
                         },
                         new
                         {
@@ -179,7 +206,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Desislava",
                             IsDeleted = false,
                             LastName = "Koleva",
-                            Phonenumber = "0876378080"
+                            Phonenumber = "0899209901"
                         },
                         new
                         {
@@ -188,7 +215,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Vencislav",
                             IsDeleted = false,
                             LastName = "Kolev",
-                            Phonenumber = "0897484868"
+                            Phonenumber = "0871346865"
                         },
                         new
                         {
@@ -197,7 +224,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Simeon",
                             IsDeleted = false,
                             LastName = "Kostadinov",
-                            Phonenumber = "0873441234"
+                            Phonenumber = "0894958304"
                         });
                 });
 
@@ -219,6 +246,9 @@ namespace PetCare.Infrastructure.Migrations
 
                     b.Property<int?>("DoctorId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageFilePath")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -318,6 +348,9 @@ namespace PetCare.Infrastructure.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
+                    b.Property<string>("ImageFilePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -379,6 +412,30 @@ namespace PetCare.Infrastructure.Migrations
                         });
                 });
 
+            modelBuilder.Entity("PetCare.Domain.Entities.Schedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("Schedules");
+                });
+
             modelBuilder.Entity("PetCare.Domain.Entities.Owner", b =>
                 {
                     b.HasOne("PetCare.Domain.Entities.Doctor", "Doctor")
@@ -421,11 +478,24 @@ namespace PetCare.Infrastructure.Migrations
                     b.Navigation("Receptionist");
                 });
 
+            modelBuilder.Entity("PetCare.Domain.Entities.Schedule", b =>
+                {
+                    b.HasOne("PetCare.Domain.Entities.Doctor", "Doctor")
+                        .WithMany("Schedule")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+                });
+
             modelBuilder.Entity("PetCare.Domain.Entities.Doctor", b =>
                 {
                     b.Navigation("OwnersOfPatients");
 
                     b.Navigation("Patients");
+
+                    b.Navigation("Schedule");
                 });
 
             modelBuilder.Entity("PetCare.Domain.Entities.Owner", b =>

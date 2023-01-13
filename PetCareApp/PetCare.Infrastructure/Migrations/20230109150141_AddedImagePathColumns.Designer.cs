@@ -11,7 +11,7 @@ using PetCare.Infrastructure;
 
 namespace PetCare.Infrastructure.Migrations
 {
-    [DbContext(typeof(PetClinicDbContext))]
+    [DbContext(typeof(PetCareDbContext))]
     [Migration("20230109150141_AddedImagePathColumns")]
     partial class AddedImagePathColumns
     {

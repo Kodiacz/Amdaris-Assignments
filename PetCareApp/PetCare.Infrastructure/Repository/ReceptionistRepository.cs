@@ -7,9 +7,9 @@
 
     public class ReceptionistRepository : IReceptionistRepository
     {
-        private readonly PetClinicDbContext context;
+        private readonly PetCareDbContext context;
 
-        public ReceptionistRepository(PetClinicDbContext context)
+        public ReceptionistRepository(PetCareDbContext context)
         {
             this.context = context;
         }

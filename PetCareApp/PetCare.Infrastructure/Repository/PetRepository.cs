@@ -10,9 +10,9 @@
     /// </summary>
     public class PetRepository : IPetRepository
     {
-        private readonly PetClinicDbContext context;
+        private readonly PetCareDbContext context;
 
-        public PetRepository(PetClinicDbContext context)
+        public PetRepository(PetCareDbContext context)
         {
             this.context = context;
         }

@@ -8,9 +8,9 @@
 
     public class DoctorRepository : IDoctorRepository
     {
-        private readonly PetClinicDbContext context;
+        private readonly PetCareDbContext context;
 
-        public DoctorRepository(PetClinicDbContext context)
+        public DoctorRepository(PetCareDbContext context)
         {
             this.context = context;
         }

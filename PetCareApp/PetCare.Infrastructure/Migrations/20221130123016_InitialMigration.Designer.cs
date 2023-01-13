@@ -11,7 +11,7 @@ using PetCare.Infrastructure;
 
 namespace PetCare.Infrastructure.Migrations
 {
-    [DbContext(typeof(PetClinicDbContext))]
+    [DbContext(typeof(PetCareDbContext))]
     [Migration("20221130123016_InitialMigration")]
     partial class InitialMigration
     {

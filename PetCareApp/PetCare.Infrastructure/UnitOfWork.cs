@@ -6,12 +6,12 @@
 
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly PetClinicDbContext context;
+        private readonly PetCareDbContext context;
 
         public UnitOfWork() { }
 
         public UnitOfWork(
-            PetClinicDbContext context, 
+            PetCareDbContext context, 
             IDoctorRepository doctorRepository, 
             IOwnerRepository ownerRepository, 
             IPetRepository petRepository, 

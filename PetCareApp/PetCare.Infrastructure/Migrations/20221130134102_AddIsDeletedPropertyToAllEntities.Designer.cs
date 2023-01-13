@@ -11,7 +11,7 @@ using PetCare.Infrastructure;
 
 namespace PetCare.Infrastructure.Migrations
 {
-    [DbContext(typeof(PetClinicDbContext))]
+    [DbContext(typeof(PetCareDbContext))]
     [Migration("20221130134102_AddIsDeletedPropertyToAllEntities")]
     partial class AddIsDeletedPropertyToAllEntities
     {
