@@ -1,4 +1,5 @@
-import Calendar from "../Calendar"
+import Calendar from "..//Calendar/Calendar"
+import "./DoctorDetails.css"
 
 const DoctorDetails = ({
     doctor,
