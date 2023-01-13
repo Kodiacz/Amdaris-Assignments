@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import './App.css';
+import "./components/Calendar/Calendar.css"
 import Home from './components/Common/Home';
 import About from './components/Common/About';
 import NavBar from './components/Common/NavBar';
@@ -9,8 +10,7 @@ import DoctorsList from './components/Doctors/DoctorsList';
 import PetsList from './components/Pets/PetsList';
 import HeadContactInfo from './components/Common/HeadContactInfo';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Calendar from './components/Calendar';
-import DoctorDetails from './components/Doctors/DoctorDetails';
+import Calendar from './components/Calendar/Calendar';
 import Doctor from './components/Doctors/Doctor';
 
 function App() {
