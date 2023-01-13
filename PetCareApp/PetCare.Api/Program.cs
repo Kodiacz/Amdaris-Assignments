@@ -18,7 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<PetClinicDbContext>(options =>
+builder.Services.AddDbContext<PetCareDbContext>(options =>
 {
     options.UseSqlServer(connectionString);
 });

@@ -4,9 +4,9 @@
     using PetCare.Domain.Entities;
     using PetCare.Infrastructure.EntityConfigurations;
 
-    public class PetClinicDbContext : DbContext
+    public class PetCareDbContext : DbContext
     {
-        public PetClinicDbContext(DbContextOptions<PetClinicDbContext> options)
+        public PetCareDbContext(DbContextOptions<PetCareDbContext> options)
             : base(options)
         {
         }
@@ -18,6 +18,8 @@
         public DbSet<Doctor> Doctors { get; set; } = null!;
 
         public DbSet<Receptionist> Receptionists { get; set; } = null!;
+
+        public DbSet<Schedule> Schedules { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
