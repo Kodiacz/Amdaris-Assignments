@@ -1,7 +1,5 @@
 ﻿namespace PetCare.Api.Dtos.DoctorDtos
 {
-    using PetCare.Domain.Entities;
-
     public class GetDoctorDto
     {
         public int Id { get; set; }
@@ -18,6 +16,6 @@
 
         public string JobDescription { get; set; } = null!;
 
-        public bool IsAvailable { get; set; }
+        public DateTime StartedJobDate { get; set; }
     }
 }
