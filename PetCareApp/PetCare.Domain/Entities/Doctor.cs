@@ -6,10 +6,11 @@
         {
             this.Patients = new HashSet<Pet>();
             this.OwnersOfPatients = new HashSet<Owner>();
+            this.Schedule = new HashSet<Schedule>();
         }
 
-        public bool IsAvailable { get; set; } = true;
-        
+        public ICollection<Schedule> Schedule { get; set; }
+
         public bool IsDeleted { get; set; } = false;
 
         public string? ImageFilePath { get; set; }
