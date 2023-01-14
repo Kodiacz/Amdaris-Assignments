@@ -7,10 +7,6 @@
     box-shadow: 3px 2px 10px 5px;
 }
 
-.css-hlj6pa-MuiDialogActions-root {
-    display: none !important;
-}
-
 .css-1eurbeq-MuiPickersToolbar-root-MuiDatePickerToolbar-root {
     justify-content: center !important;
     background-color: rgba(146, 224, 21, 0.87);
@@ -18,5 +14,9 @@
 
 .css-1hbyad5-MuiTypography-root {
     display: none !important;
+}
+
+.css-nk89i7-MuiPickersCalendarHeader-root {
+    margin-top: 500px;
 }
     

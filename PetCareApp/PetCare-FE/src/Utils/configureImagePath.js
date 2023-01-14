@@ -1,8 +1,8 @@
 function configureImagePath(path) {
-    path = path.replace(`\\\\`, `\\`);
+    path = path.replace(`\\\\`, `/`);
     let index = path.indexOf(`img`);
     path = path.slice(index, path.length + 1)
-    return path
+    return "./" + path
 }
 
 export { configureImagePath }

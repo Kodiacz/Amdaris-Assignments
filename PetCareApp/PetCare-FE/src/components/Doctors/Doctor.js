@@ -8,8 +8,7 @@ import "./DoctorDetails.css"
 const Doctor = () => {
     const id = useParams();
     const { state: doctor, isLoading } = GetDoctor(id.id);
-    console.log(id.id)
-    console.log(doctor)
+    
     return (
         <div className="doctors-details-container">
             {isLoading
