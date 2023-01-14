@@ -40,6 +40,21 @@
                 .IsRequired();
 
             ownerConfiguration
+                .Property(owner => owner.Username)
+                .IsRequired()
+                .HasMaxLength(UserNameMaxLenghtForOwner);
+
+            ownerConfiguration
+                .Property(owner => owner.Email)
+                .IsRequired()
+                .HasMaxLength(EmailMaxLenghtForOwner);
+
+            ownerConfiguration
+                .Property(owner => owner.Username)
+                .IsRequired()
+                .HasMaxLength(PasswordMaxLenghtForOwner);
+
+            ownerConfiguration
                 .HasMany(owner => owner.Pets)
                 .WithOne(owner => owner.Owner)
                 .HasForeignKey(owner => owner.OwnerId)
@@ -73,6 +88,9 @@
                     LastName = "Petkov",
                     Age = 23,
                     Phonenumber = GenerateMobilePhone(),
+                    Username = "stanimircho",
+                    Email = "stanimir@email.com",
+                    Password = "stanimirpetkov",
                 },
                 new Owner
                 {
@@ -81,6 +99,9 @@
                     LastName = "Koleva",
                     Age = 30,
                     Phonenumber = GenerateMobilePhone(),
+                    Username = "desi",
+                    Email = "desi@email.com",
+                    Password = "desikoleva",
                 },
                 new Owner
                 {
@@ -89,6 +110,9 @@
                     LastName = "Kolev",
                     Age = 43,
                     Phonenumber = GenerateMobilePhone(),
+                    Username = "venci",
+                    Email = "venci@email.com",
+                    Password = "vencikolev",
                 },
                 new Owner
                 {
@@ -97,6 +121,9 @@
                     LastName = "Kostadinov",
                     Age = 26,
                     Phonenumber = GenerateMobilePhone(),
+                    Username = "simo",
+                    Email = "simo@email.com",
+                    Password = "simokostadinov",
                 },
             };
 
