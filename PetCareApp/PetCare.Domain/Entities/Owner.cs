@@ -15,11 +15,11 @@
 
         public string? ProfileImageFilePath { get; set; }
 
-        public string Username { get; set; } = null!;
+        public string? Username { get; set; } = null!;
 
-        public string Email { get; set; } = null!;
+        public string? Email { get; set; } = null!;
 
-        public string Password { get; set; } = null!;
+        public string? Password { get; set; } = null!;
 
         public int? DoctorId { get; set; }
         public Doctor? Doctor { get; set; }
