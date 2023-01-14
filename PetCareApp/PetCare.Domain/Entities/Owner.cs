@@ -15,6 +15,12 @@
 
         public string? ProfileImageFilePath { get; set; }
 
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+
+        public string Password { get; set; }
+
         public int? DoctorId { get; set; }
         public Doctor? Doctor { get; set; }
 
