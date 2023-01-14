@@ -102,6 +102,7 @@
                 .AsNoTracking()
                 .Include(Doctor => Doctor.Patients)
                 .Include(Doctor => Doctor.OwnersOfPatients)
+                .Include(Doctor => Doctor.Schedule)
                 .Where(search)
                 .ToListAsync();
         }
@@ -207,6 +208,17 @@
         public async Task UpdateAsync(Doctor doctor)
         {
             this.context.Update(doctor);
+        }
+
+        public async Task<List<Schedule>> GetSchedulesForDoctorAsync(int doctorId)
+        {
+            List<Schedule> schedule = await this.context
+                .Schedules
+                .Include(schedule => schedule.Doctor)
+                .Where(shcedule => !shcedule.Doctor.IsDeleted && shcedule.DoctorId == doctorId)
+                .ToListAsync();
+
+            return schedule;
         }
     }
 }

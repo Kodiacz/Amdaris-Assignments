@@ -78,6 +78,13 @@
         /// <param name="entity">Entity to be detached</param>
         public void Detach(Doctor entity);
 
+        /// <summary>
+        /// Gets the schedule list for the doctor with Id equal to the passed parametar doctorId 
+        /// </summary>
+        /// <param name="doctorId">doctor Id</param>
+        /// <returns>returns a collection of type Schedule</returns>
+        public Task<List<Schedule>> GetSchedulesForDoctorAsync(int doctorId);
+
         Task SaveAsync();
     }
 }
