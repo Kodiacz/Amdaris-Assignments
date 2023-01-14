@@ -41,6 +41,17 @@
             return Ok(getDoctorDto);
         }
 
+        [HttpGet]
+        [Route("{doctorId}")]
+        [ActionName(nameof(GetScheduleByDoctorId))]
+        public async Task<IActionResult> GetScheduleByDoctorId(int doctorId)
+        {
+            GetScheduelForDoctorWithId query = new() { DoctorId = doctorId };
+            List<Schedule> schedules = await base.Mediator.Send(query);
+            List<GetScheduleDto> getScheduleDto = base.Mapper.Map<List<GetScheduleDto>>(schedules);
+            return Ok(getScheduleDto);
+        }
+
         /// <summary>
         /// Creates a doctor and adds it in the database
         /// </summary>
