@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./Calendar.css"
 import { useEffect, useState } from "react";
 import CheckIcon from '@mui/icons-material/Check';
@@ -13,19 +14,19 @@ const Calendar = ({
 }) => {
   const [highlightedDays, setHighlightedDays] = useState([]);
   const [value, setValue] = useState(new Date())
-  const monthShortNames = 
-  ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  const monthShortNames = [
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
   useEffect(() => {
     setHighlightedDays(() => [...availableDays])
   }, [availableDays])
-  
+
   const clicked = (date) => {
     console.log(date.date())
   }
-  
+
   return (
     <div className="calendar">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -43,19 +44,19 @@ const Calendar = ({
           onAccept={(value) => clicked(value)}
           renderDay={(day, _value, DayComponentProps) => {
             const monthOfCalander = Number(JSON.stringify(day.$d).slice(6, 8))
-            
-            const isBeforeCurrentDay = 
-            day.date() < new Date().toLocaleDateString().split("/")[1]
+
+            const isBeforeCurrentDay =
+              day.date() < new Date().toLocaleDateString().split("/")[1]
 
             const isSelected = highlightedDays.find(x => {
               return x.date === day.date() && x.month === monthOfCalander
             })
-             
+
             return (
               <Badge
                 key={day.toString()}
                 overlap="circular"
-                badgeContent={isSelected ? <CheckIcon color={isBeforeCurrentDay ? "disabled" : "success"}/> : <BlockIcon color={isBeforeCurrentDay ? "disabled" : "warning"} />}
+                badgeContent={isSelected ? <CheckIcon color={isBeforeCurrentDay ? "disabled" : "success"} /> : <BlockIcon color={isBeforeCurrentDay ? "disabled" : "warning"} />}
               >
                 <PickersDay {...DayComponentProps} />
               </Badge>

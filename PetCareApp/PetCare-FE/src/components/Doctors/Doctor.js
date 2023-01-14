@@ -1,6 +1,5 @@
 import { CircularProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
-import DoctorCard from "./DoctorCard"
 import { GetDoctor } from "./DoctorsServices";
 import DoctorDetails from "./DoctorDetails";
 import "./DoctorDetails.css"

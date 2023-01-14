@@ -1,5 +1,4 @@
 import Calendar from "..//Calendar/Calendar"
-import MediaCard from "../Test"
 import DoctorCard from "./DoctorCard"
 import "./DoctorDetails.css"
 import { GetDoctorSchedule } from "./DoctorsServices"
