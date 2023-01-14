@@ -18,8 +18,6 @@ const DoctorDetails = ({
     ))
 
     let availableDays = scheduleDays.filter((sd) => sd.isAvailable)
-
-    console.log(availableDays)
     
     return (
         <>
@@ -27,7 +25,7 @@ const DoctorDetails = ({
                 <Calendar availableDays={availableDays} />
             </div>
             <div className="detailed-doctor">
-                <MediaCard doctor={doctor} />
+                <DoctorCard  doctor={doctor} />
             </div>
         </>
     )

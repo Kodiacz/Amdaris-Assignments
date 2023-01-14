@@ -2,7 +2,7 @@ import './DoctorsList.css'
 import DoctorCard from './DoctorCard';
 import { CircularProgress } from '@mui/material';
 import { GetAllDoctors } from './DoctorsServices.js';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 function DoctorsList() {
     const { state: doctors, isLoading } = GetAllDoctors();
@@ -13,7 +13,7 @@ function DoctorsList() {
                 ? <div className="doctors-load">
                     <CircularProgress color='success' size={120} thickness={1} />
                 </div>
-                : doctors.map(d => <DoctorCard key={d.id} doctor={d} />)
+                : doctors.map(d => <DoctorCard renderButton={true} buttonkey={d.id} doctor={d} />)
             }
         </div>
     );
