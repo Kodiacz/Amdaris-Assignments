@@ -19,36 +19,36 @@ namespace PetCare.Infrastructure.EntityConfigurations
 
         private List<Schedule> CreatSchedule()
         {
-            List<Schedule> schedules = new();
+			List<Schedule> schedules = new List<Schedule>();
 
-            DateTime todaysDate = DateTime.UtcNow;
-            int year = DateTime.UtcNow.Year;
-            int month = DateTime.UtcNow.Month;
+			Random random = new Random();
+			int iDForScheduleEntity = 1;
 
-            int numberOfDaysForCurrentMonth =
-                DateTime.DaysInMonth(year, month) - todaysDate.Day;
+			for (int entityId = 1; entityId <= 6; entityId++)
+			{
+				for (int month = 1; month <= 4; month++)
+				{
+					DateTime firstDayOfTheMonth = new DateTime(2023, month, 1);
+					int numberOfDaysForCurrentMonth = DateTime.DaysInMonth(2023, month);
 
-            Random random = new Random();
-            int itForScheduleEntity = 1;
 
-            for (int i = 1; i <= 6; i++)
-            {
-                for (int k = 0; k <= numberOfDaysForCurrentMonth; k++)
-                {
-                    int randomNumber = random.Next(0, 11);
+					for (int day = 0; day < numberOfDaysForCurrentMonth; day++)
+					{
+						int randomNumber = random.Next(0, 6);
 
-                    Schedule scheduleEntity = new();
-                    scheduleEntity.Id = itForScheduleEntity++;
-                    scheduleEntity.Date = todaysDate;
-                    scheduleEntity.Date = todaysDate.Date.AddDays(k);
-                    scheduleEntity.IsAvailable = randomNumber >= 5 ? true : false;
-                    scheduleEntity.DoctorId = i;
+						Schedule scheduleEntity = new Schedule();
+						scheduleEntity.Id = iDForScheduleEntity++;
+						scheduleEntity.Date = firstDayOfTheMonth;
+						scheduleEntity.Date = firstDayOfTheMonth.Date.AddDays(day);
+						scheduleEntity.IsAvailable = randomNumber >= 3 ? true : false;
+						scheduleEntity.DoctorId = entityId;
 
-                    schedules.Add(scheduleEntity);
-                }
-            }
+						schedules.Add(scheduleEntity);
+					}
+				}
+			}
 
-            return schedules;
-        }
-    }
+			return schedules;
+		}
+	}
 }
