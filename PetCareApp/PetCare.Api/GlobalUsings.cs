@@ -62,5 +62,6 @@ global using UpdateReceptionist = PetCare.Application.Receptionists.Commands.Upd
 global using DeleteReceptionist = PetCare.Application.Receptionists.Commands.Delete;
 global using UpdatePartialReceptionist = PetCare.Application.Receptionists.Commands.PartialUpdate;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
+global using PetCare.Api.Dtos.ScheduleDtos;
 
 
