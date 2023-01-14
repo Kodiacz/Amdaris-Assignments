@@ -9,22 +9,25 @@ const DoctorDetails = ({
 }) => {
     const { state: doctorSchedule } = GetDoctorSchedule(doctor.id)
 
-    const scheduleDays = doctorSchedule.map(s => s.date.slice(8, 10))
-    let availableDays = scheduleDays.filter((sd, i) => {
-        if (doctorSchedule[i].isAvailable) {
-            return sd
+    const scheduleDays = [...doctorSchedule].map(d => (
+        {
+            date: Number(d.date.slice(8, 10)),
+            month: Number(d.date.slice(5, 7)),
+            isAvailable: d.isAvailable,
         }
-    })
+    ))
 
-    availableDays = availableDays.map(a => Number(a));
+    let availableDays = scheduleDays.filter((sd) => sd.isAvailable)
 
+    console.log(availableDays)
+    
     return (
         <>
             <div className="doctor-calendar">
                 <Calendar availableDays={availableDays} />
             </div>
             <div className="detailed-doctor">
-                <MediaCard doctor={doctor}/>
+                <MediaCard doctor={doctor} />
             </div>
         </>
     )

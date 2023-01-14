@@ -9,11 +9,15 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const Calendar = ({
-  availableDays
+  availableDays = [],
 }) => {
   const [highlightedDays, setHighlightedDays] = useState([]);
   const [value, setValue] = useState(new Date())
-  
+  const monthShortNames = 
+  ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+
   useEffect(() => {
     setHighlightedDays(() => [...availableDays])
   }, [availableDays])
@@ -21,7 +25,8 @@ const Calendar = ({
   const clicked = (date) => {
     console.log(date.date())
   }
-  
+  // console.log(availableDays)
+  // debugger
   return (
     <div className="calendar">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -38,11 +43,16 @@ const Calendar = ({
           showDaysOutsideCurrentMonth
           onAccept={(value) => clicked(value)}
           renderDay={(day, _value, DayComponentProps) => {
+            const monthOfCalander = Number(JSON.stringify(day.$d).slice(6, 8))
+            
             const isBeforeCurrentDay = 
-            day.date() < new Date().toLocaleDateString().split("/")[1];
-            const isSelected = 
-              highlightedDays.indexOf(day.date()) >= 0;
+            day.date() < new Date().toLocaleDateString().split("/")[1] && 
+            highlightedDays.find(x => x.month > monthOfCalander )
 
+            const isSelected = highlightedDays.find(x => {
+              return x.date === day.date() && x.month === monthOfCalander
+            })
+             
             return (
               <Badge
                 key={day.toString()}
