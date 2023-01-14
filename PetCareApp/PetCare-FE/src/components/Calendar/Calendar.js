@@ -25,8 +25,7 @@ const Calendar = ({
   const clicked = (date) => {
     console.log(date.date())
   }
-  // console.log(availableDays)
-  // debugger
+  
   return (
     <div className="calendar">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -46,8 +45,7 @@ const Calendar = ({
             const monthOfCalander = Number(JSON.stringify(day.$d).slice(6, 8))
             
             const isBeforeCurrentDay = 
-            day.date() < new Date().toLocaleDateString().split("/")[1] && 
-            highlightedDays.find(x => x.month > monthOfCalander )
+            day.date() < new Date().toLocaleDateString().split("/")[1]
 
             const isSelected = highlightedDays.find(x => {
               return x.date === day.date() && x.month === monthOfCalander
