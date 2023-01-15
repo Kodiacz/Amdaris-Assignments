@@ -6,18 +6,19 @@
     --dark: #212121;
 }
 
-#root{
+.body {
+    line-height: none;
+}
+
+#root {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.main-body{
+.main-body {
+    background: linear-gradient(120deg, #6ecaca, #98FB98);
     flex-grow: 1;
-}
-
-.site-footer {
-    margin-top: 20px;
 }
 
 [class^=flaticon-]:before,
@@ -120,7 +121,7 @@
 }
 
 @media (max-width: 991.98px) {
-    .navbar-light .navbar-nav .nav-link  {
+    .navbar-light .navbar-nav .nav-link {
         margin-left: 0;
         padding: 10px 0;
     }
@@ -275,7 +276,7 @@
 }
 
 .product-carousel .owl-nav .owl-prev,
-.product-carousel .owl-nav .owl-next{
+.product-carousel .owl-nav .owl-next {
     position: relative;
     margin: 0 5px;
     width: 55px;
@@ -320,7 +321,7 @@
 }
 
 .price-carousel .owl-nav .owl-prev,
-.price-carousel .owl-nav .owl-next{
+.price-carousel .owl-nav .owl-next {
     position: relative;
     margin: 0 5px;
     width: 45px;

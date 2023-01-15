@@ -19,10 +19,10 @@
 
   /* Style the counter cards */
   .doctor-card-container {
-    margin: 20px;
+    padding: 10px;
+    margin: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     /* this adds the "card" effect */
-    padding: 16px;
     text-align: center;
     background-color: rgba(122, 183, 48, .8);
   }
