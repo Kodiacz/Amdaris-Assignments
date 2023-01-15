@@ -13,9 +13,11 @@
         {
             Owner owner = new Owner
             {
+                Username = request.Username,
+                PasswordHash = request.PasswordHash,
+                PasswordSalt = request.PasswordSalt,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Age = request.Age,
                 Phonenumber = request.Phonenumber,
             };
 

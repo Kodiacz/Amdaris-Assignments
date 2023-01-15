@@ -2,12 +2,18 @@
 {
     public class CreateOwner : IRequest<Owner>
     {
-        public string FirstName { get; set; } = null!;
+        public string Username { get; set; } = null!;
 
-        public string LastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
 
-        public int Age { get; set; }
-        
-        public string Phonenumber { get; set; } = null!;
+        public byte[]? PasswordHash { get; set; }
+
+        public byte[]? PasswordSalt { get; set; }
+
+        public string FirstName { get; init; } = null!;
+
+        public string LastName { get; init; } = null!;
+
+        public string Phonenumber { get; init; } = null!;
     }
 }
