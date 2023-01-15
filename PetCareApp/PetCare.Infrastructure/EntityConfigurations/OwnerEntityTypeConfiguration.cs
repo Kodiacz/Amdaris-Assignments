@@ -90,7 +90,6 @@
                     Phonenumber = GenerateMobilePhone(),
                     Username = "stanimircho",
                     Email = "stanimir@email.com",
-                    Password = "stanimirpetkov",
                 },
                 new Owner
                 {
@@ -101,7 +100,6 @@
                     Phonenumber = GenerateMobilePhone(),
                     Username = "desi",
                     Email = "desi@email.com",
-                    Password = "desikoleva",
                 },
                 new Owner
                 {
@@ -112,7 +110,6 @@
                     Phonenumber = GenerateMobilePhone(),
                     Username = "venci",
                     Email = "venci@email.com",
-                    Password = "vencikolev",
                 },
                 new Owner
                 {
@@ -123,7 +120,6 @@
                     Phonenumber = GenerateMobilePhone(),
                     Username = "simo",
                     Email = "simo@email.com",
-                    Password = "simokostadinov",
                 },
             };
 
