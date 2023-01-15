@@ -11,15 +11,17 @@
 
         public int Id { get; set; }
 
-        public bool IsDeleted { get; set; } = false;
-
-        public string? ProfileImageFilePath { get; set; }
-
         public string? Username { get; set; } = null!;
 
         public string? Email { get; set; } = null!;
 
-        public string? Password { get; set; } = null!;
+        public byte[]? PasswordHash { get; set; }
+
+        public byte[]? PasswordSalt { get; set; }
+
+        public string? ProfileImageFilePath { get; set; }
+
+        public bool IsDeleted { get; set; } = false;
 
         public int? DoctorId { get; set; }
         public Doctor? Doctor { get; set; }

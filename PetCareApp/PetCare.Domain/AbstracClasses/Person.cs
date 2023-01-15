@@ -6,7 +6,7 @@
 
         public string LastName { get; init; }
 
-        public int Age { get; init; }
+        public int? Age { get; init; }
 
         public string Phonenumber { get; init; }
     }
