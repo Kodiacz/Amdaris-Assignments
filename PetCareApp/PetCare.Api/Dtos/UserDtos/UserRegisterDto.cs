@@ -1,6 +1,6 @@
-﻿namespace PetCare.Api.Dtos.OwnerDtos
+﻿namespace PetCare.Api.Dtos.UserDtos
 {
-    public class CreateOwnerDto
+    public class UserRegisterDto 
     {
         [StringLength(UserNameMaxLenghtForOwner, MinimumLength = UserNameMinLenghtForOwner)]
         public string Username { get; set; } = null!;
@@ -26,22 +26,3 @@
         public string Phonenumber { get; init; } = null!;
     }
 }
-
-//[StringLength(UserNameMaxLenghtForOwner, MinimumLength = UserNameMinLenghtForOwner)]
-//public string Username { get; set; } = null!;
-
-//[StringLength(EmailMaxLenghtForOwner, MinimumLength = EmailMinLenghtForOwner)]
-//public string Email { get; set; } = null!;
-
-//[Required]
-//[StringLength(FirstNameMaxLengthForOwner, MinimumLength = FirstNameMinLengthForOwner)]
-//public string FirstName { get; set; } = null!;
-
-//[Required]
-//[StringLength(LastNameMaxLengthForOwner, MinimumLength = LastNameMinLengthForOwner)]
-//public string LastName { get; set; } = null!;
-
-//[Phone]
-//[Required]
-//[StringLength(PhonenumberMaxLengthForOwner)]
-//public string Phonenumber { get; set; } = null!;
