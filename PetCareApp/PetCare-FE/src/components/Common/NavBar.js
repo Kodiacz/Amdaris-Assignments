@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
+import LoginModal from '../Login/LoginModal';
 import { Link, NavLink } from 'react-router-dom'
+import LoginIcon from '@mui/icons-material/Login';
 
 function NavBar() {
     return (
@@ -23,7 +24,7 @@ function NavBar() {
                             <Link to="doctors" className="dropdown-item">Doctors Теам</Link>
                         </div>
                     </div>
-                    <Link to="contact.html" className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5">Sign In <i className="bi bi-arrow-right"></i></Link>
+                    <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5"><LoginModal buttonText="Sign In"/></a>
                 </div>
             </div>
         </nav>

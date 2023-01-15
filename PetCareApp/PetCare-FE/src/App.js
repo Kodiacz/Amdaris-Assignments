@@ -11,6 +11,8 @@ import HeadContactInfo from './components/Common/HeadContactInfo';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Calendar from './components/Calendar/Calendar';
 import Doctor from './components/Doctors/Doctor';
+import Login from './components/Login/Login';
+import LoginModal from './components/Login/LoginModal';
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
           <Route path="/pets" element={<PetsList />} />
           <Route path="/" element={<Home />} />
           <Route path="/calendar" element={<Calendar />} />
+          <Route path="/login" element={<Login />} />
           {/* <Route path="*" element={<Page404 />} /> */}
         </Routes>
       </div>
