@@ -13,9 +13,7 @@
         [HttpPost]
         public async Task<IActionResult> Upload([FromForm] FileUpload fileUpload, string? specificFolder)
         {
-            string path = specificFolder == null ?
-                ImagesFolderPath :
-                ImagesFolderPath + specificFolder + @"\";
+            string path = ImagesFolderPath;
 
             if (!Directory.Exists(path))
             {

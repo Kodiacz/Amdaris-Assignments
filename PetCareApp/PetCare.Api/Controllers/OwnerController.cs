@@ -5,6 +5,7 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
+using static PetCare.Api.Controllers.FileUploadController;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
@@ -126,6 +127,28 @@
             DeleteSoft command = new() { Id = ownerId };
             Owner owner = await base.Mediator.Send(command);
             return NoContent();
+        }
+
+        /// <summary>
+        /// Uploads file to folder
+        /// </summary>
+        /// <param name="fileUpload">contains the File to be upload</param>
+        /// <param name="specificFolder">It is an optional parametar. Continuation of the path</param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UploadOwnerProfilePicture([FromForm] FileUpload fileUpload)
+        {
+            if (!Directory.Exists(UserProfilePicturesFolderPath))
+            {
+                Directory.CreateDirectory(UserProfilePicturesFolderPath);
+            }
+
+            using (FileStream fileStram = System.IO.File.Create(UserProfilePicturesFolderPath + fileUpload.File.FileName))
+            {
+                fileUpload.File.CopyTo(fileStram);
+                fileStram.Flush();
+                return Ok();
+            }
         }
     }
 }
