@@ -19,6 +19,7 @@
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Phonenumber = request.Phonenumber,
+                Email = request.Email,
             };
 
             await this.unitOfWorkRepo.OwnerRepository.AddAsync(owner);
