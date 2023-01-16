@@ -13,11 +13,12 @@ global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 global using Microsoft.Identity.Web;
+global using NewtonJson = Newtonsoft.Json;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.AspNetCore.Authorization;
 
 global using MediatR;
 global using AutoMapper;
-global using NewtonJson = Newtonsoft.Json;
 global using PetCare.Api.Models;
 global using PetCare.Interfaces;
 global using PetCare.Api.Filters;
