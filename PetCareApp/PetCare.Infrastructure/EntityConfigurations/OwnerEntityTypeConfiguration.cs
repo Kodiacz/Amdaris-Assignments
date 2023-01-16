@@ -37,7 +37,7 @@
 
             ownerConfiguration
                 .Property(owner => owner.Age)
-                .IsRequired();
+                .IsRequired(false);
 
             ownerConfiguration
                 .Property(owner => owner.Username)
@@ -50,10 +50,13 @@
                 .HasMaxLength(EmailMaxLenghtForOwner);
 
             ownerConfiguration
-                .Property(owner => owner.Username)
-                .IsRequired()
-                .HasMaxLength(PasswordMaxLenghtForOwner);
+                .Property(owner => owner.PasswordHash)
+                .IsRequired(false);
 
+            ownerConfiguration
+            .Property(owner => owner.PasswordSalt)
+            .IsRequired(false);
+                
             ownerConfiguration
                 .HasMany(owner => owner.Pets)
                 .WithOne(owner => owner.Owner)
