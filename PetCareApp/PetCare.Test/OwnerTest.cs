@@ -38,7 +38,6 @@ namespace PetCare.Test
 
             var command = new CreateOwner()
             {
-                Age = 1,
                 FirstName = "FirstName",
                 LastName = "LastName",
                 Phonenumber = "0899535011",

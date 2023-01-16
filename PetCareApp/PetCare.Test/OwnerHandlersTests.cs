@@ -32,7 +32,6 @@ using Azure.Core;
             {
                 FirstName = "Pesho",
                 LastName = "Mesho",
-                Age = 45,
                 Phonenumber = "0893399284"
             };
 
@@ -53,7 +52,6 @@ using Azure.Core;
                 Id = 1,
                 FirstName = "Pesho",
                 LastName = "Mesho",
-                Age = 45,
                 Phonenumber = "0893399284"
             };
 
@@ -76,7 +74,6 @@ using Azure.Core;
                 Id = 1,
                 FirstName = "Pesho",
                 LastName = "Mesho",
-                Age = 45,
                 Phonenumber = "0893399284",
                 IsDeleted = true,
             };
@@ -98,7 +95,6 @@ using Azure.Core;
                 Id = 1,
                 FirstName = "Pesho",
                 LastName = "Mesho",
-                Age = 45,
                 Phonenumber = "0893399284",
                 IsDeleted = true,
             };
