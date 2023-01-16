@@ -30,7 +30,8 @@ namespace PetCare.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -76,7 +77,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "Emergency medical care, internal medicine",
                             LastName = "Nikolova",
-                            Phonenumber = "0297598",
+                            Phonenumber = "0279030",
                             StartedJobDate = new DateTime(2018, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -88,7 +89,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "Parasitology and infectious diseases",
                             LastName = "Naidenova",
-                            Phonenumber = "0277289",
+                            Phonenumber = "0268769",
                             StartedJobDate = new DateTime(2018, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -100,7 +101,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "orthopedics and traumatology, abdominal and thoracic surgery, panelist",
                             LastName = "Georgieva",
-                            Phonenumber = "0230072",
+                            Phonenumber = "0219183",
                             StartedJobDate = new DateTime(2011, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -112,7 +113,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "exotic animals, internal diseases",
                             LastName = "Milushev",
-                            Phonenumber = "0238678",
+                            Phonenumber = "0274754",
                             StartedJobDate = new DateTime(2010, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -149,7 +150,7 @@ namespace PetCare.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
                     b.Property<int?>("DoctorId")
@@ -173,8 +174,11 @@ namespace PetCare.Infrastructure.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Phonenumber")
                         .IsRequired()
@@ -189,8 +193,8 @@ namespace PetCare.Infrastructure.Migrations
 
                     b.Property<string>("Username")
                         .IsRequired()
-                        .HasMaxLength(35)
-                        .HasColumnType("nvarchar(35)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
@@ -209,8 +213,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Stanimir",
                             IsDeleted = false,
                             LastName = "Petkov",
-                            Password = "stanimirpetkov",
-                            Phonenumber = "0893778234",
+                            Phonenumber = "0898418375",
                             Username = "stanimircho"
                         },
                         new
@@ -221,8 +224,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Desislava",
                             IsDeleted = false,
                             LastName = "Koleva",
-                            Password = "desikoleva",
-                            Phonenumber = "0885828490",
+                            Phonenumber = "0898808380",
                             Username = "desi"
                         },
                         new
@@ -233,8 +235,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Vencislav",
                             IsDeleted = false,
                             LastName = "Kolev",
-                            Password = "vencikolev",
-                            Phonenumber = "0888185379",
+                            Phonenumber = "0870220151",
                             Username = "venci"
                         },
                         new
@@ -245,8 +246,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Simeon",
                             IsDeleted = false,
                             LastName = "Kostadinov",
-                            Password = "simokostadinov",
-                            Phonenumber = "0899070318",
+                            Phonenumber = "0893811173",
                             Username = "simo"
                         });
                 });
@@ -363,7 +363,8 @@ namespace PetCare.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -471,7 +472,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 2,
                             Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -492,14 +493,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 5,
                             Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 6,
                             Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -520,42 +521,42 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 9,
                             Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 10,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 11,
                             Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 12,
                             Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 13,
                             Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 14,
                             Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -569,21 +570,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 16,
                             Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 17,
                             Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 18,
                             Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -618,21 +619,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 23,
                             Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 24,
                             Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 25,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -646,21 +647,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 27,
                             Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 28,
                             Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 29,
                             Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -674,4996 +675,4828 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 31,
                             Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 32,
                             Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 33,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 34,
-                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 35,
-                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 36,
-                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 37,
-                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 38,
-                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 39,
-                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 40,
-                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 41,
-                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 42,
                             Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 43,
+                            Id = 42,
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 44,
+                            Id = 43,
                             Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 45,
+                            Id = 44,
                             Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 46,
-                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 47,
-                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 48,
-                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 49,
-                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 50,
-                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 51,
-                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 52,
                             Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 53,
+                            Id = 52,
                             Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 54,
-                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 55,
-                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 56,
-                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 57,
-                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 58,
-                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 59,
-                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 60,
-                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 61,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 62,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 63,
-                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 64,
-                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 65,
-                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 66,
-                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 67,
-                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 68,
-                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 69,
-                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 70,
-                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 71,
-                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 72,
-                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 73,
-                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 74,
-                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 75,
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 76,
-                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 77,
-                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 78,
-                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 79,
-                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 80,
-                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 81,
                             Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 82,
+                            Id = 80,
                             Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 81,
+                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 82,
+                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 83,
-                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 84,
-                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 85,
-                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 86,
-                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 85,
+                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 86,
+                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 87,
-                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 88,
-                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 89,
-                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 90,
-                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 91,
-                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 90,
+                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 91,
+                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 92,
-                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 93,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 94,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 95,
-                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 94,
+                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 95,
+                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 1,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 96,
-                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 97,
-                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 98,
-                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 99,
-                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 100,
-                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 101,
-                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 102,
-                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 103,
-                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 104,
-                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 105,
-                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 106,
-                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 107,
-                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 108,
-                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 109,
-                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 110,
-                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 111,
-                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 112,
-                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 113,
-                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 114,
-                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 115,
-                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 116,
-                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 117,
-                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 118,
-                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 119,
-                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 120,
-                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 121,
-                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
+                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 122,
-                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
+                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 123,
-                            Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
+                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 124,
-                            Date = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 1,
-                            IsAvailable = false
+                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 125,
-                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 126,
-                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 127,
-                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 128,
-                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 129,
-                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 130,
-                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 131,
-                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 132,
-                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 133,
-                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 134,
-                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 131,
+                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 132,
+                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 133,
+                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 134,
+                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 135,
-                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 136,
-                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 137,
-                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 138,
-                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 139,
-                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 140,
-                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 141,
-                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 142,
+                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 142,
-                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
                             Id = 143,
-                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 144,
-                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 145,
-                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 146,
-                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 147,
-                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 148,
-                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 149,
-                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 150,
-                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 150,
+                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 151,
-                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 152,
-                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 153,
-                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 154,
-                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 155,
-                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 156,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 157,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 158,
-                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 159,
-                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 160,
-                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 161,
-                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 162,
-                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 163,
-                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 164,
-                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 165,
-                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 166,
-                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 167,
+                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 167,
-                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
                             Id = 168,
-                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 169,
-                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 170,
-                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 171,
-                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 172,
-                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 173,
-                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 172,
+                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 173,
+                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 174,
-                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 175,
-                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 176,
-                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 177,
-                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 176,
+                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 177,
+                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 178,
-                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 179,
-                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 180,
-                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 181,
-                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 182,
-                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 183,
-                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 184,
-                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 185,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 186,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 187,
-                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 188,
-                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 189,
-                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 189,
+                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 190,
-                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 191,
-                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 192,
-                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 193,
-                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 194,
-                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 195,
-                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 196,
-                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 197,
-                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 198,
-                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 196,
+                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 197,
+                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 198,
+                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 199,
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 200,
-                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 201,
-                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 202,
-                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 203,
-                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 204,
-                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 205,
-                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 206,
-                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 207,
-                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 208,
-                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 209,
-                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 210,
-                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 211,
-                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 212,
-                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 213,
-                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 214,
-                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 214,
+                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 215,
-                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 216,
-                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 217,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 218,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 219,
-                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 220,
-                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 221,
-                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 222,
-                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 223,
-                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 224,
-                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 223,
+                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 224,
+                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 225,
-                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 226,
-                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 227,
-                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 228,
-                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 229,
-                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 230,
-                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 231,
-                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 232,
+                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 232,
-                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 233,
-                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 234,
-                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 235,
-                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 236,
-                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 237,
-                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 238,
-                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 2,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 239,
+                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 239,
-                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 240,
-                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 241,
-                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
+                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 242,
-                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
+                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 243,
-                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
+                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 244,
-                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
+                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 245,
-                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = false
+                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 246,
-                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
+                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 247,
-                            Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
+                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 248,
-                            Date = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 2,
-                            IsAvailable = true
+                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 249,
-                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 250,
-                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 251,
-                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 252,
-                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 253,
-                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 254,
-                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 253,
+                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 254,
+                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 255,
-                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 256,
-                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 257,
-                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 258,
-                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 259,
-                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 260,
-                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 261,
-                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 262,
-                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 263,
-                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 264,
-                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 265,
-                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 265,
+                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 266,
-                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 267,
-                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 268,
-                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 269,
-                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 270,
-                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 271,
-                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 272,
-                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 273,
-                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 274,
-                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 275,
-                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 276,
-                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 277,
-                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 276,
+                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 277,
+                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 278,
-                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 279,
-                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 280,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 281,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 282,
-                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 283,
-                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 284,
-                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 285,
-                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 286,
-                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 287,
+                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 287,
-                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 288,
-                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 289,
-                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 290,
-                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 291,
-                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 292,
-                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 292,
+                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 293,
-                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 294,
-                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 295,
-                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 296,
-                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 297,
-                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 298,
-                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 299,
-                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 300,
-                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 301,
-                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 302,
-                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 303,
+                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 303,
-                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
                             Id = 304,
-                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 305,
-                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 306,
-                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 307,
-                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 308,
-                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 309,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 310,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 311,
-                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 312,
-                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 313,
-                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 314,
+                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 314,
-                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 315,
-                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 316,
-                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 317,
-                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 318,
-                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 319,
-                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 320,
-                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 321,
-                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 322,
-                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 323,
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 324,
-                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 325,
-                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 326,
-                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 327,
-                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 328,
-                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 327,
+                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 328,
+                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 329,
-                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 330,
-                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 331,
-                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 332,
-                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 333,
-                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 334,
-                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 335,
-                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 336,
-                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 337,
-                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 338,
-                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 339,
-                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 338,
+                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 339,
+                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 340,
-                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 341,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 342,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 343,
-                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 342,
+                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 343,
+                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 344,
-                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 345,
-                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 346,
-                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 347,
-                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 348,
-                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 349,
-                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 350,
-                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 351,
-                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 352,
-                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 353,
-                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 354,
-                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 355,
-                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 353,
+                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 354,
+                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 355,
+                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 3,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 356,
-                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 357,
-                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 358,
-                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 359,
-                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 360,
-                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 361,
-                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 362,
-                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 363,
-                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 364,
-                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 365,
-                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 366,
-                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 367,
-                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 368,
-                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 369,
-                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 370,
                             Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 371,
+                            Id = 360,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 361,
+                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 362,
+                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 363,
+                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 364,
+                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 365,
+                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 366,
+                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 367,
+                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 368,
+                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 369,
+                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 370,
+                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 371,
+                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 372,
-                            Date = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 3,
+                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 373,
-                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 374,
-                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 375,
-                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 376,
-                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 377,
-                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 378,
-                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 379,
-                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 380,
-                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 381,
-                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 380,
+                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 381,
+                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 382,
-                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 383,
-                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 384,
-                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 385,
-                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 386,
-                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 387,
-                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 388,
-                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 389,
-                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 390,
-                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 391,
-                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 392,
-                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 393,
-                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 394,
-                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 393,
+                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 394,
+                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 395,
-                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 396,
-                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 397,
-                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 398,
-                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 399,
-                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 400,
-                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 401,
-                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 402,
-                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 403,
-                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 404,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 405,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 406,
-                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 407,
-                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 408,
-                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 409,
-                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 410,
-                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 409,
+                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 410,
+                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 411,
-                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 412,
-                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 413,
-                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 414,
-                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 415,
-                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 416,
-                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 417,
-                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 418,
-                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 419,
-                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 420,
-                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 421,
-                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 422,
+                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 422,
-                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 423,
-                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 424,
-                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 425,
-                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 426,
-                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 427,
-                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 428,
-                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 429,
-                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 430,
-                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 427,
+                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 428,
+                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 429,
+                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 430,
+                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 431,
-                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 432,
-                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 433,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 434,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 435,
-                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 436,
-                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 437,
-                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 438,
-                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 439,
-                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 440,
-                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 441,
-                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 442,
-                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 443,
-                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 444,
-                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 445,
-                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 446,
-                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 445,
+                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 446,
+                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 447,
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 448,
-                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 449,
-                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 450,
-                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 451,
-                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 452,
-                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 453,
-                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 454,
-                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 455,
-                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 456,
-                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 457,
-                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 458,
-                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 459,
-                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 460,
-                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 461,
-                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 462,
-                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 463,
+                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 463,
-                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 464,
-                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 465,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 466,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 467,
-                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 468,
-                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 469,
-                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 470,
-                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 471,
-                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 4,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 472,
+                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 472,
-                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
                             Id = 473,
-                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 474,
-                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 475,
-                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 476,
-                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 477,
-                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 478,
-                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 479,
-                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 480,
-                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 481,
-                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 482,
-                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 483,
-                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 484,
-                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 485,
-                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 486,
-                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 487,
-                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 488,
-                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 489,
-                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 490,
-                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 491,
-                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 492,
-                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 493,
-                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 494,
-                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 495,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 481,
+                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 482,
+                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 483,
+                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 484,
+                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 485,
+                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 486,
+                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 487,
+                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 488,
+                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 489,
+                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 490,
+                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 491,
+                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 492,
+                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 493,
+                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 494,
+                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 495,
+                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 496,
-                            Date = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 4,
+                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 497,
-                            Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 498,
-                            Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 499,
-                            Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 499,
+                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 500,
-                            Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 501,
-                            Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 502,
-                            Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 503,
-                            Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 504,
-                            Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 505,
-                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 506,
-                            Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 507,
-                            Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 508,
-                            Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 509,
-                            Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 510,
-                            Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 511,
-                            Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 512,
-                            Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 513,
-                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 514,
-                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 515,
-                            Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 516,
-                            Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 517,
-                            Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 518,
-                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 519,
-                            Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 520,
-                            Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 521,
-                            Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 522,
-                            Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 523,
-                            Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 524,
-                            Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 525,
-                            Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 526,
-                            Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 527,
-                            Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 523,
+                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 524,
+                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 525,
+                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 526,
+                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
+                            Id = 527,
+                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
                             Id = 528,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 529,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 530,
-                            Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 531,
-                            Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 532,
-                            Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 533,
-                            Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 534,
-                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 535,
-                            Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 536,
-                            Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 537,
-                            Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 538,
-                            Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 539,
-                            Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 540,
-                            Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 540,
+                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 541,
-                            Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 542,
-                            Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 543,
-                            Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 544,
-                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 545,
-                            Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 546,
-                            Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 547,
-                            Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 548,
-                            Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 549,
-                            Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 550,
-                            Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 551,
-                            Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 552,
-                            Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 553,
-                            Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 554,
-                            Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 555,
-                            Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 556,
-                            Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 557,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 558,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 559,
-                            Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 560,
-                            Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 561,
-                            Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 562,
-                            Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 563,
-                            Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 564,
-                            Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 565,
-                            Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 566,
-                            Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 567,
-                            Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 568,
-                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 569,
-                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 570,
-                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 571,
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 572,
-                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 573,
-                            Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 574,
-                            Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 575,
-                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 576,
-                            Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 574,
+                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 575,
+                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 576,
+                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 577,
-                            Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 578,
-                            Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 579,
-                            Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 580,
-                            Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 581,
-                            Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 582,
-                            Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 583,
-                            Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 584,
-                            Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 585,
-                            Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 586,
-                            Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 587,
-                            Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 588,
-                            Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 589,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 589,
+                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 590,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 591,
-                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 592,
-                            Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 593,
-                            Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
+                            Id = 593,
+                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 5,
+                            IsAvailable = false
+                        },
+                        new
+                        {
                             Id = 594,
-                            Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 595,
-                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 596,
-                            Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 597,
-                            Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = false
                         },
                         new
                         {
                             Id = 598,
-                            Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 599,
-                            Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 600,
-                            Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
                             IsAvailable = true
                         },
                         new
                         {
                             Id = 601,
-                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 602,
-                            Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 603,
-                            Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 604,
-                            Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 605,
-                            Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 606,
-                            Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 607,
-                            Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 608,
-                            Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 609,
-                            Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 610,
-                            Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 611,
-                            Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 612,
-                            Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 613,
-                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 614,
-                            Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 615,
-                            Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 616,
-                            Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 617,
-                            Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 618,
-                            Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 619,
-                            Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 620,
-                            Date = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 5,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 621,
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 622,
+                            Id = 602,
                             Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 623,
+                            Id = 603,
                             Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 624,
+                            Id = 604,
                             Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 625,
+                            Id = 605,
                             Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 626,
+                            Id = 606,
                             Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 627,
+                            Id = 607,
                             Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 628,
+                            Id = 608,
                             Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 629,
-                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 630,
+                            Id = 609,
+                            Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 610,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 631,
+                            Id = 611,
                             Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 632,
+                            Id = 612,
                             Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 633,
+                            Id = 613,
                             Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 634,
+                            Id = 614,
                             Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 635,
+                            Id = 615,
                             Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 636,
+                            Id = 616,
                             Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 617,
+                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 637,
-                            Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 618,
+                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 638,
-                            Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 639,
+                            Id = 619,
                             Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 640,
+                            Id = 620,
                             Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 641,
+                            Id = 621,
                             Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 642,
-                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 643,
+                            Id = 622,
+                            Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 623,
                             Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 644,
+                            Id = 624,
                             Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 645,
+                            Id = 625,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 646,
+                            Id = 626,
                             Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 647,
+                            Id = 627,
                             Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 648,
+                            Id = 628,
                             Date = new DateTime(2023, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 649,
+                            Id = 629,
                             Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 650,
+                            Id = 630,
                             Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 651,
+                            Id = 631,
                             Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 652,
+                            Id = 632,
                             Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 653,
-                            Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 654,
+                            Id = 633,
                             Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 655,
+                            Id = 634,
                             Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 656,
+                            Id = 635,
                             Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 657,
+                            Id = 636,
                             Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 658,
-                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 659,
+                            Id = 637,
+                            Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 638,
                             Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 660,
+                            Id = 639,
                             Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 661,
+                            Id = 640,
                             Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 662,
+                            Id = 641,
                             Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 663,
+                            Id = 642,
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 664,
+                            Id = 643,
                             Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 665,
+                            Id = 644,
                             Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 666,
+                            Id = 645,
                             Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 667,
+                            Id = 646,
                             Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 647,
+                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 668,
-                            Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 669,
+                            Id = 648,
                             Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 670,
+                            Id = 649,
                             Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 671,
+                            Id = 650,
                             Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 672,
+                            Id = 651,
                             Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 673,
+                            Id = 652,
                             Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 674,
+                            Id = 653,
                             Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 675,
+                            Id = 654,
                             Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 676,
+                            Id = 655,
                             Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 677,
+                            Id = 656,
                             Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 678,
+                            Id = 657,
                             Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 679,
+                            Id = 658,
                             Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 680,
+                            Id = 659,
                             Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 681,
+                            Id = 660,
                             Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 682,
-                            Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 683,
+                            Id = 661,
                             Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 684,
+                            Id = 662,
                             Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 685,
+                            Id = 663,
                             Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 686,
+                            Id = 664,
                             Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 687,
+                            Id = 665,
                             Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 688,
+                            Id = 666,
                             Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 689,
+                            Id = 667,
                             Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 690,
+                            Id = 668,
                             Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 691,
+                            Id = 669,
                             Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 692,
+                            Id = 670,
                             Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 693,
+                            Id = 671,
                             Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 694,
+                            Id = 672,
                             Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 695,
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 696,
+                            Id = 673,
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 674,
                             Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 697,
+                            Id = 675,
                             Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 698,
+                            Id = 676,
                             Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = true
+                        },
+                        new
+                        {
+                            Id = 677,
+                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 699,
-                            Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 700,
+                            Id = 678,
                             Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 701,
+                            Id = 679,
                             Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 702,
+                            Id = 680,
                             Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 703,
+                            Id = 681,
                             Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 704,
+                            Id = 682,
                             Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 705,
+                            Id = 683,
                             Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 706,
+                            Id = 684,
                             Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 707,
+                            Id = 685,
                             Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 708,
+                            Id = 686,
                             Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 709,
+                            Id = 687,
                             Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 710,
+                            Id = 688,
                             Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 711,
+                            Id = 689,
                             Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
-                            Id = 712,
+                            Id = 690,
                             Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 713,
+                            Id = 691,
                             Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 714,
-                            Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 692,
+                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 715,
-                            Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = true
-                        },
-                        new
-                        {
-                            Id = 716,
+                            Id = 693,
                             Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 717,
+                            Id = 694,
                             Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 718,
+                            Id = 695,
                             Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 719,
-                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 720,
+                            Id = 696,
+                            Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 697,
                             Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 721,
+                            Id = 698,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 722,
+                            Id = 699,
                             Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 723,
+                            Id = 700,
                             Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 724,
+                            Id = 701,
                             Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 725,
-                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 726,
+                            Id = 702,
+                            Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 703,
                             Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 727,
+                            Id = 704,
                             Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 728,
+                            Id = 705,
                             Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 729,
+                            Id = 706,
                             Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 730,
+                            Id = 707,
                             Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 731,
+                            Id = 708,
                             Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 732,
+                            Id = 709,
                             Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 733,
+                            Id = 710,
                             Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 734,
+                            Id = 711,
                             Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 735,
+                            Id = 712,
                             Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = false
                         },
                         new
                         {
-                            Id = 736,
+                            Id = 713,
                             Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 737,
-                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 738,
+                            Id = 714,
+                            Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DoctorId = 6,
+                            IsAvailable = false
+                        },
+                        new
+                        {
+                            Id = 715,
                             Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 739,
+                            Id = 716,
                             Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 740,
+                            Id = 717,
                             Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 741,
+                            Id = 718,
                             Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         },
                         new
                         {
-                            Id = 742,
+                            Id = 719,
                             Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
-                            Id = 743,
+                            Id = 720,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DoctorId = 6,
-                            IsAvailable = false
-                        },
-                        new
-                        {
-                            Id = 744,
-                            Date = new DateTime(2023, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
                             IsAvailable = true
                         });
