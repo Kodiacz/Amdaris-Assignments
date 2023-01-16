@@ -1,5 +1,9 @@
-﻿namespace Microsoft.Extensions.DependencyInjection
+﻿global using Microsoft.OpenApi.Models;
+global using Swashbuckle.AspNetCore.Filters;
+
+namespace Microsoft.Extensions.DependencyInjection
 {
+
     public static class PetClinicServiceCollectionExtension
     {
         public static IServiceCollection AddApplicationService(this IServiceCollection serviceCollection, WebApplicationBuilder builder)
@@ -19,7 +23,18 @@
                 });
 
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                    Description = "Standart Authorization header using the Bearer shceme",
+                    In = ParameterLocation.Header,
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                });
+
+                options.OperationFilter<SecurityRequirementsOperationFilter>();
+            });
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<PetCareDbContext>(options =>
