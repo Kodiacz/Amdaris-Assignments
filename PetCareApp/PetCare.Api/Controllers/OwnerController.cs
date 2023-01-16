@@ -5,7 +5,6 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
-using static PetCare.Api.Controllers.FileUploadController;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
