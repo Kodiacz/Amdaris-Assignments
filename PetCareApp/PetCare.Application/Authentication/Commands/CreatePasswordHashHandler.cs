@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace PetCare.Application.Authentication.Commands
+﻿namespace PetCare.Application.Authentication.Commands
 {
     /// <summary>
     /// returns an object that holds the computed Password and Salt
