@@ -7,6 +7,7 @@ global using System.ComponentModel.DataAnnotations;
 
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Http;
+global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.AspNetCore.JsonPatch;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,8 +18,7 @@ global using Microsoft.EntityFrameworkCore;
 global using MediatR;
 global using AutoMapper;
 global using NewtonJson = Newtonsoft.Json;
-
-
+global using PetCare.Api.Models;
 global using PetCare.Interfaces;
 global using PetCare.Api.Filters;
 global using PetCare.Infrastructure;
@@ -31,6 +31,7 @@ global using PetCare.Application.Exceptions;
 global using PetCare.Infrastructure.Repository;
 global using static PetCare.Api.Common.Constants;
 global using PetCare.Application.Authentication.Commands;
+global using static PetCare.Api.Controllers.FileUploadController;
 
 //For DoctorController
 global using PetCare.Api.Dtos.DoctorDtos;
