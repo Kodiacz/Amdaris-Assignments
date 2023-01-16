@@ -18,6 +18,7 @@
                 new Claim(ClaimTypes.Email, request.Owner.Email!),
                 new Claim(ClaimTypes.GivenName, request.Owner.FirstName!),
                 new Claim(ClaimTypes.Surname, request.Owner.LastName!),
+                new Claim(ClaimTypes.Role, "User"),
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
