@@ -78,5 +78,14 @@
         /// <param name="search">Expression that is aplpied for the where clause</param>
         /// <returns>Return the Owner entity</returns>
         Task<Owner> GetByIdAsReadonlyAsync(int id, Expression<Func<Owner, bool>> search);
+
+        /// <summary>
+        /// Gets the entity from the database by its Id and 
+        /// applies predicate for where clause. Also its using AsNoTracking method
+        /// </summary>
+        /// <param name="username">The username of the Owner entity</param>
+        /// <param name="search">Expression that is aplpied for the where clause</param>
+        /// <returns>Return the Owner entity</returns>
+        Task<Owner> GetOwnerByUsername(string username, Expression<Func<Owner, bool>> search);
     }
 }

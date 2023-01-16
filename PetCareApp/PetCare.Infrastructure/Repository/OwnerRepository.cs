@@ -172,5 +172,17 @@
         {
             this.context.Update(owner);
         }
+
+        public async Task<Owner> GetOwnerByUsername(string username, Expression<Func<Owner, bool>> search)
+        {
+            var owner = await this.context
+                .Owners
+                .Include(Owner => Owner.Pets)
+                .AsNoTracking()
+                .Where(search)
+                .FirstOrDefaultAsync(owner => owner.Username == username)!;
+
+            return owner!;
+        }
     }
 }
