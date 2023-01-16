@@ -5,6 +5,7 @@
     using UpdatePet;
     using DeletePet;
     using UpdatePartialPet;
+using System.Data;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
@@ -12,6 +13,7 @@
     public class PetController : BaseController<PetController>
     {
         [HttpGet]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(GetAll))]
         public async Task<IActionResult> GetAll()
         {
@@ -24,6 +26,7 @@
         [HttpGet]
         [Route("{petId}")]
         [ActionName(nameof(GetById))]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetById(int petId)
         {
             GetPetById query = new() { Id = petId };
@@ -34,6 +37,7 @@
 
         [HttpPost]
         [ModelValidationFilter]
+        [Authorize(Roles = "Admin")]
         [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreatePetDto createPetDto)
         {
@@ -46,6 +50,7 @@
         [HttpPut]
         [Route("{petId}")]
         [ModelValidationFilter]
+        [Authorize(Roles = "Admin")]
         [ActionName(nameof(Update))]
         public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto, int petId)
         {
@@ -58,6 +63,7 @@
         [HttpPatch]
         [Route("{petId}")]
         [ModelValidationFilter]
+        [Authorize(Roles = "Admin")]
         [ActionName(nameof(PartialUpdate))]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdatePetDto> jsonPatchDocument, int petId)
         {
@@ -83,6 +89,7 @@
 
         [HttpDelete]
         [Route("petId")]
+        [Authorize(Roles = "Admin")]
         [ActionName(nameof(Delete))]
         public async Task<IActionResult> Delete(int petId)
         {

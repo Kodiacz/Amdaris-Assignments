@@ -17,6 +17,7 @@
         /// <returns></returns>
         [HttpGet]
         [ActionName(nameof(GetAll))]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -33,6 +34,7 @@
         [HttpGet]
         [ActionName(nameof(GetById))]
         [Route("{doctorId}")]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetById(int doctorId)
         {
             GetDoctorById query = new GetDoctorById() { Id = doctorId, };
@@ -43,6 +45,7 @@
 
         [HttpGet]
         [Route("{doctorId}")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(GetScheduleByDoctorId))]
         public async Task<IActionResult> GetScheduleByDoctorId(int doctorId)
         {
@@ -58,8 +61,9 @@
         /// <param name="createDoctorDto"></param>
         /// <returns></returns>
         [HttpPost]
-        [ActionName(nameof(Create))]
         [ModelValidationFilter]
+        [ActionName(nameof(Create))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] CreateDoctorDto createDoctorDto)
         {
             CreateDoctor command = base.Mapper.Map<CreateDoctor>(createDoctorDto);
@@ -77,6 +81,7 @@
         [HttpPut]
         [Route("{doctorId}")]
         [ModelValidationFilter]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(UpdateDoctorDto updateDoctorDto, int doctorId)
         {
             UpdateDoctor command = base.Mapper.Map<UpdateDoctor>(updateDoctorDto);
@@ -88,6 +93,7 @@
         [HttpPatch]
         [Route("{doctorId}")]
         [ModelValidationFilter]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateDoctorDto> jsonPatchDocument, int doctorId)
         {
             GetDoctorByIdAsReadonly query = new() { Id = doctorId };
@@ -119,6 +125,7 @@
         [HttpDelete]
         [Route("doctorId")]
         [ActionName(nameof(Delete))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int doctorId)
         {
             DeleteSoft command = new DeleteSoft() { Id = doctorId };

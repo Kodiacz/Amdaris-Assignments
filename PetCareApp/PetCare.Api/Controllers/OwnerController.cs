@@ -5,6 +5,7 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
+using System.Data;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
@@ -16,6 +17,7 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(GetAll))]
         public async Task<IActionResult> GetAll()
         {
@@ -27,6 +29,7 @@
 
         [HttpGet]
         [Route("{ownerId}")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(GetAllOwnerPets))]
         public async Task<IActionResult> GetAllOwnerPets(int ownerId)
         {
@@ -43,6 +46,7 @@
         /// <returns></returns>
         [HttpGet]
         [Route("{ownerId}")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(GetById))]
         public async Task<IActionResult> GetById(int ownerId)
         {
@@ -60,6 +64,7 @@
         [HttpPost]
         [ModelValidationFilter]
         [ActionName(nameof(Create))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([FromBody] CreateOwnerDto createOwnerDto)
         {
             CreateOwner command = base.Mapper.Map<CreateOwner>(createOwnerDto);
@@ -78,6 +83,7 @@
         [Route("{ownerId}")]
         [ModelValidationFilter]
         [ActionName(nameof(Update))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update([FromBody] UpdateOwnerDto updateOwnerDto, int ownerId)
         {
             UpdateOwner command = this.Mapper.Map<UpdateOwner>(updateOwnerDto);
@@ -89,6 +95,7 @@
         [HttpPatch]
         [Route("{ownerId}")]
         [ModelValidationFilter]
+        [Authorize(Roles = "Admin")]
         [ActionName(nameof(PartialUpdate))]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateOwnerDto> jsonPatchDocument, int ownerId)
         {
@@ -121,6 +128,7 @@
         [HttpDelete]
         [Route("{ownerId}")]
         [ActionName(nameof(Delete))]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int ownerId)
         {
             DeleteSoft command = new() { Id = ownerId };
@@ -135,6 +143,7 @@
         /// <param name="specificFolder">It is an optional parametar. Continuation of the path</param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> UploadOwnerProfilePicture([FromForm] FileUpload fileUpload)
         {
             if (!Directory.Exists(UserProfilePicturesFolderPath))
