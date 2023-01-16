@@ -1,29 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
-
-builder.Services
-    .AddControllers(configuration =>
-    {
-        configuration.Filters.AddApplicationFilters();
-    })
-    .AddNewtonsoftJson()
-    .AddJsonOptions(x =>
-    {
-        x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-    });
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<PetCareDbContext>(options =>
-{
-    options.UseSqlServer(connectionString);
-});
-
-builder.Services.AddApplicationService();
+builder.Services.AddApplicationService(builder);
 
 var app = builder.Build();
 
