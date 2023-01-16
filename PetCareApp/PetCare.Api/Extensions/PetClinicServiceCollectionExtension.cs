@@ -2,8 +2,64 @@
 {
     public static class PetClinicServiceCollectionExtension
     {
-        public static IServiceCollection AddApplicationService(this IServiceCollection serviceCollection)
+        public static IServiceCollection AddApplicationService(this IServiceCollection serviceCollection, WebApplicationBuilder builder)
         {
+            //builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //    .AddMicrosoftIdentityWebApi(builder.Configuration.GetSection("AzureAd"));
+
+            builder.Services
+                .AddControllers(configuration =>
+                {
+                    configuration.Filters.AddApplicationFilters();
+                })
+                .AddNewtonsoftJson()
+                .AddJsonOptions(x =>
+                {
+                    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+                });
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<PetCareDbContext>(options =>
+            {
+                options.UseSqlServer(connectionString);
+            });
+
+            serviceCollection.AddCors(options =>
+            {
+                options.AddPolicy(name: "PetCare-FE", option =>
+                {
+                    option
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .WithOrigins("http://localhost:3000");
+                });
+            });
+
+            var jwtSettingsSection = builder.Configuration.GetSection("JwtSettings");
+            serviceCollection.Configure<JwtSettings>(jwtSettingsSection);
+
+            var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
+            var key = System.Text.Encoding.UTF8.GetBytes(jwtSettings.Secret);
+            serviceCollection.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false;
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                };
+            });
+
 
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddScoped<IDoctorRepository, DoctorRepository>();
@@ -17,17 +73,6 @@
             serviceCollection.AddMediatR(typeof(IPetRepository));
 
             serviceCollection.AddAutoMapper(typeof(Program));
-
-            serviceCollection.AddCors(options =>
-            {
-                options.AddPolicy(name: "PetCare-FE", option =>
-                {
-                    option
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .WithOrigins("http://localhost:3000");
-                });
-            });
 
             return serviceCollection;
         }
