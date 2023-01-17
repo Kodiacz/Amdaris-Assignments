@@ -1,6 +1,6 @@
 ﻿namespace PetCare.Application.Authentication.Commands
 {
-    public class GenerateTokenHandler : IRequestHandler<GenerateToken, string>
+    public class GenerateTokenHandler : IRequestHandler<GenerateToken, JwtToken>
     {
         private readonly IConfiguration configuration;
 
@@ -9,8 +9,10 @@
             this.configuration = configuration;
         }
 
-        public async Task<string> Handle(GenerateToken request, CancellationToken cancellationToken)
+        public async Task<JwtToken> Handle(GenerateToken request, CancellationToken cancellationToken)
         {
+            JwtToken jwt = new();
+
             List<Claim> claims = new()
             {
                 new Claim(ClaimTypes.NameIdentifier, Convert.ToString(request.Owner.Id!)),
@@ -31,7 +33,7 @@
                 expires: DateTime.UtcNow.AddDays(1),
                 signingCredentials: cred);
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            jwt.AccessToken = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
         }

@@ -42,7 +42,7 @@
             }
 
             GenerateToken generateTokenCommand = new() { Owner = owner };
-            string ownerToken = await this.Mediator.Send(generateTokenCommand);
+            JwtToken ownerToken = await this.Mediator.Send(generateTokenCommand);
             return Ok(ownerToken);
         }
     }
