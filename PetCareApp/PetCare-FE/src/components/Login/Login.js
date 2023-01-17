@@ -1,11 +1,23 @@
-import { Link } from "react-router-dom"
+import { Link, useFetchers } from "react-router-dom"
 import LoginIcon from '@mui/icons-material/Login';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import PersonIcon from '@mui/icons-material/Person';
+import { AuthContext } from "../../contexts/AuthContext.js";
+import { useContext, useEffect, useState } from "react";
+import * as authServices from '../../services/authServices.js'
 import "./Login.css"
 
-function Login() {
-    const onFormSubmit = (e) => {
+function Login({
+    closeModal
+}) {
+    const {user} = useContext(AuthContext);
+    console.log(user)
+    const getUser = async (data) => {
+        const result = await authServices.login(data)
+        user.accessTokent = result;
+    }
+    
+    const onFormSubmit = async (e) => {
         e.preventDefault();
 
         let formData = new FormData(e.target);
@@ -13,8 +25,13 @@ function Login() {
         let username = formData.get('username');
         let password = formData.get('password');
 
-        console.log(username);
-        console.log(password);
+        const data = {
+            username,
+            password,
+        }
+        getUser(data);
+        // console.log('onFormSubmit', user)
+        closeModal();
     }
 
     const handleChange = (e) => {
@@ -32,7 +49,7 @@ function Login() {
                     <label htmlFor="username">Username <PersonIcon /></label>
                 </div>
                 <div className="text-field">
-                    <input onChange={(e) => handleChange(e)} id="password" type="text" name="password" required />
+                    <input onChange={(e) => handleChange(e)} id="password" type="password" name="password" required />
                     <span></span>
                     <label htmlFor="password">Password <VpnKeyIcon /></label>
                 </div>
