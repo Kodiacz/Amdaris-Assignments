@@ -20,7 +20,7 @@ function LoginModal({
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Login />
+                <Login closeModal={handleClose} />
             </Modal>
         </div>
     );
