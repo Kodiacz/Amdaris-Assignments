@@ -1,13 +1,28 @@
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, setRef } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { GetDoctor } from "./DoctorsServices";
+import * as doctorsServices from "../../services/doctorsServices";
 import DoctorDetails from "./DoctorDetails";
 import "./DoctorDetails.css"
+import { useState, useEffect, useCallback } from "react";
 
 const Doctor = () => {
-    const id = useParams();
-    const { state: doctor, isLoading } = GetDoctor(id.id);
-    
+
+    const params = useParams();
+    const [doctor, setDoctor] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setErorr] = useState(null);
+
+    const fetchData = useCallback(async () => {
+        const data = await doctorsServices.getById(params.id); 
+        setDoctor(data);
+        setIsLoading(false);
+    }, []);
+
+    useEffect(() => {
+        console.log("rerere")
+        fetchData()
+    }, [])
+
     return (
         <div className="doctors-details-container">
             {isLoading

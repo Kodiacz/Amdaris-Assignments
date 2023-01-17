@@ -1,12 +1,21 @@
+import { useState, useEffect } from "react"
 import Calendar from "..//Calendar/Calendar"
 import DoctorCard from "./DoctorCard"
 import "./DoctorDetails.css"
-import { GetDoctorSchedule } from "./DoctorsServices"
+import * as doctorsServices from "../../services/doctorsServices"
 
 const DoctorDetails = ({
     doctor,
 }) => {
-    const { state: doctorSchedule } = GetDoctorSchedule(doctor.id)
+    
+    const [doctorSchedule, setDoctorSchedule] = useState([]);
+    
+    useEffect(() => {
+        doctorsServices.getDoctorSchedule(doctor.id)
+        .then(res => setDoctorSchedule(res))
+        .catch(err => console.log(err))
+    }, [])
+    
 
     const scheduleDays = [...doctorSchedule].map(d => (
         {
@@ -15,7 +24,7 @@ const DoctorDetails = ({
             isAvailable: d.isAvailable,
         }
     ))
-
+        
     let availableDays = scheduleDays.filter((sd) => sd.isAvailable)
     
     return (

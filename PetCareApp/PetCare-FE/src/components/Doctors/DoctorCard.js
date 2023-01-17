@@ -5,6 +5,7 @@ const DoctorCard = ({
   doctor,
   renderButton,
 }) => {
+  
   const imagePath = configureImagePath(doctor.imageFilePath)
   
   return (
