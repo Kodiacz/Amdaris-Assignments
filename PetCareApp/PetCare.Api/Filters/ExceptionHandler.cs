@@ -17,6 +17,7 @@
             {
                 Title = context.Exception.Message,
                 Status = GetStatusCode(context),
+                Detail = context.Exception.InnerException?.Message,
             };
 
             context.Result = new ObjectResult(problemDeitals);
