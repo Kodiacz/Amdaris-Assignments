@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const useFetch = (url) => {
+const useAxiosGet = (url) => {
     const [state, setState] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -9,15 +9,17 @@ const useFetch = (url) => {
     useEffect(() => {
         fetchData();
     }, [])
+
     async function fetchData() {
-        setTimeout(async () => {
+        // setTimeout(async () => {
             const result = await axios.get(url)
                 .catch(error => setError(error))
+                console.log(result);
             setIsLoading(false)
             setState(result.data);
-        }, 1000);
+        // }, 1000);
     }
-    
+
     return {
         state,
         error,
@@ -25,4 +27,21 @@ const useFetch = (url) => {
     }
 }
 
-export { useFetch }
+const useAxiosPost = async (url, body) => {
+    //const [state, setState] = useState([]);
+    //const [isLoading, setIsLoading] = useState(true);
+    //const [error, setError] = useState(null);
+
+    //useEffect(() => {
+    //    fetchToken();
+    //}, [])
+
+        const result = await axios.post(url, body.data)
+        console.log(result, 'ready 4')
+
+        return result;
+        //body.state.isLoading.setIsLoading(false);
+        //body.state.state.setState(result.data);
+}
+
+export { useAxiosGet, useAxiosPost }
