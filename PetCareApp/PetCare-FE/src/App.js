@@ -35,13 +35,14 @@ function App() {
 
   const onLogout = () => {
     setUser(initialAuthState);
+    toast("You were loged out")
   }
 
   return (
     <AuthContext.Provider value={{ user, onLogin, onLogout }}>
       <BrowserRouter>
         <HeadContactInfo />
-        <ToastContainer />
+        {/* <ToastContainer /> */}
         <div className='main-body'>
           <NavBar username={user.username} onLogout={onLogout}/>
           <Routes>
