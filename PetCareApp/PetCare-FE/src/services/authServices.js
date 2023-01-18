@@ -17,7 +17,13 @@ export const login = async (data) => {
          'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
-   })
+   });
+
+   const jsonResult = await res.json()
    
-   return res.json();
+   if (res.ok) {
+      return jsonResult;
+   } else {
+      throw jsonResult;
+   }
 }
