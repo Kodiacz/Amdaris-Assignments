@@ -1,4 +1,4 @@
-import { Link, useFetchers } from "react-router-dom"
+import { Link, Navigate, useFetchers, useNavigate } from "react-router-dom"
 import LoginIcon from '@mui/icons-material/Login';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import PersonIcon from '@mui/icons-material/Person';
@@ -8,13 +8,19 @@ import * as authServices from '../../services/authServices.js'
 import "./Login.css"
 
 function Login({
-    closeModal
+    closeModal,
 }) {
-    const {user} = useContext(AuthContext);
-    console.log(user)
+    const { onLogin } = useContext(AuthContext);
+    const [error, setError] = useState(null);
+    const navigate = useNavigate();
+
     const getUser = async (data) => {
-        const result = await authServices.login(data)
-        user.accessTokent = result;
+        authServices.login(data)
+        .then(res =>  {
+            onLogin(res);
+            navigate('/pets')
+        })
+        .catch(err => setError(err));
     }
     
     const onFormSubmit = async (e) => {
@@ -31,7 +37,13 @@ function Login({
         }
         getUser(data);
         // console.log('onFormSubmit', user)
-        closeModal();
+        if (!error){
+            console.log(error)
+            closeModal();
+        } else {
+            console.log(error.title);
+        }
+        
     }
 
     const handleChange = (e) => {
