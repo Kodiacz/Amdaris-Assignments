@@ -19,7 +19,8 @@
             createOwnerCommand.PasswordHash = computedPassowrd.PasswordHash;
             createOwnerCommand.PasswordSalt = computedPassowrd.PasswordSalt;
             Owner owner = await base.Mediator.Send(createOwnerCommand);
-            return Ok(owner);
+            GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
+            return Ok(getOwnerDto);
         }
 
         [HttpPost]
@@ -43,6 +44,9 @@
 
             GenerateToken generateTokenCommand = new() { Owner = owner };
             JwtToken ownerToken = await this.Mediator.Send(generateTokenCommand);
+            ownerToken.Username = owner.Username!;
+            ownerToken.UserId = owner.Id;
+
             return Ok(ownerToken);
         }
     }
