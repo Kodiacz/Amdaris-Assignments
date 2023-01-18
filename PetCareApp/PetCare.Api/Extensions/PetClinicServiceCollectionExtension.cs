@@ -75,7 +75,6 @@ namespace Microsoft.Extensions.DependencyInjection
                 };
             });
 
-
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddScoped<IDoctorRepository, DoctorRepository>();
             serviceCollection.AddScoped<IReceptionistRepository, ReceptionistRepository>();
