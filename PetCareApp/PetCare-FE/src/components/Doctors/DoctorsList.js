@@ -23,7 +23,7 @@ function DoctorsList() {
     
     return (
         <div className="doctor-list-container">
-            { false 
+            { isLoading 
                 ? <div className="doctors-load">
                     <CircularProgress color='success' size={120} thickness={1} />
                 </div>
