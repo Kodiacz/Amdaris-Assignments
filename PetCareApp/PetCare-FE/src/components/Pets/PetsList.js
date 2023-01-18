@@ -1,18 +1,28 @@
 import './PetsList.css'
 import Pet from './Pet';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import * as authServices from '../../services/petServices'
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
+import Login from '../Login/Login'
 
 function PetsList() {
-    const [pets, setDoctors] = useState([]);
-
+    const [pets, setPets] = useState([]);
+    const { user } = useContext(AuthContext);
+    
+    console.log(user?.accessToken)
     useEffect(() => {
-        getPets()
+        fetchPets(user?.accessToken)
     }, [])
 
-    async function getPets() {
-        const result = await axios.get(`https://localhost:7038/api/Pet/GetAll`)
-        setDoctors(result.data);
+    async function fetchPets(accessToken) {
+        try{
+            // const response = await axios.get(`https://localhost:7038/api/Pet/GetAll`, accessToken)
+            const data = await authServices.getAllPet(accessToken);
+            ;
+            setPets(data);
+        } catch(err) {
+            console.log(await err)
+        }
     }
 
     return (
