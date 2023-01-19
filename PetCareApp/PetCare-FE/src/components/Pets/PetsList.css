@@ -1,17 +1,9 @@
-.pet-list-container {
-    width: max-content;
-    margin-left: 590px;
+.pet-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
 }
 
-.pet-list-container table {
-    width: max-content;
-}
-
-.pet-list-container table th {
-    padding: 10px;
-    text-align: center;
-}
-
-.pet-list-container table td {
-    padding: 4px;
+.pet-card {
+    padding: 20px;
 }
