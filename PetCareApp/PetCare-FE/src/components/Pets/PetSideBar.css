@@ -21,6 +21,9 @@
 
 .sidenav a:hover {
     color: #6ecaca;
+    cursor: pointer;
+    font-size: 35px;
+    font-size-adjust: 20px;
 }
 
 @media screen and (max-height: 450px) {

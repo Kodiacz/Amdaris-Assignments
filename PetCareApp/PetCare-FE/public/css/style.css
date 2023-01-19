@@ -6,6 +6,14 @@
     --dark: #212121;
 }
 
+.user-div a:hover {
+    cursor: pointer;
+  }
+  
+  .guest-div a:hover {
+    cursor: pointer;
+  }
+
 .body {
     line-height: none;
 }

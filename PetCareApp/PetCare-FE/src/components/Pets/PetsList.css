@@ -7,3 +7,8 @@
 .pet-card {
     padding: 20px;
 }
+.pet-loading-circle {
+    position: absolute;
+    top: 50%;
+    right: 40%
+}
