@@ -7,6 +7,7 @@
         public Owner()
         {
             this.Pets = new HashSet<Pet>();
+            this.Appointments = new HashSet<Appointment>();
         }
 
         public int Id { get; set; }
@@ -30,5 +31,7 @@
         public Receptionist? Receptionist { get; set; }
 
         public ICollection<Pet> Pets { get; set; }
+
+        public ICollection<Appointment> Appointments { get; set; }
     }
 }
