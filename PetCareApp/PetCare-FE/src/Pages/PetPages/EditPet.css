@@ -1,0 +1,35 @@
+.test {
+    width: 300px;
+    height: 300px;
+    background: black;
+}
+
+.create-pet-form-div {
+    position: absolute;
+    top: 25.5%;
+    left: 45%;
+    text-align: center;
+    border: solid 5px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 30px;
+    padding: 5px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-container {
+    padding: 10px;
+}
+
+.input-field {
+    margin: 50px;
+}
+
