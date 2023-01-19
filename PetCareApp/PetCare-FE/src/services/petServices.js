@@ -1,5 +1,5 @@
-export const getAllPet = async (accessToken) => {
-    const response = await fetch('https://localhost:7038/api/Pet/GetAll', {
+export const getAllPet = async (userId, accessToken) => {
+    const response = await fetch(`https://localhost:7038/api/Owner/GetAllOwnerPets/${userId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
