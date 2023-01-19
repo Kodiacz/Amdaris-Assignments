@@ -1,7 +1,8 @@
-import Button from '@mui/material/Button';
-import Modal from '@mui/material/Modal';
-import { useState } from 'react';
 import Login from './Login';
+import { useState } from 'react';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import LoginIcon from '@mui/icons-material/Login';
 
 
 function LoginModal({
@@ -13,7 +14,7 @@ function LoginModal({
     
     return (
         <div>
-            <a onClick={handleOpen}>{buttonText ?? ""}</a>
+            <a onClick={handleOpen}>Sign In <LoginIcon/></a>
             <Modal
                 open={open}
                 onClose={handleClose}
