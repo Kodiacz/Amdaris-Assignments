@@ -25,7 +25,7 @@ function PetsList() {
             setPets(data);
             setIsLoading(false);
         } catch (err) {
-            
+            console.log(err)
         }
     }
     
