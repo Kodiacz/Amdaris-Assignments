@@ -1,24 +1,33 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import LoginModal from '../Login/LoginModal';
 import { Link, NavLink } from 'react-router-dom'
+import Avatar from '@mui/material/Avatar';
 import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Toastche from '../Login/Toast';
+import defaultProfilePicture from '../../default-images/default-user-pic.jpg'
 
 function NavBar({
     username,
     onLogout,
+    profilePicture,
 }) {
     console.log(username);
     let guestNavigation = (
         <div className='guest-div'>
-            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout"><LoginModal buttonText="Sign In" /></a>
+            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout"><LoginModal /></a>
         </div>
     );
 
     let userNavigation = (
         <div className='user-div'>
             <h5>Welcome, {username}</h5>
-            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout" onClick={onLogout}>Logout</a>
+            <Avatar
+                alt="Avatar"
+                src={profilePicture ?? defaultProfilePicture}
+                sx={{ width: 70, height: 70 }}
+            />
+            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout" onClick={onLogout}>Logout <LogoutIcon /></a>
         </div>
     )
 
@@ -40,8 +49,8 @@ function NavBar({
                     <div className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
-                            {username ? <Link to="pets" className="dropdown-item">Pets</Link> : ""}
-                            <Link to="doctors" className="dropdown-item">Doctors Теам</Link>
+                            {username ? <Link to="pets" className="dropdown-item">My Account</Link> : ""}
+                            <Link to="doctors" className="dropdown-item">Vets</Link>
                         </div>
                     </div>
                     {
