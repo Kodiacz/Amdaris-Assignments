@@ -1,8 +1,8 @@
 import { CircularProgress, setRef } from "@mui/material";
 import { useParams } from "react-router-dom";
 import * as doctorsServices from "../../services/doctorsServices";
-import DoctorDetails from "./DoctorDetails";
-import "./DoctorDetails.css"
+import DoctorDetails from "../../Pages/DoctorPages/DoctorDetails";
+import "../../Pages/DoctorPages/DoctorDetails.css"
 import { useState, useEffect, useCallback } from "react";
 
 const Doctor = () => {

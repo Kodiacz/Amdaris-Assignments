@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import LoginModal from '../Login/LoginModal';
+import LoginModal from '../../Pages/AccountPages/LoginModal';
 import { Link, NavLink } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import LoginIcon from '@mui/icons-material/Login';

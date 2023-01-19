@@ -3,22 +3,21 @@
 
 import './App.css';
 import { useState } from 'react';
-import Home from './components/Common/Home';
-import Login from './components/Login/Login';
-import About from './components/Common/About';
+import Home from './Pages/CommonPages/Home';
+import About from './Pages/CommonPages/About';
 import NavBar from './components/Common/NavBar';
 import Doctor from './components/Doctors/Doctor';
-import PetsList from './components/Pets/PetsList';
+import PetsList from './Pages/PetPages/PetsList';
 import { AuthContext } from './contexts/AuthContext';
 import Calendar from './components/Calendar/Calendar';
-import DoctorsList from './components/Doctors/DoctorsList';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import DoctorsList from './Pages/DoctorPages/DoctorsList';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HeadContactInfo from './components/Common/HeadContactInfo';
 import ErrorPage from './Error/ErrorPage';
 import { toast, ToastContainer } from 'react-toastify';
 import useLocalStorage from './Hooks/useLocalStorage'
-import PetSideBar from './components/Pets/PetSideBar';
-import CreatePet from './components/Pets/CreatePet';
+import MyAccountSideBar from './components/User/MyAccountSideBar';
+import CreatePet from './Pages/PetPages/CreatePet';
 
 const initialAuthState = {
   accessToken: '',
@@ -52,12 +51,12 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/doctors/*" element={<DoctorsList />} />
             <Route path="/doctors/doctor/:id" element={<Doctor />} />
-            <Route path="/pets/*" element={<PetSideBar />} errorElement={<ErrorPage />}>
+            <Route path="/pets/*" element={<MyAccountSideBar />} errorElement={<ErrorPage />}>
               <Route path='my-pets' element={<PetsList />}/>
               <Route path='create-pet' element={<CreatePet />}/>
             </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
-            <Route path="/login" element={<Login />} />
+            {/* <Route path="/login" element={<Login />} /> */}
             {/* <Route path="*" element={<Page404 />} /> */}
           </Routes>
         </div>

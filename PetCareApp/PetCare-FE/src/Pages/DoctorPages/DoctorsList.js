@@ -1,5 +1,5 @@
 import './DoctorsList.css'
-import DoctorCard from './DoctorCard';
+import DoctorCard from '../../components/Doctors/DoctorCard';
 import { CircularProgress } from '@mui/material';
 import * as doctorsServices from '../../services/doctorsServices.js';
 import { useState, useEffect } from 'react';

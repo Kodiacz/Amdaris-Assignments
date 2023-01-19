@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link, Outlet } from 'react-router-dom'
-import './PetSideBar.css'
+import './MyAccountSideBar.css'
 
-const PetSideBar = () => {
+const MyAccountSideBar = () => {
   return (
-    <div className='pets-page'>
+    <div className='my-account-page'>
       <div className="sidenav">
         <Link to="my-pets">Pets</Link>
         <Link to="create-pet">Add Pet</Link>
@@ -18,4 +18,4 @@ const PetSideBar = () => {
   )
 }
 
-export default PetSideBar
+export default MyAccountSideBar

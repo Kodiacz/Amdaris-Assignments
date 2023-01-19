@@ -1,9 +1,10 @@
 import './CreatePet.css'
-import { Controller, useFormContext } from 'react-hook-form'
 import Box from '@mui/material/Box';
+import { AuthContext } from '../../contexts/AuthContext'
+import { useContext, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Button, Divider } from '@mui/material';
-import { useState } from 'react';
+import * as petServices from '../../services/petServices'
 
 export default function CreatePet() {
   const [invalidField, setInvalidField] = useState({
@@ -11,36 +12,39 @@ export default function CreatePet() {
     age: false,
     type: false,
     breed: false,
-  })
+  });
+
+  const { user } = useContext(AuthContext);
 
   const inputFieldStyle = {
     margin: '0.5rem',
-  }
+  };
 
   const constants = {
     name: {
       maxLenght: 35,
-      errorMessage: 'name should be less then 35 charackters'
+      errorMessage: 'name should be less then 35 charackters',
     },
     age: {
       minValue: 1,
-      errorMessage: 'age should be non negative number and bigger then 0'
+      errorMessage: 'age should be non negative number and bigger then 0',
     },
     type: {
       maxLenght: 20,
-      errorMessage: 'type should be less then 20 charackter'
+      errorMessage: 'type should be less then 20 charackter',
     },
     breed: {
       maxLenght: 20,
-      errorMessage: 'type should be less then 20 charackter'
+      errorMessage: 'type should be less then 20 charackter',
     },
   }
 
-  const onFormSubmit = (e) => {
+  const onFormSubmit = async (e) => {
     console.log(e.target);
     e.preventDefault();
 
-    const formData = new FormData(e.target)
+    const formData = new FormData(e.target);
+
     let {
       name,
       age,
@@ -49,7 +53,32 @@ export default function CreatePet() {
       uploadPicture,
     } = Object.fromEntries(formData);
 
-    e.target.reset();
+    const createData = {
+      name,
+      age,
+      type,
+      breed,
+      ownerId: user.userId,
+    };
+
+
+    try {
+      const resultCreatePet = await petServices.createPet(createData, user.accessToken);
+      console.log(resultCreatePet);
+      debugger;
+      const uploadFileData = new FormData();
+      uploadFileData.append('file', uploadPicture);
+      uploadFileData.append('entityId', resultCreatePet.id);
+      console.log(uploadFileData.get('file'), uploadFileData.get('entityId'));
+
+      const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken)
+    } catch (err) {
+      console.log(err)
+    }
+
+
+
+    // e.target.reset();
   }
 
   const onChange = (e) => {
@@ -182,15 +211,15 @@ export default function CreatePet() {
             />
 
             <div className='button-container'>
-            <Button
-              variant="outlined"
-              type='submit'
-              fullWidth
-              size='large'
-              disabled={Object.values(invalidField).some(x => x)}
-            >
-              Submit
-            </Button>
+              <Button
+                variant="outlined"
+                type='submit'
+                fullWidth
+                size='large'
+                disabled={Object.values(invalidField).some(x => x)}
+              >
+                Submit
+              </Button>
             </div>
           </div>
         </form>

@@ -1,14 +1,14 @@
-.pets-page {
+.my-account-page {
     display: flex;
-    justify-content: flex-start;
+    height: 100%;
 }
 
 .sidenav {
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    width: 160px;
-    background-color: rgb(255, 255, 255);
+    display: table-cell;
+    height: 200vh;
+    width: 150px;
+    padding-top: 40px;
+    background-color: rgb(255, 255, 255); 
 }
 
 .sidenav a {

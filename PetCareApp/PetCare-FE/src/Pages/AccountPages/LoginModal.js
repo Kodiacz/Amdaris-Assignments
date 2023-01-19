@@ -1,4 +1,4 @@
-import Login from './Login';
+import Login from '../../components/Login/Login';
 import { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';

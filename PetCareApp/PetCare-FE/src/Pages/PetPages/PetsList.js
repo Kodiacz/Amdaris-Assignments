@@ -1,9 +1,8 @@
 import './PetsList.css'
-import PetCard from './PetCard';
+import PetCard from '../../components/Pets/PetCard';
 import * as authServices from '../../services/petServices'
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import Login from '../Login/Login'
 import { CircularProgress } from '@mui/material';
 
 function PetsList() {

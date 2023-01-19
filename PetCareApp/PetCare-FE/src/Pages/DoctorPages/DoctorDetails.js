@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
-import Calendar from "..//Calendar/Calendar"
-import DoctorCard from "./DoctorCard"
+import Calendar from "../../components/Calendar/Calendar"
+import DoctorCard from "../../components/Doctors/DoctorCard"
 import "./DoctorDetails.css"
 import * as doctorsServices from "../../services/doctorsServices"
 
