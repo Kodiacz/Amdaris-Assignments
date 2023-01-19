@@ -11,7 +11,7 @@ const PetSideBar = () => {
         <Link to="somewhere">Clients</Link>
         <Link to="somewhere">Contact</Link>
       </div>
-      <div>
+      <div className='outlet-container'>
         <Outlet />
       </div>
     </div>
