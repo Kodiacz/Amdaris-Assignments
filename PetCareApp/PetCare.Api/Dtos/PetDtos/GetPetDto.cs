@@ -16,7 +16,7 @@
 
         public string Type { get; set; } = null!;
 
-        public string ImageFilePath { get; set; }
+        public string ImageFilePath { get; set; } = null!;
 
         public bool IsVaccinated { get; set; }
 
