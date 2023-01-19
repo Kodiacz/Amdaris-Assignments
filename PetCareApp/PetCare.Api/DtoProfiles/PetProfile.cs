@@ -16,6 +16,7 @@
             CreateMap<CreateReceptionistDto, CreatePet>();
             CreateMap<UpdateReceptionistDto, UpdatePet>();
             CreateMap<UpdatePet, PartialUpdatePet>();
+            CreateMap<Pet, UpdatePet>();
         }
     }
 }
