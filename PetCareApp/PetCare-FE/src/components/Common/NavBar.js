@@ -12,7 +12,7 @@ function NavBar({
     onLogout,
     profilePicture,
 }) {
-    console.log(username);
+    
     let guestNavigation = (
         <div className='guest-div'>
             <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout"><LoginModal /></a>
@@ -49,7 +49,7 @@ function NavBar({
                     <div className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
-                            {username ? <Link to="pets" className="dropdown-item">My Account</Link> : ""}
+                            {username ? <Link to="my-account" className="dropdown-item">My Account</Link> : ""}
                             <Link to="doctors" className="dropdown-item">Vets</Link>
                         </div>
                     </div>

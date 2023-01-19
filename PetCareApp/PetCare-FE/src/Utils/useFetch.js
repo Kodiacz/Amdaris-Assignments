@@ -14,7 +14,7 @@ const useAxiosGet = (url) => {
         // setTimeout(async () => {
             const result = await axios.get(url)
                 .catch(error => setError(error))
-                console.log(result);
+                
             setIsLoading(false)
             setState(result.data);
         // }, 1000);
@@ -37,7 +37,7 @@ const useAxiosPost = async (url, body) => {
     //}, [])
 
         const result = await axios.post(url, body.data)
-        console.log(result, 'ready 4')
+        
 
         return result;
         //body.state.isLoading.setIsLoading(false);

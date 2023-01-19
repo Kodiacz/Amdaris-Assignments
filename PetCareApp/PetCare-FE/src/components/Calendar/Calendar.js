@@ -24,7 +24,7 @@ const Calendar = ({
   }, [availableDays])
 
   const clicked = (date) => {
-    console.log(date.date())
+    
   }
 
   return (

@@ -19,7 +19,7 @@ const Doctor = () => {
     }, []);
 
     useEffect(() => {
-        console.log("rerere")
+        
         fetchData()
     }, [])
 

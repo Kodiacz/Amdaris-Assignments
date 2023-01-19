@@ -36,12 +36,12 @@ function Login({
             password,
         }
         getUser(data);
-        // console.log('onFormSubmit', user)
+        // 
         if (!error){
-            console.log(error)
+            
             closeModal();
         } else {
-            console.log(error.title);
+            
         }
         
     }

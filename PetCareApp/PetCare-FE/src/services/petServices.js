@@ -7,7 +7,6 @@ const returnFetchedResult = async (response) => {
 }
 
 export const getAllPet = async (userId, accessToken) => {
-    debugger;
     const response = await fetch(`https://localhost:7038/api/Owner/GetAllOwnerPets/${userId}`, {
         method: 'GET',
         headers: {
@@ -33,7 +32,6 @@ export const createPet = async (bodyData, accessToken) => {
 }
 
 export const uploadPetPicture = async (bodyData, accessToken) => {
-    debugger;
     const response = await fetch(`https://localhost:7038/api/Pet/UploadPetPicture`, {
         method: 'POST',
         headers: {

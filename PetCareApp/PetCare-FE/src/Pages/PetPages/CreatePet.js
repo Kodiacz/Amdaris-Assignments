@@ -40,7 +40,7 @@ export default function CreatePet() {
   }
 
   const onFormSubmit = async (e) => {
-    console.log(e.target);
+    
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -64,16 +64,16 @@ export default function CreatePet() {
 
     try {
       const resultCreatePet = await petServices.createPet(createData, user.accessToken);
-      console.log(resultCreatePet);
+      
       debugger;
       const uploadFileData = new FormData();
       uploadFileData.append('file', uploadPicture);
       uploadFileData.append('entityId', resultCreatePet.id);
-      console.log(uploadFileData.get('file'), uploadFileData.get('entityId'));
+      
 
       const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken)
     } catch (err) {
-      console.log(err)
+      
     }
 
 
@@ -89,7 +89,7 @@ export default function CreatePet() {
           [e.target.name]: true
         }
       });
-      console.log(invalidField[e.target.name])
+      
     } else {
       setInvalidField((state) => {
         return {

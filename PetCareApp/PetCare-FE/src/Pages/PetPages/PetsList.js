@@ -10,7 +10,7 @@ function PetsList() {
     const [isLoading, setIsLoading] = useState(true);
     const { user } = useContext(AuthContext);
 
-    console.log(user?.accessToken)
+    
     useEffect(() => {
         setTimeout(() => {
             fetchPets(user?.userId, user?.accessToken)
@@ -25,10 +25,10 @@ function PetsList() {
             setPets(data);
             setIsLoading(false);
         } catch (err) {
-            console.log(err)
+            
         }
     }
-    console.log(pets);
+    
     return (
         <div className="pet-container">
             {
