@@ -17,11 +17,14 @@ import HeadContactInfo from './components/Common/HeadContactInfo';
 import ErrorPage from './Error/ErrorPage';
 import { toast, ToastContainer } from 'react-toastify';
 import useLocalStorage from './Hooks/useLocalStorage'
+import PetSideBar from './components/Pets/PetSideBar';
+import CreatePet from './components/Pets/CreatePet';
 
 const initialAuthState = {
   accessToken: '',
   username: '',
   userId: '',
+  userProfilePicturePath: '',
 };
 
 function App() {
@@ -42,15 +45,17 @@ function App() {
     <AuthContext.Provider value={{ user, onLogin, onLogout }}>
       <BrowserRouter>
         <HeadContactInfo />
-        {/* <ToastContainer /> */}
         <div className='main-body'>
-          <NavBar username={user.username} onLogout={onLogout}/>
+          <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/>
           <Routes>
-            <Route path="/doctors/*" element={<DoctorsList />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/doctors/doctor/:id" element={<Doctor />} />
-            <Route path="/pets" element={<PetsList />} errorElement={<ErrorPage />}/>
             <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/doctors/*" element={<DoctorsList />} />
+            <Route path="/doctors/doctor/:id" element={<Doctor />} />
+            <Route path="/pets/*" element={<PetSideBar />} errorElement={<ErrorPage />}>
+              <Route path='my-pets' element={<PetsList />}/>
+              <Route path='create-pet' element={<CreatePet />}/>
+            </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
             <Route path="/login" element={<Login />} />
             {/* <Route path="*" element={<Page404 />} /> */}
