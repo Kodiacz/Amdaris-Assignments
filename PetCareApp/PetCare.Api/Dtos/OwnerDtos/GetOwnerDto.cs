@@ -11,5 +11,7 @@
         public int Age { get; set; }
 
         public string Phonenumber { get; set; } = null!;
+
+        public string ProfileImageFilePath { get; set; } = null!;
     }
 }
