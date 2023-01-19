@@ -9,8 +9,8 @@ function FooterContactInfo() {
                         <div className="row g-3">
                             <div className="col-lg-3 col-md-6">
                                 <h5 className="text-uppercase border-start border-5 border-primary ps-3 mb-4">Get In Touch</h5>
-                                <p className="mb-2"><i className="bi bi-geo-alt text-primary me-2"></i>123 Street, New York, USA</p>
-                                <p className="mb-2"><i className="bi bi-envelope-open text-primary me-2"></i>info@example.com</p>
+                                <p className="mb-2"><i className="bi bi-geo-alt text-primary me-2"></i>1 Blue Light Street, Sofia, Bulgaria</p>
+                                <p className="mb-2"><i className="bi bi-envelope-open text-primary me-2"></i>petcare@gmail.com</p>
                                 <p className="mb-0"><i className="bi bi-telephone text-primary me-2"></i>+012 345 67890</p>
                             </div>
                             <div className="col-lg-3 col-md-6">
