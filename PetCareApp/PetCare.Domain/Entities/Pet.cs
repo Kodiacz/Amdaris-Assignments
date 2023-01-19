@@ -12,6 +12,10 @@
 
         public string? ImageFilePath { get; set; }
 
+        public bool? IsVaccinated { get; set; }
+
+        public DateTime? NextVaccination { get; set; }
+
         public bool IsDeleted { get; set; } = false;
 
         public int OwnerId { get; set; }
