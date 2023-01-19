@@ -22,6 +22,9 @@
                 Age = request.Age,
                 Type = request.Type,
                 Breed = request.Breed,
+                ImageFilePath = request.ImageFilePath,
+                IsVaccinated = request.IsVaccinated,
+                NextVaccination = request.NextVaccination,
                 OwnerId = request.OwnerId,
             };
 

@@ -20,5 +20,12 @@
         [Required]
         [StringLength(TypeMaxLengthForPet, MinimumLength = TypeMinLengthForPet)]
         public string Type { get; set; } = null!;
+
+        public string? ImageFilePath { get; set; }
+
+        public bool? IsVaccinated { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? NextVaccination { get; set; }
     }
 }
