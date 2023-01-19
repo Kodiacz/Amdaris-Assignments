@@ -25,7 +25,7 @@ export default function PetCard({
             <Card sx={{ maxWidth: 345 }}>
                 <img
                     alt='Pet'
-                    src={imagePath}
+                    src={imagePath ?? defaultPicture}
                     style={{ height: 220, width: 345 }}
                 />
                 {/* <CardMedia
@@ -52,8 +52,8 @@ export default function PetCard({
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Check Status</Button>
-                    <Button size="small">Edit</Button>
+                    <Button size="large">Check Status</Button>
+                    <Button size="large">Edit</Button>
                 </CardActions>
             </Card>
         </div>
