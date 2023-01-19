@@ -18,6 +18,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import useLocalStorage from './Hooks/useLocalStorage'
 import MyAccountSideBar from './components/User/MyAccountSideBar';
 import CreatePet from './Pages/PetPages/CreatePet';
+import EditPet from './Pages/PetPages/EditPet';
 
 const initialAuthState = {
   accessToken: '',
@@ -30,7 +31,7 @@ function App() {
   const [user, setUser] = useLocalStorage('user', initialAuthState)
   
   const onLogin = (authData) => {
-    console.log('onLogin', authData)
+    
     setUser(authData)
     toast("You were loged in");
   }
@@ -51,9 +52,10 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/doctors/*" element={<DoctorsList />} />
             <Route path="/doctors/doctor/:id" element={<Doctor />} />
-            <Route path="/pets/*" element={<MyAccountSideBar />} errorElement={<ErrorPage />}>
+            <Route path="/my-account/*" element={<MyAccountSideBar />} errorElement={<ErrorPage />}>
               <Route path='my-pets' element={<PetsList />}/>
               <Route path='create-pet' element={<CreatePet />}/>
+              <Route path='edit-pet/:petId' element={<EditPet />}/>
             </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
             {/* <Route path="/login" element={<Login />} /> */}
