@@ -13,5 +13,11 @@
         public string Breed { get; set; } = null!;
 
         public string Type { get; set; } = null!;
+
+        public string? ImageFilePath { get; set; }
+
+        public bool? IsVaccinated { get; set; }
+
+        public DateTime? NextVaccination { get; set; }
     }
 }
