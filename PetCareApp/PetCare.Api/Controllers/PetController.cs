@@ -51,8 +51,7 @@ using PetCare.Api.Dtos.PetDtos;
         /// <summary>
         /// Uploads file to folder
         /// </summary>
-        /// <param name="fileUpload">contains the File to be upload</param>
-        /// <param name="specificFolder">It is an optional parametar. Continuation of the path</param>
+        /// <param name="fileUpload">contains the File to be upload and the entity id</param>
         /// <returns></returns>
         [HttpPost]
         [ActionName(nameof(UploadPetPicture))]
