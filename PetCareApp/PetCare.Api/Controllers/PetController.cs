@@ -55,12 +55,11 @@ using PetCare.Api.Dtos.PetDtos;
         /// <param name="specificFolder">It is an optional parametar. Continuation of the path</param>
         /// <returns></returns>
         [HttpPost]
-        [ActionName(nameof(UploadPetProfilePicture))]
-        [Route("{petId}")]
-        //[Authorize(Roles = "User, Admin")]
-        public async Task<IActionResult> UploadPetProfilePicture([FromForm] FileUpload fileUpload, int petId)
+        [ActionName(nameof(UploadPetPicture))]
+        [Authorize(Roles = "User, Admin")]
+        public async Task<IActionResult> UploadPetPicture([FromForm] FileUpload fileUpload)
         {
-            GetPetByIdAsReadonly query = new() { Id = petId };
+            GetPetByIdAsReadonly query = new() { Id = fileUpload.EntityId };
             Pet petEntity = await base.Mediator.Send(query);
             UpdatePet command = base.Mapper.Map<UpdatePet>(petEntity);
 
