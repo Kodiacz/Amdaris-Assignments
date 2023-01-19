@@ -13,7 +13,7 @@ export default function PetCard({
     pet
 }) {
     const imagePath = configureImagePath(pet.imageFilePath)
-    debugger;
+    
     const style = {
         width: '100%',
         maxWidth: 360,
