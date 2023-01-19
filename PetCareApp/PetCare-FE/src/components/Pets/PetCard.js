@@ -2,8 +2,8 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
 import defaultPicture from '../../default-images/default-image.jpg'
 import { Divider, List, ListItem, ListItemText } from '@mui/material';
@@ -12,6 +12,11 @@ import { configureImagePath } from '../../Utils/configureImagePath.js';
 export default function PetCard({
     pet
 }) {
+    const navigate = useNavigate();
+    const navigateToEdit = () => {
+        navigate(`/my-account/edit-pet/${pet.id}`)
+    };
+    
     const imagePath = configureImagePath(pet.imageFilePath)
     
     const style = {
@@ -53,7 +58,7 @@ export default function PetCard({
                 </CardContent>
                 <CardActions>
                     <Button size="large">Check Status</Button>
-                    <Button size="large">Edit</Button>
+                    <Button size="large" onClick={navigateToEdit}>Edit</Button>
                 </CardActions>
             </Card>
         </div>
