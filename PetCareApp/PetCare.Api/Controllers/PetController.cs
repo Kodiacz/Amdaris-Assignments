@@ -6,6 +6,7 @@
     using DeletePet;
     using UpdatePartialPet;
 using System.Data;
+using PetCare.Api.Dtos.PetDtos;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
@@ -37,7 +38,7 @@ using System.Data;
 
         [HttpPost]
         [ModelValidationFilter]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(Create))]
         public async Task<IActionResult> Create([FromBody] CreatePetDto createPetDto)
         {
@@ -47,10 +48,42 @@ using System.Data;
             return CreatedAtAction(nameof(GetById), new { petId = newPetEntity.Id }, getPetDto);
         }
 
+        /// <summary>
+        /// Uploads file to folder
+        /// </summary>
+        /// <param name="fileUpload">contains the File to be upload</param>
+        /// <param name="specificFolder">It is an optional parametar. Continuation of the path</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ActionName(nameof(UploadPetProfilePicture))]
+        [Route("{petId}")]
+        //[Authorize(Roles = "User, Admin")]
+        public async Task<IActionResult> UploadPetProfilePicture([FromForm] FileUpload fileUpload, int petId)
+        {
+            GetPetByIdAsReadonly query = new() { Id = petId };
+            Pet petEntity = await base.Mediator.Send(query);
+            UpdatePet command = base.Mapper.Map<UpdatePet>(petEntity);
+
+            if (!Directory.Exists(PetPicturesFolderPath))
+            {
+                Directory.CreateDirectory(PetPicturesFolderPath);
+            }
+
+            command.ImageFilePath = PetPicturesFolderPath + $"{command.Name}-" + fileUpload.File.FileName;
+
+            using (FileStream fileStram = System.IO.File.Create(command.ImageFilePath))
+            {
+                fileUpload.File.CopyTo(fileStram);
+                fileStram.Flush();
+                var updatedPet = await base.Mediator.Send(command);
+                return Ok();
+            }
+        }
+
         [HttpPut]
         [Route("{petId}")]
         [ModelValidationFilter]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(Update))]
         public async Task<IActionResult> Update([FromBody] UpdatePetDto updatePetDto, int petId)
         {
@@ -63,7 +96,7 @@ using System.Data;
         [HttpPatch]
         [Route("{petId}")]
         [ModelValidationFilter]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(PartialUpdate))]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdatePetDto> jsonPatchDocument, int petId)
         {
@@ -89,7 +122,7 @@ using System.Data;
 
         [HttpDelete]
         [Route("petId")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(Delete))]
         public async Task<IActionResult> Delete(int petId)
         {
