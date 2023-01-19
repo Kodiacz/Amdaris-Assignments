@@ -56,7 +56,18 @@ const Calendar = ({
               <Badge
                 key={day.toString()}
                 overlap="circular"
-                badgeContent={isSelected ? <CheckIcon color={isBeforeCurrentDay ? "disabled" : "success"} /> : <BlockIcon color={isBeforeCurrentDay ? "disabled" : "warning"} />}
+                badgeContent={
+                  isSelected
+                    ? <CheckIcon color=
+                      {isBeforeCurrentDay
+                        ? "disabled"
+                        : "success"
+                      } />
+                    : <BlockIcon color=
+                      {isBeforeCurrentDay
+                        ? "disabled"
+                        : "warning"} />
+                }
               >
                 <PickersDay {...DayComponentProps} />
               </Badge>
