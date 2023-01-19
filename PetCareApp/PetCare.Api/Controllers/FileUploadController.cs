@@ -48,11 +48,5 @@
             byte[] b = System.IO.File.ReadAllBytes(filePath);
             return File(b, "image/png");
         }
-
-
-        public class FileUpload
-        {
-            public IFormFile File { get; set; } = null!;
-        }
     }
 }
