@@ -36,7 +36,7 @@ function PetsList() {
                     ? <div className='pet-loading-circle'>
                         <CircularProgress color='success' size={120} thickness={1} />
                       </div>
-                    : pets.map(p => <PetCard key={p.id} pet={p} />)
+                    : pets.map(p => <PetCard key={p.id} pet={p} renderButton={true}/>)
             }
         </div>
     );
