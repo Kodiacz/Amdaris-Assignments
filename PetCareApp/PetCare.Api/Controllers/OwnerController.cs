@@ -5,9 +5,7 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
-
-
-    [ApiController]
+[ApiController]
     [EnableCors("PetCare-FE")]
     [Route("api/[controller]/[action]")]
     public class OwnerController : BaseController<OwnerController>
@@ -71,6 +69,31 @@
             Owner owner = await base.Mediator.Send(command);
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
             return CreatedAtAction(nameof(GetById), new { ownerId = owner.Id }, getOwnerDto);
+        }
+
+        [HttpPost]
+        [ActionName(nameof(UploadOwnerPicture))]
+        [Authorize(Roles = "User, Admin")]
+        public async Task<IActionResult> UploadOwnerPicture([FromForm] FileUpload fileUpload)
+        {
+            GetOwnerByIdAsReadonly query = new() { Id = fileUpload.EntityId };
+            Owner ownerEntity = await base.Mediator.Send(query);
+            UpdateOwner command = base.Mapper.Map<UpdateOwner>(ownerEntity);
+
+            if (!Directory.Exists(PetPicturesFolderPath))
+            {
+                Directory.CreateDirectory(PetPicturesFolderPath);
+            }
+
+            command.ProfileImageFilePath = PetPicturesFolderPath + $"{command.ProfileImageFilePath}-" + fileUpload.File.FileName;
+
+            using (FileStream fileStram = System.IO.File.Create(command.ProfileImageFilePath))
+            {
+                fileUpload.File.CopyTo(fileStram);
+                fileStram.Flush();
+                var updatedPet = await base.Mediator.Send(command);
+                return Ok();
+            }
         }
 
         /// <summary>
