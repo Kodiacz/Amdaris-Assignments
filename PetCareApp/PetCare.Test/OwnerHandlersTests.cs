@@ -130,7 +130,6 @@ using Azure.Core;
                 Id = 1,
                 FirstName = "PeshoUpdated",
                 LastName = "MeshoUpdated",
-                Age = 42,
                 Phonenumber = "0893399284Updated",
             };
 

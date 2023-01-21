@@ -8,8 +8,10 @@
 
         public string LastName { get; set; } = null!;
 
-        public int Age { get; set; }
+        public string Email { get; set; } = null!;
 
         public string Phonenumber { get; set; } = null!;
+
+        public string? ProfileImageFilePath { get; set; }
     }
 }

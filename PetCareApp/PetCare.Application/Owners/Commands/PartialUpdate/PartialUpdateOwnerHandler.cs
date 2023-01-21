@@ -17,7 +17,6 @@ namespace PetCare.Application.Owners.Commands.PartialUpdate
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Age = request.Age,
                 Phonenumber = request.Phonenumber,
             };
 

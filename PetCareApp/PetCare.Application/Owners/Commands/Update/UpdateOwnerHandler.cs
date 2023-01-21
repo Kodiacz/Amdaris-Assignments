@@ -15,8 +15,8 @@
             {
                 FirstName = request.FirstName,
                 LastName = request.LastName,
-                Age = request.Age,
                 Phonenumber = request.Phonenumber,
+                ProfileImageFilePath = request.ProfileImageFilePath,
             };         
 
             await this.unitOfWorkRepo.OwnerRepository.UpdateAsync(owner);
