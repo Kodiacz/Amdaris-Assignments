@@ -1,6 +1,21 @@
-.center {
+.field-wraper {
+    display: flex;
+}
+
+.input-filed-first-part {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+.input-filed-second-part {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.register-center {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 400px;
@@ -8,18 +23,18 @@
     border-radius: 10px;
 }
 
-.center span {
+.register-center span {
     margin-left: 70px;
     color: red;
 }
 
-.center h1 {
+.register-center h1 {
     text-align: center;
     padding: 0 0 20px 0;
     border-bottom: 1px solid silver;
 }
 
-.center form {
+.register-center form {
     padding: 0 40px;
     box-sizing: border-box;
 }
@@ -97,6 +112,7 @@ input[type="submit"] {
     font-weight: 700;
     cursor: pointer;
     outline: none;
+    margin-bottom: 10px;
 }
 
 input[type="submit"]:hover {

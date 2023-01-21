@@ -1,8 +1,9 @@
 .pet-container {
     display: flex;
-    justify-content: space-around;
-    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .pet-card {

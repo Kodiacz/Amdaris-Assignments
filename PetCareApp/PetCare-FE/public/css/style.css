@@ -16,17 +16,19 @@
 
 .body {
     line-height: none;
+    height: 1000vh;
 }
 
 #root {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 .main-body {
     background: linear-gradient(120deg, #6ecaca, #98FB98);
+    height: 200vh;
     flex-grow: 1;
+    
 }
 
 [class^=flaticon-]:before,
