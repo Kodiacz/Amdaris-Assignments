@@ -10,7 +10,8 @@ import { Divider, List, ListItem, ListItemText } from '@mui/material';
 import { configureImagePath } from '../../Utils/configureImagePath.js';
 
 export default function PetCard({
-    pet
+    pet,
+    renderButton,
 }) {
     const navigate = useNavigate();
     const navigateToEdit = () => {
@@ -57,8 +58,8 @@ export default function PetCard({
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="large">Check Status</Button>
-                    <Button size="large" onClick={navigateToEdit}>Edit</Button>
+                    { renderButton ? <Button size="large">Check Status</Button> : '' }
+                    { renderButton ? <Button size="large" onClick={navigateToEdit}>Edit</Button> : '' }
                 </CardActions>
             </Card>
         </div>
