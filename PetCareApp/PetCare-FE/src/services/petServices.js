@@ -18,6 +18,18 @@ export const getAllPet = async (userId, accessToken) => {
     return await returnFetchedResult(response);
 }
 
+export const getPetById = async (petId, accessToken) => {
+    const response = await fetch(`https://localhost:7038/api/Pet/GetById/${petId}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+    });
+
+    return await returnFetchedResult(response);
+}
+
 export const createPet = async (bodyData, accessToken) => {
     const response = await fetch(`https://localhost:7038/api/Pet/Create`, {
         method: 'POST',
@@ -41,4 +53,18 @@ export const uploadPetPicture = async (bodyData, accessToken) => {
     });
 
    return await returnFetchedResult(response)
+}
+
+export const updatePet = async (petId, bodyData, accessToken) => {
+    debugger;
+    const response = await fetch(`https://localhost:7038/api/Pet/Update/${petId}`, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(bodyData),
+    });
+
+    return await response.text();
 }
