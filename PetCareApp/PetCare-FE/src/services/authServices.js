@@ -17,3 +17,22 @@ export const login = async (data) => {
       throw jsonResult;
    }
 }
+
+export const register = async (data) => {
+   debugger;
+   const res = await fetch(`${baseUrl}api/Authentication/Register`, {
+      method: 'POST',
+      headers: {
+         'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+   });
+
+   const jsonResult = await res.json()
+   
+   if (res.ok) {
+      return jsonResult;
+   } else {
+      throw jsonResult;
+   }
+}
