@@ -13,6 +13,16 @@
         [ActionName(nameof(Register))]
         public async Task<ActionResult<Owner>> Register(CreateOwnerDto registerRequest)
         {
+            ComparePasswords comparePasswordsCommand = new ComparePasswords() 
+            {
+                Password = registerRequest.Password,
+                ConfirmPassword = registerRequest.ConfirmPassword,
+            };
+
+            bool comparePasswordsResult = await base.Mediator.Send(comparePasswordsCommand);
+
+            if (!comparePasswordsResult) BadRequest();
+
             CreatePasswordHash createPasswordHashCommand = new() { Password = registerRequest.Password };
             ComputedPassword computedPassowrd = await base.Mediator.Send(createPasswordHashCommand);
             CreateOwner createOwnerCommand = base.Mapper.Map<CreateOwner>(registerRequest);
@@ -20,7 +30,7 @@
             createOwnerCommand.PasswordSalt = computedPassowrd.PasswordSalt;
             Owner owner = await base.Mediator.Send(createOwnerCommand);
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
-            return Ok(getOwnerDto);
+            return NoContent();
         }
 
         [HttpPost]
