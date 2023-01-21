@@ -20,6 +20,7 @@
                 LastName = request.LastName,
                 Phonenumber = request.Phonenumber,
                 Email = request.Email,
+                ProfileImageFilePath = request.ProfileImageFilePath,
             };
 
             await this.unitOfWorkRepo.OwnerRepository.AddAsync(owner);

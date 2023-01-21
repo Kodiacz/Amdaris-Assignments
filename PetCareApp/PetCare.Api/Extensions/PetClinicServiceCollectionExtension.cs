@@ -49,7 +49,8 @@ namespace Microsoft.Extensions.DependencyInjection
                     option
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .WithOrigins("http://localhost:3000");
+                        .AllowAnyOrigin();
+                        //.WithOrigins("http://localhost:3000");
                 });
             });
 

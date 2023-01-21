@@ -15,5 +15,7 @@
         public string LastName { get; init; } = null!;
 
         public string Phonenumber { get; init; } = null!;
+
+        public string? ProfileImageFilePath { get; set; }
     }
 }

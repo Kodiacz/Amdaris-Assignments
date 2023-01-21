@@ -8,6 +8,10 @@
         [StringLength(PasswordMaxLenghtForOwner, MinimumLength = PasswordMinLenghtForOwner)]
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
+        
+        [StringLength(PasswordMaxLenghtForOwner, MinimumLength = PasswordMinLenghtForOwner)]
+        [DataType(DataType.Password)]
+        public string ConfirmPassword { get; set; } = null!;
 
         [StringLength(EmailMaxLenghtForOwner, MinimumLength = EmailMinLenghtForOwner)]
         [DataType(DataType.EmailAddress)]

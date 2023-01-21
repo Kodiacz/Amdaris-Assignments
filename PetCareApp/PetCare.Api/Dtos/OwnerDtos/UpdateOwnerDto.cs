@@ -18,5 +18,17 @@
         [Required]
         [StringLength(PhonenumberMaxLengthForOwner)]
         public string Phonenumber { get; set; } = null!;
+
+        [Required]
+        [DataType(DataType.Password)]
+        [StringLength(PasswordMaxLenghtForOwner, MinimumLength = PasswordMinLenghtForOwner)]
+        public string Password { get; set; } = null!;
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [StringLength(EmailMaxLenghtForOwner, MinimumLength = EmailMinLenghtForOwner)]
+        public string Email { get; set; } = null!;
+
+        public string ProfilePictureFilePath { get; set; } = null!;
     }
 }
