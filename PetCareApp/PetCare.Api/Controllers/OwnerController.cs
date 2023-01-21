@@ -5,7 +5,8 @@
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
-[ApiController]
+
+    [ApiController]
     [EnableCors("PetCare-FE")]
     [Route("api/[controller]/[action]")]
     public class OwnerController : BaseController<OwnerController>
