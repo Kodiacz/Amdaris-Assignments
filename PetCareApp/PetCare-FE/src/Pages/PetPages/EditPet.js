@@ -1,10 +1,12 @@
 import './EditPet.css'
 import Box from '@mui/material/Box';
 import { AuthContext } from '../../contexts/AuthContext'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import { Button, Divider } from '@mui/material';
 import * as petServices from '../../services/petServices'
+import { useParams } from 'react-router-dom';
+import PetCard from '../../components/Pets/PetCard';
 
 export default function EditPet() {
   const [pet, setPet] = useState({});
@@ -15,7 +17,18 @@ export default function EditPet() {
     breed: false,
   });
 
+  const { petId } = useParams();
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    const fetchedPet = async (petId, accessToken) => {
+      const petData = await petServices.getPetById(petId, accessToken);
+      setPet(petData);
+    }
+
+    fetchedPet(petId, user.accessToken);
+  }, [])
+
 
   const inputFieldStyle = {
     margin: '0.5rem',
@@ -53,7 +66,7 @@ export default function EditPet() {
       uploadPicture,
     } = Object.fromEntries(formData);
 
-    const createData = {
+    const updateData = {
       name,
       age,
       type,
@@ -63,16 +76,17 @@ export default function EditPet() {
 
 
     try {
-      const resultCreatePet = await petServices.createPet(createData, user.accessToken);
-
+      const resultUpdatePet = await petServices.updatePet(petId, updateData, user.accessToken);
+      console.log(resultUpdatePet)
       const uploadFileData = new FormData();
       uploadFileData.append('file', uploadPicture);
-      uploadFileData.append('entityId', resultCreatePet.id);
+      uploadFileData.append('entityId', pet.id);
 
-
-      const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken)
+      if (uploadPicture.name) {
+        const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken)
+      }
     } catch (err) {
-
+      console.log(err);
     }
 
 
@@ -81,7 +95,15 @@ export default function EditPet() {
   }
 
   const onChange = (e) => {
-    if (e.target.value.length > constants[e.target.name].maxLenght || (e.target.name === 'age' && e.target.value < 1)) {
+    setPet((state) => {
+      return {
+        ...state,
+        [e.target.name]: e.target.value
+      }
+    })
+
+    if (e.target.value.length > constants[e.target.name].maxLenght ||
+      (e.target.name === 'age' && e.target.value < 1)) {
       setInvalidField((state) => {
         return {
           ...state,
@@ -98,10 +120,12 @@ export default function EditPet() {
       });
     }
   }
-
+  console.log(pet.name);
   return (
     <div>
-      <div className='test'></div>
+      <div className='test'>
+        <PetCard pet={pet} renderButton={false} />
+      </div>
 
       <div className='create-pet-form-div'>
         <h3>Edit Pet Information</h3>
@@ -127,12 +151,14 @@ export default function EditPet() {
                 {constants.name.errorMessage}
               </span>
               <TextField
+                InputLabelProps={{ shrink: pet.name ? true : false }}
                 sx={inputFieldStyle}
                 id="outlined-basic"
                 label="Pet Name"
                 variant="outlined"
                 autoFocus={true}
                 name='name'
+                value={pet.name}
                 onChange={(e) => onChange(e)}
                 error={invalidField?.name}
                 required
@@ -151,11 +177,14 @@ export default function EditPet() {
               <Divider size={10} />
 
               <TextField
+                InputLabelProps={{ shrink: pet.age ? true : false }}
                 sx={inputFieldStyle}
-                label="Age"
+                label=""
                 variant="outlined"
                 name='age'
                 type='number'
+                // defaultValue={`${pet?.age}`}
+                value={pet.age}
                 error={invalidField?.age}
                 onChange={(e) => onChange(e)}
                 required
@@ -173,11 +202,14 @@ export default function EditPet() {
                 {constants.type.errorMessage}
               </span>
               <TextField
+                InputLabelProps={{ shrink: pet.type ? true : false }}
                 sx={inputFieldStyle}
                 label="Type"
                 variant="outlined"
                 name='type'
+                value={pet.type}
                 error={invalidField?.type}
+                defaultValue={pet?.type}
                 onChange={(e) => onChange(e)}
                 required
               />
@@ -194,11 +226,14 @@ export default function EditPet() {
                 {constants.breed.errorMessage}
               </span>
               <TextField
+                InputLabelProps={{ shrink: pet.breed ? true : false }}
                 sx={inputFieldStyle}
                 label="Breed"
                 variant="outlined"
                 name='breed'
+                value={pet.breed}
                 error={invalidField?.breed}
+                defaultValue={pet?.breed}
                 onChange={(e) => onChange(e)}
                 required
               />
@@ -209,7 +244,6 @@ export default function EditPet() {
                 sx={inputFieldStyle}
                 type='file'
                 name='uploadPicture'
-                required
               />
 
               <div className='button-container'>
