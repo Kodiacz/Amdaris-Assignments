@@ -17,7 +17,6 @@
         /// <returns></returns>
         [HttpGet]
         [ActionName(nameof(GetAll))]
-        //[Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -34,7 +33,6 @@
         [HttpGet]
         [ActionName(nameof(GetById))]
         [Route("{doctorId}")]
-        //[Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetById(int doctorId)
         {
             GetDoctorById query = new GetDoctorById() { Id = doctorId, };
@@ -45,7 +43,6 @@
 
         [HttpGet]
         [Route("{doctorId}")]
-        //[Authorize(Roles = "User, Admin")]
         [ActionName(nameof(GetScheduleByDoctorId))]
         public async Task<IActionResult> GetScheduleByDoctorId(int doctorId)
         {
