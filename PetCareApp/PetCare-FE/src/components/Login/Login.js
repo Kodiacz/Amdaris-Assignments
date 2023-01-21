@@ -16,13 +16,16 @@ function Login({
 
     const getUser = async (data) => {
         authServices.login(data)
-        .then(res =>  {
-            onLogin(res);
-            navigate('/pets')
-        })
-        .catch(err => setError(err));
+            .then(res => {
+                onLogin(res);
+                closeModal();
+                navigate('/my-account')
+            })
+            .catch(err => {
+                setError(err)
+            });
     }
-    
+
     const onFormSubmit = async (e) => {
         e.preventDefault();
 
@@ -35,15 +38,8 @@ function Login({
             username,
             password,
         }
-        getUser(data);
-        // 
-        if (!error){
-            
-            closeModal();
-        } else {
-            
-        }
-        
+        await getUser(data);
+        console.log(error);
     }
 
     const handleChange = (e) => {
@@ -54,6 +50,7 @@ function Login({
     return (
         <div className="center">
             <h1>Sign in</h1>
+            <span className='error-span' hidden={error ? false : true}>Username or Password are incorrect</span>
             <form method="post" onSubmit={(e) => onFormSubmit(e)}>
                 <div className="text-field">
                     <input onChange={(e) => handleChange(e)} id="username" type="text" name="username" required />
@@ -68,7 +65,7 @@ function Login({
                 <div className="pass">Forgot Password?</div>
                 <input type="submit" value="Sign in" />
                 <div className="signup-link">
-                    Not a member? <Link to="/register">Signup <LoginIcon /></Link>
+                    Not a member? <Link to="/register" onClick={closeModal}>Signup <LoginIcon /></Link>
                 </div>
             </form>
         </div>
