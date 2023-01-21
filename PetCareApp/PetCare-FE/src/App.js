@@ -11,7 +11,7 @@ import PetsList from './Pages/PetPages/PetsList';
 import { AuthContext } from './contexts/AuthContext';
 import Calendar from './components/Calendar/Calendar';
 import DoctorsList from './Pages/DoctorPages/DoctorsList';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import HeadContactInfo from './components/Common/HeadContactInfo';
 import ErrorPage from './Error/ErrorPage';
 import { toast, ToastContainer } from 'react-toastify';
@@ -19,6 +19,8 @@ import useLocalStorage from './Hooks/useLocalStorage'
 import MyAccountSideBar from './components/User/MyAccountSideBar';
 import CreatePet from './Pages/PetPages/CreatePet';
 import EditPet from './Pages/PetPages/EditPet';
+import Register from './components/Register/Register';
+import UserSettings from './components/User/UserSettings';
 
 const initialAuthState = {
   accessToken: '',
@@ -46,19 +48,21 @@ function App() {
       <BrowserRouter>
         <HeadContactInfo />
         <div className='main-body'>
-          <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/>
+        <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/>
+          {/* <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/doctors/*" element={<DoctorsList />} />
-            <Route path="/doctors/doctor/:id" element={<Doctor />} />
+            <Route path="/doctors/doctor/:doctorId" element={<Doctor />} />
             <Route path="/my-account/*" element={<MyAccountSideBar />} errorElement={<ErrorPage />}>
               <Route path='my-pets' element={<PetsList />}/>
               <Route path='create-pet' element={<CreatePet />}/>
               <Route path='edit-pet/:petId' element={<EditPet />}/>
+              <Route path='my-appointments' element={<UserSettings />}/>
             </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
-            {/* <Route path="/login" element={<Login />} /> */}
+            <Route path="/register" element={<Register />} />
             {/* <Route path="*" element={<Page404 />} /> */}
           </Routes>
         </div>
