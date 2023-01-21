@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import LoginModal from '../../Pages/AccountPages/LoginModal';
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import Avatar from '@mui/material/Avatar';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -12,6 +12,12 @@ function NavBar({
     onLogout,
     profilePicture,
 }) {
+    const navigate = useNavigate()
+    
+    const onClick = () => {
+        navigate('/')
+        onLogout();
+    }
     
     let guestNavigation = (
         <div className='guest-div'>
@@ -27,10 +33,10 @@ function NavBar({
                 src={profilePicture ?? defaultProfilePicture}
                 sx={{ width: 70, height: 70 }}
             />
-            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout" onClick={onLogout}>Logout <LogoutIcon /></a>
+            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout" onClick={onClick}>Logout <LogoutIcon /></a>
         </div>
     )
-
+    
 
     return (
         <nav className="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
