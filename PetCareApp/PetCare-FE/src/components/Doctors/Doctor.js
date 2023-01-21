@@ -13,7 +13,7 @@ const Doctor = () => {
     const [error, setErorr] = useState(null);
 
     const fetchData = useCallback(async () => {
-        const data = await doctorsServices.getById(params.id); 
+        const data = await doctorsServices.getById(params.doctorId); 
         setDoctor(data);
         setIsLoading(false);
     }, []);
