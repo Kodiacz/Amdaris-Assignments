@@ -19,12 +19,16 @@ const Calendar = ({
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
+  const currentMonth = new Date().toLocaleDateString().split("/")[0];
+  const currentDay = new Date().toLocaleDateString().split("/")[1];
+  const currentYear = new Date().toLocaleDateString().split("/")[2];
+
   useEffect(() => {
     setHighlightedDays(() => [...availableDays])
   }, [availableDays])
 
   const clicked = (date) => {
-    
+
   }
 
   return (
@@ -43,10 +47,25 @@ const Calendar = ({
           showDaysOutsideCurrentMonth
           onAccept={(value) => clicked(value)}
           renderDay={(day, _value, DayComponentProps) => {
+            const dayOfCalendar = day.date();
             const monthOfCalander = Number(JSON.stringify(day.$d).slice(6, 8))
+            const yearOfCalender = Number(JSON.stringify(day.$d).slice(8, 10))
+            console.log(yearOfCalender)
 
-            const isBeforeCurrentDay =
-              day.date() < new Date().toLocaleDateString().split("/")[1]
+            const isBeforeCurrentDay = findIfDayIsBeforeCurrentDay();
+
+            function findIfDayIsBeforeCurrentDay() {
+              let value = '';
+              if ( currentMonth === monthOfCalander) {
+                if ( currentDay <= day.date()) {
+                  return true;
+                }
+              } else if (new Date().toLocaleDateString().split("/")[0] < monthOfCalander) {
+                return true;
+              } else {
+                return false
+              }
+            };
 
             const isSelected = highlightedDays.find(x => {
               return x.date === day.date() && x.month === monthOfCalander
