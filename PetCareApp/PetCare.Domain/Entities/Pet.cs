@@ -12,7 +12,7 @@
 
         public string? ImageFilePath { get; set; }
 
-        public bool? IsVaccinated { get; set; }
+        public bool? IsVaccinated { get; set; } = false;
 
         public DateTime? NextVaccination { get; set; }
 
