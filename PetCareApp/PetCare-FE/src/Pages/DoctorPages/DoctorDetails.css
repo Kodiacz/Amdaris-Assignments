@@ -1,4 +1,24 @@
 .doctors-details-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.make-appointment-div {
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.make-appointent-button {
+    width: 150px;
+    height: 50px;
+    border: 5px greenyellow;
+    font-size: large;
+    border-radius: 35%;
+    background: rgba(255, 255, 255, 0.3);
+    color: black;
+}
+
+.make-appointent-button:hover {
+    background-color: rgb(195, 238, 238);
 }
