@@ -12,12 +12,12 @@ global using Microsoft.AspNetCore.JsonPatch;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.AspNetCore.Authentication.JwtBearer;
 
+global using MediatR;
 global using Microsoft.Identity.Web;
 global using NewtonJson = Newtonsoft.Json;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.AspNetCore.Authorization;
 
-global using MediatR;
 global using AutoMapper;
 global using PetCare.Api.Models;
 global using PetCare.Interfaces;
@@ -29,6 +29,7 @@ global using PetCare.Api.Dtos.UserDtos;
 global using PetCare.Application.Models;
 global using PetCare.Application.Interfaces;
 global using PetCare.Application.Exceptions;
+global using PetCare.Api.Dtos.AppointmentDtos;
 global using PetCare.Infrastructure.Repository;
 global using static PetCare.Api.Common.Constants;
 global using PetCare.Application.Authentication.Commands;
@@ -61,7 +62,6 @@ global using UpdatePet = PetCare.Application.Pets.Commands.Update;
 global using DeletePet = PetCare.Application.Pets.Commands.Delete;
 global using UpdatePartialPet = PetCare.Application.Pets.Commands.PartialUpdate;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.PetConstnats;
-
 //For ReceptionistController
 global using PetCare.Api.Dtos.RecceptionistDtos;
 global using GetReceptionist = PetCare.Application.Receptionists.Queries.Get;
@@ -70,5 +70,13 @@ global using UpdateReceptionist = PetCare.Application.Receptionists.Commands.Upd
 global using DeleteReceptionist = PetCare.Application.Receptionists.Commands.Delete;
 global using static PetCare.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
 global using UpdatePartialReceptionist = PetCare.Application.Receptionists.Commands.PartialUpdate;
+
+//global using PetCare.Api.Dtos.AppointmentsDtos;
+//global using GetAppointments = PetCare.Application.Appointments.Queries.Get;
+global using CreateAppointments = PetCare.Application.Appointments.Commands.Create;
+//global using UpdateAppointments = PetCare.Application.Appointments.Commands.Update;
+//global using DeleteAppointments = PetCare.Application.Appointments.Commands.Delete;
+//global using static PetCare.Infrastructure.Common.DatabaseConstants.ReceptionistConstants;
+//global using UpdatePartialAppointments = PetCare.Application.Appointments.Commands.PartialUpdate;
 
 
