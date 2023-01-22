@@ -210,6 +210,11 @@
             this.context.Update(doctor);
         }
 
+        /// <summary>
+        /// Gets the schedule list for the doctor with Id equal to the passed parametar doctorId 
+        /// </summary>
+        /// <param name="doctorId">doctor Id</param>
+        /// <returns>returns a collection of type Schedule</returns>
         public async Task<List<Schedule>> GetSchedulesForDoctorAsync(int doctorId)
         {
             List<Schedule> schedule = await this.context
@@ -219,6 +224,33 @@
                 .ToListAsync();
 
             return schedule;
+        }
+
+        /// <summary>
+        /// Gets the schedule with Id equal to the passed parametar shceduleId  as No Tracking
+        /// </summary>
+        /// <param name="shceduleId">doctor Id</param>
+        /// <returns>returns a collection of type Schedule</returns>
+        public async Task<Schedule> GetSchedulesForDoctorReadonlyAsync(int shceduleId)
+        {
+            Schedule? schedule = await this.context
+                .Schedules
+                .AsNoTracking()
+                .Include(schedule => schedule.Doctor)
+                .Where(shcedule => shcedule.Id == shceduleId)
+                .FirstOrDefaultAsync()!;
+
+            return schedule!;
+        }
+
+        /// <summary>
+        /// Updates the schedule of the doctor
+        /// </summary>
+        /// <param name="schedule"></param>
+        /// <returns></returns>
+        public async Task UpdateDoctorScheduleAsync(Schedule schedule)
+        {
+            this.context.Update(schedule);
         }
     }
 }

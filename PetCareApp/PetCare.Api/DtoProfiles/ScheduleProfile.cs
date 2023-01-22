@@ -1,4 +1,6 @@
-﻿namespace PetCare.Api.DtoProfiles
+﻿using PetCare.Application.Doctors.Commands.Update;
+
+namespace PetCare.Api.DtoProfiles
 {
     public class ScheduleProfile : Profile
     {
@@ -6,6 +8,7 @@
         {
             CreateMap<Schedule, GetScheduleDto>()
                 .ForMember(gsd => gsd.FullName, opt => opt.MapFrom(src => src.Doctor.FirstName + " " + src.Doctor.LastName));
+            CreateMap<UpdateScheduleDto, UpdateDoctorSchedule>();
         }
     }
 }

@@ -85,6 +85,20 @@
         /// <returns>returns a collection of type Schedule</returns>
         public Task<List<Schedule>> GetSchedulesForDoctorAsync(int doctorId);
 
+        /// <summary>
+        /// Gets the schedule with Id equal to the passed parametar shceduleId  as No Tracking
+        /// </summary>
+        /// <param name="shceduleId">doctor Id</param>
+        /// <returns>returns a collection of type Schedule</returns>
+        public Task<Schedule> GetSchedulesForDoctorReadonlyAsync(int shceduleId);
+
+        /// <summary>
+        /// Updates the schedule of the doctor
+        /// </summary>
+        /// <param name="schedule"></param>
+        /// <returns></returns>
+        public Task UpdateDoctorScheduleAsync(Schedule schedule);
+
         Task SaveAsync();
     }
 }
