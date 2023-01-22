@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import "./Calendar.css"
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CheckIcon from '@mui/icons-material/Check';
 import BlockIcon from '@mui/icons-material/Block';
 import { PickersDay } from "@mui/x-date-pickers";
@@ -11,6 +12,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
 const Calendar = ({
   availableDays = [],
+  setNewSchedule,
 }) => {
   const [highlightedDays, setHighlightedDays] = useState([]);
   const [value, setValue] = useState(new Date())
@@ -19,21 +21,35 @@ const Calendar = ({
   const currentMonth = Number(new Date().toLocaleDateString().split("/")[0]);
   const currentDay = Number(new Date().toLocaleDateString().split("/")[1]);
   const currentYear = Number(new Date().toLocaleDateString().split("/")[2]);
-
+  let newSchedule = {};
   useEffect(() => {
     setHighlightedDays(() => [...availableDays])
   }, [availableDays])
 
-  const clicked = (date) => {
-    // const availableDaysToArray = Object.keys(availableDays).map(k => availableDays[k].date)
-    // console.log(availableDays);
-    // console.log(availableDaysToArray);
-    // console.log('======================================================================================')
-    // console.log(date.$D)
-    // console.log(availableDaysToArray.includes(date.$D));
-    console.log(currentMonthAvailableDays.includes(date.$D))
-    // console.log(currentMonthAvailableDays)
-  }
+  const clicked = useCallback(date => {
+    debugger;
+    const clickedDayOfCalendar = date.$D;
+    const clickedMonthOfCalander = Number(JSON.stringify(date.$d).slice(6, 8))
+    const clickedYearOfCalender = Number(JSON.stringify(date.$d).slice(1, 5))
+
+    if (currentMonthAvailableDays.includes(date.$D)) {
+      const result = availableDays.find(
+        x => x.date == clickedDayOfCalendar &&
+          x.month == clickedMonthOfCalander)
+
+      newSchedule = {
+        id: result.scheduleId,
+        date: new Date(clickedYearOfCalender, clickedMonthOfCalander, clickedDayOfCalendar),
+        isAvailable: false,
+        doctorId: result.doctorId,
+        fullName: result.fullName,
+      }
+
+       setNewSchedule(newSchedule)
+    } else {
+      alert('You can\'t make an appointment for thit date')
+    }
+  }, [setNewSchedule])
 
   return (
     <div className="calendar">
