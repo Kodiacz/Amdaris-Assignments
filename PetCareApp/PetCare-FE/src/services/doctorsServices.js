@@ -1,7 +1,7 @@
-const baseUrl = 'https://localhost:7038/';
+const baseUrl = 'https://localhost:7038/api/Doctor';
 
 export const getAll = async () => {
-    const res = await fetch(`${baseUrl}api/Doctor/GetAll`, {
+    const res = await fetch(`${baseUrl}/GetAll`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export const getAll = async () => {
 }
 
 export const getById = async (doctorId) => {
-    const res = await fetch(`${baseUrl}api/Doctor/GetById/${doctorId}`, {
+    const res = await fetch(`${baseUrl}/GetById/${doctorId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -23,12 +23,26 @@ export const getById = async (doctorId) => {
 }
 
 export const getDoctorSchedule = async (doctorId) => {
-    const res = await fetch(`${baseUrl}api/Doctor/GetScheduleByDoctorId/${doctorId}`, {
+    const res = await fetch(`${baseUrl}/GetScheduleByDoctorId/${doctorId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
         }
     });
     
+    return await res.json();
+}
+
+export const updateDoctorSchedule = async (bodyData, accessToken) => {
+    debugger;
+    const res = await fetch(`${baseUrl}/UpdateSchedule/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        'Authorization': `Bearer ${accessToken}`,
+        body: JSON.stringify(bodyData),
+    });
+
     return await res.json();
 }
