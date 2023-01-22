@@ -11,10 +11,10 @@
         public UnitOfWork() { }
 
         public UnitOfWork(
-            PetCareDbContext context, 
-            IDoctorRepository doctorRepository, 
-            IOwnerRepository ownerRepository, 
-            IPetRepository petRepository, 
+            PetCareDbContext context,
+            IDoctorRepository doctorRepository,
+            IOwnerRepository ownerRepository,
+            IPetRepository petRepository,
             IReceptionistRepository receptionistRepository)
         {
             this.context = context;
@@ -31,6 +31,8 @@
         public IPetRepository PetRepository { get; private set; }
 
         public IReceptionistRepository ReceptionistRepository { get; private set; }
+
+        public IAppointmentRepository AppointmentRepository { get; private set; }
 
         public void Dispose()
         {

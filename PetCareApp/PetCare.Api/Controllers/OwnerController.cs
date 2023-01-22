@@ -2,6 +2,7 @@
 {
     using GetOwner;
     using CreateOwner;
+    using CreateAppointments;
     using UpdateOwner;
     using DeleteOwner;
     using PartialUpdateOwner;
@@ -71,6 +72,19 @@
             GetOwnerDto getOwnerDto = base.Mapper.Map<GetOwnerDto>(owner);
             return CreatedAtAction(nameof(GetById), new { ownerId = owner.Id }, getOwnerDto);
         }
+
+        [HttpPost]
+        [ModelValidationFilter]
+        [ActionName(nameof(AddAppointmentToOwnerById))]
+        [Authorize(Roles = "User, Admin")]
+        public async Task<IActionResult> AddAppointmentToOwnerById(CreateAppointmentDto createAppointmentDto)
+        {
+            CreateAppointmen createAppointmenCommand = base.Mapper.Map<CreateAppointmen>(createAppointmentDto);
+            Appointment appointmen = await base.Mediator.Send(createAppointmenCommand);
+            GetAppointmentDto getAppointmentDto = base.Mapper.Map<GetAppointmentDto>(appointmen);
+            return Ok(getAppointmentDto);
+        }
+
 
         [HttpPost]
         [ActionName(nameof(UploadOwnerPicture))]

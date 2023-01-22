@@ -12,6 +12,8 @@
 
         public IReceptionistRepository ReceptionistRepository { get; }
 
+        public IAppointmentRepository AppointmentRepository { get; }
+
         Task SaveAsync();
     }
 }

@@ -61,6 +61,7 @@
             return await this.context
                 .Owners
                 .Include(owner => owner.Pets)
+                .Include(owner => owner.Appointments)
                 .Where(search)
                 .ToListAsync();
         }
@@ -75,6 +76,7 @@
                 .Owners
                 .AsNoTracking()
                 .Include(Owner => Owner.Pets)
+                .Include(Owner => Owner.Appointments)
                 .Where(d => !d.IsDeleted)
                 .ToListAsync();
         }
@@ -90,6 +92,7 @@
                 .Owners
                 .AsNoTracking()
                 .Include(Owner => Owner.Pets)
+                .Include(Owner => Owner.Appointments)
                 .Where(search)
                 .ToListAsync();
         }
@@ -104,6 +107,7 @@
             var owner = await this.context
                 .Owners
                 .Include(Owner => Owner.Pets)
+                .Include(Owner => Owner.Appointments)
                 .AsNoTracking()
                 .Where(d => d.Id == id && !d.IsDeleted)
                 .FirstOrDefaultAsync();
@@ -123,6 +127,7 @@
             var owner = await this.context
                 .Owners
                 .Include(Owner => Owner.Pets)
+                .Include(Owner => Owner.Appointments)
                 .AsNoTracking()
                 .Where(search)
                 .FirstOrDefaultAsync(owner => owner.Id == id)!;
@@ -178,6 +183,7 @@
             var owner = await this.context
                 .Owners
                 .Include(Owner => Owner.Pets)
+                .Include(Owner => Owner.Appointments)
                 .AsNoTracking()
                 .Where(search)
                 .FirstOrDefaultAsync(owner => owner.Username == username)!;
