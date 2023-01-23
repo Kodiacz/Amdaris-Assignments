@@ -56,7 +56,7 @@ function NavBar({
                         <a className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div className="dropdown-menu m-0">
                             {username ? <Link to="my-account" className="dropdown-item">My Account</Link> : ""}
-                            <Link to="doctors" className="dropdown-item">Vets</Link>
+                            <Link to="doctors" className="dropdown-item">The Team</Link>
                         </div>
                     </div>
                     {
