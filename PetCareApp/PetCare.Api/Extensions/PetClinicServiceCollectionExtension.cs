@@ -81,6 +81,7 @@ namespace Microsoft.Extensions.DependencyInjection
             serviceCollection.AddScoped<IReceptionistRepository, ReceptionistRepository>();
             serviceCollection.AddScoped<IOwnerRepository, OwnerRepository>();
             serviceCollection.AddScoped<IPetRepository, PetRepository>();
+            serviceCollection.AddScoped<IAppointmentRepository, AppointmentRepository>();
 
             serviceCollection.AddMediatR(typeof(IDoctorRepository));
             serviceCollection.AddMediatR(typeof(IReceptionistRepository));

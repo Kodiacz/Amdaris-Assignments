@@ -15,13 +15,15 @@
             IDoctorRepository doctorRepository,
             IOwnerRepository ownerRepository,
             IPetRepository petRepository,
-            IReceptionistRepository receptionistRepository)
+            IReceptionistRepository receptionistRepository,
+            IAppointmentRepository appointmentRepository)
         {
             this.context = context;
             DoctorRepository = doctorRepository;
             OwnerRepository = ownerRepository;
             PetRepository = petRepository;
             ReceptionistRepository = receptionistRepository;
+            AppointmentRepository = appointmentRepository;
         }
 
         public IDoctorRepository DoctorRepository { get; private set; }
