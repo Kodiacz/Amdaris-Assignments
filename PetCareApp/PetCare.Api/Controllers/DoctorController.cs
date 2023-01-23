@@ -5,6 +5,7 @@
     using UpdateDoctor;
     using DeleteDoctor;
     using UpdatePartialDoctor;
+    using PetCare.Application.Doctors.Commands.AddPatient;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
@@ -67,6 +68,22 @@
             Doctor result = await base.Mediator.Send(command);
             GetDoctorDto getDoctorDto = base.Mapper.Map<GetDoctorDto>(result);
             return CreatedAtAction(nameof(GetById), new { doctorId = result.Id }, getDoctorDto);
+        }
+
+        /// <summary>
+        /// Adds a patient of type Pet into Doctors patients list
+        /// </summary>
+        /// <param name="addPetDto">contains the id for Pet and id for the Doctor</param>
+        /// <returns></returns>
+        [HttpPost]
+        [ModelValidationFilter]
+        [Authorize(Roles = "User, Admin")]
+        [ActionName(nameof(AddPatient))]
+        public async Task<IActionResult> AddPatient([FromBody] AddPetDto addPetDto)
+        {
+            AddPatientToDoctor addPatientCommand = this.Mapper.Map<AddPatientToDoctor>(addPetDto);
+            Pet pet = await this.Mediator.Send(addPatientCommand);
+            return Ok("Patient was added to the doctors petients list");
         }
 
         /// <summary>
