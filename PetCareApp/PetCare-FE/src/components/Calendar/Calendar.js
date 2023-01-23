@@ -41,12 +41,12 @@ const Calendar = ({
 
       newSchedule = {
         id: result.scheduleId,
-        date: new Date(`${clickedYearOfCalender}-${clickedMonthOfCalander}-${clickedDayOfCalendar}`),
+        date: new Date(`${clickedMonthOfCalander}/${clickedDayOfCalendar}/${clickedYearOfCalender} EDT`),
         isAvailable: false,
         doctorId: result.doctorId,
         fullName: result.fullName,
       }
-
+      console.log(newSchedule)
       setNewSchedule(newSchedule)
     } else {
       setAlertState(state => {
