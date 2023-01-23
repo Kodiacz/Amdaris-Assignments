@@ -57,6 +57,23 @@
         }
 
         /// <summary>
+        /// Gets all appointments for the owner
+        /// </summary>
+        /// <param name="ownerId">contains the Id of the owner</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("{ownerId}")]
+        [Authorize(Roles = "User, Admin")]
+        [ActionName(nameof(GetOwnerAppointments))]
+        public async Task<IActionResult> GetOwnerAppointments(int ownerId)
+        {
+            GetAllOwnerAppointments getAllOwnerAppointmentsCommand = new() { OwnerId = ownerId };
+            List<Appointment> appointments = await base.Mediator.Send(getAllOwnerAppointmentsCommand);
+            List<GetAppointmentDto> appointmentDtos = base.Mapper.Map<List<GetAppointmentDto>>(appointments);
+            return Ok(appointmentDtos);
+        }
+
+        /// <summary>
         /// Creates a owner and adds it in the database
         /// </summary>
         /// <param name="createOwnerDto"></param>
@@ -73,6 +90,11 @@
             return CreatedAtAction(nameof(GetById), new { ownerId = owner.Id }, getOwnerDto);
         }
 
+        /// <summary>
+        /// Action method that creates and adds an Appointment in the database
+        /// </summary>
+        /// <param name="createAppointmentDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [ModelValidationFilter]
         [Authorize(Roles = "User, Admin")]
@@ -85,7 +107,11 @@
             return Ok(getAppointmentDto);
         }
 
-
+        /// <summary>
+        /// Uploads a profile picture to the owner
+        /// </summary>
+        /// <param name="fileUpload"></param>
+        /// <returns></returns>
         [HttpPost]
         [ActionName(nameof(UploadOwnerPicture))]
         [Authorize(Roles = "User, Admin")]
