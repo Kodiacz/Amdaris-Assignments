@@ -22,3 +22,7 @@
 .make-appointent-button:hover {
     background-color: rgb(195, 238, 238);
 }
+
+.calendar {
+    margin-top: 20px;
+}
