@@ -3,6 +3,7 @@
 
 import './App.css';
 import { useState } from 'react';
+import ErrorPage from './Error/ErrorPage';
 import Home from './Pages/CommonPages/Home';
 import About from './Pages/CommonPages/About';
 import NavBar from './components/Common/NavBar';
@@ -11,9 +12,7 @@ import PetsList from './Pages/PetPages/PetsList';
 import { AuthContext } from './contexts/AuthContext';
 import Calendar from './components/Calendar/Calendar';
 import DoctorsList from './Pages/DoctorPages/DoctorsList';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import HeadContactInfo from './components/Common/HeadContactInfo';
-import ErrorPage from './Error/ErrorPage';
 import { toast, ToastContainer } from 'react-toastify';
 import useLocalStorage from './Hooks/useLocalStorage'
 import MyAccountSideBar from './components/User/MyAccountSideBar';
@@ -21,6 +20,8 @@ import CreatePet from './Pages/PetPages/CreatePet';
 import EditPet from './Pages/PetPages/EditPet';
 import Register from './components/Register/Register';
 import UserSettings from './components/User/UserSettings';
+import MyAppointments from './Pages/AccountPages/MyAppointments'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 const initialAuthState = {
   accessToken: '',
@@ -59,7 +60,7 @@ function App() {
               <Route path='my-pets' element={<PetsList />}/>
               <Route path='create-pet' element={<CreatePet />}/>
               <Route path='edit-pet/:petId' element={<EditPet />}/>
-              <Route path='my-appointments' element={<UserSettings />}/>
+              <Route path='my-appointments' element={<MyAppointments />}/>
             </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
             <Route path="/register" element={<Register />} />
