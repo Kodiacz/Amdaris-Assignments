@@ -35,14 +35,18 @@ export const getDoctorSchedule = async (doctorId) => {
 
 export const updateDoctorSchedule = async (bodyData, accessToken) => {
     debugger;
-    const res = await fetch(`${baseUrl}/UpdateSchedule/`, {
+    const res = await fetch(`${baseUrl}/UpdateSchedule`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
         },
-        'Authorization': `Bearer ${accessToken}`,
         body: JSON.stringify(bodyData),
     });
 
-    return await res.json();
+    if (res.ok) {
+        return 'schedule changed'
+    } else {
+        return res.status
+    }
 }

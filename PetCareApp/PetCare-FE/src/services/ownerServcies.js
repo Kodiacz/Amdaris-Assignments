@@ -4,13 +4,16 @@ export const updateOwnerAppointments = async (bodyData, accessToken) => {
     debugger;
     const res = await fetch(`${baseUrl}/AddAppointmentToOwnerById`, {
         method: 'POST',
-        header: {
-            'Content-Type': 'application/json',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
         },
-        'Authorization': `Bearer ${accessToken}`,
         body: JSON.stringify(bodyData),
     })
 
-    return await res.json();
+    if (res.ok) {
+        return await 'appointment added';
+    } else {
+        return await res.status
+    }
 }
-
