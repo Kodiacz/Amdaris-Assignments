@@ -17,3 +17,20 @@ export const updateOwnerAppointments = async (bodyData, accessToken) => {
         return await res.status
     }
 }
+
+export const getOwnerAppointments = async (ownerId, accessToken) => {
+    debugger;
+    const res = await fetch(`${baseUrl}/GetOwnerAppointments/${ownerId}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+    });
+
+    if (res.ok) {
+        return await res.json();
+    } else {
+        throw res.statusText;
+    };
+}
