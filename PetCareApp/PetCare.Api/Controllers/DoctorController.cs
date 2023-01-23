@@ -80,10 +80,6 @@
         [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> UpdateSchedule(UpdateScheduleDto updateScheduleDto)
         {
-            //GetScheduelForDoctorWithIdAsReadOnly getScheduelCommand = new() { scheduleId = scheduleId };
-            //Schedule scheduleAsReadonly = await this.Mediator.Send(getScheduelCommand);
-            //UpdateDoctorSchedule updateDoctorScheduleCommand = this.Mapper.Map<UpdateDoctorSchedule>(scheduleAsReadonly);
-            //updateDoctorScheduleCommand.IsAvailable = updateScheduleDto.IsAvailable;
             UpdateDoctorSchedule updateDoctorScheduleCommand = this.Mapper.Map<UpdateDoctorSchedule>(updateScheduleDto);
             Schedule updatedetSchedule = await Mediator.Send(updateDoctorScheduleCommand);
             return Ok();
