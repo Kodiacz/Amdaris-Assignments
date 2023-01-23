@@ -50,3 +50,21 @@ export const updateDoctorSchedule = async (bodyData, accessToken) => {
         return res.status
     }
 }
+
+export const addPatientToDoctor = async (bodyData, accessToken) => {
+    debugger
+    const res = await fetch(`${baseUrl}/AddPatient`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(bodyData),
+    });
+
+    if (res.ok) {
+        return 'patient added to docotrs patients list'
+    } else {
+        return res.status
+    }
+}
