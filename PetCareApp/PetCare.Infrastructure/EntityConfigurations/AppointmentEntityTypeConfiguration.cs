@@ -14,7 +14,18 @@
 
             builder
                 .Property(appointment => appointment.ReasonForAppointment)
-                .HasMaxLength(ReasonForAppointmentMaxLength);
+                .HasMaxLength(ReasonForAppointmentMaxLength)
+                .IsRequired(true);
+
+            builder
+                .Property(appointment => appointment.PetName)
+                .HasMaxLength(PetNameMaxLenght)
+                .IsRequired(true);
+
+            builder
+                .Property(appointment => appointment.DoctorFullName)
+                .HasMaxLength(DoctorFullNameMaxLenght)
+                .IsRequired(true);
 
             builder
                 .HasOne(appointment => appointment.Owner)

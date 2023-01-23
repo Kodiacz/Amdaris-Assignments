@@ -20,6 +20,8 @@
             {
                 DateOfAppointment = request.DateOfAppointment,
                 ReasonForAppointment = request.ReasonForAppointment,
+                PetName = request.PetName,
+                DoctorFullName = request.DoctorFullName,
                 OwnerId = request.OwnerId,
             };
 

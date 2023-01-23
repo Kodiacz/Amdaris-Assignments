@@ -8,6 +8,10 @@
 
         public string ReasonForAppointment { get; set; } = null!;
 
+        public string PetName { get; set; } = null!;
+
+        public string DoctorFullName { get; set; } = null!;
+
         public int OwnerId { get; set; }
         public Owner Owner { get; set; } = null!;
     }
