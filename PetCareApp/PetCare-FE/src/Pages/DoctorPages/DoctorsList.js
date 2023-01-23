@@ -8,22 +8,22 @@ function DoctorsList() {
     const [doctors, setDoctors] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setErorr] = useState(null);
-    
+
     useEffect(() => {
         const fetch = () => {
             setTimeout(() => {
                 doctorsServices.getAll()
                     .then(res => setDoctors(res))
                     .catch(err => setErorr(err));
-            setIsLoading(false);
+                setIsLoading(false);
             }, 1000)
         }
         fetch();
     }, [])
-    
+
     return (
         <div className="doctor-list-container">
-            { isLoading 
+            {isLoading
                 ? <div className="doctors-load">
                     <CircularProgress color='success' size={120} thickness={1} />
                 </div>
