@@ -13,12 +13,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 
 app.UseRouting();
 
 app.UseCors();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
