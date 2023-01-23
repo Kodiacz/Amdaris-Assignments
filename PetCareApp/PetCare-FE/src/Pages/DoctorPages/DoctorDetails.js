@@ -1,15 +1,14 @@
+import "./DoctorDetails.css"
+import { Button } from "@mui/material"
+import AddIcon from '@mui/icons-material/Add';
+import Alerts from "../../components/Alert/Alerts"
 import { useState, useEffect, useContext } from "react"
+import { AuthContext } from '../../contexts/AuthContext'
 import Calendar from "../../components/Calendar/Calendar"
 import DoctorCard from "../../components/Doctors/DoctorCard"
-import "./DoctorDetails.css"
-import * as doctorsServices from "../../services/doctorsServices"
 import * as ownerServices from "../../services/ownerServcies"
+import * as doctorsServices from "../../services/doctorsServices"
 import ReasonForAppointment from "../../components/User/ReasonForAppointment"
-import { AuthContext } from '../../contexts/AuthContext'
-import { Newspaper } from "@mui/icons-material"
-import AddIcon from '@mui/icons-material/Add';
-import { Alert, Button, Divider } from "@mui/material"
-import Alerts from "../../components/Alert/Alerts"
 
 const DoctorDetails = ({
     doctor,
@@ -50,17 +49,26 @@ const DoctorDetails = ({
     let availableDays = scheduleDays.filter((sd) => sd.isAvailable)
 
     const fetchData = async () => {
-        // const updateScheduleResult = await doctorsServices.updateDoctorSchedule(newSchedule, user.accessToken)
+        const updateScheduleResult = await doctorsServices.updateDoctorSchedule(newSchedule, user.accessToken);
+        
+        const fetchAddPatientToDoctorData = {
+            patientId: pet.id,
+            doctorId: doctor.id,
+        }
+        const fetchAddPatientToDoctor = await doctorsServices.addPatientToDoctor(fetchAddPatientToDoctorData, user.accessToken);
+        console.log(newSchedule);
+        const appointmentData = {
+            dateOfAppointment: newSchedule.date.toISOString().slice(0, 10),
+            reasonForAppointment: resultFromInput,
+            ownerId: user.userId,
+            petName: pet.name,
+            doctorFullName: `${doctor.firstName} ${doctor.lastName}`
+        }
+        console.log(appointmentData);
 
-        // const appointmentData = {
-        //     dateOfAppointment: newSchedule.date,
-        //     reasonForAppointment: resultFromInput,
-        //     ownerId: user.userId,
-        // }
+        const fetchAddAppointmentResult = await ownerServices.updateOwnerAppointments(appointmentData, user.accessToken);
+        setRerender(fetchAddAppointmentResult);
 
-        // const fetchAddAppointmentResult = await ownerServices.updateOwnerAppointments(appointmentData, user.accessToken);
-        // setRerender(fetchAddAppointmentResult);
-        // console.log('fetchData', fetchAddAppointmentResult)
         setAlertState(state => {
             return {
                 openValue: true,
@@ -68,9 +76,8 @@ const DoctorDetails = ({
                 titleValue: 'You have made an appointment for this date successfully',
                 titleType: 'Success'
             }
-        })
+        });
     }
-    console.log(alertState)
     return (
         <>
             {
@@ -103,9 +110,6 @@ const DoctorDetails = ({
                             </Button>
                             : ""
                     }
-                    {/* <button type='submit' className="make-appointent-button" size="large" value={'Make Appointment'} onClick={fetchData}>
-                        Make Appointment
-                    </button> */}
                 </div>
             </div>
             <div className="detailed-doctor">
