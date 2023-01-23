@@ -252,5 +252,20 @@
         {
             this.context.Update(schedule);
         }
+
+        /// <summary>
+        /// Adds entity of type Pet 
+        /// </summary>
+        /// <param name="patient"></param>
+        /// <returns></returns>
+        public async Task AddPatient(Pet patient, int doctorId)
+        {
+            Doctor doctor = (await this.context
+                .Doctors
+                .Include(d => d.Patients)
+                .FirstOrDefaultAsync(d => d.Id == doctorId && !d.IsDeleted))!;
+
+            doctor.Patients.Add(patient);
+        }
     }
 }

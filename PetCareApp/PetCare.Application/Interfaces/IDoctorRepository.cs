@@ -99,6 +99,13 @@
         /// <returns></returns>
         public Task UpdateDoctorScheduleAsync(Schedule schedule);
 
+        /// <summary>
+        /// Adds entity of type Pet 
+        /// </summary>
+        /// <param name="patient"></param>
+        /// <returns></returns>
+        public Task AddPatient(Pet patient, int doctorId);
+
         Task SaveAsync();
     }
 }
