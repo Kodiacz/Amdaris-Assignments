@@ -75,8 +75,8 @@
 
         [HttpPost]
         [ModelValidationFilter]
-        [ActionName(nameof(AddAppointmentToOwnerById))]
         [Authorize(Roles = "User, Admin")]
+        [ActionName(nameof(AddAppointmentToOwnerById))]
         public async Task<IActionResult> AddAppointmentToOwnerById(CreateAppointmentDto createAppointmentDto)
         {
             CreateAppointmen createAppointmenCommand = base.Mapper.Map<CreateAppointmen>(createAppointmentDto);
