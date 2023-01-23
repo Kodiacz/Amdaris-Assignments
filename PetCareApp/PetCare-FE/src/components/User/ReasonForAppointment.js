@@ -17,6 +17,7 @@ const ReasonForAppointment = ({
 
     const handleSelect = useCallback(
       (e) => {
+        console.log(e.target.value)
         setPet(e.target.value);
       },
       [setPet],
@@ -41,9 +42,9 @@ const ReasonForAppointment = ({
                 id="demo-simple-select-helper"
                 label="Select Pet"
                 select
-                onChange={(e) => setPet(e)}
+                onChange={(e) => handleSelect(e)}
             >
-                {pets.map(p => <MenuItem key={p.id} value={p} onChage={(e) => handleSelect(e)}>{p.name}</MenuItem>)}
+                {pets.map(p => <MenuItem key={p.id} value={p}>{p.name}</MenuItem>)}
                 
             </TextField>
             <label className="reason-for-appointment-label">Reason For Appointment</label>
