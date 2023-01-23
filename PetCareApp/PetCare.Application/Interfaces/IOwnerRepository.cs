@@ -87,5 +87,12 @@
         /// <param name="search">Expression that is aplpied for the where clause</param>
         /// <returns>Return the Owner entity</returns>
         Task<Owner> GetOwnerByUsername(string username, Expression<Func<Owner, bool>> search);
+
+        /// <summary>
+        /// Gets all appointments for the owner 
+        /// </summary>
+        /// <param name="ownerId">contains the Id of the owner</param>
+        /// <returns>Returns a collection of type Appointment</returns>
+        public Task<List<Appointment>> GetAllOwnerAppointments(int ownerId);
     }
 }

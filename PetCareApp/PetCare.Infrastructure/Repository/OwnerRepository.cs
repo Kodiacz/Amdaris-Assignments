@@ -190,5 +190,20 @@
 
             return owner!;
         }
+
+        /// <summary>
+        /// Gets all appointments for the owner 
+        /// </summary>
+        /// <param name="ownerId">contains the Id of the owner</param>
+        /// <returns>Returns a collection of type Appointment</returns>
+        public async Task<List<Appointment>> GetAllOwnerAppointments(int ownerId)
+        {
+            List<Appointment> appointments = await this.context
+                .Appointments
+                .Where(a => a.OwnerId == ownerId)
+                .ToListAsync();
+
+            return appointments;
+        }
     }
 }
