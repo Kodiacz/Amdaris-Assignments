@@ -13,43 +13,53 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 const Calendar = ({
   availableDays = [],
   setNewSchedule,
+  setAlertState,
 }) => {
   const [highlightedDays, setHighlightedDays] = useState([]);
   const [value, setValue] = useState(new Date())
-  const currentMonthAvailableDays = [];
-
+  var currentMonthAvailableDays = [];
+  
   const currentMonth = Number(new Date().toLocaleDateString().split("/")[0]);
   const currentDay = Number(new Date().toLocaleDateString().split("/")[1]);
   const currentYear = Number(new Date().toLocaleDateString().split("/")[2]);
+
   let newSchedule = {};
   useEffect(() => {
     setHighlightedDays(() => [...availableDays])
   }, [availableDays])
 
-  const clicked = useCallback(date => {
-    debugger;
+
+  const clicked = date => {
     const clickedDayOfCalendar = date.$D;
     const clickedMonthOfCalander = Number(JSON.stringify(date.$d).slice(6, 8))
     const clickedYearOfCalender = Number(JSON.stringify(date.$d).slice(1, 5))
-
+    
     if (currentMonthAvailableDays.includes(date.$D)) {
       const result = availableDays.find(
-        x => x.date == clickedDayOfCalendar &&
-          x.month == clickedMonthOfCalander)
+        x => x.date === clickedDayOfCalendar &&
+          x.month === clickedMonthOfCalander)
 
       newSchedule = {
         id: result.scheduleId,
-        date: new Date(clickedYearOfCalender, clickedMonthOfCalander, clickedDayOfCalendar),
+        date: new Date(`${clickedYearOfCalender}-${clickedMonthOfCalander}-${clickedDayOfCalendar}`),
         isAvailable: false,
         doctorId: result.doctorId,
         fullName: result.fullName,
       }
 
-       setNewSchedule(newSchedule)
+      setNewSchedule(newSchedule)
     } else {
-      alert('You can\'t make an appointment for thit date')
+      setAlertState(state => {
+        return {
+          openValue: true,
+          severityValue: 'error',
+          titleValue: 'You can\'t make an appointment for this date',
+          titleType: 'Error',
+        }
+      })
     }
-  }, [setNewSchedule])
+  }
+  // }, [setNewSchedule])
 
   return (
     <div className="calendar">
@@ -92,11 +102,11 @@ const Calendar = ({
 
               return value;
             };
-            // console.log(highlightedDays);
+            
             const isSelected = highlightedDays.find(x => x.date === dayOfCalendar && x.month === monthOfCalander)
 
             if (isSelected?.isAvailable && isBeforeCurrentDay && currentMonthAvailableDays.indexOf(dayOfCalendar) === -1) {
-              currentMonthAvailableDays.push(dayOfCalendar);
+              currentMonthAvailableDays.push(dayOfCalendar)
             }
 
             return (
