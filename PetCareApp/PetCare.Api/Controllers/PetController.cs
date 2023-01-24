@@ -119,9 +119,9 @@ using PetCare.Api.Dtos.PetDtos;
         }
 
         [HttpDelete]
-        [Route("petId")]
-        [Authorize(Roles = "User, Admin")]
+        [Route("{petId}")]
         [ActionName(nameof(Delete))]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> Delete(int petId)
         {
             DeleteSoft command = new() { Id = petId };
