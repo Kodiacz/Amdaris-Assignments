@@ -10,8 +10,7 @@ function PetsList() {
     const [isLoading, setIsLoading] = useState(true);
     const [countOfPets, setCountOfPets] = useState(pets.length);
     const { user } = useContext(AuthContext);
-    console.log(countOfPets);
-    console.log(pets)
+    
     useEffect(() => {
         setTimeout(() => {
             fetchPets(user?.userId, user?.accessToken)

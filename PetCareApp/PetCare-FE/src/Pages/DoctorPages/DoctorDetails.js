@@ -27,7 +27,6 @@ const DoctorDetails = ({
     })
 
     useEffect(() => {
-        console.log('use effect')
         doctorsServices.getDoctorSchedule(doctor.id)
             .then(res => setDoctorSchedule(res))
             .catch(err => console.log(err))
@@ -56,7 +55,7 @@ const DoctorDetails = ({
             doctorId: doctor.id,
         }
         const fetchAddPatientToDoctor = await doctorsServices.addPatientToDoctor(fetchAddPatientToDoctorData, user.accessToken);
-        console.log(newSchedule);
+        
         const appointmentData = {
             dateOfAppointment: newSchedule.date.toISOString().slice(0, 10),
             reasonForAppointment: resultFromInput,
@@ -64,7 +63,6 @@ const DoctorDetails = ({
             petName: pet.name,
             doctorFullName: `${doctor.firstName} ${doctor.lastName}`
         }
-        console.log(appointmentData);
 
         const fetchAddAppointmentResult = await ownerServices.updateOwnerAppointments(appointmentData, user.accessToken);
         setRerender(fetchAddAppointmentResult);
