@@ -24,7 +24,14 @@ export default function PetCard({
     };
     
     const imagePath = configureImagePath(pet.imageFilePath)
-    
+    const checkFileExist = (path) => {
+        try {
+         return require(`${path}`);
+        } catch (err) {
+         return null;
+        }
+      };
+      
     const style = {
         width: '100%',
         maxWidth: 360,
