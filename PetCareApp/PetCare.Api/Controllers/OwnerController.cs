@@ -121,12 +121,17 @@
             Owner ownerEntity = await base.Mediator.Send(query);
             UpdateOwner command = base.Mapper.Map<UpdateOwner>(ownerEntity);
 
-            if (!Directory.Exists(PetPicturesFolderPath))
+            if (!Directory.Exists(UserProfilePicturesFolderPath))
             {
-                Directory.CreateDirectory(PetPicturesFolderPath);
+                Directory.CreateDirectory(UserProfilePicturesFolderPath);
             }
 
-            command.ProfileImageFilePath = PetPicturesFolderPath + $"{command.ProfileImageFilePath}-" + fileUpload.File.FileName;
+            if (System.IO.File.Exists(UserProfilePicturesFolderPath + fileUpload.File.Name))
+            {
+                System.IO.File.Delete(UserProfilePicturesFolderPath + fileUpload.File.Name);
+            }
+
+            command.ProfileImageFilePath = UserProfilePicturesFolderPath + $"{command.ProfileImageFilePath}-" + fileUpload.File.FileName;
 
             using (FileStream fileStram = System.IO.File.Create(command.ProfileImageFilePath))
             {

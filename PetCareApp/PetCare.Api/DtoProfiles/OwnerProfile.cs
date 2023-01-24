@@ -12,6 +12,7 @@
         {
             CreateMap<Owner, GetOwnerDto>(); 
             CreateMap<Owner, UpdateOwnerDto>(); 
+            CreateMap<Owner, UpdateOwner>(); 
             CreateMap<UpdateOwnerDto, UpdateOwner>(); 
             CreateMap<CreateOwnerDto, CreateOwner>(); 
             CreateMap<UpdateOwnerDto, PartialUpdateOwner>(); 

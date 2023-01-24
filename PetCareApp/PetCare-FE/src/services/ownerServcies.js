@@ -1,5 +1,22 @@
 const baseUrl = 'https://localhost:7038/api/Owner';
 
+export const getOwnerById = async (ownerId, accessToken) => {
+    debugger;
+    const res = await fetch(`${baseUrl}/GetById/${ownerId}`, {
+        method: 'GET',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+    })
+
+    if (res.ok) {
+        return await res.json();
+    } else {
+        return await res.status
+    }
+}
+
 export const updateOwnerAppointments = async (bodyData, accessToken) => {
     debugger;
     const res = await fetch(`${baseUrl}/AddAppointmentToOwnerById`, {
@@ -32,5 +49,21 @@ export const getOwnerAppointments = async (ownerId, accessToken) => {
         return await res.json();
     } else {
         throw res.statusText;
+    };
+}
+
+export const uploadOwnerPicture = async (bodyData, accessToken) => {
+    const response = await fetch(`${baseUrl}/UploadOwnerPicture`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: bodyData,
+    });
+
+    if (response.ok) {
+        return await response.json();
+    } else {
+        throw response.statusText;
     };
 }

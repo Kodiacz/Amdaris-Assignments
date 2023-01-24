@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ErrorPage from './Error/ErrorPage';
 import Home from './Pages/CommonPages/Home';
 import About from './Pages/CommonPages/About';
@@ -23,34 +23,41 @@ import UserSettings from './components/User/UserSettings';
 import MyAppointments from './Pages/AccountPages/MyAppointments'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DeletePetDialog  from './components/Dialog/DeletePetDialog';
+import AccountDetails from './Pages/AccountPages/AccountDetails';
 
 const initialAuthState = {
   accessToken: '',
   username: '',
   userId: '',
-  userProfilePicturePath: '',
+  profileImageFilePath: '',
 };
 
 function App() {
-  const [user, setUser] = useLocalStorage('user', initialAuthState)
+  const [user, setUser] = useLocalStorage('user', initialAuthState);
+  const [profilePicture, setProfilePicture] = useState();
+
+  useEffect(() => {
+    setProfilePicture(state => user.profileImageFilePath)
+  }, [user])
+  
   
   const onLogin = (authData) => {
-    
     setUser(authData)
     toast("You were loged in");
   }
-
+  
   const onLogout = () => {
     setUser(initialAuthState);
     toast("You were loged out")
   }
-
+  console.log('App', profilePicture);
+  console.log(user)
   return (
-    <AuthContext.Provider value={{ user, onLogin, onLogout }}>
+    <AuthContext.Provider value={{ user, onLogin, onLogout, setProfilePicture }}>
       <BrowserRouter>
         <HeadContactInfo />
         <div className='main-body'>
-        <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/>
+        <NavBar username={user.username} onLogout={onLogout} profilePicture={profilePicture}/>
           {/* <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/> */}
           <Routes>
             <Route path="/" element={<Home />} />
@@ -62,7 +69,7 @@ function App() {
               <Route path='create-pet' element={<CreatePet />}/>
               <Route path='edit-pet/:petId' element={<EditPet />}/>
               <Route path='my-appointments' element={<MyAppointments />}/>
-              <Route path='account-details' element={<DeletePetDialog />}/>
+              <Route path='account-details' element={<AccountDetails />}/>
             </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
             <Route path="/register" element={<Register />} />

@@ -13,10 +13,15 @@
         {
             Owner owner = new Owner
             {
+                Id = request.Id,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
+                Username = request.Username,
                 Phonenumber = request.Phonenumber,
+                PasswordHash = request.PasswordHash,
+                PasswordSalt = request.PasswordSalt,
                 ProfileImageFilePath = request.ProfileImageFilePath,
+                Email = request.Email,
             };         
 
             await this.unitOfWorkRepo.OwnerRepository.UpdateAsync(owner);

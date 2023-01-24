@@ -6,19 +6,20 @@ import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Toastche from '../Login/Toast';
 import defaultProfilePicture from '../../default-images/default-user-pic.jpg'
+import { configureImagePath } from '../../Utils/configureImagePath';
 
 function NavBar({
     username,
     onLogout,
     profilePicture,
 }) {
-    const navigate = useNavigate()
-    
+    const navigate = useNavigate();
+    const imageFilePath = `.${configureImagePath(profilePicture)}`.replaceAll('\\', '/');
     const onClick = () => {
         navigate('/')
         onLogout();
     }
-    
+    console.log('Nav', imageFilePath)
     let guestNavigation = (
         <div className='guest-div'>
             <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout"><LoginModal /></a>
@@ -30,14 +31,14 @@ function NavBar({
             <h5>Welcome, {username}</h5>
             <Avatar
                 alt="Avatar"
-                src={profilePicture ?? defaultProfilePicture}
+                src={imageFilePath ?? defaultProfilePicture}
                 sx={{ width: 70, height: 70 }}
             />
+            {/* <img src={profilePicture ?? imageFilePath} alt='Avatar' style={{width: '70px', height: '70px'}}/> */}
             <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout" onClick={onClick}>Logout <LogoutIcon /></a>
         </div>
     )
-    
-
+    debugger
     return (
         <nav className="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
             <a href="/" className="navbar-brand ms-lg-5">

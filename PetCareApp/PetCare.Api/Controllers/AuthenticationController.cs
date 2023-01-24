@@ -56,6 +56,7 @@
             JwtToken ownerToken = await this.Mediator.Send(generateTokenCommand);
             ownerToken.Username = owner.Username!;
             ownerToken.UserId = owner.Id;
+            ownerToken.ProfileImageFilePath = owner.ProfileImageFilePath;
 
             return Ok(ownerToken);
         }

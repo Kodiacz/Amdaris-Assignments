@@ -2,10 +2,12 @@
 {
     public class JwtToken
     {
+        public int UserId { get; set; } 
+
         public string AccessToken { get; set; } = null!;
 
         public string Username { get; set; } = null!;
 
-        public int UserId { get; set; } 
+        public string? ProfileImageFilePath { get; set; }
     }
 }
