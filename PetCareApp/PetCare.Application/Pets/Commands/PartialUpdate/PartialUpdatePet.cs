@@ -13,5 +13,9 @@
         public string Breed { get; set; } = null!;
 
         public string Type { get; set; } = null!;
+
+        public string? ImageFilePath { get; set; }
+
+        public int? DoctorId { get; set; }
     }
 }

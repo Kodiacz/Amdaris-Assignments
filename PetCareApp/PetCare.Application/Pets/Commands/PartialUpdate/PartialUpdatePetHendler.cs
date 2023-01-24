@@ -13,19 +13,22 @@ namespace PetCare.Application.Pets.Commands.PartialUpdate
 
         public async Task<Pet> Handle(PartialUpdatePet request, CancellationToken cancellationToken)
         {
-            Pet owner = new Pet
+            Pet pet = new Pet
             {
                 Id = request.Id,
                 Name = request.Name,
                 Type = request.Type,
                 Age = request.Age,
                 Breed = request.Breed,
+                OwnerId = request.OwnerId,
+                DoctorId = request.DoctorId,
+                ImageFilePath = request.ImageFilePath,
             };
 
-            await this.unitOfWorkRepo.PetRepository.UpdateAsync(owner);
+            await this.unitOfWorkRepo.PetRepository.UpdateAsync(pet);
             await this.unitOfWorkRepo.SaveAsync();
 
-            return owner;
+            return pet;
         }
     }
 }
