@@ -32,9 +32,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function MyAppointments() {
-    const [appointents, setAppointments] = useState([]);
+    const [appointments, setAppointments] = useState([]);
     const { user } = useContext(AuthContext);
-
+    console.log(appointments)
     useEffect(() => {
         fetchData(user.userId, user.accessToken)
     }, []);
@@ -50,7 +50,7 @@ export default function MyAppointments() {
             ]
         })
     }
-    console.log(appointents)
+
     return (
         <div className='my-appointments-table'>
             <TableContainer component={Paper}>
@@ -64,7 +64,7 @@ export default function MyAppointments() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {appointents?.map(a => (
+                        {appointments?.map(a => (
                             <StyledTableRow key={a.name}>
                                 <StyledTableCell component="th" scope="row">{a.petName}</StyledTableCell>
                                 <StyledTableCell align="left">{a.doctorFullName}</StyledTableCell>
