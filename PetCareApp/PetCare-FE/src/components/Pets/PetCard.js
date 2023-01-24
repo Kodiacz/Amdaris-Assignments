@@ -1,18 +1,23 @@
-import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import * as petServices from '../../services/petServices'
 import defaultPicture from '../../default-images/default-image.jpg'
 import { Divider, List, ListItem, ListItemText } from '@mui/material';
 import { configureImagePath } from '../../Utils/configureImagePath.js';
+import { AuthContext } from '../../contexts/AuthContext'
+import { useCallback, useContext } from 'react';
+import DeletePetDialog from '../Dialog/DeletePetDialog';
 
 export default function PetCard({
     pet,
     renderButton,
+    setCountOfPets,
 }) {
+    const {user} = useContext(AuthContext);
     const navigate = useNavigate();
     const navigateToEdit = () => {
         navigate(`/my-account/edit-pet/${pet.id}`)
@@ -26,6 +31,15 @@ export default function PetCard({
         bgcolor: 'background.paper',
     };
 
+    const handleDeletePet = useCallback(
+      async () => {
+          const deletePetResult = await petServices.deletePet(pet.id, user.accessToken);
+          debugger;
+          setCountOfPets(state => state - 1);
+      }, [setCountOfPets])
+    
+    
+    
     return (
         <div className='pet-card'>
             <Card sx={{ maxWidth: 345 }}>
@@ -58,7 +72,8 @@ export default function PetCard({
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    { renderButton ? <Button size="large">Check Status</Button> : '' }
+                    {/* { renderButton ? <Button size="large" onClick={handleDeletePet}>Delete Pet</Button> : '' } */}
+                    { renderButton ? <DeletePetDialog handleDeletePet={handleDeletePet}></DeletePetDialog>: '' }
                     { renderButton ? <Button size="large" onClick={navigateToEdit}>Edit</Button> : '' }
                 </CardActions>
             </Card>
