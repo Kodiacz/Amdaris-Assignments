@@ -74,23 +74,31 @@ export default function EditPet() {
       ownerId: user.userId,
     };
 
+    let partialUpdateData = [];
+
+    formData.forEach((value, key) => {
+      if (key !== 'uploadPicture')
+      partialUpdateData.push({
+        "path": `${key}`,
+        "op": "replace",
+        "value": `${value}`,
+      })
+    })
 
     try {
-      const resultUpdatePet = await petServices.updatePet(petId, updateData, user.accessToken);
-      console.log(resultUpdatePet)
+      // const resultUpdatePet = await petServices.updatePet(petId, updateData, user.accessToken);
+      const resultUpdatePet = await petServices.partialUpdate(petId, partialUpdateData, user.accessToken);
+
       const uploadFileData = new FormData();
       uploadFileData.append('file', uploadPicture);
       uploadFileData.append('entityId', pet.id);
 
       if (uploadPicture.name) {
-        const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken)
+        const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken);
       }
     } catch (err) {
       console.log(err);
     }
-
-
-
     // e.target.reset();
   }
 
@@ -120,7 +128,7 @@ export default function EditPet() {
       });
     }
   }
-  console.log(pet.name);
+
   return (
     <div>
       <div className='test'>
@@ -244,6 +252,7 @@ export default function EditPet() {
                 sx={inputFieldStyle}
                 type='file'
                 name='uploadPicture'
+                value={pet.fileImagePath}
               />
 
               <div className='button-container'>
