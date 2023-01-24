@@ -8,18 +8,18 @@ import { CircularProgress } from '@mui/material';
 function PetsList() {
     const [pets, setPets] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [countOfPets, setCountOfPets] = useState(pets.length);
     const { user } = useContext(AuthContext);
-
-    
+    console.log(countOfPets);
+    console.log(pets)
     useEffect(() => {
         setTimeout(() => {
             fetchPets(user?.userId, user?.accessToken)
         }, 1000)
-    }, [])
+    }, [countOfPets])
 
     async function fetchPets(userId, accessToken) {
         try {
-            // const response = await axios.get(`https://localhost:7038/api/Pet/GetAll`, accessToken)
             const data = await authServices.getAllPet(userId, accessToken);
 
             setPets(data);
@@ -36,7 +36,7 @@ function PetsList() {
                     ? <div className='pet-loading-circle'>
                         <CircularProgress color='success' size={120} thickness={1} />
                       </div>
-                    : pets.map(p => <PetCard key={p.id} pet={p} renderButton={true}/>)
+                    : pets.map(p => <PetCard key={p.id} pet={p} renderButton={true} setCountOfPets={setCountOfPets}/>)
             }
         </div>
     );
