@@ -22,6 +22,7 @@ import Register from './components/Register/Register';
 import UserSettings from './components/User/UserSettings';
 import MyAppointments from './Pages/AccountPages/MyAppointments'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import DeletePetDialog  from './components/Dialog/DeletePetDialog';
 
 const initialAuthState = {
   accessToken: '',
@@ -61,6 +62,7 @@ function App() {
               <Route path='create-pet' element={<CreatePet />}/>
               <Route path='edit-pet/:petId' element={<EditPet />}/>
               <Route path='my-appointments' element={<MyAppointments />}/>
+              <Route path='account-details' element={<DeletePetDialog />}/>
             </Route>
             <Route path="/calendar" element={<Calendar />} errorElement={<ErrorPage />}/>
             <Route path="/register" element={<Register />} />
