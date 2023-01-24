@@ -65,7 +65,7 @@ form .text-field {
 
 /* because the input fields Username and Password are have the required
 attribute the valid action workds properly */
-.text-field input:focus~label, 
+.text-field input:focus~label,
 .text-field input:valid~label {
     top: -5px;
     color: #1becc6;
