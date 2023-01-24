@@ -1,3 +1,5 @@
+const baseUrl = 'https://localhost:7038/api/Pet';
+
 const returnFetchedResult = async (response) => {
     if (response.ok) {
         return await response.json();
@@ -19,7 +21,7 @@ export const getAllPet = async (userId, accessToken) => {
 }
 
 export const getPetById = async (petId, accessToken) => {
-    const response = await fetch(`https://localhost:7038/api/Pet/GetById/${petId}`, {
+    const response = await fetch(`${baseUrl}/GetById/${petId}`, {
         method: 'GET',
         headers: {
             'content-type': 'application/json',
@@ -31,7 +33,7 @@ export const getPetById = async (petId, accessToken) => {
 }
 
 export const createPet = async (bodyData, accessToken) => {
-    const response = await fetch(`https://localhost:7038/api/Pet/Create`, {
+    const response = await fetch(`${baseUrl}/Create`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -44,7 +46,7 @@ export const createPet = async (bodyData, accessToken) => {
 }
 
 export const uploadPetPicture = async (bodyData, accessToken) => {
-    const response = await fetch(`https://localhost:7038/api/Pet/UploadPetPicture`, {
+    const response = await fetch(`${baseUrl}/UploadPetPicture`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${accessToken}`,
@@ -57,13 +59,25 @@ export const uploadPetPicture = async (bodyData, accessToken) => {
 
 export const updatePet = async (petId, bodyData, accessToken) => {
     debugger;
-    const response = await fetch(`https://localhost:7038/api/Pet/Update/${petId}`, {
+    const response = await fetch(`${baseUrl}/Update/${petId}`, {
         method: 'PUT',
         headers: {
             'content-type': 'application/json',
             'Authorization': `Bearer ${accessToken}`,
         },
         body: JSON.stringify(bodyData),
+    });
+    
+    return await response.text();
+}
+
+export const deletePet = async (petId, accessToken) => {
+    const response = await fetch(`${baseUrl}/Delete/${petId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },  
     });
 
     return await response.text();
