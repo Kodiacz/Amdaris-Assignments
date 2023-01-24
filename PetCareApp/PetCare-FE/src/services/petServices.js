@@ -71,6 +71,20 @@ export const updatePet = async (petId, bodyData, accessToken) => {
     return await response.text();
 }
 
+export const partialUpdate = async (petId, bodyData, accessToken) => {
+    debugger;
+    const response = await fetch(`${baseUrl}/PartialUpdate/${petId}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(bodyData),
+    });
+    
+    return await response.text();
+}
+
 export const deletePet = async (petId, accessToken) => {
     const response = await fetch(`${baseUrl}/Delete/${petId}`, {
         method: 'DELETE',
