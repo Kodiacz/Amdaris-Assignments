@@ -15,12 +15,12 @@ function Login({
     const navigate = useNavigate();
 
     const getUser = async (data) => {
+        
         authServices.login(data)
             .then(res => {
-                console.log('navigating')
+                navigate('/my-account')
                 onLogin(res);
                 closeModal();
-                navigate('/my-account')
             })
             .catch(err => {
                 setError(err)
@@ -40,7 +40,6 @@ function Login({
             password,
         }
         await getUser(data);
-        console.log(error);
     }
 
     const handleChange = (e) => {
