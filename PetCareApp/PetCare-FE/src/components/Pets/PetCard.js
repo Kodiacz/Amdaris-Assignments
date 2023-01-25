@@ -41,7 +41,7 @@ export default function PetCard({
     const handleDeletePet = useCallback(
       async () => {
           const deletePetResult = await petServices.deletePet(pet.id, user.accessToken);
-          debugger;
+          
           setCountOfPets(state => state - 1);
       }, [setCountOfPets])
     

@@ -58,7 +58,7 @@ export const uploadPetPicture = async (bodyData, accessToken) => {
 }
 
 export const updatePet = async (petId, bodyData, accessToken) => {
-    debugger;
+    
     const response = await fetch(`${baseUrl}/Update/${petId}`, {
         method: 'PUT',
         headers: {
@@ -72,7 +72,7 @@ export const updatePet = async (petId, bodyData, accessToken) => {
 }
 
 export const partialUpdate = async (petId, bodyData, accessToken) => {
-    debugger;
+    
     const response = await fetch(`${baseUrl}/PartialUpdate/${petId}`, {
         method: 'PATCH',
         headers: {

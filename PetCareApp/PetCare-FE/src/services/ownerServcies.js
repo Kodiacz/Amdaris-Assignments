@@ -1,7 +1,7 @@
 const baseUrl = 'https://localhost:7038/api/Owner';
 
 export const getOwnerById = async (ownerId, accessToken) => {
-    debugger;
+    
     const res = await fetch(`${baseUrl}/GetById/${ownerId}`, {
         method: 'GET',
         headers: {
@@ -18,7 +18,7 @@ export const getOwnerById = async (ownerId, accessToken) => {
 }
 
 export const updateOwnerAppointments = async (bodyData, accessToken) => {
-    debugger;
+    
     const res = await fetch(`${baseUrl}/AddAppointmentToOwnerById`, {
         method: 'POST',
         headers: {
@@ -36,7 +36,6 @@ export const updateOwnerAppointments = async (bodyData, accessToken) => {
 }
 
 export const getOwnerAppointments = async (ownerId, accessToken) => {
-    debugger;
     const res = await fetch(`${baseUrl}/GetOwnerAppointments/${ownerId}`, {
         method: 'GET',
         headers: {

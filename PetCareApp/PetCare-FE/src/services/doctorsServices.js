@@ -34,7 +34,7 @@ export const getDoctorSchedule = async (doctorId) => {
 }
 
 export const updateDoctorSchedule = async (bodyData, accessToken) => {
-    debugger;
+    
     const res = await fetch(`${baseUrl}/UpdateSchedule`, {
         method: 'PUT',
         headers: {
@@ -52,7 +52,7 @@ export const updateDoctorSchedule = async (bodyData, accessToken) => {
 }
 
 export const addPatientToDoctor = async (bodyData, accessToken) => {
-    debugger
+    
     const res = await fetch(`${baseUrl}/AddPatient`, {
         method: 'POST',
         headers: {

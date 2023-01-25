@@ -20,7 +20,7 @@ function Register({
 
     
     const onFormSubmit = async (e) => {
-        debugger;
+        
         e.preventDefault();
         
         let formData = new FormData(e.target);
@@ -37,6 +37,7 @@ function Register({
         
         const registeredUser = await authServices.register(registerData)
         console.log(registerData);
+        navigate('/login')
     }
 
     const handleChange = (e) => {
@@ -57,7 +58,7 @@ function Register({
                             <label htmlFor="register-username">Username <PersonIcon /></label>
                         </div>
                         <div className="text-field">
-                            <input onChange={(e) => handleChange(e)} id="register-password" type="register-password" name="register-password" autoComplete="new-password" required />
+                            <input onChange={(e) => handleChange(e)} id="register-password" type="password" name="register-password" autoComplete="new-password" required />
                             <span></span>
                             <label htmlFor="register-password">Password <VpnKeyIcon /></label>
                         </div>
@@ -74,7 +75,7 @@ function Register({
                             <label htmlFor="email">Email <AlternateEmailIcon /></label>
                         </div>
                         <div className="text-field">
-                            <input onChange={(e) => handleChange(e)} id="confirmPassword" type="confirmPassword" name="confirmPassword" autoComplete="new-password" required />
+                            <input onChange={(e) => handleChange(e)} id="confirmPassword" type="password" name="confirmPassword" autoComplete="new-password" required />
                             <span></span>
                             <label htmlFor="confirmPassword">Confirm Password <VpnKeyIcon /></label>
                         </div>

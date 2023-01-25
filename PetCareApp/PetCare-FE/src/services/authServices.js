@@ -19,7 +19,7 @@ export const login = async (data) => {
 }
 
 export const register = async (data) => {
-   ;
+   
    const res = await fetch(`${baseUrl}api/Authentication/Register`, {
       method: 'POST',
       headers: {
