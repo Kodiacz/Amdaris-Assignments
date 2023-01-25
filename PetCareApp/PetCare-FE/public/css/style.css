@@ -6,13 +6,18 @@
     --dark: #212121;
 }
 
+.guest-div {
+    display: flex;
+    justify-content: center;
+}
+
 .user-div a:hover {
     cursor: pointer;
-  }
-  
-  .guest-div a:hover {
+}
+
+.guest-div a:hover {
     cursor: pointer;
-  }
+}
 
 .body {
     line-height: none;
@@ -28,7 +33,7 @@
     background: linear-gradient(120deg, #6ecaca, #98FB98);
     height: 200vh;
     flex-grow: 1;
-    
+
 }
 
 [class^=flaticon-]:before,

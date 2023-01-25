@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-/* * {
+* section.not-found {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Press Start 2P';
     color: #FFFFFF;
     text-not-found-align: center;
-} */
+}
 
 .link-to-home-page,
 .link-to-no-page {
