@@ -1,4 +1,5 @@
 function configureImagePath(path) {
+    
     if (!path) {
         return
     }
