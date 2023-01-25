@@ -19,13 +19,14 @@ import MyAccountSideBar from './components/User/MyAccountSideBar';
 import CreatePet from './Pages/PetPages/CreatePet';
 import EditPet from './Pages/PetPages/EditPet';
 import Register from './components/Register/Register';
-import UserSettings from './components/User/UserSettings';
+import UserSettings from './components/User/EditUser';
 import MyAppointments from './Pages/AccountPages/MyAppointments'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import DeletePetDialog from './components/Dialog/DeletePetDialog';
 import AccountDetails from './Pages/AccountPages/AccountDetails';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import Login  from './components/Login/Login';
+import EditUser from './components/User/EditUser';
 
 const defaultProfilePicturePath = './img/default-images/default-user-pic.jpg'
 //./img/users-profile-images/-user.jpg
@@ -79,7 +80,9 @@ function App() {
               <Route path='create-pet' element={<CreatePet />} />
               <Route path='edit-pet/:petId' element={<EditPet />} />
               <Route path='my-appointments' element={<MyAppointments />} />
-              <Route path='account-details' element={<AccountDetails />} />
+              <Route path='account-details/*' element={<AccountDetails />} />
+                <Route path='edit-account' element={<EditUser />}/>
+              <Route/>
             </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
