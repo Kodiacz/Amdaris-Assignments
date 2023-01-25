@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
+import { Link } from "react-router-dom";
+
 const Home = () => {
     return (
         <div>
@@ -10,7 +12,7 @@ const Home = () => {
                             <h1 className="display-1 text-uppercase text-dark mb-lg-4">Pet Care</h1>
                             <h1 className="text-uppercase text-white mb-lg-4">Make Your Pets Happy</h1>
                             <div className="d-flex align-items-center justify-content-center justify-content-lg-start pt-5">
-                                <a href="" className="btn btn-outline-light border-2 py-md-3 px-md-5 me-5">Read More</a>
+                                <Link to="about" className="btn btn-outline-light border-2 py-md-3 px-md-5 me-5">Read More</Link>
                             </div>
                         </div>
                     </div>
