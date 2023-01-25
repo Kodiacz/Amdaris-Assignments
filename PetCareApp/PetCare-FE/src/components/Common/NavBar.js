@@ -22,7 +22,12 @@ function NavBar({
     console.log('Nav', imageFilePath)
     let guestNavigation = (
         <div className='guest-div'>
-            <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout"><LoginModal /></a>
+            <div>
+                <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout"><LoginModal /></a>
+            </div>
+            <div>
+                <a href='register' className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout">Register <LoginIcon/></a>
+            </div>
         </div>
     );
 
