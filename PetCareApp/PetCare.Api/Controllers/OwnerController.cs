@@ -126,18 +126,19 @@
                 Directory.CreateDirectory(UserProfilePicturesFolderPath);
             }
 
-            if (System.IO.File.Exists(UserProfilePicturesFolderPath + fileUpload.File.Name))
+            if (System.IO.File.Exists(command.ProfileImageFilePath))
             {
-                System.IO.File.Delete(UserProfilePicturesFolderPath + fileUpload.File.Name);
+                System.IO.File.Delete(command.ProfileImageFilePath);
             }
 
+            command.ProfileImageFilePath = String.Empty;
             command.ProfileImageFilePath = UserProfilePicturesFolderPath + $"{command.ProfileImageFilePath}-" + fileUpload.File.FileName;
 
             using (FileStream fileStram = System.IO.File.Create(command.ProfileImageFilePath))
             {
                 fileUpload.File.CopyTo(fileStram);
                 fileStram.Flush();
-                var updatedPet = await base.Mediator.Send(command);
+                var updatedOwner = await base.Mediator.Send(command);
                 return Ok();
             }
         }

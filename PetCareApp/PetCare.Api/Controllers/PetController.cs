@@ -67,6 +67,12 @@ using PetCare.Api.Dtos.PetDtos;
                 Directory.CreateDirectory(PetPicturesFolderPath);
             }
 
+            if (System.IO.File.Exists(command.ImageFilePath))
+            {
+                System.IO.File.Delete(command.ImageFilePath);
+            }
+
+            command.ImageFilePath = String.Empty;
             command.ImageFilePath = PetPicturesFolderPath + $"{command.Name}-" + fileUpload.File.FileName;
 
             using (FileStream fileStram = System.IO.File.Create(command.ImageFilePath))
