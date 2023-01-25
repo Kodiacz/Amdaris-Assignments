@@ -53,28 +53,30 @@ export default function MyAppointments() {
 
     return (
         <div className='my-appointments-table'>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 550 }} aria-label="customized table">
-                    <TableHead>
-                        <TableRow>
-                            <StyledTableCell>Pet Name</StyledTableCell>
-                            <StyledTableCell align="left">Doctor Name</StyledTableCell>
-                            <StyledTableCell align="left">Reason</StyledTableCell>
-                            <StyledTableCell align="left">Date</StyledTableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {appointments?.map(a => (
-                            <StyledTableRow key={a.name}>
-                                <StyledTableCell component="th" scope="row">{a.petName}</StyledTableCell>
-                                <StyledTableCell align="left">{a.doctorFullName}</StyledTableCell>
-                                <StyledTableCell align="left">{a.reasonForAppointment}</StyledTableCell>
-                                <StyledTableCell align="left">{a.dateOfAppointment.slice(0, 10)}</StyledTableCell>
-                            </StyledTableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            <Paper elevation={24}>
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 550 }} aria-label="customized table">
+                        <TableHead>
+                            <TableRow>
+                                <StyledTableCell>Pet Name</StyledTableCell>
+                                <StyledTableCell align="left">Doctor Name</StyledTableCell>
+                                <StyledTableCell align="left">Reason</StyledTableCell>
+                                <StyledTableCell align="left">Date</StyledTableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {appointments?.map(a => (
+                                <StyledTableRow key={a.name}>
+                                    <StyledTableCell component="th" scope="row">{a.petName}</StyledTableCell>
+                                    <StyledTableCell align="left">{a.doctorFullName}</StyledTableCell>
+                                    <StyledTableCell align="left">{a.reasonForAppointment}</StyledTableCell>
+                                    <StyledTableCell align="left">{a.dateOfAppointment.slice(0, 10)}</StyledTableCell>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Paper>
         </div>
     );
 }
