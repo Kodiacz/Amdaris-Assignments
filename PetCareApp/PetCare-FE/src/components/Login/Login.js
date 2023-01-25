@@ -10,13 +10,14 @@ import "./Login.css"
 function Login({
     closeModal,
 }) {
-    const { onLogin } = useContext(AuthContext);
+    const { onLogin, user } = useContext(AuthContext);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const getUser = async (data) => {
         authServices.login(data)
             .then(res => {
+                console.log('navigating')
                 onLogin(res);
                 closeModal();
                 navigate('/my-account')
@@ -46,9 +47,10 @@ function Login({
         const name = e.target.name;
         const value = e.target.value;
     }
-
+    
     return (
-        <div className="center">
+        <div className="login-outer-div">
+            <div className="center">
             <h1>Sign in</h1>
             <span className='error-span' hidden={error ? false : true}>Username or Password are incorrect</span>
             <form method="post" onSubmit={(e) => onFormSubmit(e)}>
@@ -68,6 +70,7 @@ function Login({
                     Not a member? <Link to="/register" onClick={closeModal}>Signup <LoginIcon /></Link>
                 </div>
             </form>
+        </div>
         </div>
     )
 }
