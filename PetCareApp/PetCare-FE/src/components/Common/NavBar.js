@@ -30,6 +30,7 @@ function NavBar({
         <div className='user-div'>
             <h5>Welcome, {username}</h5>
             <Avatar
+                key={imageFilePath}
                 alt="Avatar"
                 src={imageFilePath ?? defaultProfilePicture}
                 sx={{ width: 70, height: 70 }}
@@ -38,7 +39,7 @@ function NavBar({
             <a className="nav-item nav-link nav-contact bg-primary text-white px-5 ms-lg-5 login-logout" onClick={onClick}>Logout <LogoutIcon /></a>
         </div>
     )
-    debugger
+    // 
     return (
         <nav className="navbar navbar-expand-lg bg-white navbar-light shadow-sm py-3 py-lg-0 px-3 px-lg-0">
             <a href="/" className="navbar-brand ms-lg-5">
