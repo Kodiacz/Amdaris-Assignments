@@ -19,7 +19,7 @@ export const login = async (data) => {
 }
 
 export const register = async (data) => {
-   debugger;
+   ;
    const res = await fetch(`${baseUrl}api/Authentication/Register`, {
       method: 'POST',
       headers: {
@@ -27,12 +27,10 @@ export const register = async (data) => {
       },
       body: JSON.stringify(data),
    });
-
-   const jsonResult = await res.json()
    
    if (res.ok) {
-      return jsonResult;
+      return 'registered';
    } else {
-      throw jsonResult;
+      throw res.text();
    }
 }
