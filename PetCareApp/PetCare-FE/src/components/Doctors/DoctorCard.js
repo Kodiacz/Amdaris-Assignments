@@ -35,7 +35,7 @@ const DoctorCard = ({
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography variant="h5">Phonenumber</Typography>
+          <Typography variant="h5">Phone number</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography variant="h6">
@@ -56,7 +56,7 @@ const DoctorCard = ({
             <img src={imagePath ?? defaultImage} alt="Avatar" style={{ width: '280px', height: '280px' }} />
             <h4 className="doctos-full-name"><b>{doctor.firstName} {doctor.lastName}</b></h4>
             {renderButton
-              ? <Link to={`doctor\\${doctor.id}`} className="doctor-more-info-btn" type="button">Read more</Link>
+              ? <Link to={`doctor\\${doctor.id}`} className="doctor-more-info-btn" type="button">Make Appointment</Link>
               : ""
             }
             {renderAccordion
