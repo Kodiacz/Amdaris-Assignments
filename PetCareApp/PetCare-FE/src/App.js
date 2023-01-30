@@ -40,8 +40,9 @@ const initialAuthState = {
 
 function App() {
   const [user, setUser] = useLocalStorage('user', initialAuthState);
-  const [profilePicture, setProfilePicture] = useLocalStorage('profilePicture', user.profileImageFilePath ? user.profileImageFilePath : defaultProfilePicturePath);
-  console.log(user.profileImageFilePath ? 'user.profileImageFilePath' : 'defaultProfilePicturePath');
+  const [doctorId, setDoctorId] = useState(0);
+  const [profilePicture, setProfilePicture] = 
+  useLocalStorage('profilePicture', user.profileImageFilePath ? user.profileImageFilePath : defaultProfilePicturePath);
 
   useEffect(() => {
     if (user.profileImageFilePath) {
@@ -64,7 +65,7 @@ function App() {
 
   //setProfilePicture, profilePicture
   return (
-    <AuthContext.Provider value={{ user, onLogin, onLogout, setProfilePicture }}>
+    <AuthContext.Provider value={{ user, onLogin, onLogout, setProfilePicture, doctorId, setDoctorId }}>
       <BrowserRouter>
         <HeadContactInfo />
         <div className='main-body'>
@@ -80,9 +81,9 @@ function App() {
               <Route path='create-pet' element={<CreatePet />} />
               <Route path='edit-pet/:petId' element={<EditPet />} />
               <Route path='my-appointments' element={<MyAppointments />} />
-              <Route path='account-details/*' element={<AccountDetails />} />
+              <Route path='account-details/*' element={<AccountDetails />} >
                 <Route path='edit-account' element={<EditUser />}/>
-              <Route/>
+              </Route>
             </Route>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
