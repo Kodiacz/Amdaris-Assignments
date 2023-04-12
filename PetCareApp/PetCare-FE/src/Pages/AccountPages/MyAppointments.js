@@ -34,7 +34,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function MyAppointments() {
     const [appointments, setAppointments] = useState([]);
     const { user } = useContext(AuthContext);
-    console.log(appointments)
+    
     useEffect(() => {
         fetchData(user.userId, user.accessToken)
     }, []);

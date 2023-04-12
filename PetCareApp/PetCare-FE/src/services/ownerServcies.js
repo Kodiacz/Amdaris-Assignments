@@ -66,3 +66,17 @@ export const uploadOwnerPicture = async (bodyData, accessToken) => {
         throw response.statusText;
     };
 }
+
+export const partialUpdate = async (ownerId, bodyData, accessToken) => {
+    debugger
+    const response = await fetch(`${baseUrl}/PartialUpdate/${ownerId}`, {
+        method: 'PATCH',
+        headers: {
+            'content-type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(bodyData),
+    });
+    
+    return await response.text();
+}

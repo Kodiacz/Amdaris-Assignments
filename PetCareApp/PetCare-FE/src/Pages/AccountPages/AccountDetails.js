@@ -9,7 +9,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import * as ownerServices from '../../services/ownerServcies'
 import { AuthContext } from '../../contexts/AuthContext'
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Navigate, Outlet, useNavigate } from 'react-router-dom';
 
 function changeStateValue(callBack, value) {
     callBack(state => value);
@@ -21,7 +21,9 @@ const tipografyStyle = {
 
 export default function AccountDetails() {
     const [owner, setOwner] = useState({})
+    const [reFetch, setReFetch] = useState(false)
     const { user, setProfilePicture, profilePicture } = useContext(AuthContext)
+    const navigateToEdid = useNavigate();
 
     const getOwner = async (ownerId, accessToken) => {
         const getOwnerResult = await ownerServices.getOwnerById(ownerId, accessToken);
@@ -35,7 +37,7 @@ export default function AccountDetails() {
 
     useEffect(() => {
         getOwner(user.userId, user.accessToken);
-    }, [])
+    }, [reFetch])
 
     useEffect(() => {
         if (owner.profileImageFilePath) {
@@ -67,60 +69,59 @@ export default function AccountDetails() {
     }
 
     return (
-        <>
-            <div className='account-details-container'>
-                <Paper elevation={24}>
-                    <Box sx={{ minWidth: 275 }}>
-                        <Card variant="outlined">
-                            <CardContent>
-                                <Typography sx={tipografyStyle} variant='h5'>
-                                    First and Last name:
-                                </Typography>
-                                <Typography variant='h5'>
-                                    {`${owner.firstName} ${owner.lastName}`}
-                                </Typography>
-                                <Divider />
-                                <Typography sx={tipografyStyle} variant='h5'>
-                                    Email:
-                                </Typography>
-                                <Typography variant='h6'>
-                                    {`${owner.email}`}
-                                </Typography>
-                                <Divider />
-                                <Typography sx={tipografyStyle} variant='h5'>
-                                    Phonenumber:
-                                </Typography>
-                                <Typography variant='h5'>
-                                    {`${owner.phonenumber}`}
-                                </Typography>
-                                <Divider />
-                            </CardContent>
-                            <CardActions>
-                                <ButtonGroup
-                                    disableElevation
-                                    variant="contained"
-                                    aria-label="Disabled elevation buttons"
-                                >
-                                    <form method='post' onSubmit={(e) => handleUpload(e)}>
-                                        <TextField
-                                            type='file'
-                                            name='uploadPicture'
-                                        />
-                                        <Button type='submit' size='large'>Upload</Button>
-                                    </form>
-                                </ButtonGroup>
-                            </CardActions>
-                        </Card>
-                        {/* <Button element={<Link />} to="edit-account" variant="contained" color="primary">
+        <div className='account-details-container'>
+            <Paper elevation={24}>
+                <Box sx={{ minWidth: 275 }}>
+                    <Card variant="outlined">
+                        <CardContent>
+                            <Typography sx={tipografyStyle} variant='h5'>
+                                First and Last name:
+                            </Typography>
+                            <Typography variant='h5'>
+                                {`${owner.firstName} ${owner.lastName}`}
+                            </Typography>
+                            <Divider />
+                            <Typography sx={tipografyStyle} variant='h5'>
+                                Email:
+                            </Typography>
+                            <Typography variant='h6'>
+                                {`${owner.email}`}
+                            </Typography>
+                            <Divider />
+                            <Typography sx={tipografyStyle} variant='h5'>
+                                Phone number:
+                            </Typography>
+                            <Typography variant='h5'>
+                                {`${owner.phonenumber}`}
+                            </Typography>
+                            <Divider />
+                        </CardContent>
+                        <CardActions>
+                            <ButtonGroup
+                                disableElevation
+                                variant="contained"
+                                aria-label="Disabled elevation buttons"
+                            >
+                                <form method='post' onSubmit={(e) => handleUpload(e)}>
+                                    <TextField
+                                        type='file'
+                                        name='uploadPicture'
+                                    />
+                                    <Button type='submit' size='large'>Upload</Button>
+                                </form>
+                            </ButtonGroup>
+                        </CardActions>
+                    </Card>
+                    <Button variant="contained" color="primary" onClick={() => {
+                        navigateToEdid('/my-account/account-details/edit-account')
+                    }}>
                         Edit Account
-                    </Button> */}
-                        <Link to='edit-account'>Test</Link>
-                    </Box>
-                </Paper>
-            </div>
+                    </Button>
+                </Box>
+            </Paper>
             <div className='edit-user-outlet-div'>
-                <Outlet />
+                <Outlet context={{owner, setReFetch}}/>
             </div>
-        </>
+        </div>
     );
 }

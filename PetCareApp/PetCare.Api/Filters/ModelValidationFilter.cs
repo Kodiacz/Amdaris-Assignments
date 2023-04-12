@@ -11,7 +11,7 @@
                 context.Result = new BadRequestResult();
             }
 
-            await next.Invoke();
+            await next();
         }
     }
 }

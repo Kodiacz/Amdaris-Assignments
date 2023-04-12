@@ -21,12 +21,11 @@ const ReasonForAppointment = ({
   const { user } = useContext(AuthContext);
 
   const handleInput = useCallback(e => {
-    setResultFromInput(e.target.value);
+      setResultFromInput(e.target.value);
   }, [setResultFromInput])
 
   const handleSelect = useCallback(
     (e) => {
-      console.log(e.target.value)
       setPet(e.target.value);
     },
     [setPet],
@@ -34,26 +33,25 @@ const ReasonForAppointment = ({
 
   const handleOnChange = (e) => {
     let currentLength = e.target.value.length;
-    console.log(currentLength)
+    let value;
     console.log(maxCaracters)
     setMaxCaracters(prevState => {
       if (currentLength === 0) {
-        console.log('===0', inputLenght)
         setInputLength(0);
-        return (400 - prevState) + prevState;
+        return 400;
       } 
       
       if (inputLenght > currentLength) {
-        console.log('>', inputLenght)
         setInputLength(currentLength);
-        return prevState + 1;
+        value = prevState + (inputLenght - currentLength);
       } 
       
       if (inputLenght < currentLength) {
-        console.log('<', inputLenght)
         setInputLength(currentLength);
-        return prevState - 1;
+        value = prevState - (currentLength - inputLenght);
       }
+
+      return value > 0 ? value : 0;
     });
   }
 
@@ -69,7 +67,7 @@ const ReasonForAppointment = ({
 
   return (
     <div className="reason-for-appointment-container">
-      <Tooltip title={selectToolTipTitle} placement="top-start">
+      <Tooltip title={selectToolTipTitle} placement="right">
         <TextField
           sx={{ width: '200px' }}
           labelId="demo-simple-select-helper-label"
@@ -91,7 +89,7 @@ const ReasonForAppointment = ({
         onBlur={(e) => handleInput(e)}
         on
       />
-      <label>Maximum characters {maxCaracters}</label>
+      <label style={{color: maxCaracters <= 0 ? 'red' : ''}}>Maximum characters {maxCaracters}</label>
     </div>
   )
 }

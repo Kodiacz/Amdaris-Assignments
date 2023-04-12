@@ -14,10 +14,10 @@ import { Link } from "react-router-dom";
 
 const buttonToolTipTitle = (
     <h4 style={{ color: "white" }}>
-        'To make an appointment you need to fallow the steps:
+        To make an appointment you need to follow the steps:
         you have to select a date and click OK,
-        then type the reason for appontment and
-        select your pet and click the button Make Appointment'
+        then type the reason for appointment and
+        select your pet, last click the button 'Make Appointment'
     </h4>);
 
 const guestDiv = (
@@ -32,7 +32,7 @@ const DoctorDetails = ({
     doctor,
 }) => {
     const [pet, setPet] = useState();
-    const { user } = useContext(AuthContext);
+    const { user, setDoctorId } = useContext(AuthContext);
     const [rerender, setRerender] = useState({});
     const [newSchedule, setNewSchedule] = useState();
     const [doctorSchedule, setDoctorSchedule] = useState([]);
@@ -44,6 +44,8 @@ const DoctorDetails = ({
         titleType: '',
     })
 
+    setDoctorId(doctor.id)
+    
     useEffect(() => {
         doctorsServices.getDoctorSchedule(doctor.id)
             .then(res => setDoctorSchedule(res))

@@ -10,6 +10,7 @@ import PetCard from '../../components/Pets/PetCard';
 
 export default function EditPet() {
   const [pet, setPet] = useState({});
+  const [reFetch, setReFetch] = useState(false);
   const [invalidField, setInvalidField] = useState({
     name: false,
     age: false,
@@ -27,7 +28,7 @@ export default function EditPet() {
     }
 
     fetchedPet(petId, user.accessToken);
-  }, [])
+  }, [reFetch])
 
 
   const inputFieldStyle = {
@@ -96,6 +97,8 @@ export default function EditPet() {
       if (uploadPicture.name) {
         const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken);
       }
+
+      setReFetch(true)
     } catch (err) {
       console.log(err);
     }

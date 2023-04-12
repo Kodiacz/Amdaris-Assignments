@@ -15,6 +15,7 @@ namespace PetCare.Application.Owners.Commands.PartialUpdate
         {
             Owner owner = new Owner
             {
+                Id = request.Id,
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Username = request.Username,

@@ -165,14 +165,14 @@
         [HttpPatch]
         [Route("{ownerId}")]
         [ModelValidationFilter]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User, Admin")]
         [ActionName(nameof(PartialUpdate))]
         public async Task<IActionResult> PartialUpdate(JsonPatchDocument<UpdateOwnerDto> jsonPatchDocument, int ownerId)
         {
             GetOwnerByIdAsReadonly query = new() { Id = ownerId };
-            Owner doctorForUpdate = await base.Mediator.Send(query);
+            Owner ownerForUpdate = await base.Mediator.Send(query);
 
-            UpdateOwnerDto updateOwnerDto = base.Mapper.Map<UpdateOwnerDto>(doctorForUpdate);
+            UpdateOwnerDto updateOwnerDto = base.Mapper.Map<UpdateOwnerDto>(ownerForUpdate);
 
             jsonPatchDocument.ApplyTo(updateOwnerDto, ModelState);
 
@@ -184,7 +184,7 @@
                 return BadRequest();
             }
 
-            doctorForUpdate = await base.Mediator.Send(command);
+            ownerForUpdate = await base.Mediator.Send(command);
 
             return NoContent();
         }

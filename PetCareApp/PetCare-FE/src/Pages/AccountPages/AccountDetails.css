@@ -1,4 +1,10 @@
 .account-details-container {
     margin-left: 20px;
     margin-top: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.edit-user-outlet-div {
+    margin-left: 30px;
 }
