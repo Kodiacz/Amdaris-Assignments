@@ -22,9 +22,11 @@ const buttonToolTipTitle = (
 
 const guestDiv = (
     <div className="guest-div-doctors-details">
-        <Typography sx={{fontSize: '20px', color: 'black'}}>To Make An Appointment</Typography>
-        <Typography sx={{fontSize: '20px', color: 'black'}}>First You Have To <Link to='/login'>Login</Link></Typography>
-        <Typography sx={{fontSize: '20px', color: 'black'}}>Or <Link to='/register'>Register</Link></Typography>
+        <Typography sx={{ fontSize: '20px', color: 'black' }}>
+            To Make An Appointment <br />
+            First You Have To <Link to='/login'>Login</Link> <br />
+            Or <Link to='/register'>Register</Link>
+        </Typography>
     </div>
 )
 
@@ -45,7 +47,7 @@ const DoctorDetails = ({
     })
 
     setDoctorId(doctor.id)
-    
+
     useEffect(() => {
         doctorsServices.getDoctorSchedule(doctor.id)
             .then(res => setDoctorSchedule(res))
@@ -104,10 +106,6 @@ const DoctorDetails = ({
                     : guestDiv
             }
             <div className="doctor-calendar">
-                {/* {user.username
-                    ? <LinearWithValueLabel />
-                    : <h4> To make an appointment you have to <b>sign in</b> or <b>register</b></h4>
-                } */}
                 <Alerts
                     openValue={alertState.openValue}
                     severityValue={alertState.severityValue}

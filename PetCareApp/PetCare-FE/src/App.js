@@ -10,19 +10,15 @@ import NavBar from './components/Common/NavBar';
 import Doctor from './components/Doctors/Doctor';
 import PetsList from './Pages/PetPages/PetsList';
 import { AuthContext } from './contexts/AuthContext';
-import Calendar from './components/Calendar/Calendar';
 import DoctorsList from './Pages/DoctorPages/DoctorsList';
 import HeadContactInfo from './components/Common/HeadContactInfo';
 import { toast, ToastContainer } from 'react-toastify';
 import useLocalStorage from './Hooks/useLocalStorage'
-import MyAccountSideBar from './components/User/MyAccountSideBar';
 import CreatePet from './Pages/PetPages/CreatePet';
 import EditPet from './Pages/PetPages/EditPet';
 import Register from './components/Register/Register';
-import UserSettings from './components/User/EditUser';
 import MyAppointments from './Pages/AccountPages/MyAppointments'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import DeletePetDialog from './components/Dialog/DeletePetDialog';
 import AccountDetails from './Pages/AccountPages/AccountDetails';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import Login  from './components/Login/Login';
@@ -70,7 +66,6 @@ function App() {
         <HeadContactInfo />
         <div className='main-body'>
           <NavBar username={user.username} onLogout={onLogout} profilePicture={profilePicture} />
-          {/* <NavBar username={user.username} onLogout={onLogout} profilePicture={user.profilePicture}/> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

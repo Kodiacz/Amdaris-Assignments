@@ -46,6 +46,7 @@ export const createPet = async (bodyData, accessToken) => {
 }
 
 export const uploadPetPicture = async (bodyData, accessToken) => {
+    debugger
     const response = await fetch(`${baseUrl}/UploadPetPicture`, {
         method: 'POST',
         headers: {

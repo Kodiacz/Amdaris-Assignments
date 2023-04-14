@@ -40,7 +40,6 @@ export default function CreatePet() {
   }
 
   const onFormSubmit = async (e) => {
-
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -61,7 +60,6 @@ export default function CreatePet() {
       ownerId: user.userId,
     };
 
-
     try {
       const resultCreatePet = await petServices.createPet(createData, user.accessToken);
 
@@ -71,7 +69,7 @@ export default function CreatePet() {
 
       const resultUploadPetPicture = await petServices.uploadPetPicture(uploadFileData, user.accessToken)
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
 
     e.target.reset();
@@ -100,14 +98,6 @@ export default function CreatePet() {
     <div className='create-pet-form-div'>
       <h3>Add your pet</h3>
       <div className='form-container'>
-        {/* <Box
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      > */}
         <form method='post' onSubmit={(e) => onFormSubmit(e)}>
           <div className='input-container'>
 

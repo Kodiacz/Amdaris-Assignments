@@ -87,7 +87,6 @@ export default function EditPet() {
     })
 
     try {
-      // const resultUpdatePet = await petServices.updatePet(petId, updateData, user.accessToken);
       const resultUpdatePet = await petServices.partialUpdate(petId, partialUpdateData, user.accessToken);
 
       const uploadFileData = new FormData();
@@ -102,7 +101,6 @@ export default function EditPet() {
     } catch (err) {
       console.log(err);
     }
-    // e.target.reset();
   }
 
   const onChange = (e) => {
@@ -141,14 +139,6 @@ export default function EditPet() {
       <div className='create-pet-form-div'>
         <h3>Edit Pet Information</h3>
         <div className='form-container'>
-          {/* <Box
-        component="form"
-        sx={{
-          '& > :not(style)': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-      > */}
           <form method='post' onSubmit={(e) => onFormSubmit(e)}>
             <div className='input-container'>
 
@@ -272,7 +262,6 @@ export default function EditPet() {
             </div>
           </form>
         </div>
-        {/* </Box> */}
       </div >
     </div>
   );
