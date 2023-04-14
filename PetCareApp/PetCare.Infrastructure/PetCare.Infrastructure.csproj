@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PetCare.Application\PetCare.Application.csproj" />
-    <ProjectReference Include="..\PetClinic.Application\PetCare.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,6 +6,7 @@ global using PetCare.Interfaces;
 global using PetCare.Infrastructure;
 global using PetCare.Domain.Entities;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
 global using PetCare.Application.Exceptions;
 global using PetCare.Application.Interfaces;
 global using PetCare.Infrastructure.Repository;

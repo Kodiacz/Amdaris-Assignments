@@ -18,7 +18,7 @@ namespace PetCare.Test
             ownerRepositoryMock = new();
             unitOfWorkMock = new();
             var contextOptions = new DbContextOptionsBuilder<PetCareDbContext>()
-                .UseInMemoryDatabase("InMemmoryPetClinicDB")
+                //.UseInMemoryDatabase("InMemmoryPetClinicDB")
                 .Options;
 
             contextInMemmory = new PetCareDbContext(contextOptions);

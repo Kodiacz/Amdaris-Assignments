@@ -1,6 +1,6 @@
 ﻿namespace PetCare.Domain.AbstracClasses
 {
-    public abstract class Person
+    public abstract class Person : SoftDeletableEntity
     {
         public string FirstName { get; init; }
 

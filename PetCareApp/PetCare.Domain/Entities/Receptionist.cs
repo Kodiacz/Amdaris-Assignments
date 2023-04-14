@@ -10,8 +10,6 @@
             this.OwnersOfPatients = new HashSet<Owner>();
         }
 
-        public bool IsDeleted { get; set; } = false;
-
         public string? ImageFilePath { get; set; }
 
         public ICollection<Pet> Patients { get; set; }

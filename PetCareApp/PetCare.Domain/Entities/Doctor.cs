@@ -1,4 +1,6 @@
-﻿namespace PetCare.Domain.Entities
+﻿using PetCare.Domain.AbstracClasses;
+
+namespace PetCare.Domain.Entities
 {
     public class Doctor : Employee
     {
@@ -10,8 +12,6 @@
         }
 
         public ICollection<Schedule> Schedule { get; set; }
-
-        public bool IsDeleted { get; set; } = false;
 
         public string? ImageFilePath { get; set; }
 
