@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetCare.Infrastructure;
 
@@ -11,9 +12,10 @@ using PetCare.Infrastructure;
 namespace PetCare.Infrastructure.Migrations
 {
     [DbContext(typeof(PetCareDbContext))]
-    partial class PetClinicDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230416185810_AddedRoles")]
+    partial class AddedRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,20 +43,20 @@ namespace PetCare.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("IdentityRole", (string)null);
+                    b.ToTable("IdentityRole<int>");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "e2d84585-db3f-42b4-a066-c7832660bd2c",
+                            ConcurrencyStamp = "c1e658d4-24f1-4824-9298-f2b3cf8bcf54",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "ecd87bf9-4fb5-4845-882b-d50ff3e1c354",
+                            ConcurrencyStamp = "d7d55ca3-2fe0-4772-95f1-ad24d927a226",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -148,7 +150,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "Emergency medical care, internal medicine",
                             LastName = "Nikolova",
-                            Phonenumber = "0298300",
+                            Phonenumber = "0231455",
                             StartedJobDate = new DateTime(2018, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -160,7 +162,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "Parasitology and infectious diseases",
                             LastName = "Naidenova",
-                            Phonenumber = "0293577",
+                            Phonenumber = "0274927",
                             StartedJobDate = new DateTime(2018, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -172,7 +174,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "orthopedics and traumatology, abdominal and thoracic surgery, panelist",
                             LastName = "Georgieva",
-                            Phonenumber = "0285816",
+                            Phonenumber = "0232478",
                             StartedJobDate = new DateTime(2011, 10, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -184,7 +186,7 @@ namespace PetCare.Infrastructure.Migrations
                             IsDeleted = false,
                             JobDescription = "exotic animals, internal diseases",
                             LastName = "Milushev",
-                            Phonenumber = "0236295",
+                            Phonenumber = "0277623",
                             StartedJobDate = new DateTime(2010, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
@@ -284,7 +286,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Stanimir",
                             IsDeleted = false,
                             LastName = "Petkov",
-                            Phonenumber = "0883004662",
+                            Phonenumber = "0885695931",
                             Username = "stanimircho"
                         },
                         new
@@ -295,7 +297,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Desislava",
                             IsDeleted = false,
                             LastName = "Koleva",
-                            Phonenumber = "0887629889",
+                            Phonenumber = "0870128010",
                             Username = "desi"
                         },
                         new
@@ -306,7 +308,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Vencislav",
                             IsDeleted = false,
                             LastName = "Kolev",
-                            Phonenumber = "0889472997",
+                            Phonenumber = "0883186641",
                             Username = "venci"
                         },
                         new
@@ -317,7 +319,7 @@ namespace PetCare.Infrastructure.Migrations
                             FirstName = "Simeon",
                             IsDeleted = false,
                             LastName = "Kostadinov",
-                            Phonenumber = "0894933966",
+                            Phonenumber = "0872052867",
                             Username = "simo"
                         });
                 });
@@ -547,7 +549,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 1,
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -575,21 +577,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 5,
                             Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 6,
                             Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 7,
                             Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -603,14 +605,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 9,
                             Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 10,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -652,14 +654,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 16,
                             Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 17,
                             Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -673,14 +675,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 19,
                             Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 20,
                             Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -701,7 +703,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 23,
                             Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -715,7 +717,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 25,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -729,7 +731,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 27,
                             Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -771,7 +773,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 33,
                             Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -785,35 +787,35 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 35,
                             Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 36,
                             Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 37,
                             Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 38,
                             Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 39,
                             Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -834,7 +836,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 42,
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -855,14 +857,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 45,
                             Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 46,
                             Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -883,21 +885,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 49,
                             Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 50,
                             Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 51,
                             Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -911,7 +913,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 53,
                             Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -925,7 +927,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 55,
                             Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -939,7 +941,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 57,
                             Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -960,7 +962,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 60,
                             Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -974,7 +976,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 62,
                             Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -988,7 +990,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 64,
                             Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1016,7 +1018,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 68,
                             Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1030,7 +1032,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 70,
                             Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1065,7 +1067,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 75,
                             Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1079,21 +1081,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 77,
                             Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 78,
                             Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 79,
                             Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1107,7 +1109,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 81,
                             Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1121,7 +1123,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 83,
                             Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1156,14 +1158,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 88,
                             Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 89,
                             Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1177,7 +1179,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 91,
                             Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1205,7 +1207,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 95,
                             Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1219,21 +1221,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 97,
                             Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 98,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 99,
                             Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1247,7 +1249,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 101,
                             Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1275,14 +1277,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 105,
                             Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 106,
                             Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1296,28 +1298,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 108,
                             Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 109,
                             Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 110,
                             Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 111,
                             Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1331,21 +1333,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 113,
                             Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 114,
                             Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 115,
                             Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1359,14 +1361,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 117,
                             Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 118,
                             Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 1,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1387,7 +1389,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 121,
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1408,7 +1410,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 124,
                             Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1422,7 +1424,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 126,
                             Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1443,14 +1445,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 129,
                             Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 130,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1478,14 +1480,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 134,
                             Date = new DateTime(2023, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 135,
                             Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1520,7 +1522,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 140,
                             Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1534,14 +1536,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 142,
                             Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 143,
                             Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1555,21 +1557,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 145,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 146,
                             Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 147,
                             Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1583,7 +1585,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 149,
                             Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1597,14 +1599,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 151,
                             Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 152,
                             Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1618,14 +1620,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 154,
                             Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 155,
                             Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1646,28 +1648,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 158,
                             Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 159,
                             Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 160,
                             Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 161,
                             Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1681,21 +1683,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 163,
                             Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 164,
                             Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 165,
                             Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1709,21 +1711,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 167,
                             Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 168,
                             Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 169,
                             Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1737,56 +1739,56 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 171,
                             Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 172,
                             Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 173,
                             Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 174,
                             Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 175,
                             Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 176,
                             Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 177,
                             Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 178,
                             Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1800,35 +1802,35 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 180,
                             Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 181,
                             Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 182,
                             Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 183,
                             Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 184,
                             Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1849,7 +1851,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 187,
                             Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1884,7 +1886,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 192,
                             Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1898,7 +1900,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 194,
                             Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1912,7 +1914,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 196,
                             Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -1926,21 +1928,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 198,
                             Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 199,
                             Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 200,
                             Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1954,7 +1956,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 202,
                             Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -1968,7 +1970,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 204,
                             Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2003,7 +2005,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 209,
                             Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2017,7 +2019,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 211,
                             Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2038,7 +2040,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 214,
                             Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2052,49 +2054,49 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 216,
                             Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 217,
                             Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 218,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 219,
                             Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 220,
                             Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 221,
                             Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 222,
                             Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2108,21 +2110,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 224,
                             Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 225,
                             Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 226,
                             Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2136,42 +2138,42 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 228,
                             Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 229,
                             Date = new DateTime(2023, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 230,
                             Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 231,
                             Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 232,
                             Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 233,
                             Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2185,7 +2187,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 235,
                             Date = new DateTime(2023, 4, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2199,7 +2201,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 237,
                             Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2220,28 +2222,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 240,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 2,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 241,
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 242,
                             Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 243,
                             Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2290,7 +2292,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 250,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2332,14 +2334,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 256,
                             Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 257,
                             Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2360,14 +2362,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 260,
                             Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 261,
                             Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2437,7 +2439,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 271,
                             Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2458,7 +2460,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 274,
                             Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2479,7 +2481,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 277,
                             Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2493,7 +2495,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 279,
                             Date = new DateTime(2023, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2514,42 +2516,42 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 282,
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 283,
                             Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 284,
                             Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 285,
                             Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 286,
                             Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 287,
                             Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2563,21 +2565,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 289,
                             Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 290,
                             Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 291,
                             Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2598,14 +2600,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 294,
                             Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 295,
                             Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2619,7 +2621,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 297,
                             Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2633,7 +2635,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 299,
                             Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2675,21 +2677,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 305,
                             Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 306,
                             Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 307,
                             Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2703,7 +2705,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 309,
                             Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2717,7 +2719,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 311,
                             Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2731,7 +2733,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 313,
                             Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2745,35 +2747,35 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 315,
                             Date = new DateTime(2023, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 316,
                             Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 317,
                             Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 318,
                             Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 319,
                             Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2787,7 +2789,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 321,
                             Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2801,21 +2803,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 323,
                             Date = new DateTime(2023, 3, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 324,
                             Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 325,
                             Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2829,21 +2831,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 327,
                             Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 328,
                             Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 329,
                             Date = new DateTime(2023, 3, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2857,56 +2859,56 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 331,
                             Date = new DateTime(2023, 4, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 332,
                             Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 333,
                             Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 334,
                             Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 335,
                             Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 336,
                             Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 337,
                             Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 338,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -2920,28 +2922,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 340,
                             Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 341,
                             Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 342,
                             Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 343,
                             Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2962,7 +2964,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 346,
                             Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -2997,14 +2999,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 351,
                             Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 352,
                             Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3039,7 +3041,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 357,
                             Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3053,14 +3055,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 359,
                             Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 360,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 3,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3074,7 +3076,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 362,
                             Date = new DateTime(2023, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3088,28 +3090,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 364,
                             Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 365,
                             Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 366,
                             Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 367,
                             Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3144,14 +3146,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 372,
                             Date = new DateTime(2023, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 373,
                             Date = new DateTime(2023, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3186,7 +3188,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 378,
                             Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3207,14 +3209,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 381,
                             Date = new DateTime(2023, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 382,
                             Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3235,21 +3237,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 385,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 386,
                             Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 387,
                             Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3270,7 +3272,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 390,
                             Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3284,7 +3286,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 392,
                             Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3319,14 +3321,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 397,
                             Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 398,
                             Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3354,7 +3356,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 402,
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3389,14 +3391,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 407,
                             Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 408,
                             Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3410,21 +3412,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 410,
                             Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 411,
                             Date = new DateTime(2023, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 412,
                             Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3445,14 +3447,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 415,
                             Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 416,
                             Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3473,7 +3475,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 419,
                             Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3501,21 +3503,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 423,
                             Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 424,
                             Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 425,
                             Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3536,21 +3538,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 428,
                             Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 429,
                             Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 430,
                             Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3564,7 +3566,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 432,
                             Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3578,7 +3580,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 434,
                             Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3599,14 +3601,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 437,
                             Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 438,
                             Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3620,14 +3622,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 440,
                             Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 441,
                             Date = new DateTime(2023, 3, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3648,14 +3650,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 444,
                             Date = new DateTime(2023, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 445,
                             Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3669,14 +3671,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 447,
                             Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 448,
                             Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3690,7 +3692,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 450,
                             Date = new DateTime(2023, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3718,7 +3720,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 454,
                             Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3732,7 +3734,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 456,
                             Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3746,7 +3748,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 458,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3760,14 +3762,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 460,
                             Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 461,
                             Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3781,7 +3783,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 463,
                             Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3795,7 +3797,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 465,
                             Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3809,7 +3811,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 467,
                             Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3837,7 +3839,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 471,
                             Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3851,7 +3853,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 473,
                             Date = new DateTime(2023, 4, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3879,14 +3881,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 477,
                             Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 478,
                             Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3900,14 +3902,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 480,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 4,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 481,
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3921,7 +3923,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 483,
                             Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -3935,7 +3937,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 485,
                             Date = new DateTime(2023, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -3956,28 +3958,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 488,
                             Date = new DateTime(2023, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 489,
                             Date = new DateTime(2023, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 490,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 491,
                             Date = new DateTime(2023, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4005,7 +4007,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 495,
                             Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4019,14 +4021,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 497,
                             Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 498,
                             Date = new DateTime(2023, 1, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4040,7 +4042,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 500,
                             Date = new DateTime(2023, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4061,28 +4063,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 503,
                             Date = new DateTime(2023, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 504,
                             Date = new DateTime(2023, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 505,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 506,
                             Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4103,28 +4105,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 509,
                             Date = new DateTime(2023, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 510,
                             Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 511,
                             Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 512,
                             Date = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4138,14 +4140,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 514,
                             Date = new DateTime(2023, 2, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 515,
                             Date = new DateTime(2023, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4159,7 +4161,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 517,
                             Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4187,21 +4189,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 521,
                             Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 522,
                             Date = new DateTime(2023, 2, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 523,
                             Date = new DateTime(2023, 2, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4215,14 +4217,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 525,
                             Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 526,
                             Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4264,56 +4266,56 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 532,
                             Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 533,
                             Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 534,
                             Date = new DateTime(2023, 2, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 535,
                             Date = new DateTime(2023, 2, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 536,
                             Date = new DateTime(2023, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 537,
                             Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 538,
                             Date = new DateTime(2023, 2, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 539,
                             Date = new DateTime(2023, 2, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4327,56 +4329,56 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 541,
                             Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 542,
                             Date = new DateTime(2023, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 543,
                             Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 544,
                             Date = new DateTime(2023, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 545,
                             Date = new DateTime(2023, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 546,
                             Date = new DateTime(2023, 3, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 547,
                             Date = new DateTime(2023, 3, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 548,
                             Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4390,14 +4392,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 550,
                             Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 551,
                             Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4418,7 +4420,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 554,
                             Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4432,21 +4434,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 556,
                             Date = new DateTime(2023, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 557,
                             Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 558,
                             Date = new DateTime(2023, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4502,21 +4504,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 566,
                             Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 567,
                             Date = new DateTime(2023, 3, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 568,
                             Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4565,7 +4567,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 575,
                             Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4586,28 +4588,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 578,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 579,
                             Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 580,
                             Date = new DateTime(2023, 4, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 581,
                             Date = new DateTime(2023, 4, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4628,35 +4630,35 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 584,
                             Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 585,
                             Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 586,
                             Date = new DateTime(2023, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 587,
                             Date = new DateTime(2023, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 588,
                             Date = new DateTime(2023, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4698,7 +4700,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 594,
                             Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4733,21 +4735,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 599,
                             Date = new DateTime(2023, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 600,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 5,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 601,
                             Date = new DateTime(2023, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4761,14 +4763,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 603,
                             Date = new DateTime(2023, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 604,
                             Date = new DateTime(2023, 1, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4782,14 +4784,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 606,
                             Date = new DateTime(2023, 1, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 607,
                             Date = new DateTime(2023, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4810,7 +4812,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 610,
                             Date = new DateTime(2023, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4845,21 +4847,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 615,
                             Date = new DateTime(2023, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 616,
                             Date = new DateTime(2023, 1, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 617,
                             Date = new DateTime(2023, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4873,7 +4875,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 619,
                             Date = new DateTime(2023, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4894,7 +4896,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 622,
                             Date = new DateTime(2023, 1, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4915,21 +4917,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 625,
                             Date = new DateTime(2023, 1, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 626,
                             Date = new DateTime(2023, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 627,
                             Date = new DateTime(2023, 1, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4950,14 +4952,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 630,
                             Date = new DateTime(2023, 1, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 631,
                             Date = new DateTime(2023, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -4971,7 +4973,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 633,
                             Date = new DateTime(2023, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -4992,21 +4994,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 636,
                             Date = new DateTime(2023, 2, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 637,
                             Date = new DateTime(2023, 2, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 638,
                             Date = new DateTime(2023, 2, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -5020,14 +5022,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 640,
                             Date = new DateTime(2023, 2, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 641,
                             Date = new DateTime(2023, 2, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5048,49 +5050,49 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 644,
                             Date = new DateTime(2023, 2, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 645,
                             Date = new DateTime(2023, 2, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 646,
                             Date = new DateTime(2023, 2, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 647,
                             Date = new DateTime(2023, 2, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 648,
                             Date = new DateTime(2023, 2, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 649,
                             Date = new DateTime(2023, 2, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 650,
                             Date = new DateTime(2023, 2, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5104,14 +5106,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 652,
                             Date = new DateTime(2023, 2, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 653,
                             Date = new DateTime(2023, 2, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -5139,7 +5141,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 657,
                             Date = new DateTime(2023, 2, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -5160,14 +5162,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 660,
                             Date = new DateTime(2023, 3, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 661,
                             Date = new DateTime(2023, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5181,7 +5183,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 663,
                             Date = new DateTime(2023, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5216,21 +5218,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 668,
                             Date = new DateTime(2023, 3, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 669,
                             Date = new DateTime(2023, 3, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 670,
                             Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5244,7 +5246,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 672,
                             Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -5258,7 +5260,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 674,
                             Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5279,7 +5281,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 677,
                             Date = new DateTime(2023, 3, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -5293,14 +5295,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 679,
                             Date = new DateTime(2023, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 680,
                             Date = new DateTime(2023, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5314,7 +5316,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 682,
                             Date = new DateTime(2023, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5335,14 +5337,14 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 685,
                             Date = new DateTime(2023, 3, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 686,
                             Date = new DateTime(2023, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5356,7 +5358,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 688,
                             Date = new DateTime(2023, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5384,56 +5386,56 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 692,
                             Date = new DateTime(2023, 4, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 693,
                             Date = new DateTime(2023, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 694,
                             Date = new DateTime(2023, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 695,
                             Date = new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 696,
                             Date = new DateTime(2023, 4, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 697,
                             Date = new DateTime(2023, 4, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 698,
                             Date = new DateTime(2023, 4, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 699,
                             Date = new DateTime(2023, 4, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5454,28 +5456,28 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 702,
                             Date = new DateTime(2023, 4, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 703,
                             Date = new DateTime(2023, 4, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 704,
                             Date = new DateTime(2023, 4, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 705,
                             Date = new DateTime(2023, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5510,21 +5512,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 710,
                             Date = new DateTime(2023, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 711,
                             Date = new DateTime(2023, 4, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 712,
                             Date = new DateTime(2023, 4, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
@@ -5538,7 +5540,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 714,
                             Date = new DateTime(2023, 4, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5552,21 +5554,21 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 716,
                             Date = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
                             Id = 717,
                             Date = new DateTime(2023, 4, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         },
                         new
                         {
                             Id = 718,
                             Date = new DateTime(2023, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = false
+                            IsAvailable = true
                         },
                         new
                         {
@@ -5580,7 +5582,7 @@ namespace PetCare.Infrastructure.Migrations
                             Id = 720,
                             Date = new DateTime(2023, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DoctorId = 6,
-                            IsAvailable = true
+                            IsAvailable = false
                         });
                 });
 

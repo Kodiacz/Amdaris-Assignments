@@ -1,5 +1,6 @@
 ﻿global using Microsoft.OpenApi.Models;
 global using Swashbuckle.AspNetCore.Filters;
+using Microsoft.AspNetCore.Identity;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -37,10 +38,15 @@ namespace Microsoft.Extensions.DependencyInjection
             });
 
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<PetCareDbContext>(options =>
+            builder
+                .Services.AddDbContext<PetCareDbContext>(options =>
             {
                 options.UseSqlServer(connectionString);
             });
+
+            //builder
+            //    .Services.AddIdentity<Owner, IdentityRole>()
+            //    .AddEntityFrameworkStores<PetCareDbContext>();
 
             serviceCollection.AddCors(options =>
             {
@@ -49,8 +55,8 @@ namespace Microsoft.Extensions.DependencyInjection
                     option
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .WithOrigins("http://localhost:3001");
-                    //.AllowAnyOrigin();
+                      //.WithOrigins("http://localhost:3001");
+                        .AllowAnyOrigin();  
                 });
             });
 

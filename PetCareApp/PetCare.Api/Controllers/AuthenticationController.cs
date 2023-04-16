@@ -52,7 +52,11 @@
                 return BadRequest("Wrong password");
             }
 
-            GenerateToken generateTokenCommand = new() { Owner = owner };
+            GenerateToken generateTokenCommand = new() 
+            {
+                Owner = owner ,
+                Role = "User",
+            };
             JwtToken ownerToken = await this.Mediator.Send(generateTokenCommand);
             ownerToken.Username = owner.Username!;
             ownerToken.UserId = owner.Id;

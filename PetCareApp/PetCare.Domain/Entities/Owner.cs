@@ -8,6 +8,7 @@
         {
             this.Pets = new HashSet<Pet>();
             this.Appointments = new HashSet<Appointment>();
+            this.UsersRoles = new HashSet<UsersRoles>();
         }
 
         public int Id { get; set; }
@@ -31,5 +32,7 @@
         public ICollection<Pet> Pets { get; set; }
 
         public ICollection<Appointment> Appointments { get; set; }
+
+        public ICollection<UsersRoles> UsersRoles { get; set; }
     }
 }

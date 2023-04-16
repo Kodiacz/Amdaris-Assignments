@@ -30,6 +30,8 @@
             modelBuilder.ApplyConfiguration(new ReceptionsistEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new DoctorEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ScheduleEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new UsersRolesConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
