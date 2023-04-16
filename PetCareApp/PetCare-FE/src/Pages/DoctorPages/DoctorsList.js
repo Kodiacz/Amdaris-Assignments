@@ -2,17 +2,19 @@ import './DoctorsList.css'
 import DoctorCard from '../../components/Doctors/DoctorCard';
 import { CircularProgress } from '@mui/material';
 import * as doctorsServices from '../../services/doctorsServices.js';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 function DoctorsList() {
     const [doctors, setDoctors] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setErorr] = useState(null);
-
+    const { user } = useContext(AuthContext);
+    
     useEffect(() => {
         const fetch = () => {
             setTimeout(() => {
-                doctorsServices.getAll()
+                doctorsServices.getAll(user.accessToken)
                     .then(res => setDoctors(res))
                     .catch(err => setErorr(err));
                 setIsLoading(false);

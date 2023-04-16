@@ -18,6 +18,7 @@
         /// <returns></returns>
         [HttpGet]
         [ActionName(nameof(GetAll))]
+        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();

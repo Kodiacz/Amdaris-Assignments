@@ -1,10 +1,11 @@
 const baseUrl = 'https://localhost:7038/api/Doctor';
 
-export const getAll = async () => {
+export const getAll = async (accessToken) => {
     const res = await fetch(`${baseUrl}/GetAll`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`,
         }
     });
 
