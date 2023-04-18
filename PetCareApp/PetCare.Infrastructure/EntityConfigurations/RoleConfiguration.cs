@@ -9,7 +9,7 @@
     {
         public void Configure(EntityTypeBuilder<IdentityRole<int>> builder)
         {
-            builder.ToTable("IdentityRoles");
+            builder.ToTable("Roles");
             
             builder.HasData(
                 new IdentityRole<int>()
@@ -21,8 +21,8 @@
                 new IdentityRole<int>()
                 {
                     Id = 2,
-                    Name = "Administrator",
-                    NormalizedName = "ADMINISTRATOR",
+                    Name = "Admin",
+                    NormalizedName = "ADMIN",
                 });
         }
     }
