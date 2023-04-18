@@ -34,6 +34,7 @@
         }
 
         [HttpPost]
+        [ActionName(nameof(Login))]
         public async Task<ActionResult<string>> Login(UserLoginDto loginRequest)
         {
             GetOwnerByUsername getOwnerCommand = new() { Username = loginRequest.Username };
@@ -57,12 +58,20 @@
                 Owner = owner ,
                 Role = "User",
             };
+
             JwtToken ownerToken = await this.Mediator.Send(generateTokenCommand);
             ownerToken.Username = owner.Username!;
             ownerToken.UserId = owner.Id;
             ownerToken.ProfileImageFilePath = owner.ProfileImageFilePath;
 
             return Ok(ownerToken);
+        }
+
+        [HttpPost]
+        [ActionName(nameof(CreateAdmin))]
+        public async Task<IActionResult> CreateAdmin(int userId)
+        {
+            return null;
         }
     }
 }
