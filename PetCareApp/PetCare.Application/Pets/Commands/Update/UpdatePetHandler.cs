@@ -24,7 +24,7 @@
                 OwnerId = request.OwnerId,
             };
 
-            await this.unitOfWorkRepo.PetRepository.UpdateAsync(pet);
+            this.unitOfWorkRepo.PetRepository.Update(pet);
             await this.unitOfWorkRepo.SaveAsync();
 
             return pet;

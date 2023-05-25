@@ -214,7 +214,7 @@
         /// <returns></returns>
         [HttpPost]
         [Authorize(Roles = "User")]
-        public async Task<IActionResult> UploadOwnerProfilePicture([FromForm] FileUpload fileUpload)
+        public IActionResult UploadOwnerProfilePicture([FromForm] FileUpload fileUpload)
         {
             if (!Directory.Exists(UserProfilePicturesFolderPath))
             {

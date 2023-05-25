@@ -11,7 +11,7 @@
         /// <param name="specificFolder">It is an optional parametar. Continuation of the path</param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Upload([FromForm] FileUpload fileUpload, string? specificFolder)
+        public IActionResult Upload([FromForm] FileUpload fileUpload, string? specificFolder)
         {
             string path = ImagesFolderPath;
 
@@ -37,7 +37,7 @@
         [HttpGet]
         [Route("{fileName}")]
 
-        public async Task<IActionResult> TestGet(string fileName, string? specificFolder)
+        public IActionResult TestGet(string fileName, string? specificFolder)
         {
             string path = specificFolder == null ?
                 ImagesFolderPath :

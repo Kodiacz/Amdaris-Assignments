@@ -10,7 +10,7 @@
 
         public int Age { get; init; }
 
-        public string ImageFilePath { get; set; }
+        public string ImageFilePath { get; set; } = null!;
 
         public string Phonenumber { get; init; } = null!;
 

@@ -25,7 +25,7 @@ namespace PetCare.Application.Pets.Commands.PartialUpdate
                 ImageFilePath = request.ImageFilePath,
             };
 
-            await this.unitOfWorkRepo.PetRepository.UpdateAsync(pet);
+            this.unitOfWorkRepo.PetRepository.Update(pet);
             await this.unitOfWorkRepo.SaveAsync();
 
             return pet;

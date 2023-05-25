@@ -5,8 +5,7 @@
     using UpdatePet;
     using DeletePet;
     using UpdatePartialPet;
-using System.Data;
-using PetCare.Api.Dtos.PetDtos;
+    using PetCare.Api.Dtos.PetDtos;
 
     [ApiController]
     [EnableCors("PetCare-FE")]
@@ -27,7 +26,7 @@ using PetCare.Api.Dtos.PetDtos;
         [HttpGet]
         [Route("{petId}")]
         [ActionName(nameof(GetById))]
-        [Authorize(Roles = "User, Admin")]
+        // [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetById(int petId)
         {
             GetPetById query = new() { Id = petId };

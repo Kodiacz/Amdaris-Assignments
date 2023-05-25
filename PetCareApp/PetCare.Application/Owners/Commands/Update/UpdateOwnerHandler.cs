@@ -22,9 +22,9 @@
                 PasswordSalt = request.PasswordSalt,
                 ProfileImageFilePath = request.ProfileImageFilePath,
                 Email = request.Email,
-            };         
+            };
 
-            await this.unitOfWorkRepo.OwnerRepository.UpdateAsync(owner);
+            this.unitOfWorkRepo.OwnerRepository.Update(owner);
             await this.unitOfWorkRepo.SaveAsync();
 
             return owner;

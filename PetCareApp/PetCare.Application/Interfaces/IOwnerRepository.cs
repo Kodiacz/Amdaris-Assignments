@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="owner">Owner type variable</param>
         /// <returns></returns>
-        Task UpdateAsync(Owner owner);
+        void Update(Owner owner);
 
         /// <summary>
         /// Gets the entity from the database by its Id

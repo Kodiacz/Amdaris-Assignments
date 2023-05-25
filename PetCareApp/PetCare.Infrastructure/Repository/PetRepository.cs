@@ -34,9 +34,9 @@
         /// <param name="пет">Pet entity</param>
         /// <returns></returns>
         public void DeleteSoftAsync(Pet pet)
-{
+        {
             if (!pet.IsDeleted)
-{
+            {
                 pet.IsDeleted = true;
             }
         }
@@ -55,7 +55,7 @@
                 .Where(pet => !pet.IsDeleted)
                 .ToListAsync();
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -193,7 +193,7 @@
         /// </summary>
         /// <param name="пет">Pet type variable</param>
         /// <returns></returns>
-        public async Task UpdateAsync(Pet pet)
+        public void Update(Pet pet)
         {
             this.context.Update(pet);
         }

@@ -118,7 +118,7 @@
             return (await this.context.Appointments
                 .FirstOrDefaultAsync(appointment => appointment.Id == id))!;
         }
-        
+
         /// <summary>
         /// Gets the entity from the database by its Id and accepts a predicate for search term
         /// </summary>
@@ -146,7 +146,7 @@
         /// </summary>
         /// <param name="appointment">Appointment type variable</param>
         /// <returns></returns>
-        public async Task UpdateAsync(Appointment appointment)
+        public void Update(Appointment appointment)
         {
             this.context.Update(appointment);
         }

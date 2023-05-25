@@ -22,7 +22,7 @@
                 Phonenumber = request.Phonenumber,
             };
 
-            await this.uniteOfWorkRepo.DoctorRepository.UpdateAsync(doctor);
+            this.uniteOfWorkRepo.DoctorRepository.Update(doctor);
             await this.uniteOfWorkRepo.SaveAsync();
 
             return doctor;

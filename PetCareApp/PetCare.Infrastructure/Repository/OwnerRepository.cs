@@ -145,7 +145,7 @@
             return (await this.context.Owners
                 .FirstOrDefaultAsync(owner => owner.Id == id && !owner.IsDeleted))!;
         }
-        
+
         /// <summary>
         /// Gets the entity from the database by its Id and accepts a predicate for search term
         /// </summary>
@@ -173,7 +173,7 @@
         /// </summary>
         /// <param name="owner">Owner type variable</param>
         /// <returns></returns>
-        public async Task UpdateAsync(Owner owner)
+        public void Update(Owner owner)
         {
             this.context.Update(owner);
         }

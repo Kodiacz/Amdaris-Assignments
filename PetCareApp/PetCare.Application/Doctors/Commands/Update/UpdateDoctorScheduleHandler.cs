@@ -23,7 +23,7 @@ namespace PetCare.Application.Doctors.Commands.Update
                 DoctorId = request.DoctorId,
             };
 
-            await this.unitOfWorkRepo.DoctorRepository.UpdateDoctorScheduleAsync(schedule);
+            this.unitOfWorkRepo.DoctorRepository.UpdateDoctorSchedule(schedule);
             await this.unitOfWorkRepo.SaveAsync();
 
             return schedule;

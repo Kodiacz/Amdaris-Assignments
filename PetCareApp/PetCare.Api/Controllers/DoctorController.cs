@@ -18,7 +18,6 @@
         /// <returns></returns>
         [HttpGet]
         [ActionName(nameof(GetAll))]
-        [Authorize(Roles = "User, Admin")]
         public async Task<IActionResult> GetAll()
         {
             GetAllDoctors query = new GetAllDoctors();
@@ -33,8 +32,8 @@
         /// <param name="doctorId"></param>
         /// <returns></returns>
         [HttpGet]
-        [ActionName(nameof(GetById))]
         [Route("{doctorId}")]
+        [ActionName(nameof(GetById))]
         public async Task<IActionResult> GetById(int doctorId)
         {
             GetDoctorById query = new GetDoctorById() { Id = doctorId, };
@@ -43,6 +42,11 @@
             return Ok(getDoctorDto);
         }
 
+        /// <summary>
+        /// Get the schedule of the <see cref="Doctor"/> entity
+        /// </summary>
+        /// <param name="doctorId">Id of the <see cref="Doctor"/> entity</param>
+        /// <returns>entity of type <see cref="Schedule"/></returns>
         [HttpGet]
         [Route("{doctorId}")]
         [ActionName(nameof(GetScheduleByDoctorId))]

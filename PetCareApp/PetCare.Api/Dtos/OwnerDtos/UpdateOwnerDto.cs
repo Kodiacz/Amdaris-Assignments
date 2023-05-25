@@ -10,7 +10,7 @@
         [StringLength(LastNameMaxLengthForOwner, MinimumLength = LastNameMinLengthForOwner)]
         public string LastName { get; set; } = null!;
 
-        public string Username { get; set; }
+        public string Username { get; set; } = null!;
 
         public int? Age { get; set; }
 

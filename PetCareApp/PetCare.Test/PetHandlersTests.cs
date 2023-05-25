@@ -135,7 +135,7 @@
                 IsDeleted = false,
             };
 
-            mockPetRepository.Setup(or => or.UpdateAsync(oldEntity));
+            mockPetRepository.Setup(or => or.Update(oldEntity));
             mockUnitOfWork.Setup(x => x.PetRepository).Returns(mockPetRepository.Object);
 
             UpdatePet command = new()

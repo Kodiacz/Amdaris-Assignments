@@ -29,7 +29,7 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
             };
 
             var handler = new CreateDoctorHandler(mockUnitOfWork.Object);
@@ -52,7 +52,7 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
             };
 
             mockDoctorRepository.Setup(or => or.GetByIdAsync(1, false)).ReturnsAsync(ownerEntity);
@@ -77,7 +77,7 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
                 IsDeleted = true,
             };
 
@@ -101,7 +101,7 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
                 IsDeleted = true,
             };
 
@@ -126,11 +126,11 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
                 IsDeleted = false,
             };
 
-            mockDoctorRepository.Setup(or => or.UpdateAsync(oldEntity));
+            mockDoctorRepository.Setup(or => or.Update(oldEntity));
             mockUnitOfWork.Setup(x => x.DoctorRepository).Returns(mockDoctorRepository.Object);
 
             UpdateDoctor command = new()
@@ -166,7 +166,7 @@
                     Age = 45,
                     Phonenumber = "0893399284",
                     JobDescription = "Doctor",
-                    StartedJobDate = DateTime.Now, 
+                    StartedJobDate = DateTime.Now,
                     IsDeleted = true,
                 },
                 new Doctor()
@@ -208,7 +208,7 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
                 IsDeleted = false,
             };
 
@@ -236,7 +236,7 @@
                 Age = 45,
                 Phonenumber = "0893399284",
                 JobDescription = "Doctor",
-                StartedJobDate = DateTime.Now, 
+                StartedJobDate = DateTime.Now,
                 IsDeleted = false,
             };
 

@@ -19,14 +19,14 @@
                 Age = request.Age,
                 Phonenumber = request.Phonenumber,
                 JobDescription = request.JobDescription,
-                StartedJobDate = request.StartedJobDate,    
+                StartedJobDate = request.StartedJobDate,
             };
 
-            await this.unitOfWork.DoctorRepository.UpdateAsync(doctor);
+            this.unitOfWork.DoctorRepository.Update(doctor);
             await this.unitOfWork.SaveAsync();
 
             return doctor;
-            
+
         }
     }
 }

@@ -121,7 +121,7 @@
                 .AsNoTracking()
                 .Where(d => d.Id == id && !d.IsDeleted)
                 .FirstOrDefaultAsync();
-                
+
             return doctor!;
         }
 
@@ -160,7 +160,7 @@
                 .Include(Doctor => Doctor.OwnersOfPatients)
                 .Where(d => !d.IsDeleted && d.Id == id)
                 .FirstOrDefaultAsync(doctor => doctor.Id == id))!;
-            
+
             if (detach)
             {
                 this.Detach(doctor);
@@ -189,7 +189,7 @@
             }
 
             return doctor!;
-         }
+        }
 
         /// <summary>
         /// Saves all changes that are done
@@ -205,7 +205,7 @@
         /// </summary>
         /// <param name="doctor">Doctor type variable</param>
         /// <returns></returns>
-        public async Task UpdateAsync(Doctor doctor)
+        public void Update(Doctor doctor)
         {
             this.context.Update(doctor);
         }
@@ -248,7 +248,7 @@
         /// </summary>
         /// <param name="schedule"></param>
         /// <returns></returns>
-        public async Task UpdateDoctorScheduleAsync(Schedule schedule)
+        public void UpdateDoctorSchedule(Schedule schedule)
         {
             this.context.Update(schedule);
         }

@@ -14,7 +14,7 @@
         /// </summary>
         /// <param name="doctor">Doctor type variable</param>
         /// <returns></returns>
-        Task UpdateAsync(Doctor doctor);
+        void Update(Doctor doctor);
 
         /// <summary>
         /// Gets the entity from the database by its Id
@@ -97,7 +97,7 @@
         /// </summary>
         /// <param name="schedule"></param>
         /// <returns></returns>
-        public Task UpdateDoctorScheduleAsync(Schedule schedule);
+        public void UpdateDoctorSchedule(Schedule schedule);
 
         /// <summary>
         /// Adds entity of type Pet 

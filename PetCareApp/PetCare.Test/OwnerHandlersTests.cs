@@ -5,8 +5,8 @@
     using DeleteOwners;
     using UpdateOwners;
     using System.Linq.Expressions;
-using System.Linq;
-using Azure.Core;
+    using System.Linq;
+    using Azure.Core;
 
     [TestFixture]
     public class OwnerHandlersTests
@@ -122,7 +122,7 @@ using Azure.Core;
                 IsDeleted = false,
             };
 
-            mockOwnerRepository.Setup(or => or.UpdateAsync(oldEntity));
+            mockOwnerRepository.Setup(or => or.Update(oldEntity));
             mockUnitOfWork.Setup(x => x.OwnerRepository).Returns(mockOwnerRepository.Object);
 
             UpdateOwner command = new()

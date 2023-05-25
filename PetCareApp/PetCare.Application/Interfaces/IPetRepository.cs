@@ -14,7 +14,7 @@
         /// </summary>
         /// <param name="пет">Pet type variable</param>
         /// <returns></returns>
-        Task UpdateAsync(Pet pet);
+        void Update(Pet pet);
 
         /// <summary>
         /// Gets the entity from the database by its Id

@@ -30,11 +30,11 @@
             switch (context.Exception)
             {
                 case AlreadyDeletedException:
-                    return (int)HttpStatusCode.MethodNotAllowed; break;
+                    return (int)HttpStatusCode.MethodNotAllowed;
                 case ArgumentNullException:
-                    return (int)HttpStatusCode.NotFound; break;
+                    return (int)HttpStatusCode.NotFound;
                 default:
-                    return (int)HttpStatusCode.InternalServerError; break;
+                    return (int)HttpStatusCode.InternalServerError;
             }
         }
     }

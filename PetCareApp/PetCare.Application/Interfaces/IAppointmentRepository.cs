@@ -16,7 +16,7 @@
         /// </summary>
         /// <param name="appointment">Appointment type variable</param>
         /// <returns></returns>
-        Task UpdateAsync(Appointment appointment);
+        void Update(Appointment appointment);
 
         /// <summary>
         /// Gets the entity from the database by its Id
